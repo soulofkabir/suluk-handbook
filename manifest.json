@@ -1,0 +1,20 @@
+{
+  "name": "Suluk Digital Handbook",
+  "short_name": "Suluk Handbook",
+  "description": "A personal companion for the Inayatiyya Suluk teachings",
+  "start_url": "/suluk-handbook/",
+  "scope": "/suluk-handbook/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0F0F2E",
+  "theme_color": "#0F0F2E",
+  "icons": [
+    {
+      "src": "assets/images/inayatiyya_emblem.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ],
+  "categories": ["education", "books"],
+  "lang": "en"
+}
