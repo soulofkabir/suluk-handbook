@@ -148,17 +148,17 @@ body {
   100% { opacity: 1; transform: scale(1); }
 }
 
-/* Eyebrow line */
+/* Eyebrow line — matches title styling */
 #cover-eyebrow {
   font-family: var(--display);
-  font-size: 11px;
-  color: rgba(196, 163, 90, 0.75);
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  font-weight: 400;
+  font-size: clamp(34px, 7vw, 52px);
+  font-weight: 500;
+  color: #FFFFFF;
+  letter-spacing: 0.06em;
+  line-height: 1.15;
   opacity: 0;
-  animation: fadeUp 0.9s ease 2.2s forwards;
-  margin-bottom: 14px;
+  animation: fadeUp 1s ease 2.2s forwards;
+  margin-bottom: 0;
 }
 
 /* Main title */
@@ -867,7 +867,7 @@ body.focus-mode #reading-area {
   <div id="cover-bg"></div>
 
   <div id="cover-content">
-    <div id="cover-eyebrow">Mount Qaf · Suluk Journey</div>
+    <div id="cover-eyebrow">Suluk · Mount Qaf</div>
 
     <h1 id="cover-title">Digital Handbook</h1>
 
