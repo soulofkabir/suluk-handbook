@@ -16,121 +16,142 @@
    SULUK DIGITAL HANDBOOK — DESIGN SYSTEM  Phase A + B + C
    ══════════════════════════════════════════════════════════ */
 
-/* ══════════════════════════════════════════════════════════
-   1. EXACT COLOR PALETTE & VARIABLES (From original book)
-   ══════════════════════════════════════════════════════════ */
 :root {
-  /* Core Colors */
-  --indigo: #1A1A4E;
-  --gold: #C4A35A;
-  --dark-gold: #8B7335;
-  --warm-gray: #5C5C5C;
-  --light-gray: #999;
-  --rule-color: #D4C9A8;
-  
-  /* Day Mode Backgrounds & Text */
-  --bg: #FDFCF9;
-  --body-color: #2A2A2A;
-  --quote-color: #3A3A3A;
-  --sidebar-bg: #F5F3EE;
-  
-  /* Structural Variables */
+  --bg:           #FDFCF9;
+  --nav-bg:       #0F0F2E;
+  --primary:      #1A1A4E;
+  --accent:       #C4A35A;
+  --accent-dim:   rgba(196,163,90,0.5);
+  --text:         #2A2A2A;
+  --muted:        #5C5C5C;
+  --dark-gold:    #8B7335;
+  --rose:         #8B3A62;
+  --rule:         #D4C9A8;
+  --serif:   'EB Garamond', Georgia, serif;
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --font-base: 18px;
   --sidebar-width: 320px;
-  --serif: 'EB Garamond', 'Georgia', serif;
-  --display: 'Cormorant Garamond', 'Georgia', serif;
-  --base-font-size: 18px;
+  --content-max:   840px;
+  --ease: 0.25s ease;
 }
 
-/* ══════════════════════════════════════════════════════════
-   2. TYPOGRAPHY & READING EXPERIENCE
-   ══════════════════════════════════════════════════════════ */
+body.night-mode {
+  --bg:      #0F0F2E;
+  --text:    #FAF6F0;
+  --muted:   #9890B8;
+  --rule:    rgba(255,255,255,0.08);
+  --nav-bg:  #060612;
+}
+
+/* ── LIGHT MODE: sidebar — exact old-handbook colors ── */
+body:not(.night-mode) #sidebar {
+  background: #F5F3EE;
+  border-right: 1px solid #D4C9A8;
+}
+body:not(.night-mode) .sidebar-header {
+  border-bottom: 2px solid #C4A35A;
+}
+body:not(.night-mode) .sidebar-label {
+  color: #8B7335;
+}
+body:not(.night-mode) .sidebar-book-title {
+  color: #1A1A4E;
+}
+body:not(.night-mode) #mode-toggle {
+  background: #EBE7DE;
+  border-color: #C4A35A;
+  color: #1A1A4E;
+}
+body:not(.night-mode) #mode-toggle:hover {
+  background: #C4A35A;
+  border-color: #C4A35A;
+  color: #FFF;
+}
+body:not(.night-mode) .font-btn {
+  background: #EBE7DE;
+  border-color: #D4C9A8;
+  color: #5C5C5C;
+}
+body:not(.night-mode) .font-btn:hover,
+body:not(.night-mode) .font-btn.active {
+  background: #C4A35A;
+  border-color: #C4A35A;
+  color: #FFF;
+}
+body:not(.night-mode) .nav-section-label {
+  color: #8B7335;
+  font-weight: 600;
+}
+body:not(.night-mode) .nav-item {
+  color: #2A2A2A;
+}
+body:not(.night-mode) .nav-item:hover {
+  color: #1A1A4E;
+  background: rgba(196,163,90,0.08);
+  border-left-color: #C4A35A;
+}
+body:not(.night-mode) .nav-item.active {
+  color: #1A1A4E;
+  background: rgba(26,26,78,0.06);
+  border-left-color: #1A1A4E;
+  font-weight: 500;
+}
+body:not(.night-mode) .nav-divider {
+  background: #D4C9A8;
+}
+body:not(.night-mode) .nav-part-toggle {
+  color: #1A1A4E;
+  font-weight: 600;
+}
+body:not(.night-mode) .nav-part-toggle:hover {
+  color: #1A1A4E;
+  background: rgba(196,163,90,0.08);
+}
+body:not(.night-mode) .nav-part-arrow {
+  color: #C4A35A;
+}
+body:not(.night-mode) .ch-count {
+  color: #999;
+}
+body:not(.night-mode) .sidebar-books {
+  border-top: 1px solid #D4C9A8;
+}
+body:not(.night-mode) .books-label {
+  color: #8B7335;
+}
+body:not(.night-mode) .book-tab.current {
+  background: rgba(196,163,90,0.18);
+  color: #1A1A4E;
+  border-color: #C4A35A;
+}
+body:not(.night-mode) .book-tab.future {
+  color: #999;
+  border-color: #D4C9A8;
+}
+body:not(.night-mode) #sidebar-toggle {
+  background: #F5F3EE;
+  border-color: #C4A35A;
+  color: #1A1A4E;
+}
+body:not(.night-mode) .sidebar-nav::-webkit-scrollbar-thumb {
+  background: #C4A35A;
+}
+
+body.font-large { --font-base: 21px; }
+body.font-xl    { --font-base: 24px; }
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   font-family: var(--serif);
-  background-color: var(--bg);
-  color: var(--body-color);
-  line-height: 1.6;
-  font-size: var(--base-font-size);
-  /* Smooth text rendering like the original */
+  font-size: var(--font-base);
+  line-height: 1.75;
+  color: var(--text);
+  background: var(--bg);
+  transition: background var(--ease), color var(--ease);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
-
-/* The Reading Container - Matches old 800px max-width and padding */
-.main-content {
-  flex: 1;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 60px 40px; /* Crucial for breathing room */
-  background-color: var(--bg);
-}
-
-/* Headings - Using Cormorant Garamond */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--display);
-  font-weight: 500;
-  color: var(--indigo);
-  line-height: 1.3;
-}
-
-h1 {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-/* The signature underlined Chapter Headings */
-h2 {
-  font-size: 2rem;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid var(--rule-color);
-  padding-bottom: 10px;
-}
-
-h3 {
-  font-size: 1.5rem;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--dark-gold);
-}
-
-/* Paragraphs & Spacing */
-p {
-  margin-bottom: 1.5rem;
-}
-
-/* The elegant Blockquote styling */
-blockquote {
-  margin: 2rem 0;
-  padding: 1.5rem 2rem;
-  border-left: 3px solid var(--gold);
-  background-color: rgba(196, 163, 90, 0.05);
-  font-style: italic;
-  color: var(--quote-color);
-  font-size: 1.1rem;
-}
-
-/* Horizontal Dividers */
-hr {
-  border: none;
-  border-top: 1px solid var(--rule-color);
-  margin: 3rem auto;
-  width: 50%;
-}
-
-/* ══════════════════════════════════════════════════════════
-   3. HEADER & SIDEBAR VISUAL TWEAKS 
-   ══════════════════════════════════════════════════════════ */
-.main-header {
-  background-color: var(--bg);
-  border-bottom: 1px solid var(--rule-color); /* Restores the subtle line */
-  padding: 15px 40px;
-}
-
-.sidebar {
-  background-color: var(--sidebar-bg);
-  border-right: 1px solid var(--rule-color);
-}
+.hidden { display: none !important; }
 
 
 /* ══════════════════════════════════════════════════════════
