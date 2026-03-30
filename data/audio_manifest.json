@@ -1,5 +1,2156 @@
 {
   "version": "1.0",
-  "note": "219 clips — upload to Google Drive and populate URLs here (Phase D)",
-  "classes": {}
+  "total_clips": 221,
+  "note": "Audio URLs are placeholder local paths. Replace with Google Drive URLs when uploaded.",
+  "classes": {
+    "C1": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat Khan",
+      "date": "2025-09-12",
+      "source": "Concentration_P1_C1_20250912_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening and Invocation",
+          "filename": "01_opening_and_invocation.mp3",
+          "category": "prayer",
+          "start_time": "00:00:07",
+          "end_time": "00:03:05",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Suluk Journey & Companionship",
+          "filename": "02_suluk_journey_and_companionship.mp3",
+          "category": "teaching",
+          "start_time": "00:03:05",
+          "end_time": "00:13:25",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Suluk Meaning & Intention",
+          "filename": "03_suluk_meaning_and_intention.mp3",
+          "category": "teaching",
+          "start_time": "00:13:25",
+          "end_time": "00:23:04",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Inayatiyya Prayer Introduction",
+          "filename": "04_inayatiyya_prayer_introduction.mp3",
+          "category": "teaching",
+          "start_time": "00:23:04",
+          "end_time": "00:30:16",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Standing Practice & Alif",
+          "filename": "05_standing_practice_and_alif.mp3",
+          "category": "practice",
+          "start_time": "00:30:16",
+          "end_time": "00:34:53",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "The Story of Alif",
+          "filename": "06_the_story_of_alif.mp3",
+          "category": "teaching",
+          "start_time": "00:34:53",
+          "end_time": "00:40:07",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Quality in Practice: Four Stages",
+          "filename": "07_quality_in_practice_four_stages.mp3",
+          "category": "teaching",
+          "start_time": "00:40:07",
+          "end_time": "00:42:56",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Understanding Concentration Practice",
+          "filename": "08_understanding_concentration_practice.mp3",
+          "category": "teaching",
+          "start_time": "00:42:56",
+          "end_time": "00:50:40",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Later Stages: Contemplation to Realization",
+          "filename": "09_later_stages_contemplation_to_realization.mp3",
+          "category": "teaching",
+          "start_time": "00:50:40",
+          "end_time": "00:53:12",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Introducing The Qaf Suluk Class",
+          "filename": "10_introducing_the_qaf_suluk_class.mp3",
+          "category": "teaching",
+          "start_time": "00:53:12",
+          "end_time": "1:04:54",
+          "url": ""
+        }
+      ]
+    },
+    "C10": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat Khan",
+      "date": "2025-10-12",
+      "source": "Concentration_P1_C10_20251012_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Session End and Next Steps",
+          "filename": "01_session_end_and_next_steps.mp3",
+          "category": "closing",
+          "start_time": "00:00:05",
+          "end_time": "01:44",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Recap: Concentration & Breath",
+          "filename": "02_recap_concentration_and_breath.mp3",
+          "category": "teaching",
+          "start_time": "01:44",
+          "end_time": "09:56",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Breath Sphere Visualization",
+          "filename": "03_breath_sphere_visualization.mp3",
+          "category": "meditation",
+          "start_time": "09:56",
+          "end_time": "17:14",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Preparing for Listening Practice",
+          "filename": "04_preparing_for_listening_practice.mp3",
+          "category": "practice",
+          "start_time": "17:14",
+          "end_time": "19:21",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Music for Contemplation",
+          "filename": "05_music_for_contemplation.mp3",
+          "category": "meditation",
+          "start_time": "19:21",
+          "end_time": "27:35",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "The Luminous Self and Persona",
+          "filename": "06_the_luminous_self_and_persona.mp3",
+          "category": "teaching",
+          "start_time": "27:35",
+          "end_time": "37:00",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Gaze Concentration Practice",
+          "filename": "07_gaze_concentration_practice.mp3",
+          "category": "practice",
+          "start_time": "37:00",
+          "end_time": "39:23",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Moon and Star Visualization",
+          "filename": "08_moon_and_star_visualization.mp3",
+          "category": "meditation",
+          "start_time": "39:23",
+          "end_time": "42:32",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Walking as a Practice",
+          "filename": "09_walking_as_a_practice.mp3",
+          "category": "practice",
+          "start_time": "42:32",
+          "end_time": "44:48",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Closing Prayer and Blessing",
+          "filename": "10_closing_prayer_and_blessing.mp3",
+          "category": "prayer",
+          "start_time": "44:48",
+          "end_time": "50:07",
+          "url": ""
+        }
+      ]
+    },
+    "C11": {
+      "part": "II",
+      "instructor": "Urs Qutbuddin Schellenberg",
+      "date": "2025-11-21",
+      "source": "Concentration_P2_C11_20251121_Urs.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening and Teacher Introduction",
+          "filename": "01_opening_and_teacher_introduction.mp3",
+          "category": "teaching",
+          "start_time": "00:00:05",
+          "end_time": "00:05:18",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Concentration and Weekend Themes",
+          "filename": "02_concentration_and_weekend_themes.mp3",
+          "category": "teaching",
+          "start_time": "00:05:18",
+          "end_time": "00:14:09",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Introducing Elements Practice",
+          "filename": "03_introducing_elements_practice.mp3",
+          "category": "teaching",
+          "start_time": "00:14:09",
+          "end_time": "00:16:55",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Five Elements Breathing Practice",
+          "filename": "04_five_elements_breathing_practice.mp3",
+          "category": "practice",
+          "start_time": "00:16:55",
+          "end_time": "00:26:53",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Teaching on the Earth Element",
+          "filename": "05_teaching_on_the_earth_element.mp3",
+          "category": "teaching",
+          "start_time": "00:26:53",
+          "end_time": "00:37:47",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Prayer as Gratitude",
+          "filename": "06_prayer_as_gratitude.mp3",
+          "category": "teaching",
+          "start_time": "00:37:47",
+          "end_time": "00:42:08",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Ayaz Story and Gratitude Zikr",
+          "filename": "07_ayaz_story_and_gratitude_zikr.mp3",
+          "category": "reading|practice",
+          "start_time": "00:42:08",
+          "end_time": "00:52:50",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Introducing Rule of Day",
+          "filename": "08_introducing_rule_of_day.mp3",
+          "category": "discussion|teaching",
+          "start_time": "00:52:50",
+          "end_time": "00:56:16",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Discussion on Reproaching Others",
+          "filename": "09_discussion_on_reproaching_others.mp3",
+          "category": "discussion|teaching",
+          "start_time": "00:56:16",
+          "end_time": "01:04:54",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Rule Recitation and Break",
+          "filename": "10_rule_recitation_and_break.mp3",
+          "category": "practice|closing",
+          "start_time": "01:04:54",
+          "end_time": "1:12:01",
+          "url": ""
+        }
+      ]
+    },
+    "C12": {
+      "part": "II",
+      "instructor": "Urs Qutbuddin Schellenberg",
+      "date": "2025-11-21",
+      "source": "Concentration_P2_C12_20251121_Urs.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening and Body Awareness",
+          "filename": "01_opening_and_body_awareness.mp3",
+          "category": "teaching",
+          "start_time": "00:00:06",
+          "end_time": "00:02:57",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Earth Element Practice",
+          "filename": "02_earth_element_practice.mp3",
+          "category": "practice",
+          "start_time": "00:02:57",
+          "end_time": "00:15:28",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Element Work Reflection",
+          "filename": "03_element_work_reflection.mp3",
+          "category": "discussion",
+          "start_time": "00:15:28",
+          "end_time": "00:17:03",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Murshid Reading: Mind's Flow",
+          "filename": "04_murshid_reading_minds_flow.mp3",
+          "category": "reading",
+          "start_time": "00:17:03",
+          "end_time": "00:21:28",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Teaching: Mind as a Tree",
+          "filename": "05_teaching_mind_as_a_tree.mp3",
+          "category": "teaching",
+          "start_time": "00:21:28",
+          "end_time": "00:26:35",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Story: The Two Monks",
+          "filename": "06_story_the_two_monks.mp3",
+          "category": "teaching",
+          "start_time": "00:26:35",
+          "end_time": "00:29:32",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Concentration as Mind's Guardian",
+          "filename": "07_concentration_as_minds_guardian.mp3",
+          "category": "teaching",
+          "start_time": "00:29:32",
+          "end_time": "00:30:41",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Practice: Inspiring Being Visualization",
+          "filename": "08_practice_inspiring_being_visualization.mp3",
+          "category": "meditation",
+          "start_time": "00:30:41",
+          "end_time": "00:45:17",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Murshid Reading: Breath's Influence",
+          "filename": "09_murshid_reading_breaths_influence.mp3",
+          "category": "reading",
+          "start_time": "00:45:17",
+          "end_time": "00:47:43",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Breath Influence Practice",
+          "filename": "10_breath_influence_practice.mp3",
+          "category": "practice",
+          "start_time": "00:47:43",
+          "end_time": "00:52:29",
+          "url": ""
+        },
+        {
+          "segment": 11,
+          "title": "Concentration Muscle & Social Media",
+          "filename": "11_concentration_muscle_and_social_media.mp3",
+          "category": "teaching",
+          "start_time": "00:52:29",
+          "end_time": "00:55:56",
+          "url": ""
+        },
+        {
+          "segment": 12,
+          "title": "Reading: The Tortoise Tale",
+          "filename": "12_reading_the_tortoise_tale.mp3",
+          "category": "reading",
+          "start_time": "00:55:56",
+          "end_time": "01:01:15",
+          "url": ""
+        },
+        {
+          "segment": 13,
+          "title": "Discussion: Tortoise Tale Lessons",
+          "filename": "13_discussion_tortoise_tale_lessons.mp3",
+          "category": "discussion",
+          "start_time": "01:01:15",
+          "end_time": "01:06:55",
+          "url": ""
+        },
+        {
+          "segment": 14,
+          "title": "Visualization: The Open Door",
+          "filename": "14_visualization_the_open_door.mp3",
+          "category": "meditation",
+          "start_time": "01:06:55",
+          "end_time": "01:09:08",
+          "url": ""
+        },
+        {
+          "segment": 15,
+          "title": "Closing Prayer: Salawat",
+          "filename": "15_closing_prayer_salawat.mp3",
+          "category": "prayer",
+          "start_time": "01:09:08",
+          "end_time": "1:13:08",
+          "url": ""
+        }
+      ]
+    },
+    "C13": {
+      "part": "II",
+      "instructor": "Urs Qutbuddin Schellenberg",
+      "date": "2025-11-22",
+      "source": "Concentration_P2_C13_20251122_Urs.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening and Invocation",
+          "filename": "01_opening_and_invocation.mp3",
+          "category": "prayer",
+          "start_time": "00:00:06",
+          "end_time": "00:01:11",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Teaching on Water Element",
+          "filename": "02_teaching_on_water_element.mp3",
+          "category": "teaching",
+          "start_time": "00:01:11",
+          "end_time": "00:07:57",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Water Element Inner Awareness",
+          "filename": "03_water_element_inner_awareness.mp3",
+          "category": "meditation",
+          "start_time": "00:07:57",
+          "end_time": "00:11:23",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Water Qualities and Breath",
+          "filename": "04_water_qualities_and_breath.mp3",
+          "category": "teaching",
+          "start_time": "00:11:23",
+          "end_time": "00:18:51",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Water Character and Personality",
+          "filename": "05_water_character_and_personality.mp3",
+          "category": "teaching",
+          "start_time": "00:18:51",
+          "end_time": "00:21:34",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Water Breath Visualization",
+          "filename": "06_water_breath_visualization.mp3",
+          "category": "practice",
+          "start_time": "00:21:34",
+          "end_time": "00:30:24",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Water Transformation and Prayer",
+          "filename": "07_water_transformation_and_prayer.mp3",
+          "category": "prayer",
+          "start_time": "00:30:24",
+          "end_time": "00:32:37",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Tears, Regret and Forgiveness",
+          "filename": "08_tears_regret_and_forgiveness.mp3",
+          "category": "teaching|discussion",
+          "start_time": "00:32:37",
+          "end_time": "00:39:53",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Repentance, Divine Impulse, Mercy",
+          "filename": "09_repentance_divine_impulse_mercy.mp3",
+          "category": "teaching",
+          "start_time": "00:39:53",
+          "end_time": "00:53:59",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Astaghfirullah Invocation",
+          "filename": "10_astaghfirullah_invocation.mp3",
+          "category": "prayer",
+          "start_time": "00:53:59",
+          "end_time": "00:59:58",
+          "url": ""
+        },
+        {
+          "segment": 11,
+          "title": "Contemplation and Return",
+          "filename": "11_contemplation_and_return.mp3",
+          "category": "meditation",
+          "start_time": "00:59:58",
+          "end_time": "01:05:50",
+          "url": ""
+        },
+        {
+          "segment": 12,
+          "title": "Chivalric Rule: Do Not Spare",
+          "filename": "12_chivalric_rule_do_not_spare.mp3",
+          "category": "discussion|teaching",
+          "start_time": "01:05:50",
+          "end_time": "1:15:59",
+          "url": ""
+        }
+      ]
+    },
+    "C14": {
+      "part": "II",
+      "instructor": "Urs Qutbuddin Schellenberg",
+      "date": "2025-11-22",
+      "source": "Concentration_P2_C14_20251122_Urs.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening, Story, Repentance Teaching",
+          "filename": "01_opening_story_repentance_teaching.mp3",
+          "category": "teaching",
+          "start_time": "00:00:05",
+          "end_time": "00:06:29",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Distracted Lady Story & Teaching",
+          "filename": "02_distracted_lady_story_and_teaching.mp3",
+          "category": "teaching",
+          "start_time": "00:06:29",
+          "end_time": "00:16:44",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Tailbone Concentration Practice",
+          "filename": "03_tailbone_concentration_practice.mp3",
+          "category": "meditation",
+          "start_time": "00:16:44",
+          "end_time": "00:25:51",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Jataka Tale, Murshid Story Teaching",
+          "filename": "04_jataka_tale_murshid_story_teaching.mp3",
+          "category": "teaching",
+          "start_time": "00:25:51",
+          "end_time": "00:35:20",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Color Concentration Practice",
+          "filename": "05_color_concentration_practice.mp3",
+          "category": "meditation",
+          "start_time": "00:35:20",
+          "end_time": "00:70:16",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Closing Salawat Prayer",
+          "filename": "06_closing_salawat_prayer.mp3",
+          "category": "prayer",
+          "start_time": "00:70:16",
+          "end_time": "1:13:06",
+          "url": ""
+        }
+      ]
+    },
+    "C15": {
+      "part": "II",
+      "instructor": "Urs Qutbuddin Schellenberg",
+      "date": "2025-11-23",
+      "source": "Concentration_P2_C15_20251123_Urs.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening and Invocation",
+          "filename": "01_opening_and_invocation.mp3",
+          "category": "prayer",
+          "start_time": "00:00:05",
+          "end_time": "00:01:31",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Elemental Breath: Earth",
+          "filename": "02_elemental_breath_earth.mp3",
+          "category": "practice",
+          "start_time": "00:01:31",
+          "end_time": "00:09:27",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Elemental Breath: Water",
+          "filename": "03_elemental_breath_water.mp3",
+          "category": "practice",
+          "start_time": "00:09:27",
+          "end_time": "00:15:28",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Elemental Breath: Fire",
+          "filename": "04_elemental_breath_fire.mp3",
+          "category": "practice",
+          "start_time": "00:15:28",
+          "end_time": "00:20:57",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Fire Element Teaching & Prayer",
+          "filename": "05_fire_element_teaching_and_prayer.mp3",
+          "category": "prayer|teaching",
+          "start_time": "00:20:57",
+          "end_time": "00:35:39",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Murshid Reading: Fire Personality",
+          "filename": "06_murshid_reading_fire_personality.mp3",
+          "category": "reading",
+          "start_time": "00:35:39",
+          "end_time": "00:37:07",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Fire Transformation & Concentration",
+          "filename": "07_fire_transformation_and_concentration.mp3",
+          "category": "teaching|meditation",
+          "start_time": "00:37:07",
+          "end_time": "00:44:19",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Teaching on Supplication Prayer",
+          "filename": "08_teaching_on_supplication_prayer.mp3",
+          "category": "teaching",
+          "start_time": "00:44:19",
+          "end_time": "00:51:49",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Supplication Prayer Practice",
+          "filename": "09_supplication_prayer_practice.mp3",
+          "category": "practice",
+          "start_time": "00:51:49",
+          "end_time": "01:05:38",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Chivalric Rule Discussion",
+          "filename": "10_chivalric_rule_discussion.mp3",
+          "category": "discussion",
+          "start_time": "01:05:38",
+          "end_time": "1:11:31",
+          "url": ""
+        }
+      ]
+    },
+    "C16": {
+      "part": "II",
+      "instructor": "Urs Qutbuddin Schellenberg",
+      "date": "2025-11-23",
+      "source": "Concentration_P2_C16_20251123_Urs.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Guided Body Concentration Practice",
+          "filename": "01_guided_body_concentration_practice.mp3",
+          "category": "practice",
+          "start_time": "00:00:05",
+          "end_time": "00:07:45",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Murshid Reading and Fana Introduction",
+          "filename": "02_murshid_reading_and_fana_introduction.mp3",
+          "category": "reading|teaching",
+          "start_time": "00:07:45",
+          "end_time": "00:12:56",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Fana fi'sh Sheikh: Image Stage",
+          "filename": "03_fana_fish_sheikh_image_stage.mp3",
+          "category": "teaching|practice",
+          "start_time": "00:12:56",
+          "end_time": "00:20:33",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Fana fi'sh Sheikh: Presence and Communion",
+          "filename": "04_fana_fish_sheikh_presence_and_communion.mp3",
+          "category": "teaching|practice",
+          "start_time": "00:20:33",
+          "end_time": "00:30:44",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Concentration and Baba Farid Story",
+          "filename": "05_concentration_and_baba_farid_story.mp3",
+          "category": "teaching",
+          "start_time": "00:30:44",
+          "end_time": "00:37:01",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "The Four Planes of Magnetism",
+          "filename": "06_the_four_planes_of_magnetism.mp3",
+          "category": "teaching",
+          "start_time": "00:37:01",
+          "end_time": "00:44:51",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Closing Prayers and Blessing",
+          "filename": "07_closing_prayers_and_blessing.mp3",
+          "category": "prayer|closing",
+          "start_time": "00:44:51",
+          "end_time": "59:51",
+          "url": ""
+        }
+      ]
+    },
+    "C17": {
+      "part": "II",
+      "instructor": "Urs Qutbuddin Schellenberg",
+      "date": "2025-12-13",
+      "source": "Concentration_P2_C17_20251213_Urs.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening and Community Support",
+          "filename": "01_opening_and_community_support.mp3",
+          "category": "discussion",
+          "start_time": "00:00:09",
+          "end_time": "00:05:45",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Elemental Breath Practice Introduction",
+          "filename": "02_elemental_breath_practice_introduction.mp3",
+          "category": "teaching",
+          "start_time": "00:05:45",
+          "end_time": "00:16:40",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Deeper Meaning of Elements",
+          "filename": "03_deeper_meaning_of_elements.mp3",
+          "category": "teaching",
+          "start_time": "00:16:40",
+          "end_time": "00:31:23",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Elemental Breath: Earth",
+          "filename": "04_elemental_breath_earth.mp3",
+          "category": "practice",
+          "start_time": "00:31:23",
+          "end_time": "00:37:46",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Elemental Breath: Water",
+          "filename": "05_elemental_breath_water.mp3",
+          "category": "practice",
+          "start_time": "00:37:46",
+          "end_time": "00:44:50",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Elemental Breath: Fire",
+          "filename": "06_elemental_breath_fire.mp3",
+          "category": "practice",
+          "start_time": "00:44:50",
+          "end_time": "00:50:50",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Elemental Breath: Air & Nayaz",
+          "filename": "07_elemental_breath_air_and_nayaz.mp3",
+          "category": "practice",
+          "start_time": "00:50:50",
+          "end_time": "01:00:42",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Invocation as Prayer Aspect",
+          "filename": "08_invocation_as_prayer_aspect.mp3",
+          "category": "teaching",
+          "start_time": "01:00:42",
+          "end_time": "01:05:21",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Rumi Story: Invocation & Ideal",
+          "filename": "09_rumi_story_invocation_and_ideal.mp3",
+          "category": "teaching",
+          "start_time": "01:05:21",
+          "end_time": "01:12:12",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Invocation: Music and Poetry",
+          "filename": "10_invocation_music_and_poetry.mp3",
+          "category": "reading",
+          "start_time": "01:12:12",
+          "end_time": "1:22:15",
+          "url": ""
+        }
+      ]
+    },
+    "C18": {
+      "part": "II",
+      "instructor": "Urs Qutbuddin Schellenberg",
+      "date": "2025-12-13",
+      "source": "Concentration_P2_C18_20251213_Urs.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening and Breath Practice",
+          "filename": "01_opening_and_breath_practice.mp3",
+          "category": "meditation",
+          "start_time": "00:00:05",
+          "end_time": "00:06:57",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Air Element and Balancing",
+          "filename": "02_air_element_and_balancing.mp3",
+          "category": "teaching",
+          "start_time": "00:06:57",
+          "end_time": "00:16:50",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Chivalric Rule Discussion",
+          "filename": "03_chivalric_rule_discussion.mp3",
+          "category": "discussion",
+          "start_time": "00:16:50",
+          "end_time": "00:26:35",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Meditation Postures",
+          "filename": "04_meditation_postures.mp3",
+          "category": "teaching",
+          "start_time": "00:26:35",
+          "end_time": "00:39:37",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Body Density and Expansion",
+          "filename": "05_body_density_and_expansion.mp3",
+          "category": "meditation",
+          "start_time": "00:39:37",
+          "end_time": "00:44:37",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Casting Inner Light",
+          "filename": "06_casting_inner_light.mp3",
+          "category": "practice",
+          "start_time": "00:44:37",
+          "end_time": "00:55:25",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Understanding Concentration",
+          "filename": "07_understanding_concentration.mp3",
+          "category": "teaching",
+          "start_time": "00:55:25",
+          "end_time": "01:06:52",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Closing Prayer and Farewell",
+          "filename": "08_closing_prayer_and_farewell.mp3",
+          "category": "closing",
+          "start_time": "01:06:52",
+          "end_time": "1:11:00",
+          "url": ""
+        }
+      ]
+    },
+    "C19": {
+      "part": "II",
+      "instructor": "Urs Qutbuddin Schellenberg",
+      "date": "2025-12-14",
+      "source": "Concentration_P2_C19_20251214_Urs.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening and Gratitude",
+          "filename": "01_opening_and_gratitude.mp3",
+          "category": "prayer",
+          "start_time": "00:00:05",
+          "end_time": "00:04:06",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Earth Element Breath Practice",
+          "filename": "02_earth_element_breath_practice.mp3",
+          "category": "practice",
+          "start_time": "00:04:06",
+          "end_time": "00:12:02",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Water Element Breath",
+          "filename": "03_water_element_breath.mp3",
+          "category": "practice",
+          "start_time": "00:12:02",
+          "end_time": "00:16:01",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Fire Element Breath",
+          "filename": "04_fire_element_breath.mp3",
+          "category": "practice",
+          "start_time": "00:16:01",
+          "end_time": "00:19:09",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Air Element Breath",
+          "filename": "05_air_element_breath.mp3",
+          "category": "practice",
+          "start_time": "00:19:09",
+          "end_time": "00:22:42",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Ether Element & Union",
+          "filename": "06_ether_element_and_union.mp3",
+          "category": "practice",
+          "start_time": "00:22:42",
+          "end_time": "00:31:47",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Nayaz Prayer & Ether Character",
+          "filename": "07_nayaz_prayer_and_ether_character.mp3",
+          "category": "reading",
+          "start_time": "00:31:47",
+          "end_time": "00:36:32",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Elements and Concentration",
+          "filename": "08_elements_and_concentration.mp3",
+          "category": "teaching",
+          "start_time": "00:36:32",
+          "end_time": "00:41:33",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Prayer Stages & Union",
+          "filename": "09_prayer_stages_and_union.mp3",
+          "category": "teaching",
+          "start_time": "00:41:33",
+          "end_time": "00:49:23",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Fifth Prayer Aspect Reading",
+          "filename": "10_fifth_prayer_aspect_reading.mp3",
+          "category": "reading",
+          "start_time": "00:49:23",
+          "end_time": "00:55:48",
+          "url": ""
+        },
+        {
+          "segment": 11,
+          "title": "Prayer Aspects Review and Closing",
+          "filename": "11_prayer_aspects_review_and_closing.mp3",
+          "category": "closing",
+          "start_time": "00:55:48",
+          "end_time": "1:08:25",
+          "url": ""
+        }
+      ]
+    },
+    "C2": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat Khan",
+      "date": "2025-09-12",
+      "source": "Concentration_P1_C2_20250912_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Murshid's Teaching Story",
+          "filename": "01_murshids_teaching_story.mp3",
+          "category": "teaching",
+          "start_time": "00:00:08",
+          "end_time": "00:06:28",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Breath Introduction & Murshid Reading",
+          "filename": "02_breath_introduction_murshid_reading.mp3",
+          "category": "teaching|reading",
+          "start_time": "00:06:28",
+          "end_time": "00:13:56",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Guided Breath Practice",
+          "filename": "03_guided_breath_practice.mp3",
+          "category": "practice|meditation",
+          "start_time": "00:13:56",
+          "end_time": "00:21:48",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Chivalric Rules Discussion",
+          "filename": "04_chivalric_rules_discussion.mp3",
+          "category": "discussion",
+          "start_time": "00:21:48",
+          "end_time": "00:35:48",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Concentration: Black Color",
+          "filename": "05_concentration_black_color.mp3",
+          "category": "meditation|practice",
+          "start_time": "00:35:48",
+          "end_time": "00:41:39",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Black's Resonance & Sensus Communis",
+          "filename": "06_blacks_resonance_sensus_communis.mp3",
+          "category": "reading|teaching",
+          "start_time": "00:41:39",
+          "end_time": "00:49:40",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Sandpaper Concentration Exercise",
+          "filename": "07_sandpaper_concentration_exercise.mp3",
+          "category": "practice",
+          "start_time": "00:49:40",
+          "end_time": "00:53:18",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Murshid on Concentration & Interest",
+          "filename": "08_murshid_on_concentration_and_interest.mp3",
+          "category": "reading|teaching",
+          "start_time": "00:53:18",
+          "end_time": "00:58:50",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Closing Salat Prayer",
+          "filename": "09_closing_salat_prayer.mp3",
+          "category": "prayer",
+          "start_time": "00:58:50",
+          "end_time": "1:13:50",
+          "url": ""
+        }
+      ]
+    },
+    "C20": {
+      "part": "II",
+      "instructor": "Urs Qutbuddin Schellenberg",
+      "date": "2025-12-14",
+      "source": "Concentration_P2_C20_20251214_Urs.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening and Salat Prayer Discussion",
+          "filename": "01_opening_and_salat_prayer_discussion.mp3",
+          "category": "discussion",
+          "start_time": "00:00:05",
+          "end_time": "00:04:33",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Chivalric Rule: Harm No One",
+          "filename": "02_chivalric_rule_harm_no_one.mp3",
+          "category": "discussion",
+          "start_time": "00:04:33",
+          "end_time": "00:14:36",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Fana-fi-Rasul Intro & Reading",
+          "filename": "03_fana_fi_rasul_intro_and_reading.mp3",
+          "category": "teaching",
+          "start_time": "00:14:36",
+          "end_time": "00:22:00",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Fana-fi-Rasul Explanation",
+          "filename": "04_fana_fi_rasul_explanation.mp3",
+          "category": "teaching",
+          "start_time": "00:22:00",
+          "end_time": "00:32:50",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Fana-fi-Rasul Chanting",
+          "filename": "05_fana_fi_rasul_chanting.mp3",
+          "category": "practice",
+          "start_time": "00:32:50",
+          "end_time": "00:35:31",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Itis\u00e2l Practice: Intoning Ha",
+          "filename": "06_itisal_practice_intoning_ha.mp3",
+          "category": "practice",
+          "start_time": "00:35:31",
+          "end_time": "00:40:18",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Jataka Tale & Concentration Discussion",
+          "filename": "07_jataka_tale_and_concentration_discussion.mp3",
+          "category": "discussion",
+          "start_time": "00:40:18",
+          "end_time": "00:51:38",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Single-mindedness & Daily Practice",
+          "filename": "08_single_mindedness_and_daily_practice.mp3",
+          "category": "teaching",
+          "start_time": "00:51:38",
+          "end_time": "00:59:22",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Color Concentration Practice",
+          "filename": "09_color_concentration_practice.mp3",
+          "category": "meditation",
+          "start_time": "00:59:22",
+          "end_time": "01:09:53",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Closing and Saum Prayer",
+          "filename": "10_closing_and_saum_prayer.mp3",
+          "category": "closing",
+          "start_time": "01:09:53",
+          "end_time": "1:12:14",
+          "url": ""
+        }
+      ]
+    },
+    "C3": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat Khan",
+      "date": "2025-09-13",
+      "source": "Concentration_P1_C3_20250913_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Invocation and Aman Prayer Meaning",
+          "filename": "01_invocation_and_aman_prayer_meaning.mp3",
+          "category": "teaching",
+          "start_time": "00:00:04",
+          "end_time": "00:12:49",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Hejirat Day and Pirzadi Noor",
+          "filename": "02_hejirat_day_and_pirzadi_noor.mp3",
+          "category": "discussion",
+          "start_time": "00:12:49",
+          "end_time": "00:19:43",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Saum and Salat Prayer Movements",
+          "filename": "03_saum_and_salat_prayer_movements.mp3",
+          "category": "practice",
+          "start_time": "00:19:43",
+          "end_time": "00:26:47",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Rabita and Blessing Our Devices",
+          "filename": "04_rabita_and_blessing_our_devices.mp3",
+          "category": "teaching",
+          "start_time": "00:26:47",
+          "end_time": "00:36:55",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Concentration on a Dear One",
+          "filename": "05_concentration_on_a_dear_one.mp3",
+          "category": "meditation",
+          "start_time": "00:36:55",
+          "end_time": "00:42:10",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Chivalric Rule: Speak Not Against",
+          "filename": "06_chivalric_rule_speak_not_against.mp3",
+          "category": "discussion",
+          "start_time": "00:42:10",
+          "end_time": "00:57:42",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Waking, Ablution, and Daily Practices",
+          "filename": "07_waking_ablution_and_daily_practices.mp3",
+          "category": "practice",
+          "start_time": "00:57:42",
+          "end_time": "01:09:20",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Invisible Rain Breath Practice",
+          "filename": "08_invisible_rain_breath_practice.mp3",
+          "category": "breath_practice",
+          "start_time": "01:09:20",
+          "end_time": "1:17:56",
+          "url": ""
+        }
+      ]
+    },
+    "C4": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat Khan",
+      "date": "2025-09-13",
+      "source": "Concentration_P1_C4_20250913_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Welcome and New Practice Intro",
+          "filename": "01_welcome_and_new_practice_intro.mp3",
+          "category": "opening",
+          "start_time": "00:00:07",
+          "end_time": "00:01:09",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Wakeful Sleep and Breath Practice",
+          "filename": "02_wakeful_sleep_and_breath_practice.mp3",
+          "category": "practice",
+          "start_time": "00:01:09",
+          "end_time": "00:03:31",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Understanding Breath and Life Field",
+          "filename": "03_understanding_breath_and_life_field.mp3",
+          "category": "teaching",
+          "start_time": "00:03:31",
+          "end_time": "00:05:49",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Breathing Through Soles of Feet",
+          "filename": "04_breathing_through_soles_of_feet.mp3",
+          "category": "practice",
+          "start_time": "00:05:49",
+          "end_time": "00:10:27",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "White Color Visualization Meditation",
+          "filename": "05_white_color_visualization_meditation.mp3",
+          "category": "meditation",
+          "start_time": "00:10:27",
+          "end_time": "00:15:35",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Reflecting on White Color Practice",
+          "filename": "06_reflecting_on_white_color_practice.mp3",
+          "category": "discussion",
+          "start_time": "00:15:35",
+          "end_time": "00:21:39",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Love and Concentration Story",
+          "filename": "07_love_and_concentration_story.mp3",
+          "category": "teaching",
+          "start_time": "00:21:39",
+          "end_time": "00:28:01",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Jalali and Jamali Aspects of Concentration",
+          "filename": "08_jalali_and_jamali_aspects_of_concentration.mp3",
+          "category": "teaching",
+          "start_time": "00:28:01",
+          "end_time": "00:33:49",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Flower Visualization Meditation",
+          "filename": "09_flower_visualization_meditation.mp3",
+          "category": "meditation",
+          "start_time": "00:33:49",
+          "end_time": "00:40:26",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Cardamom Seed Taste Concentration",
+          "filename": "10_cardamom_seed_taste_concentration.mp3",
+          "category": "practice",
+          "start_time": "00:40:26",
+          "end_time": "00:44:35",
+          "url": ""
+        },
+        {
+          "segment": 11,
+          "title": "Interest and Indifference in Practice",
+          "filename": "11_interest_and_indifference_in_practice.mp3",
+          "category": "teaching",
+          "start_time": "00:44:35",
+          "end_time": "00:47:59",
+          "url": ""
+        },
+        {
+          "segment": 12,
+          "title": "Memory and Revisiting the Past",
+          "filename": "12_memory_and_revisiting_the_past.mp3",
+          "category": "teaching",
+          "start_time": "00:47:59",
+          "end_time": "00:52:54",
+          "url": ""
+        },
+        {
+          "segment": 13,
+          "title": "Recalling a Beautiful Moment",
+          "filename": "13_recalilng_a_beautiful_moment.mp3",
+          "category": "meditation",
+          "start_time": "00:52:54",
+          "end_time": "00:56:56",
+          "url": ""
+        },
+        {
+          "segment": 14,
+          "title": "Green Dot Gaze Concentration",
+          "filename": "14_green_dot_gaze_concentration.mp3",
+          "category": "practice",
+          "start_time": "00:56:56",
+          "end_time": "01:01:38",
+          "url": ""
+        },
+        {
+          "segment": 15,
+          "title": "New Daily Task: Abstain from 'I'",
+          "filename": "15_new_daily_task_abstain_from_i.mp3",
+          "category": "discussion",
+          "start_time": "01:01:38",
+          "end_time": "01:06:06",
+          "url": ""
+        },
+        {
+          "segment": 16,
+          "title": "Salat Prayer Explanation",
+          "filename": "16_salat_prayer_explanation.mp3",
+          "category": "teaching",
+          "start_time": "01:06:06",
+          "end_time": "01:12:41",
+          "url": ""
+        },
+        {
+          "segment": 17,
+          "title": "Salat Prayer and Ameen",
+          "filename": "17_salat_prayer_and_ameen.mp3",
+          "category": "prayer",
+          "start_time": "01:12:41",
+          "end_time": "1:17:00",
+          "url": ""
+        }
+      ]
+    },
+    "C5": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat Khan",
+      "date": "2025-09-14",
+      "source": "Concentration_P1_C5_20250914_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Invocation and The One's Attributes",
+          "filename": "01_invocation_and_the_ones_attributes.mp3",
+          "category": "prayer|teaching",
+          "start_time": "00:04",
+          "end_time": "04:40",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Illuminated Souls and Messenger",
+          "filename": "02_illuminated_souls_and_messenger.mp3",
+          "category": "teaching",
+          "start_time": "04:40",
+          "end_time": "09:50",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Reflection on 'I' Exercise",
+          "filename": "03_reflection_on_i_exercise.mp3",
+          "category": "discussion",
+          "start_time": "09:50",
+          "end_time": "13:29",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "New Task: Earth Orientation",
+          "filename": "04_new_task_earth_orientation.mp3",
+          "category": "practice",
+          "start_time": "13:29",
+          "end_time": "17:02",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Overcoming Prayer Resistance",
+          "filename": "05_overcoming_prayer_resistance.mp3",
+          "category": "teaching",
+          "start_time": "17:02",
+          "end_time": "25:32",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Saum Prayer: Praise Be To Thee",
+          "filename": "06_saum_prayer_praise_be_to_thee.mp3",
+          "category": "prayer|teaching",
+          "start_time": "25:32",
+          "end_time": "31:25",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Saum Prayer: Omnipotent Being",
+          "filename": "07_saum_prayer_omnipotent_being.mp3",
+          "category": "prayer|teaching",
+          "start_time": "31:25",
+          "end_time": "34:33",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Saum Prayer: Parental Arms",
+          "filename": "08_saum_prayer_parental_arms.mp3",
+          "category": "prayer|teaching",
+          "start_time": "34:33",
+          "end_time": "39:51",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Saum Prayer: Merciful Sovereign",
+          "filename": "09_saum_prayer_merciful_sovereign.mp3",
+          "category": "prayer|teaching",
+          "start_time": "39:51",
+          "end_time": "42:13",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Full Saum and Salat Prayers",
+          "filename": "10_full_saum_and_salat_prayers.mp3",
+          "category": "prayer",
+          "start_time": "42:13",
+          "end_time": "44:03",
+          "url": ""
+        },
+        {
+          "segment": 11,
+          "title": "Post-Prayer Silence & Wholesome Life",
+          "filename": "11_post_prayer_silence_and_wholesome_life.mp3",
+          "category": "teaching",
+          "start_time": "44:03",
+          "end_time": "46:17",
+          "url": ""
+        },
+        {
+          "segment": 12,
+          "title": "Wholesome Life: Pure Diet",
+          "filename": "12_wholesome_life_pure_diet.mp3",
+          "category": "teaching",
+          "start_time": "46:17",
+          "end_time": "50:04",
+          "url": ""
+        },
+        {
+          "segment": 13,
+          "title": "Wholesome Life: Air & Regularity",
+          "filename": "13_wholesome_life_air_and_regularity.mp3",
+          "category": "teaching",
+          "start_time": "50:04",
+          "end_time": "52:52",
+          "url": ""
+        },
+        {
+          "segment": 14,
+          "title": "Wholesome Life: Thought & Feeling",
+          "filename": "14_wholesome_life_thought_and_feeling.mp3",
+          "category": "teaching",
+          "start_time": "52:52",
+          "end_time": "55:10",
+          "url": ""
+        },
+        {
+          "segment": 15,
+          "title": "Trust, Hope, and Enduring Life",
+          "filename": "15_trust_hope_and_enduring_life.mp3",
+          "category": "reading|teaching",
+          "start_time": "55:10",
+          "end_time": "58:49",
+          "url": ""
+        },
+        {
+          "segment": 16,
+          "title": "Rule: No Advantage from Ignorance",
+          "filename": "16_rule_no_advantage_from_ignorance.mp3",
+          "category": "discussion",
+          "start_time": "58:49",
+          "end_time": "1:04:18",
+          "url": ""
+        },
+        {
+          "segment": 17,
+          "title": "Closing and Farewell",
+          "filename": "17_closing_and_farewell.mp3",
+          "category": "closing",
+          "start_time": "1:04:18",
+          "end_time": "1:18:28",
+          "url": ""
+        }
+      ]
+    },
+    "C6": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat Khan",
+      "date": "2025-09-14",
+      "source": "Concentration_P1_C6_20250914_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening Reflection: Body Temple",
+          "filename": "01_opening_reflection_body_temple.mp3",
+          "category": "teaching",
+          "start_time": "00:00:05",
+          "end_time": "01:06:00",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Yellow Color Meditation",
+          "filename": "02_yellow_color_meditation.mp3",
+          "category": "meditation",
+          "start_time": "01:06:00",
+          "end_time": "05:51:00",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Reflecting on Yellow Practice",
+          "filename": "03_reflecting_on_yellow_practice.mp3",
+          "category": "teaching|reading|practice",
+          "start_time": "05:51:00",
+          "end_time": "09:04:00",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Star Visualization Practice",
+          "filename": "04_star_visualization_practice.mp3",
+          "category": "practice|meditation",
+          "start_time": "09:04:00",
+          "end_time": "16:38:00",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Common Sense & Smell Teaching",
+          "filename": "05_common_sense_and_smell_teaching.mp3",
+          "category": "teaching",
+          "start_time": "16:38:00",
+          "end_time": "22:22:00",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Rose Essence Smell Practice",
+          "filename": "06_rose_essence_smell_practice.mp3",
+          "category": "practice|meditation",
+          "start_time": "22:22:00",
+          "end_time": "26:47:00",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "The Point Concentration Teaching",
+          "filename": "07_the_point_concentration_teaching.mp3",
+          "category": "teaching|practice",
+          "start_time": "26:47:00",
+          "end_time": "31:17:00",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Dot Gaze Concentration",
+          "filename": "08_dot_gaze_concentration.mp3",
+          "category": "practice",
+          "start_time": "31:17:00",
+          "end_time": "34:51:00",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Faculties of Mind: Imagination",
+          "filename": "09_faculties_of_mind_imagination.mp3",
+          "category": "teaching",
+          "start_time": "34:51:00",
+          "end_time": "39:25:00",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Imagination Exercise: Encounter",
+          "filename": "10_imagination_exercise_encounter.mp3",
+          "category": "practice",
+          "start_time": "39:25:00",
+          "end_time": "47:47:00",
+          "url": ""
+        },
+        {
+          "segment": 11,
+          "title": "Salat Prayer: Lineages & Meaning",
+          "filename": "11_salat_prayer_lineages_and_meaning.mp3",
+          "category": "teaching",
+          "start_time": "47:47:00",
+          "end_time": "54:15:00",
+          "url": ""
+        },
+        {
+          "segment": 12,
+          "title": "Salat: Ahl al-Bayt and Revelation",
+          "filename": "12_salat_ahl_al_bayt_and_revelation.mp3",
+          "category": "teaching",
+          "start_time": "54:15:00",
+          "end_time": "01:01:46",
+          "url": ""
+        },
+        {
+          "segment": 13,
+          "title": "Gratitude & Mountain of Qaf",
+          "filename": "13_gratitude_and_mountain_of_qaf.mp3",
+          "category": "teaching|prayer",
+          "start_time": "01:01:46",
+          "end_time": "01:05:51",
+          "url": ""
+        },
+        {
+          "segment": 14,
+          "title": "Salat Prayer Recitation",
+          "filename": "14_salat_prayer_recitation.mp3",
+          "category": "prayer",
+          "start_time": "01:05:51",
+          "end_time": "01:08:15",
+          "url": ""
+        },
+        {
+          "segment": 15,
+          "title": "Khatam Prayer & Blessing",
+          "filename": "15_khatam_prayer_and_blessing.mp3",
+          "category": "prayer|closing",
+          "start_time": "01:08:15",
+          "end_time": "01:10:43",
+          "url": ""
+        },
+        {
+          "segment": 16,
+          "title": "Closing Remarks & Music",
+          "filename": "16_closing_remarks_and_music.mp3",
+          "category": "closing",
+          "start_time": "01:10:43",
+          "end_time": "1:16:27",
+          "url": ""
+        }
+      ]
+    },
+    "C7": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat Khan",
+      "date": "2025-10-11",
+      "source": "Concentration_P1_C7_20251011_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening and Invocation",
+          "filename": "01_opening_and_invocation.mp3",
+          "category": "prayer",
+          "start_time": "00:00:05",
+          "end_time": "01:07",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Teaching on Concentration",
+          "filename": "02_teaching_on_concentration.mp3",
+          "category": "teaching",
+          "start_time": "01:07",
+          "end_time": "07:47",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Meaning of Amin Prayer",
+          "filename": "03_meaning_of_amin_prayer.mp3",
+          "category": "teaching|prayer",
+          "start_time": "07:47",
+          "end_time": "15:20",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Chivalric Rule: Do Not Boast",
+          "filename": "04_chivalric_rule_do_not_boast.mp3",
+          "category": "discussion|teaching",
+          "start_time": "15:20",
+          "end_time": "25:26",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Murshid on Ego and Vanity",
+          "filename": "05_murshid_on_ego_and_vanity.mp3",
+          "category": "reading",
+          "start_time": "25:26",
+          "end_time": "30:31",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Working with the Ego",
+          "filename": "06_working_with_the_ego.mp3",
+          "category": "discussion|teaching",
+          "start_time": "30:31",
+          "end_time": "37:21",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Breath Purification Practice",
+          "filename": "07_breath_purification_practice.mp3",
+          "category": "practice",
+          "start_time": "37:21",
+          "end_time": "52:10",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Breath Alignment & Recalibration",
+          "filename": "08_breath_alignment_and_recalibration.mp3",
+          "category": "teaching",
+          "start_time": "52:10",
+          "end_time": "59:23",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Murshid on Sobriety Reading",
+          "filename": "09_murshid_on_sobriety_reading.mp3",
+          "category": "reading",
+          "start_time": "59:23",
+          "end_time": "01:03:26",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Reflecting on Sobriety",
+          "filename": "10_reflecting_on_sobriety.mp3",
+          "category": "discussion",
+          "start_time": "01:03:26",
+          "end_time": "01:12:52",
+          "url": ""
+        },
+        {
+          "segment": 11,
+          "title": "Red Color Visualization & Reflection",
+          "filename": "11_red_color_visualization_and_reflection.mp3",
+          "category": "meditation|reading|practice",
+          "start_time": "01:12:52",
+          "end_time": "1:18:55",
+          "url": ""
+        }
+      ]
+    },
+    "C8": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat Khan",
+      "date": "2025-10-11",
+      "source": "Concentration_P1_C8_20251011_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Murshid's Lesson on Concentration",
+          "filename": "01_murshids_lesson_on_concentration.mp3",
+          "category": "reading",
+          "start_time": "00:00:38",
+          "end_time": "00:03:26",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Concentration: Effort and Commitment",
+          "filename": "02_concentration_effort_and_commitment.mp3",
+          "category": "teaching",
+          "start_time": "00:03:26",
+          "end_time": "00:12:15",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Concentration: Hold and Release",
+          "filename": "03_concentration_hold_and_release.mp3",
+          "category": "teaching",
+          "start_time": "00:12:15",
+          "end_time": "00:17:30",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Exhaling Residue Practice",
+          "filename": "04_exhaling_residue_practice.mp3",
+          "category": "meditation",
+          "start_time": "00:17:30",
+          "end_time": "00:20:37",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Birbal and Akbar Story",
+          "filename": "05_birbal_and_akbar_story.mp3",
+          "category": "teaching",
+          "start_time": "00:20:37",
+          "end_time": "00:23:56",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Qualities of the Crescent Moon",
+          "filename": "06_qualities_of_the_crescent_moon.mp3",
+          "category": "teaching",
+          "start_time": "00:23:56",
+          "end_time": "00:27:50",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Crescent Moon Visualization",
+          "filename": "07_crescent_moon_visualization.mp3",
+          "category": "visualization",
+          "start_time": "00:27:50",
+          "end_time": "00:31:58",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Rethinking the Sense of Sight",
+          "filename": "08_rethinking_the_sense_of_sight.mp3",
+          "category": "teaching",
+          "start_time": "00:31:58",
+          "end_time": "00:40:37",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Inner Vision and Outgoing Light",
+          "filename": "09_inner_vision_and_outgoing_light.mp3",
+          "category": "teaching",
+          "start_time": "00:40:37",
+          "end_time": "00:45:48",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Point Gaze Practice",
+          "filename": "10_point_gaze_practice.mp3",
+          "category": "practice",
+          "start_time": "00:45:48",
+          "end_time": "00:52:59",
+          "url": ""
+        },
+        {
+          "segment": 11,
+          "title": "Murshid on Divine Willpower",
+          "filename": "11_murshid_on_divine_willpower.mp3",
+          "category": "reading",
+          "start_time": "00:52:59",
+          "end_time": "00:56:35",
+          "url": ""
+        },
+        {
+          "segment": 12,
+          "title": "Willpower and Divine Alignment",
+          "filename": "12_willpower_and_divine_alignment.mp3",
+          "category": "teaching",
+          "start_time": "00:56:35",
+          "end_time": "01:03:19",
+          "url": ""
+        },
+        {
+          "segment": 13,
+          "title": "Daily Task: Remember God",
+          "filename": "13_daily_task_remember_god.mp3",
+          "category": "practice",
+          "start_time": "01:03:19",
+          "end_time": "01:06:21",
+          "url": ""
+        },
+        {
+          "segment": 14,
+          "title": "Salawat Prayer",
+          "filename": "14_salawat_prayer.mp3",
+          "category": "prayer",
+          "start_time": "01:06:21",
+          "end_time": "1:09:45",
+          "url": ""
+        }
+      ]
+    },
+    "C9": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat Khan",
+      "date": "2025-10-12",
+      "source": "Concentration_P1_C9_20251012_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening, Invocation, Journey Intro",
+          "filename": "01_opening_invocation_journey_intro.mp3",
+          "category": "teaching",
+          "start_time": "00:05:54",
+          "end_time": "04:58:80",
+          "url": ""
+        },
+        {
+          "segment": 2,
+          "title": "Traveling Well, Light Load",
+          "filename": "02_traveling_well_light_load.mp3",
+          "category": "teaching",
+          "start_time": "04:58:80",
+          "end_time": "10:47:48",
+          "url": ""
+        },
+        {
+          "segment": 3,
+          "title": "Murshid Reading: Destroying Impressions",
+          "filename": "03_murshid_reading_destroying_impressions.mp3",
+          "category": "reading",
+          "start_time": "10:47:48",
+          "end_time": "19:11:00",
+          "url": ""
+        },
+        {
+          "segment": 4,
+          "title": "Elemental Purification Practice",
+          "filename": "04_elemental_purification_practice.mp3",
+          "category": "practice",
+          "start_time": "19:11:00",
+          "end_time": "30:34:64",
+          "url": ""
+        },
+        {
+          "segment": 5,
+          "title": "Post-Purification Prayer & Guidance",
+          "filename": "05_post_purification_prayer_guidance.mp3",
+          "category": "prayer",
+          "start_time": "30:34:64",
+          "end_time": "35:07:93",
+          "url": ""
+        },
+        {
+          "segment": 6,
+          "title": "Breath Practice: Swing Analogy",
+          "filename": "06_breath_practice_swing_analogy.mp3",
+          "category": "meditation",
+          "start_time": "35:07:93",
+          "end_time": "42:19:93",
+          "url": ""
+        },
+        {
+          "segment": 7,
+          "title": "Earth Energy and Ha Mantra Intro",
+          "filename": "07_earth_energy_ha_mantra_intro.mp3",
+          "category": "teaching",
+          "start_time": "42:19:93",
+          "end_time": "53:20:94",
+          "url": ""
+        },
+        {
+          "segment": 8,
+          "title": "Ha Mantra Intonation Practice",
+          "filename": "08_ha_mantra_intonation_practice.mp3",
+          "category": "practice",
+          "start_time": "53:20:94",
+          "end_time": "58:16:85",
+          "url": ""
+        },
+        {
+          "segment": 9,
+          "title": "Chivalric Rule: Do Not Claim",
+          "filename": "09_chivalric_rule_do_not_claim.mp3",
+          "category": "discussion",
+          "start_time": "58:16:85",
+          "end_time": "1:07:09:63",
+          "url": ""
+        },
+        {
+          "segment": 10,
+          "title": "Blue Color Meditation",
+          "filename": "10_blue_color_meditation.mp3",
+          "category": "meditation",
+          "start_time": "1:07:09:63",
+          "end_time": "1:17:33",
+          "url": ""
+        }
+      ]
+    }
+  }
 }

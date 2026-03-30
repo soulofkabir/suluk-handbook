@@ -757,6 +757,131 @@ body.focus-mode #reading-area { padding-top: 80px; }
 
 
 /* ══════════════════════════════════════════════════════════
+   PHASE D — AUDIO PLAYER
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Audio Library Page ── */
+.audio-page { max-width: var(--content-max); margin: 0 auto; }
+.audio-class-card {
+  margin-bottom: 20px; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden;
+}
+.audio-class-header {
+  padding: 14px 18px; background: rgba(196,163,90,.04); cursor: pointer;
+  display: flex; align-items: center; gap: 12px; transition: background .15s;
+}
+.audio-class-header:hover { background: rgba(196,163,90,.08); }
+.audio-class-arrow { font-size: 10px; color: var(--muted); width: 12px; flex-shrink: 0; transition: transform .2s; }
+.audio-class-arrow.open { transform: rotate(90deg); }
+.audio-class-info { flex: 1; }
+.audio-class-title { font-family: var(--display); font-size: 15px; font-weight: 600; color: var(--primary); }
+body.night-mode .audio-class-title { color: rgba(250,246,240,.88); }
+.audio-class-meta { font-family: var(--display); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+.audio-class-count { font-family: var(--display); font-size: 11px; color: var(--accent); }
+.audio-clip-list { display: none; padding: 0; }
+.audio-clip-list.open { display: block; }
+.audio-clip {
+  display: flex; align-items: center; gap: 10px; padding: 10px 18px;
+  border-top: 1px solid rgba(212,201,168,.3); cursor: pointer; transition: background .12s;
+}
+.audio-clip:hover { background: rgba(196,163,90,.05); }
+.audio-clip.playing { background: rgba(196,163,90,.10); }
+.audio-clip-play {
+  width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--accent);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  color: var(--accent); font-size: 11px; transition: all .15s;
+}
+.audio-clip.playing .audio-clip-play { background: var(--accent); color: #fff; }
+.audio-clip-info { flex: 1; min-width: 0; }
+.audio-clip-title { font-family: var(--display); font-size: 13px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.audio-clip-cat {
+  display: inline-block; font-family: var(--display); font-size: 9px; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 1px 6px; border-radius: 8px; margin-top: 2px;
+}
+.audio-cat-prayer { background: rgba(139,58,98,.1); color: var(--rose); }
+.audio-cat-teaching { background: rgba(26,26,78,.06); color: var(--primary); }
+.audio-cat-practice { background: rgba(196,163,90,.1); color: var(--dark-gold); }
+.audio-clip-duration { font-family: var(--display); font-size: 11px; color: var(--muted); flex-shrink: 0; }
+
+/* No-audio placeholder */
+.audio-unavailable {
+  text-align: center; padding: 16px; font-family: var(--display);
+  font-size: 12px; color: var(--muted); font-style: italic;
+}
+
+/* ── Persistent Bottom Audio Bar ── */
+#audio-bar {
+  position: fixed; bottom: 0; left: var(--sidebar-width); right: 0;
+  z-index: 400; background: var(--bg); border-top: 1px solid var(--rule);
+  padding: 8px 20px; display: none; align-items: center; gap: 12px;
+  box-shadow: 0 -2px 12px rgba(0,0,0,.06); transition: left var(--ease), background var(--ease);
+}
+body.night-mode #audio-bar { box-shadow: 0 -2px 12px rgba(0,0,0,.3); }
+body.focus-mode #audio-bar { left: 0; }
+#audio-bar.visible { display: flex; }
+.ab-play {
+  width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--accent);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  color: var(--accent); font-size: 14px; cursor: pointer; transition: all .15s;
+  background: transparent;
+}
+.ab-play.playing { background: var(--accent); color: #fff; }
+.ab-play:hover { background: rgba(196,163,90,.12); }
+.ab-info { flex: 1; min-width: 0; }
+.ab-title { font-family: var(--display); font-size: 13px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ab-meta { font-family: var(--display); font-size: 10px; color: var(--muted); }
+.ab-progress {
+  position: absolute; top: -2px; left: 0; right: 0; height: 3px;
+  background: rgba(196,163,90,.15); cursor: pointer;
+}
+.ab-progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width .2s linear; }
+.ab-time { font-family: var(--display); font-size: 11px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+.ab-speed {
+  padding: 3px 8px; border: 1px solid var(--rule); border-radius: 10px;
+  font-family: var(--display); font-size: 10px; color: var(--muted);
+  cursor: pointer; transition: all .15s; background: transparent; flex-shrink: 0;
+}
+.ab-speed:hover { border-color: var(--accent); color: var(--accent); }
+.ab-skip {
+  background: none; border: none; color: var(--muted); font-size: 16px;
+  cursor: pointer; padding: 4px; transition: color .15s; flex-shrink: 0;
+}
+.ab-skip:hover { color: var(--accent); }
+.ab-close {
+  background: none; border: none; color: var(--muted); font-size: 14px;
+  cursor: pointer; padding: 4px; transition: color .15s; flex-shrink: 0;
+}
+.ab-close:hover { color: #c0392b; }
+
+/* ── Inline audio on teaching view ── */
+.teaching-audio {
+  margin: 16px 0; padding: 12px 16px; border: 1px solid var(--rule); border-radius: 6px;
+  background: rgba(196,163,90,.03);
+}
+.teaching-audio-label {
+  font-family: var(--display); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+}
+.teaching-audio-clips { display: flex; flex-direction: column; gap: 4px; }
+.ta-clip {
+  display: flex; align-items: center; gap: 8px; padding: 6px 8px;
+  border-radius: 4px; cursor: pointer; transition: background .12s;
+}
+.ta-clip:hover { background: rgba(196,163,90,.08); }
+.ta-clip-play {
+  width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--accent);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  color: var(--accent); font-size: 9px;
+}
+.ta-clip-title { font-family: var(--display); font-size: 13px; color: var(--text); flex: 1; }
+.ta-clip-dur { font-family: var(--display); font-size: 10px; color: var(--muted); }
+
+@media (max-width: 768px) {
+  #audio-bar { left: 0; padding: 8px 12px; gap: 8px; }
+  .ab-speed, .ab-skip { display: none; }
+}
+
+
+/* ══════════════════════════════════════════════════════════
    PHASE E — SEARCH, GLOSSARY, PRACTICE TRACKER, SHARE
    ══════════════════════════════════════════════════════════ */
 
@@ -1234,6 +1359,18 @@ body.night-mode .related-card-title { color: rgba(250,246,240,.85); }
 <!-- Toast -->
 <div id="toast" class="hidden"></div>
 
+<!-- Audio Bar -->
+<div id="audio-bar">
+  <div class="ab-progress" onclick="seekAudio(event)"><div class="ab-progress-fill" id="ab-progress-fill"></div></div>
+  <button class="ab-play" id="ab-play-btn" onclick="toggleAudioPlay()">▶</button>
+  <div class="ab-info"><div class="ab-title" id="ab-title">—</div><div class="ab-meta" id="ab-meta"></div></div>
+  <span class="ab-time" id="ab-time">0:00 / 0:00</span>
+  <button class="ab-skip" onclick="audioSkip(-1)" title="Previous">⏮</button>
+  <button class="ab-skip" onclick="audioSkip(1)" title="Next">⏭</button>
+  <button class="ab-speed" id="ab-speed" onclick="cycleSpeed()">1×</button>
+  <button class="ab-close" onclick="closeAudio()" title="Close">✕</button>
+</div>
+
 
 <!-- ══════════════════════════════════════════════
      MAIN APP SHELL
@@ -1320,7 +1457,7 @@ body.night-mode .related-card-title { color: rgba(250,246,240,.85); }
 
 <script>
 /* ══════════════════════════════════════════════════════════
-   SULUK DIGITAL HANDBOOK  ·  Phase A + B + C + E
+   SULUK DIGITAL HANDBOOK  ·  Phase A + B + C + D + E
    ══════════════════════════════════════════════════════════ */
 
 /* ─── App state ─── */
@@ -1337,6 +1474,7 @@ document.addEventListener('DOMContentLoaded', () => {
   bindKeyboard();
   setupHighlightListener();
   loadGlossary(); // preload for inline tooltips
+  loadAudioManifest(); // preload for teaching audio sections
 });
 
 function restorePrefs() {
@@ -1771,7 +1909,7 @@ function buildSidebarNav() {
   h += '<a class="nav-item" onclick="viewRecent(this)" role="button" tabindex="0">○ &thinsp;Recently Viewed</a>';
   h += '<div class="nav-divider"></div>';
   h += '<div class="nav-section-label">Discover</div>';
-  h += '<a class="nav-item" onclick="navPlaceholder(this,\'Audio Library\')" role="button" tabindex="0">♪ &thinsp;Audio Library</a>';
+  h += '<a class="nav-item" onclick="showAudioLibrary(this)" role="button" tabindex="0">♪ &thinsp;Audio Library</a>';
   h += '<a class="nav-item" onclick="showSearch(this)" role="button" tabindex="0">⊙ &thinsp;Search</a>';
   h += '<a class="nav-item" onclick="showGlossary(this)" role="button" tabindex="0">◉ &thinsp;Glossary</a>';
   h += '<a class="nav-item" onclick="showPracticeTracker(this)" role="button" tabindex="0">◎ &thinsp;Practice Tracker</a>';
@@ -1836,6 +1974,8 @@ function buildTeachingHTML(t, idx) {
   </div>
   <div class="teaching-rule"></div>
   <div class="teaching-body md-content">${parseMarkdown(snippet.body||'')}</div>
+
+  ${buildTeachingAudio(t)}
 
   ${buildNotesSectionHTML(idx)}
 
@@ -2472,6 +2612,231 @@ function showToast(msg) {
     setTimeout(() => t.classList.add('hidden'), 300);
   }, 2200);
 }
+
+/* ══════════════════════════════════════════════════════════
+   PHASE D — AUDIO PLAYER
+   ══════════════════════════════════════════════════════════ */
+
+let audioManifest = null;
+let audioEl = null;
+let audioPlaylist = [];  // flat list of {classId, clipIdx, clip, classInfo}
+let audioCurrentIdx = -1;
+let audioSpeeds = [0.75, 1, 1.25, 1.5, 2];
+let audioSpeedIdx = 1;
+
+async function loadAudioManifest() {
+  if (audioManifest) return audioManifest;
+  try {
+    const res = await fetch('data/audio_manifest.json');
+    audioManifest = await res.json();
+    return audioManifest;
+  } catch(e) { audioManifest = { classes: {} }; return audioManifest; }
+}
+
+function initAudioElement() {
+  if (audioEl) return;
+  audioEl = new Audio();
+  audioEl.addEventListener('timeupdate', updateAudioProgress);
+  audioEl.addEventListener('ended', () => audioSkip(1));
+  audioEl.addEventListener('play', () => {
+    document.getElementById('ab-play-btn')?.classList.add('playing');
+    document.getElementById('ab-play-btn').textContent = '⏸';
+  });
+  audioEl.addEventListener('pause', () => {
+    document.getElementById('ab-play-btn')?.classList.remove('playing');
+    document.getElementById('ab-play-btn').textContent = '▶';
+  });
+}
+
+async function showAudioLibrary(el) {
+  setActiveNav(el);
+  const manifest = await loadAudioManifest();
+  const classes = manifest.classes || {};
+  const classIds = Object.keys(classes).sort((a, b) => {
+    const numA = parseInt(a.replace('C', '')), numB = parseInt(b.replace('C', ''));
+    return numA - numB;
+  });
+
+  let h = listPageHeader('Audio Library', `${manifest.total_clips || 0} clips across ${classIds.length} classes`);
+  h += '<div class="audio-page">';
+
+  if (!classIds.length) {
+    h += emptyState('♪', 'No audio clips available yet');
+  } else {
+    // Build flat playlist
+    audioPlaylist = [];
+    for (const cid of classIds) {
+      const cls = classes[cid];
+      const clips = cls.clips || [];
+      clips.forEach((clip, i) => {
+        audioPlaylist.push({ classId: cid, clipIdx: i, clip, classInfo: cls });
+      });
+
+      const duration = clips.reduce((sum, c) => {
+        return sum + timeDiffSeconds(c.start_time, c.end_time);
+      }, 0);
+      const durStr = Math.round(duration / 60) + ' min';
+
+      h += `<div class="audio-class-card">
+        <div class="audio-class-header" onclick="toggleAudioClass('${cid}')">
+          <span class="audio-class-arrow" id="audio-arrow-${cid}">▸</span>
+          <div class="audio-class-info">
+            <div class="audio-class-title">${escHtml(cid)} — ${escHtml(cls.instructor || '')}</div>
+            <div class="audio-class-meta">Part ${cls.part || '?'} · ${cls.date || ''} · ~${durStr}</div>
+          </div>
+          <span class="audio-class-count">${clips.length} clips</span>
+        </div>
+        <div class="audio-clip-list" id="audio-clips-${cid}">`;
+
+      clips.forEach((clip, i) => {
+        const dur = formatDuration(timeDiffSeconds(clip.start_time, clip.end_time));
+        const catClass = clip.category === 'prayer' ? 'audio-cat-prayer' : clip.category === 'practice' ? 'audio-cat-practice' : 'audio-cat-teaching';
+        const plIdx = audioPlaylist.findIndex(p => p.classId === cid && p.clipIdx === i);
+        const hasUrl = !!clip.url;
+        h += `<div class="audio-clip" id="audio-clip-${plIdx}" onclick="${hasUrl ? `playAudioClip(${plIdx})` : ''}">
+          <div class="audio-clip-play">${hasUrl ? '▶' : '—'}</div>
+          <div class="audio-clip-info">
+            <div class="audio-clip-title">${escHtml(clip.title)}</div>
+            <span class="audio-clip-cat ${catClass}">${escHtml(clip.category || 'teaching')}</span>
+          </div>
+          <span class="audio-clip-duration">${dur}</span>
+        </div>`;
+      });
+
+      if (!clips.some(c => c.url)) {
+        h += '<div class="audio-unavailable">Audio URLs not yet configured — upload to Google Drive to enable playback</div>';
+      }
+      h += '</div></div>';
+    }
+  }
+  h += '</div>';
+  showPage(h);
+}
+
+function toggleAudioClass(cid) {
+  const list = document.getElementById('audio-clips-' + cid);
+  const arrow = document.getElementById('audio-arrow-' + cid);
+  if (!list) return;
+  const open = list.classList.toggle('open');
+  if (arrow) { arrow.classList.toggle('open', open); arrow.textContent = open ? '▾' : '▸'; }
+}
+
+function playAudioClip(plIdx) {
+  if (plIdx < 0 || plIdx >= audioPlaylist.length) return;
+  initAudioElement();
+  const item = audioPlaylist[plIdx];
+  if (!item.clip.url) { showToast('Audio not yet uploaded'); return; }
+
+  // Remove previous playing state
+  document.querySelectorAll('.audio-clip.playing').forEach(el => el.classList.remove('playing'));
+  const clipEl = document.getElementById('audio-clip-' + plIdx);
+  if (clipEl) clipEl.classList.add('playing');
+
+  audioCurrentIdx = plIdx;
+  audioEl.src = item.clip.url;
+  audioEl.playbackRate = audioSpeeds[audioSpeedIdx];
+  audioEl.play();
+
+  // Show bar
+  const bar = document.getElementById('audio-bar');
+  bar.classList.add('visible');
+  document.getElementById('ab-title').textContent = item.clip.title;
+  document.getElementById('ab-meta').textContent = `${item.classId} · ${item.classInfo.instructor || ''}`;
+}
+
+function toggleAudioPlay() {
+  if (!audioEl) return;
+  if (audioEl.paused) audioEl.play(); else audioEl.pause();
+}
+
+function updateAudioProgress() {
+  if (!audioEl || !audioEl.duration) return;
+  const pct = (audioEl.currentTime / audioEl.duration) * 100;
+  const fill = document.getElementById('ab-progress-fill');
+  if (fill) fill.style.width = pct + '%';
+
+  const cur = formatDuration(audioEl.currentTime);
+  const tot = formatDuration(audioEl.duration);
+  const timeEl = document.getElementById('ab-time');
+  if (timeEl) timeEl.textContent = cur + ' / ' + tot;
+}
+
+function seekAudio(e) {
+  if (!audioEl || !audioEl.duration) return;
+  const bar = e.currentTarget;
+  const pct = e.offsetX / bar.offsetWidth;
+  audioEl.currentTime = pct * audioEl.duration;
+}
+
+function audioSkip(dir) {
+  const next = audioCurrentIdx + dir;
+  if (next >= 0 && next < audioPlaylist.length) {
+    playAudioClip(next);
+  } else if (dir > 0) {
+    closeAudio();
+  }
+}
+
+function cycleSpeed() {
+  audioSpeedIdx = (audioSpeedIdx + 1) % audioSpeeds.length;
+  const speed = audioSpeeds[audioSpeedIdx];
+  if (audioEl) audioEl.playbackRate = speed;
+  const btn = document.getElementById('ab-speed');
+  if (btn) btn.textContent = speed + '×';
+}
+
+function closeAudio() {
+  if (audioEl) { audioEl.pause(); audioEl.src = ''; }
+  document.getElementById('audio-bar')?.classList.remove('visible');
+  document.querySelectorAll('.audio-clip.playing').forEach(el => el.classList.remove('playing'));
+  audioCurrentIdx = -1;
+}
+
+function timeDiffSeconds(start, end) {
+  const toSec = (t) => {
+    if (!t) return 0;
+    const parts = t.split(':').map(Number);
+    if (parts.length === 3) return parts[0]*3600 + parts[1]*60 + parts[2];
+    if (parts.length === 2) return parts[0]*60 + parts[1];
+    return 0;
+  };
+  return Math.abs(toSec(end) - toSec(start));
+}
+
+function formatDuration(sec) {
+  sec = Math.round(sec);
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return m + ':' + String(s).padStart(2, '0');
+}
+
+// Build inline audio section for a teaching view
+function buildTeachingAudio(t) {
+  if (!audioManifest) return '';
+  const classId = t.snippet.class_id;
+  if (!classId || !audioManifest.classes[classId]) return '';
+  const cls = audioManifest.classes[classId];
+  const clips = cls.clips || [];
+  if (!clips.length) return '';
+
+  let h = `<div class="teaching-audio">
+    <div class="teaching-audio-label">♪ Audio from Class ${classId}</div>
+    <div class="teaching-audio-clips">`;
+  clips.forEach((clip, i) => {
+    const plIdx = audioPlaylist.findIndex(p => p.classId === classId && p.clipIdx === i);
+    const dur = formatDuration(timeDiffSeconds(clip.start_time, clip.end_time));
+    const hasUrl = !!clip.url;
+    const onclick = hasUrl ? 'playAudioClip(' + plIdx + ')' : "showToast('Audio not yet uploaded')";
+    h += '<div class="ta-clip" onclick="' + onclick + '">' +
+      '<div class="ta-clip-play">' + (hasUrl ? '▶' : '—') + '</div>' +
+      '<div class="ta-clip-title">' + escHtml(clip.title) + '</div>' +
+      '<span class="ta-clip-dur">' + dur + '</span>' +
+      '</div>';
+  });
+  h += '</div></div>';
+  return h;
+}
+
 
 /* ══════════════════════════════════════════════════════════
    PHASE E — SEARCH, GLOSSARY, PRACTICE TRACKER, RELATED, SHARE
