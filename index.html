@@ -713,7 +713,7 @@ body.focus-mode #reading-area { padding-top: 80px; }
    FULL BOOK — CONTINUOUS SCROLL MODE
    ══════════════════════════════════════════════════════════ */
 
-.full-book { font-family: var(--serif); padding-bottom: 120px; }
+.full-book { font-family: var(--serif); padding-bottom: 120px; color: var(--text); }
 
 .fb-topbar {
   position: sticky; top: 0; z-index: 50;
@@ -732,47 +732,137 @@ body.focus-mode #reading-area { padding-top: 80px; }
   letter-spacing: 0.12em; text-transform: uppercase; margin-left: auto;
 }
 
-.fb-book-title {
-  text-align: center; padding: 80px 48px 64px;
+/* Title Page */
+.fb-title-page {
+  min-height: 85vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 60px 48px;
   border-bottom: 2px solid var(--accent);
-  max-width: 700px; margin: 0 auto;
 }
-.fb-title-eyebrow {
+.fb-title-content { max-width: 600px; }
+.fb-title-prefix {
   font-family: var(--display); font-size: 14px; color: var(--accent);
-  letter-spacing: 0.5em; text-transform: uppercase; display: block; margin-bottom: 10px;
+  letter-spacing: 0.5em; text-transform: uppercase; display: block; margin-bottom: 8px;
 }
 .fb-title-main {
-  font-family: var(--display); font-size: clamp(32px, 5vw, 48px); font-weight: 600;
-  color: var(--primary); letter-spacing: 0.06em; margin-bottom: 16px; line-height: 1.1;
+  font-family: var(--display); font-size: clamp(36px, 6vw, 52px); font-weight: 700;
+  color: var(--primary); letter-spacing: 0.12em; margin-bottom: 16px;
 }
-.fb-title-rule { width: 120px; height: 2px; background: var(--accent); margin: 0 auto 20px; }
-.fb-title-byline {
-  font-family: var(--display); font-size: 15px; font-style: italic;
-  color: var(--muted); margin-bottom: 6px;
+.fb-gold-rule { width: 200px; height: 2px; background: var(--accent); margin: 0 auto 20px; }
+.fb-title-subtitle {
+  font-family: var(--display); font-size: 20px; font-style: italic; color: var(--dark-gold);
 }
+.fb-title-edition { font-size: 15px; color: var(--muted); margin-top: 4px; margin-bottom: 32px; }
+.fb-title-spacer { height: 32px; }
+.fb-title-spacer-sm { height: 16px; }
+.fb-title-program { font-size: 16px; color: var(--muted); }
+.fb-title-student { font-size: 16px; font-weight: 600; color: var(--primary); margin-top: 4px; }
+.fb-title-parts { margin: 14px 0; }
+.fb-title-parts p { font-size: 15px; color: var(--muted); margin: 2px 0; }
+.fb-title-parts .italic { font-style: italic; }
+.fb-title-mentor { font-size: 14px; color: var(--muted); }
+.fb-title-period { font-size: 15px; color: var(--muted); margin-top: 8px; }
+.fb-flower { font-size: 22px; color: var(--accent); text-align: center; margin: 18px 0; }
 .fb-title-stats { font-size: 13px; color: var(--muted); letter-spacing: 0.1em; }
 
+/* Dedication */
+.fb-dedication {
+  min-height: 60vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 60px 48px;
+  border-bottom: 1px solid var(--rule);
+}
+.fb-dedication-content { max-width: 520px; }
+.fb-ded-arabic {
+  font-family: var(--display); font-size: 22px; font-style: italic;
+  color: var(--primary); margin-bottom: 20px;
+}
+.fb-ded-translation { font-size: 16px; color: var(--muted); margin-bottom: 28px; }
+.fb-ded-text {
+  font-size: 17px; font-style: italic; color: var(--muted);
+  line-height: 1.8; margin-bottom: 28px;
+}
+.fb-ded-closing {
+  font-family: var(--display); font-size: 18px; color: var(--accent); font-style: italic;
+}
+
+/* Introduction */
+.fb-intro {
+  max-width: 700px; margin: 0 auto; padding: 64px 48px;
+  border-bottom: 1px solid var(--rule);
+}
+.fb-section-title {
+  font-family: var(--display); font-size: 28px; font-weight: 700;
+  color: var(--primary); letter-spacing: 0.22em; text-align: center; margin-bottom: 8px;
+}
+.fb-intro-body p { margin-bottom: 16px; line-height: 1.78; }
+.fb-intro-parts { margin: 14px 0 14px 20px; }
+.fb-intro-parts p { margin-bottom: 12px; }
+.fb-intro-quote { margin: 36px 0; text-align: center; }
+.fb-intro-quote .quote-text {
+  font-family: var(--display); font-size: 20px; font-style: italic; color: var(--primary);
+}
+.fb-intro-quote .quote-attr { font-size: 15px; color: var(--dark-gold); margin-top: 8px; }
+.fb-intro-closing { font-style: italic; color: var(--muted); }
+.fb-gold { color: var(--accent); }
+
+/* TOC */
+.fb-toc { max-width: 700px; margin: 0 auto; padding: 64px 48px; border-bottom: 1px solid var(--rule); }
+.fb-toc-part { margin-top: 28px; }
+.fb-toc-part-header {
+  display: flex; align-items: baseline; gap: 12px;
+  margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--rule);
+}
+.fb-toc-part-label {
+  font-family: var(--display); font-size: 12px; font-weight: 600;
+  color: var(--accent); letter-spacing: 0.24em; text-transform: uppercase;
+}
+.fb-toc-part-title {
+  font-family: var(--display); font-size: 17px; font-weight: 600; color: var(--primary);
+}
+.fb-toc-chapter {
+  display: flex; align-items: baseline; padding: 5px 0 5px 18px;
+  text-decoration: none; color: var(--text); transition: color .15s; cursor: pointer;
+}
+.fb-toc-chapter:hover { color: var(--accent); }
+.fb-toc-ch-num {
+  font-family: var(--display); font-size: 15px; font-weight: 600;
+  color: var(--accent); min-width: 28px;
+}
+.fb-toc-ch-title { font-size: 15px; flex: 1; }
+.fb-toc-ch-dots {
+  flex: 1; border-bottom: 1px dotted var(--rule); margin: 0 8px; min-width: 20px;
+}
+.fb-toc-ch-count { font-size: 13px; color: var(--muted); font-style: italic; white-space: nowrap; }
+.fb-toc-back { margin-top: 28px; padding-top: 10px; border-top: 2px solid var(--accent); }
+.fb-toc-back-label {
+  font-family: var(--display); font-size: 12px; font-weight: 600;
+  color: var(--accent); letter-spacing: 0.24em; text-transform: uppercase; margin-bottom: 8px;
+}
+.fb-toc-appendix {
+  display: block; padding: 5px 0 5px 18px; text-decoration: none;
+  color: var(--text); font-size: 15px; cursor: pointer; transition: color .15s;
+}
+.fb-toc-appendix:hover { color: var(--accent); }
+
+/* Part dividers */
 .fb-part-page {
-  text-align: center; padding: 80px 48px 60px;
-  border-top: 3px solid var(--accent); margin-top: 60px;
-  max-width: 700px; margin-left: auto; margin-right: auto;
+  min-height: 60vh; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 80px 48px;
+  border-top: 3px solid var(--accent); margin-top: 40px;
 }
 .fb-part-label {
   font-family: var(--display); font-size: 14px; color: var(--accent);
-  letter-spacing: 0.5em; text-transform: uppercase; display: block; margin-bottom: 12px;
+  letter-spacing: 0.5em; text-transform: uppercase; margin-bottom: 12px;
 }
 .fb-part-instructor {
   font-family: var(--display); font-size: clamp(22px, 3vw, 32px); font-weight: 600;
   color: var(--primary); letter-spacing: 0.04em; margin-bottom: 10px;
 }
-.fb-part-desc {
-  font-size: 15px; font-style: italic; color: var(--muted); max-width: 440px;
-  margin: 0 auto; line-height: 1.7;
-}
+.fb-part-desc { font-size: 15px; font-style: italic; color: var(--muted); max-width: 440px; line-height: 1.7; }
 
+/* Chapter headers */
 .fb-chapter-header {
   text-align: center; padding: 56px 48px 36px;
-  border-top: 1px solid var(--rule); margin-top: 48px;
+  border-top: 1px solid var(--rule); margin-top: 40px;
   max-width: 700px; margin-left: auto; margin-right: auto;
 }
 .fb-ch-label {
@@ -785,21 +875,17 @@ body.focus-mode #reading-area { padding-top: 80px; }
 }
 .fb-ch-count { font-size: 13px; color: var(--muted); font-style: italic; }
 
-.fb-teaching {
-  max-width: 700px; margin: 0 auto; padding: 28px 48px;
-}
+/* Teachings */
+.fb-teaching { max-width: 700px; margin: 0 auto; padding: 28px 48px; }
 .fb-t-title {
-  font-family: var(--display); font-size: clamp(17px, 2.2vw, 21px); font-weight: 600;
+  font-family: var(--display); font-size: clamp(17px, 2.2vw, 22px); font-weight: 600;
   color: var(--primary); line-height: 1.3; margin-bottom: 5px;
 }
-.fb-t-meta {
-  font-family: var(--display); font-size: 13px; font-style: italic;
-  color: var(--dark-gold); margin-bottom: 12px;
-}
+.fb-t-meta { font-family: var(--display); font-size: 13px; font-style: italic; color: var(--dark-gold); margin-bottom: 12px; }
 .fb-t-rule { height: 1px; background: var(--rule); width: 60px; margin-bottom: 16px; }
 .fb-t-body { color: var(--text); line-height: 1.78; font-size: var(--font-base); }
-.fb-t-body p  { margin-bottom: 13px; }
-.fb-t-body h2 { font-family: var(--display); font-size: 16px; font-weight: 600; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin: 24px 0 10px; }
+.fb-t-body p { margin-bottom: 13px; }
+.fb-t-body h2 { font-family: var(--display); font-size: 15px; font-weight: 600; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin: 24px 0 10px; }
 .fb-t-body h3 { font-family: var(--display); font-size: 18px; font-weight: 600; color: var(--primary); margin: 20px 0 8px; }
 .fb-t-body h4 { font-family: var(--display); font-size: 17px; font-style: italic; color: var(--dark-gold); margin: 16px 0 6px; }
 .fb-t-body blockquote { margin: 14px 0; padding: 10px 22px; border-left: 3px solid var(--accent); font-style: italic; background: rgba(196,163,90,0.04); }
@@ -809,12 +895,48 @@ body.focus-mode #reading-area { padding-top: 80px; }
 .fb-t-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
 .fb-t-body th { background: rgba(196,163,90,0.1); color: var(--primary); font-family: var(--display); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--accent); }
 .fb-t-body td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.fb-divider { text-align: center; color: var(--accent); font-size: 13px; letter-spacing: 0.5em; padding: 16px 0; max-width: 700px; margin: 0 auto; border-top: 1px dashed var(--rule); }
 
-.fb-divider {
-  text-align: center; color: var(--accent); font-size: 13px;
-  letter-spacing: 0.5em; padding: 16px 0; max-width: 700px; margin: 0 auto;
-  border-top: 1px dashed var(--rule);
+/* Appendix sections */
+.fb-appendix { max-width: 700px; margin: 0 auto; padding: 60px 48px; border-top: 3px solid var(--accent); margin-top: 40px; }
+.fb-appendix-label {
+  font-family: var(--display); font-size: 12px; color: var(--accent);
+  letter-spacing: 0.35em; text-transform: uppercase; display: block; margin-bottom: 8px;
 }
+.fb-appendix-intro { font-size: 15px; font-style: italic; color: var(--muted); margin-top: 16px; margin-bottom: 24px; line-height: 1.7; }
+/* Schedule table */
+.fb-schedule-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 15px; }
+.fb-schedule-table th { font-family: var(--display); font-size: 12px; font-weight: 700; color: var(--primary); letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 2px solid var(--accent); padding: 8px 12px; text-align: left; background: rgba(196,163,90,0.06); }
+.fb-schedule-table td { padding: 7px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--text); line-height: 1.5; }
+.fb-schedule-table tr:last-child td { border-bottom: none; }
+.fb-session-num { font-weight: 600; color: var(--accent); white-space: nowrap; }
+.fb-part-tag { font-family: var(--display); font-size: 11px; font-weight: 700; color: white; background: var(--primary); padding: 1px 6px; border-radius: 3px; white-space: nowrap; display: inline-block; }
+/* Cross-reference */
+.fb-xref-topic { margin-bottom: 24px; }
+.fb-xref-topic-heading { font-family: var(--display); font-size: 16px; font-weight: 600; color: var(--primary); padding-bottom: 5px; border-bottom: 1px solid var(--rule); margin-bottom: 10px; }
+.fb-xref-entry { margin-left: 16px; margin-bottom: 10px; }
+.fb-xref-location { font-family: var(--display); font-size: 13px; color: var(--accent); font-weight: 600; }
+.fb-xref-chapter-title { font-size: 13px; color: var(--muted); }
+.fb-xref-snippet-item { font-size: 14px; color: var(--text); padding: 2px 0 2px 14px; border-left: 2px solid var(--rule); margin: 3px 0; }
+/* Practice quick-ref */
+.fb-pqr-category { margin-bottom: 28px; }
+.fb-pqr-category-heading { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; padding-bottom: 5px; border-bottom: 2px solid var(--rule); margin-bottom: 12px; }
+.fb-pqr-practice { margin-bottom: 14px; padding-left: 14px; border-left: 2px solid var(--rule); }
+.fb-pqr-practice-name { font-family: var(--display); font-size: 15px; font-weight: 600; color: var(--primary); }
+.fb-pqr-description { font-size: 14px; color: var(--text); line-height: 1.6; margin: 3px 0; }
+.fb-pqr-meta { font-size: 12px; color: var(--dark-gold); font-style: italic; }
+/* Prayer movements */
+.fb-prayer-section-label { font-family: var(--display); font-size: 18px; font-weight: 600; color: var(--primary); margin: 32px 0 8px; letter-spacing: 0.04em; }
+.fb-prayer-note { font-size: 14px; font-style: italic; color: var(--muted); margin-bottom: 16px; }
+.fb-prayer-img { width: 100%; max-width: 700px; display: block; margin: 12px auto; border: 1px solid var(--rule); border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+/* Colophon */
+.fb-colophon { max-width: 700px; margin: 0 auto; padding: 60px 48px; text-align: center; border-top: 3px solid var(--accent); margin-top: 40px; }
+.fb-colophon-title { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--primary); }
+.fb-colophon-edition { font-size: 15px; color: var(--muted); margin-top: 4px; }
+.fb-colophon-body p { margin-bottom: 6px; color: var(--muted); font-size: 15px; }
+.fb-colophon-parts { margin: 14px 0; }
+.fb-colophon-disclaimer { font-size: 14px; font-style: italic; color: var(--muted); max-width: 480px; margin: 20px auto; line-height: 1.7; }
+.fb-colophon-closing { font-family: var(--display); font-size: 18px; font-style: italic; color: var(--accent); margin-top: 16px; }
 
   </style>
 </head>
@@ -1682,51 +1804,135 @@ function showFullBook(el) {
   tv.classList.remove('hidden');
 
   const partDescs = {
-    'I':   'Transmitted teachings from Pir-o-Murshid Inayat Khan through Pir Zia Inayat Khan',
-    'II':  'Teachings from Urs Qutbuddin Schellenberg — second-year Suluk program',
-    'III': 'Personal transmissions from Guide Mansur — third-year Suluk program'
+    'I':   'Transmitted from Pir-o-Murshid Inayat Khan through Pir Zia Inayat Khan · September – October 2025',
+    'II':  'Teachings of Urs Qutbuddin Schellenberg · November – December 2025',
+    'III': 'Personal transmissions from Guide Mansur — the intimate layer of the Suluk journey'
   };
 
   let h = '<div class="full-book">';
 
-  // sticky top bar
+  // Sticky top bar
   h += `<div class="fb-topbar">
     <button class="fb-back" onclick="showWelcome()">← Back to Handbook</button>
     <span class="fb-topbar-label">Full Book · Continuous Reading</span>
   </div>`;
 
-  // title block
-  const total = allTeachings.length;
-  h += `<div class="fb-book-title">
-    <span class="fb-title-eyebrow">The Book of Concentration</span>
-    <div class="fb-title-main">Suluk Digital Handbook</div>
-    <div class="fb-title-rule"></div>
-    <div class="fb-title-byline">Mount Qaf Companion · Kabir</div>
-    <div class="fb-title-stats">${total} Teachings · 3 Parts · 26 Chapters</div>
+  // ── TITLE PAGE ──
+  h += `<div class="fb-title-page" id="fb-sec-title">
+    <div class="fb-title-content">
+      <span class="fb-title-prefix">The Book of</span>
+      <div class="fb-title-main">Concentration</div>
+      <div class="fb-gold-rule"></div>
+      <div class="fb-title-subtitle">Mount Qaf Companion Handbook</div>
+      <div class="fb-title-edition">Second Edition</div>
+      <div class="fb-title-spacer"></div>
+      <div class="fb-title-program">Suluk Global 2025–2027 · Inayatiyya</div>
+      <div class="fb-title-student">Kabir · Class of Mount Qaf</div>
+      <div class="fb-title-spacer-sm"></div>
+      <div class="fb-title-parts">
+        <p>Part I — Pir Zia Inayat Khan</p>
+        <p>Part II — Urs Qutbuddin Schellenberg</p>
+        <p class="italic">Part III — Personal Transmissions by Guide Mansur</p>
+      </div>
+      <div class="fb-title-mentor">Pod Mentor: Farzana</div>
+      <div class="fb-title-spacer-sm"></div>
+      <div class="fb-title-period">September – December 2025</div>
+      <div class="fb-flower">✿</div>
+      <div class="fb-title-stats">333 Teachings · 26 Chapters · 3 Parts · 20 Sessions</div>
+    </div>
   </div>`;
 
-  for (const pk of ['I','II','III']) {
-    const part  = handbook.parts[pk];
-    const chKeys = Object.keys(part.chapters).map(Number).sort((a,b)=>a-b).map(String);
+  // ── DEDICATION ──
+  h += `<div class="fb-dedication" id="fb-sec-dedication">
+    <div class="fb-dedication-content">
+      <div class="fb-ded-arabic">Bismillah ir-Rahman ir-Rahim</div>
+      <div class="fb-ded-translation">In the Name of God, the All-Compassionate, the All-Merciful.</div>
+      <div class="fb-ded-text">Dedicated to the lineage of teachers through whom the spirit of guidance has shone forth — Hazrat Inayat Khan, Pir Vilayat Inayat Khan, Pir Zia Inayat Khan — and to Mansur, whose guidance illuminates the personal path.</div>
+      <div class="fb-ded-closing">Toward the One</div>
+    </div>
+  </div>`;
 
-    // Part divider page
+  // ── TABLE OF CONTENTS ──
+  h += `<div class="fb-toc" id="fb-sec-toc">
+    <div class="fb-section-title">TABLE OF CONTENTS</div>
+    <div class="fb-gold-rule" style="margin:14px auto 24px"></div>`;
+
+  const tocParts = {
+    'I': { label: 'Part I', title: 'The Teachings of Pir Zia Inayat Khan' },
+    'II': { label: 'Part II', title: 'The Teachings of Urs Qutbuddin Schellenberg' },
+    'III': { label: 'Part III', title: 'Personal Transmissions by Guide Mansur' }
+  };
+  for (const pk of ['I','II','III']) {
+    const part = handbook.parts[pk];
+    const tp = tocParts[pk];
+    const chKeys = Object.keys(part.chapters).map(Number).sort((a,b)=>a-b).map(String);
+    h += `<div class="fb-toc-part">
+      <div class="fb-toc-part-header">
+        <span class="fb-toc-part-label">${tp.label}</span>
+        <span class="fb-toc-part-title">${tp.title}</span>
+      </div>`;
+    chKeys.forEach(ck => {
+      const ch = part.chapters[ck];
+      const count = (ch.snippets||[]).length;
+      h += `<div class="fb-toc-chapter" onclick="document.getElementById('fb-ch-${pk}-${ck}')?.scrollIntoView({behavior:'smooth'})">
+        <span class="fb-toc-ch-num">${ch.display_number}.</span>
+        <span class="fb-toc-ch-title">${escHtml(ch.title)}</span>
+        <span class="fb-toc-ch-dots"></span>
+        <span class="fb-toc-ch-count">${count} teaching${count!==1?'s':''}</span>
+      </div>`;
+    });
+    h += '</div>';
+  }
+  h += `<div class="fb-toc-back">
+    <div class="fb-toc-back-label">Back Matter</div>
+    <div class="fb-toc-appendix" onclick="document.getElementById('fb-sec-app-a')?.scrollIntoView({behavior:'smooth'})">Appendix A — Class Schedule</div>
+    <div class="fb-toc-appendix" onclick="document.getElementById('fb-sec-app-b')?.scrollIntoView({behavior:'smooth'})">Appendix B — Cross-Reference Index</div>
+    <div class="fb-toc-appendix" onclick="document.getElementById('fb-sec-app-c')?.scrollIntoView({behavior:'smooth'})">Appendix C — Practice Quick-Reference</div>
+    <div class="fb-toc-appendix" onclick="document.getElementById('fb-sec-colophon')?.scrollIntoView({behavior:'smooth'})">Appendix D — Colophon</div>
+    <div class="fb-toc-appendix" onclick="document.getElementById('fb-sec-app-e')?.scrollIntoView({behavior:'smooth'})">Appendix E — Prayer Movements</div>
+  </div>
+  <div class="fb-flower" style="margin-top:24px">✿</div>
+  </div>`;
+
+  // ── INTRODUCTION ──
+  h += `<div class="fb-intro" id="fb-sec-intro">
+    <div class="fb-section-title">INTRODUCTION</div>
+    <div class="fb-gold-rule" style="margin:14px auto 24px"></div>
+    <div class="fb-intro-body">
+      <p>Concentration is the first stage of the Suluk — the spiritual journey of the Inayatiyya. The word Suluk means 'to travel' — not an outer pilgrimage, but the soul's journey from the periphery of consciousness to its luminous center. Concentration is the gathering of scattered attention, the training of the sovereign faculty that makes all other inner work possible.</p>
+      <p>This handbook is organized in three parts, each preserving the voice and teaching arc of a single instructor:</p>
+      <div class="fb-intro-parts">
+        <p><strong class="fb-gold">Part I —</strong> <strong>Pir Zia Inayat Khan</strong> taught Concentration I (C1–C10) across two retreat weekends in September and October 2025. His teachings ground the student in the prayers, breath practices, sensory concentration, and the deep wisdom of the Inayati lineage.</p>
+        <p><strong class="fb-gold">Part II —</strong> <strong>Urs Qutbuddin Schellenberg</strong> taught Concentration II (C11–C20) across two retreat weekends in November and December 2025. His approach centers on the body as vessel, the five elements, and the gentle art of attention.</p>
+        <p><strong class="fb-gold">Part III —</strong> <strong>Guide Mansur</strong> provides personal transmissions outside the classroom — the most intimate layer of the Suluk journey. His prescribed practices, counsel, and wisdom form the daily practice backbone.</p>
+      </div>
+      <p>The handbook contains 333 teachings extracted from class transcripts, organized into 26 topic chapters across the three parts. Within each part, chapters are organized by topic — Prayers, Practices, Breath, Teachings, Stories, and more — so you always know whose voice you are reading while still being able to find any teaching by subject.</p>
+      <div class="fb-intro-quote">
+        <p class="quote-text">"Concentration is not merely a practice — it is a way of life."</p>
+        <p class="quote-attr">— Pir Zia Inayat Khan</p>
+      </div>
+      <p class="fb-intro-closing">May this handbook serve as a living reference — not a museum of words, but a doorway back into the practices and states from which they arose. Return to it often. The teachings deepen with every reading.</p>
+      <div class="fb-flower">✿</div>
+    </div>
+  </div>`;
+
+  // ── ALL TEACHINGS ──
+  for (const pk of ['I','II','III']) {
+    const part = handbook.parts[pk];
+    const chKeys = Object.keys(part.chapters).map(Number).sort((a,b)=>a-b).map(String);
     h += `<div class="fb-part-page">
       <span class="fb-part-label">Part ${pk}</span>
       <div class="fb-part-instructor">${escHtml(part.instructor)}</div>
       <div class="fb-part-desc">${escHtml(partDescs[pk])}</div>
     </div>`;
-
     chKeys.forEach(ck => {
       const ch = part.chapters[ck];
       const snippets = ch.snippets || [];
-
-      // Chapter header
-      h += `<div class="fb-chapter-header">
+      h += `<div class="fb-chapter-header" id="fb-ch-${pk}-${ck}">
         <span class="fb-ch-label">Chapter ${ch.display_number}</span>
         <div class="fb-ch-title">${escHtml(ch.title)}</div>
         <div class="fb-ch-count">${snippets.length} teaching${snippets.length!==1?'s':''}</div>
       </div>`;
-
       snippets.forEach((t, i) => {
         if (i > 0) h += '<div class="fb-divider">· · ·</div>';
         const metaParts = [t.instructor, t.date].filter(Boolean);
@@ -1740,6 +1946,196 @@ function showFullBook(el) {
     });
   }
 
+  // ── APPENDIX A: CLASS SCHEDULE ──
+  h += `<div class="fb-appendix" id="fb-sec-app-a">
+    <span class="fb-appendix-label">Appendix A</span>
+    <div class="fb-section-title">CLASS SCHEDULE</div>
+    <div class="fb-gold-rule" style="margin:14px auto 20px"></div>
+    <p class="fb-appendix-intro">The 20 Concentration sessions of the Suluk Global 2025–2027 program, organized across three teaching sections.</p>
+    <table class="fb-schedule-table">
+      <thead><tr><th>Session</th><th>Date</th><th>Part</th><th>Instructor</th><th>Format</th></tr></thead>
+      <tbody>
+        <tr><td class="fb-session-num">C1</td><td>Sep 12, 2025</td><td><span class="fb-part-tag">Part I</span></td><td>Pir Zia Inayat Khan</td><td>Weekend 1, Day 1, Session 1</td></tr>
+        <tr><td class="fb-session-num">C2</td><td>Sep 12, 2025</td><td><span class="fb-part-tag">Part I</span></td><td>Pir Zia Inayat Khan</td><td>Weekend 1, Day 1, Session 2</td></tr>
+        <tr><td class="fb-session-num">C3</td><td>Sep 13, 2025</td><td><span class="fb-part-tag">Part I</span></td><td>Pir Zia Inayat Khan</td><td>Weekend 1, Day 2, Session 1</td></tr>
+        <tr><td class="fb-session-num">C4</td><td>Sep 13, 2025</td><td><span class="fb-part-tag">Part I</span></td><td>Pir Zia Inayat Khan</td><td>Weekend 1, Day 2, Session 2</td></tr>
+        <tr><td class="fb-session-num">C5</td><td>Sep 14, 2025</td><td><span class="fb-part-tag">Part I</span></td><td>Pir Zia Inayat Khan</td><td>Weekend 1, Day 3, Session 1</td></tr>
+        <tr><td class="fb-session-num">C6</td><td>Sep 14, 2025</td><td><span class="fb-part-tag">Part I</span></td><td>Pir Zia Inayat Khan</td><td>Weekend 1, Day 3, Session 2</td></tr>
+        <tr><td class="fb-session-num">C7</td><td>Oct 11, 2025</td><td><span class="fb-part-tag">Part I</span></td><td>Pir Zia Inayat Khan</td><td>Weekend 2, Day 1, Session 1</td></tr>
+        <tr><td class="fb-session-num">C8</td><td>Oct 11, 2025</td><td><span class="fb-part-tag">Part I</span></td><td>Pir Zia Inayat Khan</td><td>Weekend 2, Day 1, Session 2</td></tr>
+        <tr><td class="fb-session-num">C9</td><td>Oct 12, 2025</td><td><span class="fb-part-tag">Part I</span></td><td>Pir Zia Inayat Khan</td><td>Weekend 2, Day 2, Session 1</td></tr>
+        <tr><td class="fb-session-num">C10</td><td>Oct 12, 2025</td><td><span class="fb-part-tag">Part I</span></td><td>Pir Zia Inayat Khan</td><td>Weekend 2, Day 2, Session 2</td></tr>
+        <tr><td class="fb-session-num">C11</td><td>Nov 21, 2025</td><td><span class="fb-part-tag">Part II</span></td><td>Urs Qutbuddin Schellenberg</td><td>Weekend 3, Day 1, Session 1</td></tr>
+        <tr><td class="fb-session-num">C12</td><td>Nov 21, 2025</td><td><span class="fb-part-tag">Part II</span></td><td>Urs Qutbuddin Schellenberg</td><td>Weekend 3, Day 1, Session 2</td></tr>
+        <tr><td class="fb-session-num">C13</td><td>Nov 22, 2025</td><td><span class="fb-part-tag">Part II</span></td><td>Urs Qutbuddin Schellenberg</td><td>Weekend 3, Day 2, Session 1</td></tr>
+        <tr><td class="fb-session-num">C14</td><td>Nov 22, 2025</td><td><span class="fb-part-tag">Part II</span></td><td>Urs Qutbuddin Schellenberg</td><td>Weekend 3, Day 2, Session 2</td></tr>
+        <tr><td class="fb-session-num">C15</td><td>Nov 23, 2025</td><td><span class="fb-part-tag">Part II</span></td><td>Urs Qutbuddin Schellenberg</td><td>Weekend 3, Day 3, Session 1</td></tr>
+        <tr><td class="fb-session-num">C16</td><td>Nov 23, 2025</td><td><span class="fb-part-tag">Part II</span></td><td>Urs Qutbuddin Schellenberg</td><td>Weekend 3, Day 3, Session 2</td></tr>
+        <tr><td class="fb-session-num">C17</td><td>Dec 13, 2025</td><td><span class="fb-part-tag">Part II</span></td><td>Urs Qutbuddin Schellenberg</td><td>Weekend 4, Day 1, Session 1</td></tr>
+        <tr><td class="fb-session-num">C18</td><td>Dec 13, 2025</td><td><span class="fb-part-tag">Part II</span></td><td>Urs Qutbuddin Schellenberg</td><td>Weekend 4, Day 1, Session 2</td></tr>
+        <tr><td class="fb-session-num">C19</td><td>Dec 14, 2025</td><td><span class="fb-part-tag">Part II</span></td><td>Urs Qutbuddin Schellenberg</td><td>Weekend 4, Day 2, Session 1</td></tr>
+        <tr><td class="fb-session-num">C20</td><td>Dec 14, 2025</td><td><span class="fb-part-tag">Part II</span></td><td>Urs Qutbuddin Schellenberg</td><td>Weekend 4, Day 2, Session 2</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:18px;font-size:13px;color:var(--muted);font-style:italic">Part III (Guide Mansur) transmissions were woven throughout the program as personal guidance sessions.</p>
+    <div class="fb-flower" style="margin-top:24px">✿ ✿ ✿</div>
+  </div>`;
+
+  // ── APPENDIX B: CROSS-REFERENCE (loaded async) ──
+  h += `<div class="fb-appendix" id="fb-sec-app-b">
+    <span class="fb-appendix-label">Appendix B</span>
+    <div class="fb-section-title">CROSS-REFERENCE INDEX</div>
+    <div class="fb-gold-rule" style="margin:14px auto 20px"></div>
+    <p class="fb-appendix-intro">Maps key topics across all three Parts, so you can find every teaching on a given subject regardless of which instructor presented it.</p>
+    <div id="fb-xref-body"><div style="color:var(--muted);font-style:italic;font-size:14px">Loading cross-reference index…</div></div>
+  </div>`;
+
+  // ── APPENDIX C: PRACTICE QUICK-REFERENCE ──
+  h += `<div class="fb-appendix" id="fb-sec-app-c">
+    <span class="fb-appendix-label">Appendix C</span>
+    <div class="fb-section-title">PRACTICE QUICK-REFERENCE</div>
+    <div class="fb-gold-rule" style="margin:14px auto 20px"></div>
+    <p class="fb-appendix-intro">A complete guide to all 80 practices taught during Concentration. Each entry shows the practice name, a brief description, and where to find the full instructions.</p>
+    <div class="fb-pqr-category">
+      <div class="fb-pqr-category-heading">Prayers &amp; Invocations</div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Saum — Prayer of Repose</div><div class="fb-pqr-description">Daily standing prayer with nine bodily movements addressed to the One Divine Being; full text + movements.</div><div class="fb-pqr-meta">Part I, Chapter 1 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Salat — Prayer of Benediction</div><div class="fb-pqr-description">Daily closing prayer addressed to the Spirit of Guidance; simple form; half and full prostration versions.</div><div class="fb-pqr-meta">Parts I / II · Pir Zia Inayat Khan / Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Salawat — Complete Form</div><div class="fb-pqr-description">Gender-inclusive expansion of Salat naming syzygies from Hindu, Abrahamic, and Zoroastrian traditions.</div><div class="fb-pqr-meta">Parts I / II · Pir Zia Inayat Khan / Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">The Invocation (Nayaz)</div><div class="fb-pqr-description">Opening orienting prayer: 'Toward the One, the Perfection of Love, Harmony, and Beauty…'; recite upon waking with inner longing.</div><div class="fb-pqr-meta">Parts I / II / III · Pir Zia Inayat Khan / Urs Qutbuddin / Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Amān — Prayer of Sanctuary</div><div class="fb-pqr-description">Opening prayer of each Suluk day acknowledging world suffering with compassionate witness; not one of 99 Names.</div><div class="fb-pqr-meta">Part I, Chapter 1 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Khatum — Closing Prayer</div><div class="fb-pqr-description">Closing prayer of every Suluk gathering: 'O Thou who art the Perfection of Love, Harmony, and Beauty…'</div><div class="fb-pqr-meta">Parts I / III · Pir Zia Inayat Khan / Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Elemental Purification Prayer (Nayaz)</div><div class="fb-pqr-description">Beloved Sovereign prayer invoked after elemental breaths: sun rays, air waves, all-pervading life in space — purify and revivify.</div><div class="fb-pqr-meta">Parts II / III · Urs Qutbuddin / Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Prayer of the Artificer</div><div class="fb-pqr-description">Place fingertips on device and recite blessing to sanctify phones/computers as spiritual artifacts.</div><div class="fb-pqr-meta">Part I, Chapter 1 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Fazl Mullah Rahim Allah — Blessing Invocation</div><div class="fb-pqr-description">Sung or recited invocation: Fazl (blessing) + Mullah (great) + Rahim Allah (Allah's compassion); use in worldly/noisy situations.</div><div class="fb-pqr-meta">Part III, Chapter 4 · Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Saum Prayer — Movement Instructions</div><div class="fb-pqr-description">Nine-movement sequence for Saum: palms forward, hands converge, bend forward, rise, lean with palms to ground, open Qalb, final surrender.</div><div class="fb-pqr-meta">Part I, Chapter 5 · Pir Zia Inayat Khan</div></div>
+    </div>
+    <div class="fb-pqr-category">
+      <div class="fb-pqr-category-heading">Breath Practices</div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Rightful Breathing Practice</div><div class="fb-pqr-description">Upright seated breath: enter without forcing, do not rush exhale, let muscles yield to maximize refreshment.</div><div class="fb-pqr-meta">Part I, Chapter 3 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">The Invisible Rain — Full Body Breath</div><div class="fb-pqr-description">Visualize subtle rain entering every pore; breath cascades from crown to toes quenching each cell; exhalation as communion with plant life.</div><div class="fb-pqr-meta">Part I · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Purification Breathing — Emotional Stages</div><div class="fb-pqr-description">Watch murkiness on the out-breath dissolving like squeezing a dirty sponge; stages: murkiness → less murkiness → clear channel → radiance.</div><div class="fb-pqr-meta">Part I, Chapter 3 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Elemental Purification Ritual</div><div class="fb-pqr-description">Identify the element of a burden (earth/water/fire/air), take it to nature, release it through burial, pouring, burning, or wind; post-ritual prayer.</div><div class="fb-pqr-meta">Part I, Chapter 3 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Five Aspects of Breath — Review</div><div class="fb-pqr-description">Pir Zia's five-aspect model: exhalation, depth/breadth, belly-centering, rhythm, and scope (physical breath → soul breathing).</div><div class="fb-pqr-meta">Part I, Chapter 3 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Breath Visualization Through Soles of Feet</div><div class="fb-pqr-description">Lie on the ground; inhale through soles as a wave, let it fill the whole body; exhale back out through the feet into earth (10 minutes).</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Light &amp; Breath Practice — The Orb / Auric Body</div><div class="fb-pqr-description">Visualize breath as a sphere of light that expands on exhale and congeals on inhale; reveals the auric/etheric body.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">The Swing of Breath — Ha × 11</div><div class="fb-pqr-description">Feel the breath as a pendulum swing between inner and outer; intone Ha eleven times connecting little body to great body of the universe.</div><div class="fb-pqr-meta">Part I, Chapter 5 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Five Element Breathing — Foundation</div><div class="fb-pqr-description">Core elemental breath cycle: Earth (nose-nose), Water (nose-mouth), Fire (mouth-nose), Air (mouth-mouth), Ether (subtle both); each 5 breaths.</div><div class="fb-pqr-meta">Part II, Chapter 3 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Water Elemental Breath</div><div class="fb-pqr-description">Inhale nose, exhale mouth; visualize waterfall of water and light from above washing through the body; color green; direction downward.</div><div class="fb-pqr-meta">Part II, Chapter 3 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Three Element Breath Sequence</div><div class="fb-pqr-description">Earth + Water + Fire practiced in one sitting with full layer sets (direction, color, quality, healing aspect) for the first time.</div><div class="fb-pqr-meta">Part II, Chapter 3 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Complete Five-Element Breath with Ether</div><div class="fb-pqr-description">First time all five elements practiced in sequence; Ether = quintessence, no direction, no color, three planes (body/mind/spirit).</div><div class="fb-pqr-meta">Part II, Chapter 3 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Hosh dar Dam — Breath Awareness</div><div class="fb-pqr-description">Life-practice: make the breath your home base throughout the day; go there whenever thinking has no meaningful occupation.</div><div class="fb-pqr-meta">Part III, Chapter 2 · Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Qasab — The Reed Breath (Alternate Nostril)</div><div class="fb-pqr-description">9-step alternating nostril sequence; at retention: close nostrils, expand chest, curl tongue, turn eyes up, hold 2× inhale count, think HU.</div><div class="fb-pqr-meta">Part III, Chapter 2 · Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Five Elemental Purification Breaths (Mansur Version)</div><div class="fb-pqr-description">Complete elemental sequence with Mansur's specific visualizations, directions, colors, and qualities; 7 rounds per element (max 10).</div><div class="fb-pqr-meta">Part III, Chapter 2 · Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Breath Still-Point Concentration</div><div class="fb-pqr-description">At end of exhale, hold briefly and savor the still-point; feel the body's magnetism draw the in-breath without will — Murshid's cobra metaphor.</div><div class="fb-pqr-meta">Part II, Chapter 4 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Ablutions — Ritual Purification</div><div class="fb-pqr-description">7-step washing sequence (hands, mouth, nostrils, face, arms, hair/neck, feet), 3 times each; body as five-pointed star; practiced upon waking.</div><div class="fb-pqr-meta">Part I, Chapter 5 · Pir Zia Inayat Khan</div></div>
+    </div>
+    <div class="fb-pqr-category">
+      <div class="fb-pqr-category-heading">Elemental Practices</div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Earth Element Extended Practice — Three Layers</div><div class="fb-pqr-description">Layer 1: purification/grounding; Layer 2: horizontal direction; Layer 3: yellow/ocher color.</div><div class="fb-pqr-meta">Part II, Chapter 3 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Earth Practice: Eshk — Communion with Earth</div><div class="fb-pqr-description">Go barefoot; each step is a kiss; be aware of eshk (longing-love) between body and earth; we are earthlings — made of the same material.</div><div class="fb-pqr-meta">Part II, Chapter 6 · Urs Qutbuddin</div></div>
+    </div>
+    <div class="fb-pqr-category">
+      <div class="fb-pqr-category-heading">Concentration &amp; Visualization</div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Color Black Concentration</div><div class="fb-pqr-description">Fill the mind completely with black — ebony, obsidian; no black things, just blackness; first in the alchemical sequence.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Color White Concentration</div><div class="fb-pqr-description">Replace or amplify white from behind closed eyelids; two approaches (replace or amplify); self-observation of returning attention.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Color Yellow Concentration — Alchemical</div><div class="fb-pqr-description">Third in black→white→yellow alchemical sequence; become saturated by yellow like cloth in dye; symbolizes illumination.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Color Red Concentration</div><div class="fb-pqr-description">See redness as living atmosphere, not a thing; two phases: hold redness, then let fade and notice resonance; extend throughout day.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Color Blue Concentration</div><div class="fb-pqr-description">Let blue fill and saturate; be dyed blue in every fiber; Murshid's nature meditations on blue (heaven, purity, uplifting).</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Color Concentration: Brown to Green</div><div class="fb-pqr-description">Slow intentional color shift from earth-brown to life-green; bridges Earth and Water elements.</div><div class="fb-pqr-meta">Part II, Chapter 4 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Final Color Concentration — Orange to Gold</div><div class="fb-pqr-description">Ceremonial four-color closing sequence: orange → red → purple → gold; immersed in golden light.</div><div class="fb-pqr-meta">Part II, Chapter 4 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Gemstone Concentration</div><div class="fb-pqr-description">Visualize a translucent crystalline gemstone; see facets, glow, revolve it; avoid associations; rest in resonance afterward.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Sandpaper Touch Concentration</div><div class="fb-pqr-description">Close eyes; give whole attention to fingertips on sandpaper; feel every grain; stop; notice state.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Flower Concentration Practice</div><div class="fb-pqr-description">Jamali concentration: Jalali phase (active observation) followed by Jamali phase (easeful gentle embrace).</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Gazing &amp; Visualization — Crescent Moon + Star</div><div class="fb-pqr-description">Open-eyed fixed gaze then inner visualization of crescent moon and star held together.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Green Dot Practice</div><div class="fb-pqr-description">Stand and gaze at a green dot on the wall without rigidity for one minute; point reduces each session.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Visualization — Calling a Loved One</div><div class="fb-pqr-description">Let a beloved person's name resound in the mind; allow face/form to emerge from the name; let it dissolve back.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Tailbone Concentration Practice</div><div class="fb-pqr-description">Shift whole awareness to the tailbone; notice sensations; breathe into and out of the tailbone.</div><div class="fb-pqr-meta">Part II, Chapter 4 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Three-Stage Being Visualization</div><div class="fb-pqr-description">Stage 1: known person; Stage 2: known-of person (saint/teacher); Stage 3: non-physical being (angel/jinn/Bodhisattva).</div><div class="fb-pqr-meta">Part II, Chapter 4 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Burning Torch Concentration</div><div class="fb-pqr-description">Visualize a burning torch: see colors, movement, dancing flames; fire given direction = illumination.</div><div class="fb-pqr-meta">Part II, Chapter 4 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Skull Light Concentration — The Luminous Glance</div><div class="fb-pqr-description">Feel skull expanding; light enters through forehead on inhale; cast beam outward on exhale.</div><div class="fb-pqr-meta">Part II, Chapter 4 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Star, Crescent Moon, and Heart Visualization</div><div class="fb-pqr-description">Build Inayatiyya symbol forms in sequence: five-pointed star → crescent moon → heart surrounding both; then dissolve in reverse.</div><div class="fb-pqr-meta">Part II, Chapter 4 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">River Visualization Practice</div><div class="fb-pqr-description">Imagine a river — its color, animals, plants, sound, reflected light; stay with the flow; notice body resonance afterward.</div><div class="fb-pqr-meta">Part II, Chapter 4 · Urs Qutbuddin</div></div>
+    </div>
+    <div class="fb-pqr-category">
+      <div class="fb-pqr-category-heading">Fikr, Zikr &amp; Wazifa</div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Ashukrillah — Zikr of Gratitude</div><div class="fb-pqr-description">Repeat 'Ashukrillah' (Thanks be to the One) many times; dwell in thankfulness atmosphere.</div><div class="fb-pqr-meta">Part II, Chapter 5 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Astaghfirullah Zikr — 33x</div><div class="fb-pqr-description">Repeat 33 times in tone; sit in silent all-compassionate presence; connects to water element / tears.</div><div class="fb-pqr-meta">Part II, Chapter 5 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Doing Zikr as Murshid</div><div class="fb-pqr-description">Pir Vilayat's instruction: don't do Zikr as yourself — do it as if Murshid does it; 'another power' is released from within.</div><div class="fb-pqr-meta">Part II, Chapter 5 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Sallallahu 'Alaika Ya Rasul Allah Zikr</div><div class="fb-pqr-description">Recite 11 times in tone: 'Divine benediction be upon you, O messenger of God'; enters presence of the Rasul.</div><div class="fb-pqr-meta">Part II, Chapter 5 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Fikr — Ya Sabur-o / Ya Wahhab-o</div><div class="fb-pqr-description">First/foundation fikr: inhale Sabur (patient meeting of life), exhale Wahhab (freely abundant flow of blessings); 11 or 33 times daily.</div><div class="fb-pqr-meta">Part III, Chapter 4 · Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Fikr — Subuhun / Quddusun</div><div class="fb-pqr-description">Preparatory fikr before advanced practice: inhale Subuhun (Glorified One), exhale Quddusun (Holy One); 33x.</div><div class="fb-pqr-meta">Part III, Chapter 4 · Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Fikr — Ya Fazl / Ya Fattah</div><div class="fb-pqr-description">Current leading practice: inhale Fazl (blessing), exhale Fattah (opener of paths); when thinking stops, fikr continues on its own.</div><div class="fb-pqr-meta">Part III, Chapter 4 · Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Ayat al-Qutb — Advanced Fikr</div><div class="fb-pqr-description">Advanced fikr practice; preceded by Subuhun-Quddusun as preparatory; reference Gatha II Pasi Anfas.</div><div class="fb-pqr-meta">Part III, Chapter 4 · Guide Mansur</div></div>
+    </div>
+    <div class="fb-pqr-category">
+      <div class="fb-pqr-category-heading">Body Awareness &amp; Other Practices</div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Energy Ball Practice</div><div class="fb-pqr-description">Massage arms; breathe on palms; raise hands palm-facing; play with distance to feel the energy ball; awareness of etheric field.</div><div class="fb-pqr-meta">Part II, Chapter 4 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">The Amen Gesture — Physical Cascade</div><div class="fb-pqr-description">After prayers: gather accumulated resonance in cupped hands, lift overhead, pour down over face-neck-shoulders-chest.</div><div class="fb-pqr-meta">Part I, Chapter 1 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Sleep &amp; Waking — Nostril Practice</div><div class="fb-pqr-description">Sleep on right side (lunar nostril); before waking shift to left side to activate solar nostril; step out of bed right foot first.</div><div class="fb-pqr-meta">Part I, Chapter 5 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Jalali — The Star Practice</div><div class="fb-pqr-description">Visualize a single blazing star; face its fierce Jalali radiance; breathe in starlight; dissolve into the star.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Jamali — The Crescent Moon Practice</div><div class="fb-pqr-description">Visualize crescent moon with cool silver light; embody its receptive, reflective quality; become lunar.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Cardamom Tasting Practice</div><div class="fb-pqr-description">Place cardamom on tongue; bite once; give whole attention to taste — no taster, no tasted, only the tasting.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Rose Essence Smell Practice</div><div class="fb-pqr-description">Lift rose-essence paper to nostrils; lose yourself in fragrance until there is only the fragrance making itself known.</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Journey Through the Mind: Three Faculties</div><div class="fb-pqr-description">Sequential guided exploration of Sensation (Nasut), Memory, and Imagination (Malakut).</div><div class="fb-pqr-meta">Part I, Chapter 4 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Fana-fi-Sheikh — Three Stages</div><div class="fb-pqr-description">Stage 1: build image of Murshid, glance meets glance; Stage 2: release image, hold atmosphere in heart; Stage 3: Murshid's qualities express through you.</div><div class="fb-pqr-meta">Part II, Chapter 4 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Sky of Mind — Five-Stage Practice</div><div class="fb-pqr-description">Stage 1: witness thoughts as clouds; Stage 2: dense dark clouds; Stage 3: inner sun; Stage 4: luminous ice-crystal clouds; Stage 5: radiate through open eyes.</div><div class="fb-pqr-meta">Part III, Chapter 3 · Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Muraqabah — Watchfulness of Thought</div><div class="fb-pqr-description">When negative thought arises: pause, ask where it comes from, release, then REJOICE — the noticing is itself waking up.</div><div class="fb-pqr-meta">Part III, Chapter 3 · Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Subuhun Quddusun Rabbanu — Evening Practice</div><div class="fb-pqr-description">Recite 33 times before sleep; takes energy into sleep — 'winding the clock.'</div><div class="fb-pqr-meta">Part III, Chapter 4 · Guide Mansur</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Daily Task — Stepping Through Doors (Right Foot First)</div><div class="fb-pqr-description">Step through every threshold right foot first; cultivates concentrated, mindful awareness in everyday movement.</div><div class="fb-pqr-meta">Part I, Chapter 5 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Daily Task — Avoid the Word 'I'</div><div class="fb-pqr-description">Abstain from using the word 'I' for 24 hours; substitute 'we', 'one', or avoid self-reference; ego-observation practice.</div><div class="fb-pqr-meta">Part I, Chapter 5 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Geographical Orientation — Daily Task</div><div class="fb-pqr-description">Determine and maintain awareness of north/south/east/west plus nearest sea, mountains, and river throughout 24 hours without technology.</div><div class="fb-pqr-meta">Parts I / II · Pir Zia Inayat Khan / Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Think of God After Every Statement</div><div class="fb-pqr-description">After everything you say, pause and remember God for just a moment — transforms ordinary conversation into continuous remembrance.</div><div class="fb-pqr-meta">Part I, Chapter 5 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Walking Practice — Two-Year Prescription</div><div class="fb-pqr-description">Walk daily; feel gravity holding you, feel every footstep's contact with earth; 'Let your soul be where your soles are.'</div><div class="fb-pqr-meta">Part I, Chapter 5 · Pir Zia Inayat Khan</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Four Seating Positions for Practice</div><div class="fb-pqr-description">Murshid's four postures: cross-legged, Cupid (archer seat for Zikr), lotus (sages), kneeling (before the beloved).</div><div class="fb-pqr-meta">Part II, Chapter 6 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Itisal — The Junction Practice (Ha × 11)</div><div class="fb-pqr-description">Intone Ha eleven times; trace sound from ground through tailbone to chest; junction between individual and cosmic being.</div><div class="fb-pqr-meta">Part II, Chapter 6 · Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Chivalric Rules — 40 Rules (Iron / Copper / Silver / Gold)</div><div class="fb-pqr-description">40 ethical contemplations as personal pledges over 40 days; each rule a prism for self-refinement.</div><div class="fb-pqr-meta">Parts I / II · Pir Zia Inayat Khan / Urs Qutbuddin</div></div>
+      <div class="fb-pqr-practice"><div class="fb-pqr-practice-name">Daily Practice Sequence (Mansur)</div><div class="fb-pqr-description">Complete ordered sequence: elemental breaths, invocation, Sabur/Wahhab, Subuhun/Quddusun, Fazl/Fattah, watchfulness/hosh dar dam, Qasab, Sky of Mind.</div><div class="fb-pqr-meta">Part III, Chapter 5 · Guide Mansur</div></div>
+    </div>
+    <div class="fb-flower" style="margin-top:24px">✿ ✿ ✿</div>
+  </div>`;
+
+  // ── APPENDIX D: COLOPHON ──
+  h += `<div class="fb-colophon" id="fb-sec-colophon">
+    <span class="fb-appendix-label">Appendix D</span>
+    <div class="fb-section-title">COLOPHON</div>
+    <div class="fb-gold-rule" style="margin:14px auto 28px"></div>
+    <div class="fb-colophon-body">
+      <p class="fb-colophon-title">The Book of Concentration — Mount Qaf Companion Handbook</p>
+      <p class="fb-colophon-edition">Second Edition — March 2026</p>
+      <p style="font-size:14px;font-style:italic;color:var(--muted)">Instructor Sections with Topic Sub-chapters</p>
+      <p>Compiled from 333 teachings extracted from the transcripts of</p>
+      <p>20 Concentration sessions, Suluk Global Online Program 2025–2027</p>
+      <div class="fb-colophon-parts">
+        <p>Part I: Pir Zia Inayat Khan — 145 teachings</p>
+        <p>Part II: Urs Qutbuddin Schellenberg — 153 teachings</p>
+        <p>Part III: Guide Mansur — 35 teachings</p>
+      </div>
+      <p>Kabir · Class of Mount Qaf</p>
+      <p style="font-size:14px;color:var(--muted)">Pod Mentor: Farzana · Inayatiyya</p>
+      <p class="fb-colophon-disclaimer">This handbook is for personal spiritual use. The teachings belong to the Inayatiyya lineage and are shared here as a student's learning companion.</p>
+      <div class="fb-flower">✿</div>
+      <div class="fb-colophon-closing">The knowledge is held. The path continues.</div>
+    </div>
+  </div>`;
+
+  // ── APPENDIX E: PRAYER MOVEMENTS ──
+  h += `<div class="fb-appendix" id="fb-sec-app-e">
+    <span class="fb-appendix-label">Appendix E</span>
+    <div class="fb-section-title">PRAYER MOVEMENTS</div>
+    <div class="fb-gold-rule" style="margin:14px auto 20px"></div>
+    <p class="fb-appendix-intro">The prayers of the Inayatiyya — Saum, Salat, and Salawat — are accompanied by sacred body movements that embody the meaning of each phrase. These diagrams illustrate the postures for Saum and Salat as practiced in the Suluk Global program.</p>
+    <div class="fb-prayer-section-label">Saum — With Movements</div>
+    <p class="fb-prayer-note">Each posture corresponds to a line of the prayer</p>
+    <img src="assets/images/saum_movements_1.png" class="fb-prayer-img" alt="Saum with Movements — Page 1">
+    <img src="assets/images/saum_movements_2.png" class="fb-prayer-img" alt="Saum with Movements — Page 2">
+    <img src="assets/images/saum_movements_3.png" class="fb-prayer-img" alt="Saum with Movements — Page 3">
+    <div class="fb-prayer-section-label" style="margin-top:40px">Salat — With Movements</div>
+    <p class="fb-prayer-note">Each posture corresponds to a line of the prayer</p>
+    <img src="assets/images/salat_movements_1.png" class="fb-prayer-img" alt="Salat with Movements — Page 1">
+    <img src="assets/images/salat_movements_2.png" class="fb-prayer-img" alt="Salat with Movements — Page 2">
+    <div class="fb-flower" style="margin-top:40px">✿ ✿ ✿</div>
+  </div>`;
+
   h += '</div>'; // .full-book
 
   tv.innerHTML = h;
@@ -1747,6 +2143,34 @@ function showFullBook(el) {
   if (bc) bc.textContent = 'Full Book';
   window.scrollTo(0, 0);
   currentIdx = -1;
+
+  // Load cross-reference async
+  fetch('data/cross_reference_data.json')
+    .then(r => r.json())
+    .then(data => {
+      const xb = document.getElementById('fb-xref-body');
+      if (!xb || !data.cross_references) return;
+      let xh = '';
+      data.cross_references.forEach(topic => {
+        xh += `<div class="fb-xref-topic">
+          <div class="fb-xref-topic-heading">${escHtml(topic.topic)}</div>`;
+        (topic.entries||[]).forEach(entry => {
+          xh += `<div class="fb-xref-entry">
+            <span class="fb-xref-location">Part ${escHtml(entry.part)}, Ch. ${entry.chapter}</span>
+            — <span class="fb-xref-chapter-title">${escHtml(entry.title)}</span>`;
+          (entry.snippets||[]).forEach(s => {
+            xh += `<div class="fb-xref-snippet-item">${escHtml(s)}</div>`;
+          });
+          xh += '</div>';
+        });
+        xh += '</div>';
+      });
+      xb.innerHTML = xh;
+    })
+    .catch(() => {
+      const xb = document.getElementById('fb-xref-body');
+      if (xb) xb.innerHTML = '<p style="color:var(--muted);font-style:italic;font-size:14px">Cross-reference data unavailable.</p>';
+    });
 }
 
 function setBreadcrumb(text) {
