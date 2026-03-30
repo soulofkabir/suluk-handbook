@@ -757,6 +757,187 @@ body.focus-mode #reading-area { padding-top: 80px; }
 
 
 /* ══════════════════════════════════════════════════════════
+   PHASE E — SEARCH, GLOSSARY, PRACTICE TRACKER, SHARE
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Search ── */
+.search-page { max-width: var(--content-max); margin: 0 auto; }
+.search-box {
+  display: flex; gap: 10px; margin-bottom: 8px;
+}
+.search-input {
+  flex: 1; padding: 11px 16px; font-family: var(--serif); font-size: 16px;
+  background: var(--bg); color: var(--text); border: 1px solid var(--rule);
+  border-radius: 4px; outline: none; transition: border-color .2s;
+}
+.search-input:focus { border-color: var(--accent); }
+.search-input::placeholder { color: var(--muted); opacity: .6; }
+.search-btn {
+  padding: 10px 22px; background: rgba(196,163,90,.08); border: 1px solid rgba(196,163,90,.35);
+  border-radius: 4px; font-family: var(--display); font-size: 13px;
+  color: var(--accent); cursor: pointer; letter-spacing: 0.08em; transition: all .2s; white-space: nowrap;
+}
+.search-btn:hover { background: rgba(196,163,90,.18); }
+.search-filters {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.search-filter {
+  padding: 5px 12px; font-family: var(--display); font-size: 11px; letter-spacing: 0.06em;
+  border: 1px solid var(--rule); border-radius: 20px; cursor: pointer;
+  color: var(--muted); background: transparent; transition: all .2s;
+}
+.search-filter.active { border-color: var(--accent); color: var(--accent); background: rgba(196,163,90,.08); }
+.search-meta { font-family: var(--display); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 16px; }
+.search-result { padding: 14px 0; border-bottom: 1px solid var(--rule); cursor: pointer; transition: background .15s; }
+.search-result:hover { background: rgba(196,163,90,.04); }
+.search-result-title { font-family: var(--display); font-size: 1em; font-weight: 500; color: var(--primary); margin-bottom: 4px; }
+body.night-mode .search-result-title { color: rgba(250,246,240,.85); }
+.search-result-excerpt { font-size: .9em; color: var(--muted); line-height: 1.6; margin-bottom: 4px; }
+.search-result-excerpt mark {
+  background: rgba(196,163,90,.25); color: inherit; padding: 0 2px; border-radius: 2px;
+}
+.search-result-meta { font-family: var(--display); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+
+/* ── Glossary ── */
+.glossary-page { max-width: var(--content-max); margin: 0 auto; }
+.glossary-search {
+  width: 100%; padding: 10px 16px; font-family: var(--serif); font-size: 16px;
+  background: var(--bg); color: var(--text); border: 1px solid var(--rule);
+  border-radius: 4px; outline: none; margin-bottom: 16px; transition: border-color .2s;
+}
+.glossary-search:focus { border-color: var(--accent); }
+.glossary-alpha {
+  display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 20px;
+}
+.glossary-alpha-btn {
+  width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-size: 12px; font-weight: 600;
+  border: 1px solid var(--rule); border-radius: 4px; cursor: pointer;
+  color: var(--muted); background: transparent; transition: all .15s;
+}
+.glossary-alpha-btn.active,
+.glossary-alpha-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(196,163,90,.08); }
+.glossary-alpha-btn.disabled { opacity: .3; cursor: default; }
+.glossary-group-letter {
+  font-family: var(--display); font-size: 24px; font-weight: 600;
+  color: var(--accent); margin: 28px 0 8px; padding-bottom: 4px;
+  border-bottom: 1px solid var(--rule);
+}
+.glossary-term {
+  padding: 12px 0; border-bottom: 1px solid rgba(212,201,168,.4);
+}
+.glossary-term-word {
+  font-family: var(--display); font-size: 1.05em; font-weight: 600;
+  color: var(--primary); margin-bottom: 2px;
+}
+body.night-mode .glossary-term-word { color: rgba(250,246,240,.88); }
+.glossary-term-origin {
+  font-family: var(--display); font-size: 11px; font-style: italic;
+  color: var(--muted); letter-spacing: 0.04em; margin-bottom: 4px;
+}
+.glossary-term-def {
+  font-size: .95em; color: var(--text); line-height: 1.65;
+}
+.glossary-term-refs {
+  font-family: var(--display); font-size: 11px; color: var(--accent);
+  margin-top: 4px; cursor: pointer;
+}
+.glossary-term-refs:hover { text-decoration: underline; }
+
+/* Inline tooltip */
+.glossary-tip {
+  border-bottom: 1px dotted var(--accent); cursor: help;
+  transition: border-color .2s;
+}
+.glossary-tip:hover { border-bottom-style: solid; }
+.glossary-tooltip {
+  position: absolute; z-index: 800; max-width: 320px;
+  background: var(--bg); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 12px 16px; box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  font-family: var(--serif); font-size: 14px; line-height: 1.5; color: var(--text);
+  pointer-events: none; opacity: 0; transition: opacity .15s;
+}
+.glossary-tooltip.visible { opacity: 1; pointer-events: auto; }
+.glossary-tooltip-term { font-family: var(--display); font-weight: 600; color: var(--primary); margin-bottom: 4px; }
+body.night-mode .glossary-tooltip { background: #1A1A3E; border-color: rgba(196,163,90,.2); box-shadow: 0 4px 16px rgba(0,0,0,.4); }
+
+/* ── Practice Tracker ── */
+.practice-page { max-width: var(--content-max); margin: 0 auto; }
+.practice-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px;
+}
+.practice-stat {
+  text-align: center; padding: 16px 8px; border: 1px solid var(--rule); border-radius: 6px;
+}
+.practice-stat-num {
+  font-family: var(--display); font-size: 28px; font-weight: 600; color: var(--accent);
+}
+.practice-stat-label {
+  font-family: var(--display); font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); margin-top: 2px;
+}
+.practice-category {
+  margin-bottom: 24px;
+}
+.practice-category-title {
+  font-family: var(--display); font-size: 14px; font-weight: 600;
+  color: var(--primary); letter-spacing: 0.06em; margin-bottom: 10px;
+  padding-bottom: 4px; border-bottom: 1px solid var(--rule);
+}
+body.night-mode .practice-category-title { color: rgba(250,246,240,.8); }
+.practice-item {
+  display: flex; align-items: center; gap: 10px; padding: 8px 0;
+  border-bottom: 1px solid rgba(212,201,168,.3);
+}
+.practice-check {
+  width: 20px; height: 20px; border: 1.5px solid var(--rule); border-radius: 50%;
+  cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  transition: all .2s; font-size: 11px; color: transparent;
+}
+.practice-check.done { border-color: var(--accent); background: rgba(196,163,90,.12); color: var(--accent); }
+.practice-check:hover { border-color: var(--accent); }
+.practice-name {
+  font-family: var(--serif); font-size: .95em; color: var(--text); flex: 1;
+}
+.practice-count {
+  font-family: var(--display); font-size: 11px; color: var(--muted);
+  min-width: 24px; text-align: right;
+}
+.practice-log-btn {
+  padding: 3px 10px; font-family: var(--display); font-size: 10px;
+  letter-spacing: 0.06em; border: 1px solid var(--rule); border-radius: 12px;
+  background: transparent; color: var(--muted); cursor: pointer; transition: all .2s;
+}
+.practice-log-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── Related Teachings ── */
+.related-section {
+  margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--rule);
+}
+.related-heading {
+  font-family: var(--display); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
+}
+.related-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.related-card {
+  padding: 12px 14px; border: 1px solid var(--rule); border-radius: 6px;
+  cursor: pointer; transition: all .15s;
+}
+.related-card:hover { border-color: var(--accent); background: rgba(196,163,90,.04); }
+.related-card-title { font-family: var(--display); font-size: 14px; font-weight: 500; color: var(--primary); line-height: 1.3; margin-bottom: 4px; }
+body.night-mode .related-card-title { color: rgba(250,246,240,.85); }
+.related-card-meta { font-family: var(--display); font-size: 10px; color: var(--muted); letter-spacing: 0.05em; }
+
+/* ── Share ── */
+.share-btn {
+  padding: 3px 10px; background: transparent; border: 1px solid var(--rule);
+  border-radius: 12px; font-family: var(--display); font-size: 11px;
+  color: var(--muted); cursor: pointer; letter-spacing: 0.04em; transition: all .2s;
+}
+.share-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+
+/* ══════════════════════════════════════════════════════════
    MOBILE
    ══════════════════════════════════════════════════════════ */
 
@@ -775,6 +956,10 @@ body.focus-mode #reading-area { padding-top: 80px; }
   .teaching-nav .teaching-position { order: -1; }
   .tnav-btn { width: 100%; text-align: center; }
   .teaching-actions { gap: 6px; }
+  .practice-stats { grid-template-columns: repeat(3,1fr); gap: 8px; }
+  .practice-stat { padding: 10px 4px; }
+  .search-box { flex-direction: column; }
+  .related-cards { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   #cover-title, #cover-eyebrow { font-size: 32px; }
@@ -1135,7 +1320,7 @@ body.focus-mode #reading-area { padding-top: 80px; }
 
 <script>
 /* ══════════════════════════════════════════════════════════
-   SULUK DIGITAL HANDBOOK  ·  Phase A + B + C
+   SULUK DIGITAL HANDBOOK  ·  Phase A + B + C + E
    ══════════════════════════════════════════════════════════ */
 
 /* ─── App state ─── */
@@ -1151,6 +1336,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadUserData();
   bindKeyboard();
   setupHighlightListener();
+  loadGlossary(); // preload for inline tooltips
 });
 
 function restorePrefs() {
@@ -1172,12 +1358,12 @@ function savePrefs() {
    PHASE C — USER DATA
    ══════════════════════════════════════════════════════════ */
 
-let userData = { bookmarks: [], notes: [], highlights: [], journal: {}, recentlyViewed: [] };
+let userData = { bookmarks: [], notes: [], highlights: [], journal: {}, recentlyViewed: [], practiceLog: {} };
 
 function loadUserData() {
   try {
     const s = localStorage.getItem('suluk_user_data');
-    if (s) userData = Object.assign({ bookmarks:[], notes:[], highlights:[], journal:{}, recentlyViewed:[] }, JSON.parse(s));
+    if (s) userData = Object.assign({ bookmarks:[], notes:[], highlights:[], journal:{}, recentlyViewed:[], practiceLog:{} }, JSON.parse(s));
   } catch(e) {}
 }
 function saveUserData() {
@@ -1586,8 +1772,9 @@ function buildSidebarNav() {
   h += '<div class="nav-divider"></div>';
   h += '<div class="nav-section-label">Discover</div>';
   h += '<a class="nav-item" onclick="navPlaceholder(this,\'Audio Library\')" role="button" tabindex="0">♪ &thinsp;Audio Library</a>';
-  h += '<a class="nav-item" onclick="navPlaceholder(this,\'Search\')" role="button" tabindex="0">⊙ &thinsp;Search</a>';
-  h += '<a class="nav-item" onclick="navPlaceholder(this,\'Glossary\')" role="button" tabindex="0">◉ &thinsp;Glossary</a>';
+  h += '<a class="nav-item" onclick="showSearch(this)" role="button" tabindex="0">⊙ &thinsp;Search</a>';
+  h += '<a class="nav-item" onclick="showGlossary(this)" role="button" tabindex="0">◉ &thinsp;Glossary</a>';
+  h += '<a class="nav-item" onclick="showPracticeTracker(this)" role="button" tabindex="0">◎ &thinsp;Practice Tracker</a>';
   nav.innerHTML = h;
 }
 
@@ -1614,6 +1801,9 @@ function showTeaching(idx, scroll) {
   tv.innerHTML = buildTeachingHTML(t, idx);
   if (scroll !== false) { window.scrollTo(0,0); }
   applyHighlights(idx);
+  // Glossary tooltips
+  const bodyEl = tv.querySelector('.teaching-body');
+  if (bodyEl && glossaryData) applyGlossaryTooltips(bodyEl);
   // Sidebar active state
   document.querySelectorAll('.nav-chapter').forEach(n => n.classList.remove('active'));
   const chNav = document.getElementById('nav-ch-' + t.partKey + '-' + t.chapterKey);
@@ -1653,8 +1843,10 @@ function buildTeachingHTML(t, idx) {
     <button class="t-action-btn" onclick="openNoteForm(${idx})">✎ Add Note</button>
     <button class="t-action-btn" onclick="openJournal(${idx})">📓 Journal</button>
     <button class="t-action-btn" onclick="toggleBookmark(${idx})">${bookmarked?'★ Bookmarked':'☆ Bookmark'}</button>
-    <button class="t-action-btn" onclick="exportUserData()">↓ Export</button>
+    <button class="t-action-btn" onclick="shareTeaching(${idx})">↗ Share</button>
   </div>
+
+  ${buildRelatedHTML(idx)}
 
   <div class="teaching-nav">
     <button class="tnav-btn" onclick="prevTeaching()" ${idx===0?'disabled':''}>← Prev</button>
@@ -2280,6 +2472,411 @@ function showToast(msg) {
     setTimeout(() => t.classList.add('hidden'), 300);
   }, 2200);
 }
+
+/* ══════════════════════════════════════════════════════════
+   PHASE E — SEARCH, GLOSSARY, PRACTICE TRACKER, RELATED, SHARE
+   ══════════════════════════════════════════════════════════ */
+
+/* ─── Search ─── */
+let searchIndex = null; // built lazily
+
+function buildSearchIndex() {
+  if (searchIndex || !handbook) return;
+  searchIndex = allTeachings.map((t, idx) => ({
+    idx,
+    title: t.snippet.title || '',
+    body: (t.snippet.body || '').replace(/[#*_|>\-]/g, ' '),
+    instructor: t.snippet.instructor || '',
+    chapter: t.chapter.title || '',
+    partKey: t.partKey,
+    chapterKey: t.chapterKey,
+    classId: t.snippet.class_id || ''
+  }));
+}
+
+function showSearch(el) {
+  if (!handbook) return;
+  setActiveNav(el);
+  buildSearchIndex();
+  let h = listPageHeader('Search', `${allTeachings.length} teachings`);
+  h += `<div class="search-page">
+    <div class="search-box">
+      <input type="text" class="search-input" id="search-input" placeholder="Search teachings…" oninput="runSearch()" autofocus>
+      <button class="search-btn" onclick="runSearch()">Search</button>
+    </div>
+    <div class="search-filters">
+      <button class="search-filter active" data-filter="all" onclick="setSearchFilter(this,'all')">All</button>
+      <button class="search-filter" data-filter="I" onclick="setSearchFilter(this,'I')">Part I</button>
+      <button class="search-filter" data-filter="II" onclick="setSearchFilter(this,'II')">Part II</button>
+      <button class="search-filter" data-filter="III" onclick="setSearchFilter(this,'III')">Part III</button>
+    </div>
+    <div id="search-meta" class="search-meta"></div>
+    <div id="search-results"></div>
+  </div>`;
+  showPage(h);
+}
+
+let _searchFilter = 'all';
+let _searchDebounce = null;
+
+function setSearchFilter(btn, filter) {
+  _searchFilter = filter;
+  document.querySelectorAll('.search-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  runSearch();
+}
+
+function runSearch() {
+  clearTimeout(_searchDebounce);
+  _searchDebounce = setTimeout(_doSearch, 150);
+}
+
+function _doSearch() {
+  const q = (document.getElementById('search-input')?.value || '').trim().toLowerCase();
+  const container = document.getElementById('search-results');
+  const meta = document.getElementById('search-meta');
+  if (!container) return;
+  if (q.length < 2) {
+    container.innerHTML = '';
+    meta.textContent = q.length === 1 ? 'Type at least 2 characters…' : '';
+    return;
+  }
+
+  const words = q.split(/\s+/).filter(w => w.length >= 2);
+  const results = [];
+
+  for (const item of searchIndex) {
+    if (_searchFilter !== 'all' && item.partKey !== _searchFilter) continue;
+    const haystack = (item.title + ' ' + item.body + ' ' + item.instructor + ' ' + item.chapter).toLowerCase();
+    let score = 0;
+    let matched = true;
+    for (const w of words) {
+      const titleHits = (item.title.toLowerCase().match(new RegExp(w, 'g')) || []).length;
+      const bodyHits  = (item.body.toLowerCase().match(new RegExp(w, 'g')) || []).length;
+      if (titleHits + bodyHits === 0) { matched = false; break; }
+      score += titleHits * 10 + bodyHits;
+    }
+    if (matched) results.push({ ...item, score });
+  }
+
+  results.sort((a, b) => b.score - a.score);
+  meta.textContent = `${results.length} result${results.length !== 1 ? 's' : ''} for "${q}"`;
+
+  if (results.length === 0) {
+    container.innerHTML = emptyState('⊙', 'No teachings match your search');
+    return;
+  }
+
+  const shown = results.slice(0, 50);
+  const escapedWords = words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const re = new RegExp('(' + escapedWords.join('|') + ')', 'gi');
+
+  container.innerHTML = shown.map(r => {
+    const bodyLower = r.body.toLowerCase();
+    let excerptStart = 0;
+    for (const w of words) {
+      const pos = bodyLower.indexOf(w);
+      if (pos > 0) { excerptStart = Math.max(0, pos - 60); break; }
+    }
+    const excerpt = (excerptStart > 0 ? '…' : '') + r.body.slice(excerptStart, excerptStart + 200).trim() + '…';
+    const highlightedTitle = escHtml(r.title).replace(re, '<mark>$1</mark>');
+    const highlightedExcerpt = escHtml(excerpt).replace(re, '<mark>$1</mark>');
+
+    return `<div class="search-result" onclick="showTeaching(${r.idx})">
+      <div class="search-result-title">${highlightedTitle}</div>
+      <div class="search-result-excerpt">${highlightedExcerpt}</div>
+      <div class="search-result-meta">Part ${r.partKey} · ${escHtml(r.chapter)} · ${escHtml(r.instructor)}</div>
+    </div>`;
+  }).join('');
+}
+
+
+/* ─── Glossary ─── */
+let glossaryData = null;
+
+async function loadGlossary() {
+  if (glossaryData) return glossaryData;
+  try {
+    const res = await fetch('data/glossary.json');
+    const data = await res.json();
+    glossaryData = data.terms || [];
+    glossaryData.sort((a, b) => a.term.localeCompare(b.term));
+    return glossaryData;
+  } catch(e) { glossaryData = []; return []; }
+}
+
+async function showGlossary(el) {
+  setActiveNav(el);
+  const terms = await loadGlossary();
+  if (!terms.length) { showPage(listPageHeader('Glossary', '') + emptyState('◉', 'No glossary terms loaded')); return; }
+
+  let h = listPageHeader('Glossary', `${terms.length} terms`);
+  h += `<div class="glossary-page">
+    <input type="text" class="glossary-search" id="glossary-filter" placeholder="Filter terms…" oninput="filterGlossary()">
+    <div class="glossary-alpha" id="glossary-alpha"></div>
+    <div id="glossary-list"></div>
+  </div>`;
+  showPage(h);
+
+  // Build alphabet bar
+  const letters = new Set(terms.map(t => t.term[0].toUpperCase()));
+  const alphaEl = document.getElementById('glossary-alpha');
+  alphaEl.innerHTML = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(l =>
+    `<button class="glossary-alpha-btn ${letters.has(l) ? '' : 'disabled'}" onclick="jumpToLetter('${l}')">${l}</button>`
+  ).join('');
+
+  renderGlossaryList(terms);
+}
+
+function renderGlossaryList(terms) {
+  const container = document.getElementById('glossary-list');
+  if (!container) return;
+  let h = '';
+  let currentLetter = '';
+  for (const t of terms) {
+    const letter = t.term[0].toUpperCase();
+    if (letter !== currentLetter) {
+      currentLetter = letter;
+      h += `<div class="glossary-group-letter" id="glossary-letter-${letter}">${letter}</div>`;
+    }
+    h += `<div class="glossary-term">
+      <div class="glossary-term-word">${escHtml(t.term)}</div>
+      ${t.origin ? `<div class="glossary-term-origin">${escHtml(t.origin)}</div>` : ''}
+      <div class="glossary-term-def">${escHtml(t.def)}</div>
+    </div>`;
+  }
+  container.innerHTML = h || emptyState('◉', 'No terms match your filter');
+}
+
+function filterGlossary() {
+  const q = (document.getElementById('glossary-filter')?.value || '').toLowerCase();
+  if (!glossaryData) return;
+  const filtered = q.length < 1 ? glossaryData :
+    glossaryData.filter(t => t.term.toLowerCase().includes(q) || t.def.toLowerCase().includes(q));
+  renderGlossaryList(filtered);
+}
+
+function jumpToLetter(letter) {
+  const el = document.getElementById('glossary-letter-' + letter);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Inline glossary tooltips in teaching body
+function applyGlossaryTooltips(container) {
+  if (!glossaryData || !glossaryData.length || !container) return;
+  const textNodes = [];
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+  // Build a regex for all terms (longest first to avoid partial matches)
+  const sorted = [...glossaryData].sort((a, b) => b.term.length - a.term.length);
+  const pattern = sorted.map(t => t.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  const re = new RegExp('\\b(' + pattern + ')\\b', 'gi');
+
+  const termMap = {};
+  glossaryData.forEach(t => { termMap[t.term.toLowerCase()] = t; });
+
+  for (const node of textNodes) {
+    if (node.parentElement?.closest('.glossary-tip, .teaching-meta, .teaching-title, h1, h2')) continue;
+    const text = node.textContent;
+    if (!re.test(text)) continue;
+    re.lastIndex = 0;
+
+    const frag = document.createDocumentFragment();
+    let lastIdx = 0;
+    let match;
+    const applied = new Set();
+    re.lastIndex = 0;
+    while ((match = re.exec(text)) !== null) {
+      const termKey = match[1].toLowerCase();
+      if (applied.has(termKey)) continue; // only first occurrence per text node
+      applied.add(termKey);
+      if (match.index > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, match.index)));
+      const span = document.createElement('span');
+      span.className = 'glossary-tip';
+      span.textContent = match[1];
+      span.dataset.term = termKey;
+      span.addEventListener('mouseenter', showGlossaryTooltip);
+      span.addEventListener('mouseleave', hideGlossaryTooltip);
+      frag.appendChild(span);
+      lastIdx = match.index + match[0].length;
+    }
+    if (lastIdx > 0) {
+      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+      node.parentNode.replaceChild(frag, node);
+    }
+  }
+}
+
+let _tooltipEl = null;
+function showGlossaryTooltip(e) {
+  const termKey = e.target.dataset.term;
+  const termMap = {};
+  glossaryData.forEach(t => { termMap[t.term.toLowerCase()] = t; });
+  const t = termMap[termKey];
+  if (!t) return;
+
+  if (!_tooltipEl) {
+    _tooltipEl = document.createElement('div');
+    _tooltipEl.className = 'glossary-tooltip';
+    document.body.appendChild(_tooltipEl);
+  }
+  _tooltipEl.innerHTML = `<div class="glossary-tooltip-term">${escHtml(t.term)}</div>${escHtml(t.def)}`;
+  const rect = e.target.getBoundingClientRect();
+  _tooltipEl.style.left = Math.min(rect.left, window.innerWidth - 340) + 'px';
+  _tooltipEl.style.top  = (rect.bottom + window.scrollY + 6) + 'px';
+  _tooltipEl.classList.add('visible');
+}
+
+function hideGlossaryTooltip() {
+  if (_tooltipEl) _tooltipEl.classList.remove('visible');
+}
+
+
+/* ─── Practice Tracker ─── */
+
+const PRACTICE_CATEGORIES = {
+  'Prayers': ['Saum', 'Salat', 'Khatum', 'Nayaz'],
+  'Breath': ['Kasab', 'Fikr', 'Purification Breaths', 'Rhythmic Breathing'],
+  'Concentration': ['Shagal', 'Tawajjuh', 'Visualization', 'Candle Gazing'],
+  'Meditation': ['Muraqaba', 'Zikr', 'Silent Sitting', 'Heart Meditation'],
+  'Movement': ['Saum Movements', 'Salat Movements', 'Walking Meditation', 'Whirling'],
+  'Recitation': ['Wazifa', 'Divine Names', 'Poetry Recitation', 'Sama']
+};
+
+function showPracticeTracker(el) {
+  setActiveNav(el);
+  const log = userData.practiceLog || {};
+  const todayStr = today();
+  const todayCount = Object.values(log).reduce((sum, entries) => sum + (entries[todayStr] ? 1 : 0), 0);
+  const totalSessions = Object.values(log).reduce((sum, entries) => sum + Object.keys(entries).length, 0);
+  const streak = calcStreak(log);
+
+  let h = listPageHeader('Practice Tracker', 'Log your daily practices');
+  h += `<div class="practice-page">
+    <div class="practice-stats">
+      <div class="practice-stat"><div class="practice-stat-num">${todayCount}</div><div class="practice-stat-label">Today</div></div>
+      <div class="practice-stat"><div class="practice-stat-num">${streak}</div><div class="practice-stat-label">Day Streak</div></div>
+      <div class="practice-stat"><div class="practice-stat-num">${totalSessions}</div><div class="practice-stat-label">Total Logs</div></div>
+    </div>`;
+
+  for (const [cat, practices] of Object.entries(PRACTICE_CATEGORIES)) {
+    h += `<div class="practice-category">
+      <div class="practice-category-title">${escHtml(cat)}</div>`;
+    for (const p of practices) {
+      const key = p.toLowerCase().replace(/\s+/g, '_');
+      const entries = log[key] || {};
+      const doneToday = !!entries[todayStr];
+      const total = Object.keys(entries).length;
+      h += `<div class="practice-item">
+        <div class="practice-check ${doneToday ? 'done' : ''}" onclick="togglePractice('${key}', this)" title="${doneToday ? 'Completed today' : 'Mark as done'}">${doneToday ? '✓' : ''}</div>
+        <span class="practice-name">${escHtml(p)}</span>
+        <span class="practice-count">${total > 0 ? total + 'x' : ''}</span>
+      </div>`;
+    }
+    h += '</div>';
+  }
+  h += '</div>';
+  showPage(h);
+}
+
+function togglePractice(key, el) {
+  if (!userData.practiceLog) userData.practiceLog = {};
+  if (!userData.practiceLog[key]) userData.practiceLog[key] = {};
+  const todayStr = today();
+  if (userData.practiceLog[key][todayStr]) {
+    delete userData.practiceLog[key][todayStr];
+    el.classList.remove('done');
+    el.textContent = '';
+  } else {
+    userData.practiceLog[key][todayStr] = true;
+    el.classList.add('done');
+    el.textContent = '✓';
+    showToast('Practice logged ✓');
+  }
+  saveUserData();
+  // Update today count
+  const todayCount = Object.values(userData.practiceLog).reduce((sum, entries) => sum + (entries[todayStr] ? 1 : 0), 0);
+  const statNum = document.querySelector('.practice-stat-num');
+  if (statNum) statNum.textContent = todayCount;
+}
+
+function calcStreak(log) {
+  const allDates = new Set();
+  Object.values(log).forEach(entries => Object.keys(entries).forEach(d => allDates.add(d)));
+  if (!allDates.size) return 0;
+  let streak = 0;
+  const d = new Date();
+  while (true) {
+    const ds = d.toISOString().slice(0, 10);
+    if (allDates.has(ds)) { streak++; d.setDate(d.getDate() - 1); }
+    else break;
+  }
+  return streak;
+}
+
+
+/* ─── Related Teachings ─── */
+
+function getRelatedTeachings(idx, count) {
+  if (!allTeachings.length || idx < 0) return [];
+  const current = allTeachings[idx];
+  const words = (current.snippet.title + ' ' + current.chapter.title).toLowerCase().split(/\s+/)
+    .filter(w => w.length > 3 && !['the','and','for','with','from','that','this','have','been','were','they','their','which','about','into'].includes(w));
+
+  const scored = allTeachings.map((t, i) => {
+    if (i === idx) return { idx: i, score: -1 };
+    let score = 0;
+    // Same chapter bonus
+    if (t.chapterKey === current.chapterKey && t.partKey === current.partKey) score += 5;
+    // Same part bonus
+    if (t.partKey === current.partKey) score += 2;
+    // Title word overlap
+    const tTitle = (t.snippet.title + ' ' + t.chapter.title).toLowerCase();
+    for (const w of words) { if (tTitle.includes(w)) score += 3; }
+    return { idx: i, score };
+  }).filter(s => s.score > 0);
+
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, count || 4);
+}
+
+function buildRelatedHTML(idx) {
+  const related = getRelatedTeachings(idx, 4);
+  if (!related.length) return '';
+  let h = `<div class="related-section">
+    <div class="related-heading">Related Teachings</div>
+    <div class="related-cards">`;
+  for (const r of related) {
+    const t = allTeachings[r.idx];
+    h += `<div class="related-card" onclick="showTeaching(${r.idx})">
+      <div class="related-card-title">${escHtml(t.snippet.title)}</div>
+      <div class="related-card-meta">Part ${t.partKey} · ${escHtml(t.chapter.title)}</div>
+    </div>`;
+  }
+  h += '</div></div>';
+  return h;
+}
+
+
+/* ─── Share Teaching ─── */
+
+function shareTeaching(idx) {
+  const t = allTeachings[idx];
+  if (!t) return;
+  const url = window.location.origin + window.location.pathname + '#t' + idx;
+  const text = `${t.snippet.title} — The Book of Concentration`;
+
+  if (navigator.share) {
+    navigator.share({ title: text, url }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(url).then(
+      () => showToast('Link copied to clipboard'),
+      () => showToast('Could not copy link')
+    );
+  }
+}
+
 
 </script>
 </body>
