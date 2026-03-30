@@ -17,20 +17,21 @@
    ══════════════════════════════════════════════════════════ */
 
 :root {
-  --bg:           #FAF6F0;
+  --bg:           #FDFCF9;
   --nav-bg:       #0F0F2E;
   --primary:      #1A1A4E;
   --accent:       #C4A35A;
   --accent-dim:   rgba(196,163,90,0.5);
   --text:         #2A2A2A;
   --muted:        #5C5C5C;
+  --dark-gold:    #8B7335;
   --rose:         #8B3A62;
-  --rule:         #DDD5C0;
+  --rule:         #D4C9A8;
   --serif:   'EB Garamond', Georgia, serif;
   --display: 'Cormorant Garamond', Georgia, serif;
   --font-base: 18px;
-  --sidebar-width: 300px;
-  --content-max:   720px;
+  --sidebar-width: 320px;
+  --content-max:   840px;
   --ease: 0.25s ease;
 }
 
@@ -42,13 +43,13 @@ body.night-mode {
   --nav-bg:  #060612;
 }
 
-/* ── LIGHT MODE: sidebar — solid colors matching old handbook ── */
+/* ── LIGHT MODE: sidebar — exact old-handbook colors ── */
 body:not(.night-mode) #sidebar {
   background: #F5F3EE;
-  border-right: 2px solid #C4A35A;
+  border-right: 1px solid #D4C9A8;
 }
 body:not(.night-mode) .sidebar-header {
-  border-bottom: 1px solid #D4C9A8;
+  border-bottom: 2px solid #C4A35A;
 }
 body:not(.night-mode) .sidebar-label {
   color: #8B7335;
@@ -79,19 +80,20 @@ body:not(.night-mode) .font-btn.active {
 }
 body:not(.night-mode) .nav-section-label {
   color: #8B7335;
+  font-weight: 600;
 }
 body:not(.night-mode) .nav-item {
-  color: #5C5C5C;
+  color: #2A2A2A;
 }
 body:not(.night-mode) .nav-item:hover {
   color: #1A1A4E;
-  background: rgba(196,163,90,0.14);
+  background: rgba(196,163,90,0.08);
   border-left-color: #C4A35A;
 }
 body:not(.night-mode) .nav-item.active {
   color: #1A1A4E;
-  background: rgba(196,163,90,0.18);
-  border-left-color: #C4A35A;
+  background: rgba(26,26,78,0.06);
+  border-left-color: #1A1A4E;
   font-weight: 500;
 }
 body:not(.night-mode) .nav-divider {
@@ -99,13 +101,17 @@ body:not(.night-mode) .nav-divider {
 }
 body:not(.night-mode) .nav-part-toggle {
   color: #1A1A4E;
+  font-weight: 600;
 }
 body:not(.night-mode) .nav-part-toggle:hover {
   color: #1A1A4E;
-  background: rgba(196,163,90,0.1);
+  background: rgba(196,163,90,0.08);
 }
 body:not(.night-mode) .nav-part-arrow {
   color: #C4A35A;
+}
+body:not(.night-mode) .ch-count {
+  color: #999;
 }
 body:not(.night-mode) .sidebar-books {
   border-top: 1px solid #D4C9A8;
@@ -702,6 +708,114 @@ body.focus-mode #reading-area { padding-top: 80px; }
   .book-tab { font-size: 9px; }
 }
 
+
+/* ══════════════════════════════════════════════════════════
+   FULL BOOK — CONTINUOUS SCROLL MODE
+   ══════════════════════════════════════════════════════════ */
+
+.full-book { font-family: var(--serif); padding-bottom: 120px; }
+
+.fb-topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg); border-bottom: 1px solid var(--rule);
+  padding: 10px 48px; display: flex; align-items: center; gap: 16px;
+  transition: background var(--ease);
+}
+.fb-back {
+  background: none; border: 1px solid var(--rule); border-radius: 4px;
+  padding: 5px 14px; cursor: pointer; font-family: var(--display);
+  font-size: 12px; color: var(--muted); letter-spacing: 0.06em; transition: all .2s;
+}
+.fb-back:hover { border-color: var(--accent); color: var(--accent); }
+.fb-topbar-label {
+  font-family: var(--display); font-size: 12px; color: var(--muted);
+  letter-spacing: 0.12em; text-transform: uppercase; margin-left: auto;
+}
+
+.fb-book-title {
+  text-align: center; padding: 80px 48px 64px;
+  border-bottom: 2px solid var(--accent);
+  max-width: 700px; margin: 0 auto;
+}
+.fb-title-eyebrow {
+  font-family: var(--display); font-size: 14px; color: var(--accent);
+  letter-spacing: 0.5em; text-transform: uppercase; display: block; margin-bottom: 10px;
+}
+.fb-title-main {
+  font-family: var(--display); font-size: clamp(32px, 5vw, 48px); font-weight: 600;
+  color: var(--primary); letter-spacing: 0.06em; margin-bottom: 16px; line-height: 1.1;
+}
+.fb-title-rule { width: 120px; height: 2px; background: var(--accent); margin: 0 auto 20px; }
+.fb-title-byline {
+  font-family: var(--display); font-size: 15px; font-style: italic;
+  color: var(--muted); margin-bottom: 6px;
+}
+.fb-title-stats { font-size: 13px; color: var(--muted); letter-spacing: 0.1em; }
+
+.fb-part-page {
+  text-align: center; padding: 80px 48px 60px;
+  border-top: 3px solid var(--accent); margin-top: 60px;
+  max-width: 700px; margin-left: auto; margin-right: auto;
+}
+.fb-part-label {
+  font-family: var(--display); font-size: 14px; color: var(--accent);
+  letter-spacing: 0.5em; text-transform: uppercase; display: block; margin-bottom: 12px;
+}
+.fb-part-instructor {
+  font-family: var(--display); font-size: clamp(22px, 3vw, 32px); font-weight: 600;
+  color: var(--primary); letter-spacing: 0.04em; margin-bottom: 10px;
+}
+.fb-part-desc {
+  font-size: 15px; font-style: italic; color: var(--muted); max-width: 440px;
+  margin: 0 auto; line-height: 1.7;
+}
+
+.fb-chapter-header {
+  text-align: center; padding: 56px 48px 36px;
+  border-top: 1px solid var(--rule); margin-top: 48px;
+  max-width: 700px; margin-left: auto; margin-right: auto;
+}
+.fb-ch-label {
+  font-family: var(--display); font-size: 12px; color: var(--accent);
+  letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 8px; display: block;
+}
+.fb-ch-title {
+  font-family: var(--display); font-size: clamp(20px, 3vw, 28px); font-weight: 600;
+  color: var(--primary); letter-spacing: 0.03em; margin-bottom: 6px;
+}
+.fb-ch-count { font-size: 13px; color: var(--muted); font-style: italic; }
+
+.fb-teaching {
+  max-width: 700px; margin: 0 auto; padding: 28px 48px;
+}
+.fb-t-title {
+  font-family: var(--display); font-size: clamp(17px, 2.2vw, 21px); font-weight: 600;
+  color: var(--primary); line-height: 1.3; margin-bottom: 5px;
+}
+.fb-t-meta {
+  font-family: var(--display); font-size: 13px; font-style: italic;
+  color: var(--dark-gold); margin-bottom: 12px;
+}
+.fb-t-rule { height: 1px; background: var(--rule); width: 60px; margin-bottom: 16px; }
+.fb-t-body { color: var(--text); line-height: 1.78; font-size: var(--font-base); }
+.fb-t-body p  { margin-bottom: 13px; }
+.fb-t-body h2 { font-family: var(--display); font-size: 16px; font-weight: 600; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin: 24px 0 10px; }
+.fb-t-body h3 { font-family: var(--display); font-size: 18px; font-weight: 600; color: var(--primary); margin: 20px 0 8px; }
+.fb-t-body h4 { font-family: var(--display); font-size: 17px; font-style: italic; color: var(--dark-gold); margin: 16px 0 6px; }
+.fb-t-body blockquote { margin: 14px 0; padding: 10px 22px; border-left: 3px solid var(--accent); font-style: italic; background: rgba(196,163,90,0.04); }
+.fb-t-body ul, .fb-t-body ol { margin: 10px 0 10px 24px; }
+.fb-t-body li { margin-bottom: 5px; }
+.fb-t-body li::marker { color: var(--accent); }
+.fb-t-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
+.fb-t-body th { background: rgba(196,163,90,0.1); color: var(--primary); font-family: var(--display); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--accent); }
+.fb-t-body td { padding: 8px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+
+.fb-divider {
+  text-align: center; color: var(--accent); font-size: 13px;
+  letter-spacing: 0.5em; padding: 16px 0; max-width: 700px; margin: 0 auto;
+  border-top: 1px dashed var(--rule);
+}
+
   </style>
 </head>
 <body>
@@ -1252,6 +1366,7 @@ function buildSidebarNav() {
   h += '<div class="nav-section-label">Daily</div>';
   h += '<a class="nav-item" onclick="showTodaysTeaching(this)" role="button" tabindex="0">◈ &thinsp;Today\'s Teaching</a>';
   h += '<a class="nav-item" onclick="showRandomTeaching(this)" role="button" tabindex="0">◇ &thinsp;Open a Teaching</a>';
+  h += '<a class="nav-item" onclick="showFullBook(this)" role="button" tabindex="0">☰ &thinsp;Read Full Book</a>';
 
   for (const pk of ['I','II','III']) {
     const part  = handbook.parts[pk];
@@ -1557,6 +1672,81 @@ function showPage(html) {
   tv.classList.remove('hidden');
   tv.innerHTML = `<div class="list-page">${html}</div>`;
   window.scrollTo(0, 0);
+}
+
+function showFullBook(el) {
+  if (!handbook) return;
+  setActiveNav(el);
+  document.getElementById('welcome-screen').classList.add('hidden');
+  const tv = document.getElementById('teaching-view');
+  tv.classList.remove('hidden');
+
+  const partDescs = {
+    'I':   'Transmitted teachings from Pir-o-Murshid Inayat Khan through Pir Zia Inayat Khan',
+    'II':  'Teachings from Urs Qutbuddin Schellenberg — second-year Suluk program',
+    'III': 'Personal transmissions from Guide Mansur — third-year Suluk program'
+  };
+
+  let h = '<div class="full-book">';
+
+  // sticky top bar
+  h += `<div class="fb-topbar">
+    <button class="fb-back" onclick="showWelcome()">← Back to Handbook</button>
+    <span class="fb-topbar-label">Full Book · Continuous Reading</span>
+  </div>`;
+
+  // title block
+  const total = allTeachings.length;
+  h += `<div class="fb-book-title">
+    <span class="fb-title-eyebrow">The Book of Concentration</span>
+    <div class="fb-title-main">Suluk Digital Handbook</div>
+    <div class="fb-title-rule"></div>
+    <div class="fb-title-byline">Mount Qaf Companion · Kabir</div>
+    <div class="fb-title-stats">${total} Teachings · 3 Parts · 26 Chapters</div>
+  </div>`;
+
+  for (const pk of ['I','II','III']) {
+    const part  = handbook.parts[pk];
+    const chKeys = Object.keys(part.chapters).map(Number).sort((a,b)=>a-b).map(String);
+
+    // Part divider page
+    h += `<div class="fb-part-page">
+      <span class="fb-part-label">Part ${pk}</span>
+      <div class="fb-part-instructor">${escHtml(part.instructor)}</div>
+      <div class="fb-part-desc">${escHtml(partDescs[pk])}</div>
+    </div>`;
+
+    chKeys.forEach(ck => {
+      const ch = part.chapters[ck];
+      const snippets = ch.snippets || [];
+
+      // Chapter header
+      h += `<div class="fb-chapter-header">
+        <span class="fb-ch-label">Chapter ${ch.display_number}</span>
+        <div class="fb-ch-title">${escHtml(ch.title)}</div>
+        <div class="fb-ch-count">${snippets.length} teaching${snippets.length!==1?'s':''}</div>
+      </div>`;
+
+      snippets.forEach((t, i) => {
+        if (i > 0) h += '<div class="fb-divider">· · ·</div>';
+        const metaParts = [t.instructor, t.date].filter(Boolean);
+        h += `<div class="fb-teaching">
+          <div class="fb-t-title">${escHtml(t.title||'')}</div>
+          ${metaParts.length ? `<div class="fb-t-meta">${escHtml(metaParts.join(' · '))}</div>` : ''}
+          <div class="fb-t-rule"></div>
+          <div class="fb-t-body">${parseMarkdown(t.body||'')}</div>
+        </div>`;
+      });
+    });
+  }
+
+  h += '</div>'; // .full-book
+
+  tv.innerHTML = h;
+  const bc = document.getElementById('breadcrumb-current');
+  if (bc) bc.textContent = 'Full Book';
+  window.scrollTo(0, 0);
+  currentIdx = -1;
 }
 
 function setBreadcrumb(text) {
