@@ -14,13 +14,12 @@
 
 /* ══════════════════════════════════════════════════════════
    SULUK DIGITAL HANDBOOK — DESIGN SYSTEM
-   Phase A: Foundation — Cover, Shell, Night Mode, Font Size
+   Phase A + B
    ══════════════════════════════════════════════════════════ */
 
 
-/* ─── CSS Variables: Light Mode (default) ─── */
+/* ─── CSS Variables ─── */
 :root {
-  /* Palette */
   --bg:           #FAF6F0;
   --nav-bg:       #0F0F2E;
   --primary:      #1A1A4E;
@@ -30,37 +29,25 @@
   --muted:        #5C5C5C;
   --rose:         #8B3A62;
   --rule:         #DDD5C0;
-  --sidebar-bg:   #F4EFE7;
-
-  /* Typography */
   --serif:   'EB Garamond', Georgia, serif;
   --display: 'Cormorant Garamond', Georgia, serif;
   --font-base: 18px;
-
-  /* Layout */
   --sidebar-width: 300px;
   --content-max:   720px;
-
-  /* Motion */
   --ease: 0.25s ease;
 }
 
-/* ─── Night Mode Overrides ─── */
 body.night-mode {
   --bg:         #0F0F2E;
   --text:       #FAF6F0;
   --muted:      #9890B8;
   --rule:       rgba(255,255,255,0.08);
-  --sidebar-bg: #080818;
   --nav-bg:     #060612;
 }
 
-/* ─── Font Size Overrides ─── */
 body.font-large { --font-base: 21px; }
 body.font-xl    { --font-base: 24px; }
 
-
-/* ─── Reset ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
@@ -92,7 +79,6 @@ body {
   overflow: hidden;
 }
 
-/* Background image — Mount Qaf */
 #cover-bg {
   position: absolute;
   inset: 0;
@@ -105,20 +91,11 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    165deg,
-    rgba(10, 10, 32, 0.86) 0%,
-    rgba(15, 15, 46, 0.80) 45%,
-    rgba(8, 8, 24, 0.92) 100%
-  );
+  background: linear-gradient(165deg, rgba(10,10,32,0.86) 0%, rgba(15,15,46,0.80) 45%, rgba(8,8,24,0.92) 100%);
 }
 
-@keyframes bgReveal {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
-}
+@keyframes bgReveal { to { opacity: 1; } }
 
-/* Content container */
 #cover-content {
   position: relative;
   z-index: 2;
@@ -131,24 +108,6 @@ body {
   align-items: center;
 }
 
-/* Emblem */
-#cover-emblem {
-  width: 96px;
-  height: 96px;
-  object-fit: contain;
-  opacity: 0;
-  filter: brightness(1.25);
-  animation: emblemIn 2s ease 1.2s forwards;
-  margin-bottom: 32px;
-}
-
-@keyframes emblemIn {
-  0%   { opacity: 0; transform: scale(0.85); }
-  60%  { opacity: 1; transform: scale(1.03); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
-/* Eyebrow line — matches title styling */
 #cover-eyebrow {
   font-family: var(--display);
   font-size: clamp(34px, 7vw, 52px);
@@ -161,7 +120,6 @@ body {
   margin-bottom: 0;
 }
 
-/* Main title */
 #cover-title {
   font-family: var(--display);
   font-size: clamp(34px, 7vw, 52px);
@@ -174,7 +132,6 @@ body {
   margin-bottom: 0;
 }
 
-/* Gold rule */
 #cover-rule {
   width: 100px;
   height: 1px;
@@ -184,12 +141,11 @@ body {
   animation: fadeIn 0.7s ease 3.2s forwards;
 }
 
-/* Subtitle */
 #cover-subtitle {
   font-family: var(--display);
   font-size: 16px;
   font-style: italic;
-  color: rgba(250, 246, 240, 0.62);
+  color: rgba(250,246,240,0.62);
   font-weight: 300;
   letter-spacing: 0.03em;
   opacity: 0;
@@ -197,11 +153,10 @@ body {
   margin-bottom: 6px;
 }
 
-/* Program line */
 #cover-program {
   font-family: var(--display);
   font-size: 11px;
-  color: rgba(196, 163, 90, 0.5);
+  color: rgba(196,163,90,0.5);
   letter-spacing: 0.22em;
   text-transform: uppercase;
   opacity: 0;
@@ -209,12 +164,11 @@ body {
   margin-bottom: 48px;
 }
 
-/* Enter button */
 #cover-enter {
   display: inline-block;
   padding: 13px 48px;
   background: transparent;
-  border: 1px solid rgba(196, 163, 90, 0.45);
+  border: 1px solid rgba(196,163,90,0.45);
   color: var(--accent);
   font-family: var(--display);
   font-size: 13px;
@@ -228,34 +182,18 @@ body {
   border-radius: 2px;
 }
 
-#cover-enter:hover,
-#cover-enter:focus {
-  background: rgba(196, 163, 90, 0.1);
-  border-color: rgba(196, 163, 90, 0.75);
+#cover-enter:hover, #cover-enter:focus {
+  background: rgba(196,163,90,0.1);
+  border-color: rgba(196,163,90,0.75);
   color: #FAF6F0;
   outline: none;
 }
 
-/* Cover exit */
-#cover.exiting {
-  animation: coverOut 0.75s ease forwards;
-}
+#cover.exiting { animation: coverOut 0.75s ease forwards; }
 
-@keyframes coverOut {
-  0%   { opacity: 1; }
-  100% { opacity: 0; pointer-events: none; }
-}
-
-/* Shared keyframes */
-@keyframes fadeUp {
-  0%   { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
-}
+@keyframes coverOut { to { opacity: 0; pointer-events: none; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 
 /* ══════════════════════════════════════════════════════════
@@ -280,8 +218,7 @@ body {
   width: var(--sidebar-width);
   background: var(--nav-bg);
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   height: 100vh;
   overflow: hidden;
   z-index: 200;
@@ -291,10 +228,9 @@ body {
   flex-shrink: 0;
 }
 
-/* Header */
 .sidebar-header {
   padding: 22px 20px 17px;
-  border-bottom: 1px solid rgba(196, 163, 90, 0.18);
+  border-bottom: 1px solid rgba(196,163,90,0.18);
   flex-shrink: 0;
 }
 
@@ -302,7 +238,7 @@ body {
   font-family: var(--display);
   font-size: 9px;
   font-weight: 600;
-  color: rgba(196, 163, 90, 0.5);
+  color: rgba(196,163,90,0.5);
   letter-spacing: 0.32em;
   text-transform: uppercase;
   margin-bottom: 6px;
@@ -312,29 +248,30 @@ body {
   font-family: var(--display);
   font-size: 16px;
   font-weight: 500;
-  color: rgba(250, 246, 240, 0.9);
+  color: rgba(250,246,240,0.9);
   letter-spacing: 0.02em;
   line-height: 1.3;
+  cursor: pointer;
 }
 
-/* Controls row */
+.sidebar-book-title:hover { color: var(--accent); }
+
 .sidebar-controls {
   padding: 12px 14px;
-  border-bottom: 1px solid rgba(196, 163, 90, 0.1);
+  border-bottom: 1px solid rgba(196,163,90,0.1);
   display: flex;
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
 }
 
-/* Night/Day toggle */
 #mode-toggle {
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
   background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(196, 163, 90, 0.18);
+  border: 1px solid rgba(196,163,90,0.18);
   border-radius: 20px;
   color: rgba(250,246,240,0.65);
   font-family: var(--display);
@@ -347,25 +284,19 @@ body {
 }
 
 #mode-toggle:hover {
-  background: rgba(196, 163, 90, 0.12);
+  background: rgba(196,163,90,0.12);
   color: rgba(250,246,240,0.9);
-  border-color: rgba(196, 163, 90, 0.35);
+  border-color: rgba(196,163,90,0.35);
 }
 
 .mode-icon { font-size: 13px; line-height: 1; }
 
-/* Font size buttons */
-.font-control {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  margin-left: auto;
-}
+.font-control { display: flex; align-items: center; gap: 3px; margin-left: auto; }
 
 .font-btn {
   padding: 5px 8px;
   background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(196, 163, 90, 0.14);
+  border: 1px solid rgba(196,163,90,0.14);
   border-radius: 4px;
   color: rgba(250,246,240,0.45);
   cursor: pointer;
@@ -377,28 +308,22 @@ body {
   user-select: none;
 }
 
-.font-btn:hover,
-.font-btn.active {
-  background: rgba(196, 163, 90, 0.14);
+.font-btn:hover, .font-btn.active {
+  background: rgba(196,163,90,0.14);
   color: var(--accent);
-  border-color: rgba(196, 163, 90, 0.38);
+  border-color: rgba(196,163,90,0.38);
 }
 
-/* Navigation */
 .sidebar-nav {
   flex: 1;
   overflow-y: auto;
-  padding: 14px 0 20px;
+  padding: 12px 0 20px;
   scrollbar-width: thin;
   scrollbar-color: rgba(196,163,90,0.2) transparent;
 }
 
 .sidebar-nav::-webkit-scrollbar { width: 3px; }
-.sidebar-nav::-webkit-scrollbar-track { background: transparent; }
-.sidebar-nav::-webkit-scrollbar-thumb {
-  background: rgba(196,163,90,0.2);
-  border-radius: 2px;
-}
+.sidebar-nav::-webkit-scrollbar-thumb { background: rgba(196,163,90,0.2); border-radius: 2px; }
 
 .nav-section-label {
   padding: 14px 20px 5px;
@@ -407,14 +332,14 @@ body {
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(196, 163, 90, 0.38);
+  color: rgba(196,163,90,0.38);
   user-select: none;
 }
 
 .nav-item {
   display: block;
   padding: 9px 20px;
-  color: rgba(250, 246, 240, 0.52);
+  color: rgba(250,246,240,0.52);
   text-decoration: none;
   font-family: var(--display);
   font-size: 14px;
@@ -427,38 +352,66 @@ body {
 }
 
 .nav-item:hover {
-  color: rgba(250, 246, 240, 0.88);
-  background: rgba(196, 163, 90, 0.07);
-  border-left-color: rgba(196, 163, 90, 0.35);
+  color: rgba(250,246,240,0.88);
+  background: rgba(196,163,90,0.07);
+  border-left-color: rgba(196,163,90,0.35);
 }
 
 .nav-item.active {
   color: var(--accent);
-  background: rgba(196, 163, 90, 0.1);
+  background: rgba(196,163,90,0.1);
   border-left-color: var(--accent);
 }
 
-.nav-part-label {
-  padding: 16px 20px 5px;
+.nav-divider { height: 1px; background: rgba(196,163,90,0.08); margin: 8px 16px; }
+
+/* Part toggles */
+.nav-part-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
   font-family: var(--display);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(250, 246, 240, 0.28);
+  color: rgba(250,246,240,0.45);
+  cursor: pointer;
   user-select: none;
+  transition: all 0.15s;
 }
 
-.nav-divider {
-  height: 1px;
-  background: rgba(196, 163, 90, 0.08);
-  margin: 8px 16px;
+.nav-part-toggle:hover {
+  color: rgba(196,163,90,0.8);
+  background: rgba(196,163,90,0.06);
+}
+
+.nav-part-arrow {
+  font-size: 9px;
+  color: rgba(196,163,90,0.45);
+  width: 10px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+/* Chapter items */
+.nav-chapter {
+  padding: 7px 16px 7px 30px !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+}
+
+.ch-count {
+  font-size: 10px;
+  opacity: 0.38;
+  margin-left: 3px;
 }
 
 /* Book selector */
 .sidebar-books {
   padding: 12px 14px;
-  border-top: 1px solid rgba(196, 163, 90, 0.1);
+  border-top: 1px solid rgba(196,163,90,0.1);
   flex-shrink: 0;
 }
 
@@ -467,16 +420,12 @@ body {
   font-size: 9px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(196, 163, 90, 0.38);
+  color: rgba(196,163,90,0.38);
   margin-bottom: 8px;
   user-select: none;
 }
 
-.book-tabs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 4px;
-}
+.book-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
 
 .book-tab {
   padding: 7px 4px;
@@ -493,33 +442,30 @@ body {
 }
 
 .book-tab.current {
-  background: rgba(196, 163, 90, 0.16);
+  background: rgba(196,163,90,0.16);
   color: var(--accent);
-  border-color: rgba(196, 163, 90, 0.32);
+  border-color: rgba(196,163,90,0.32);
   cursor: pointer;
 }
 
 .book-tab.future {
-  color: rgba(250, 246, 240, 0.18);
+  color: rgba(250,246,240,0.18);
   border-color: rgba(255,255,255,0.05);
   cursor: default;
   font-size: 9px;
 }
 
-
-/* ─── Mobile sidebar toggle ─── */
+/* Mobile toggle */
 #sidebar-toggle {
   display: none;
   position: fixed;
-  top: 14px;
-  left: 14px;
+  top: 14px; left: 14px;
   z-index: 300;
-  width: 40px;
-  height: 40px;
+  width: 40px; height: 40px;
   background: var(--nav-bg);
-  border: 1px solid rgba(196, 163, 90, 0.28);
+  border: 1px solid rgba(196,163,90,0.28);
   border-radius: 6px;
-  color: rgba(196, 163, 90, 0.8);
+  color: rgba(196,163,90,0.8);
   font-size: 17px;
   cursor: pointer;
   align-items: center;
@@ -527,12 +473,8 @@ body {
   transition: all 0.2s;
 }
 
-#sidebar-toggle:hover {
-  background: rgba(196, 163, 90, 0.14);
-  color: var(--accent);
-}
+#sidebar-toggle:hover { background: rgba(196,163,90,0.14); color: var(--accent); }
 
-/* Overlay behind open sidebar (mobile) */
 #sidebar-overlay {
   display: none;
   position: fixed;
@@ -543,9 +485,7 @@ body {
   transition: opacity 0.3s;
 }
 
-#sidebar-overlay.visible {
-  opacity: 1;
-}
+#sidebar-overlay.visible { opacity: 1; }
 
 
 /* ══════════════════════════════════════════════════════════
@@ -557,10 +497,9 @@ body {
   flex: 1;
   min-height: 100vh;
   background: var(--bg);
-  transition: background var(--ease), margin-left var(--ease);
+  transition: background var(--ease);
 }
 
-/* Top bar */
 #topbar {
   position: sticky;
   top: 0;
@@ -585,22 +524,12 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0;
 }
 
-.breadcrumb-sep {
-  color: var(--accent);
-  opacity: 0.5;
-  font-size: 10px;
-  flex-shrink: 0;
-}
+.breadcrumb-sep { color: var(--accent); opacity: 0.5; font-size: 10px; flex-shrink: 0; }
 
-.topbar-right {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
+.topbar-right { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 
 .topbar-btn {
   padding: 5px 14px;
@@ -613,14 +542,11 @@ body {
   cursor: pointer;
   letter-spacing: 0.07em;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
-.topbar-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
+.topbar-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-/* Reading area */
 #reading-area {
   max-width: var(--content-max);
   margin: 0 auto;
@@ -629,27 +555,12 @@ body {
 
 
 /* ══════════════════════════════════════════════════════════
-   WELCOME SCREEN (Phase A)
+   WELCOME SCREEN
    ══════════════════════════════════════════════════════════ */
 
 .welcome-screen {
   text-align: center;
   padding: 72px 32px 80px;
-}
-
-.welcome-emblem {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  opacity: 0.28;
-  margin-bottom: 36px;
-  filter: sepia(0.4);
-  transition: opacity var(--ease);
-}
-
-body.night-mode .welcome-emblem {
-  opacity: 0.18;
-  filter: brightness(2) sepia(0.6);
 }
 
 .welcome-screen h1 {
@@ -659,13 +570,10 @@ body.night-mode .welcome-emblem {
   color: var(--primary);
   letter-spacing: 0.04em;
   line-height: 1.2;
-  margin-bottom: 0;
   transition: color var(--ease);
 }
 
-body.night-mode .welcome-screen h1 {
-  color: rgba(250, 246, 240, 0.88);
-}
+body.night-mode .welcome-screen h1 { color: rgba(250,246,240,0.88); }
 
 .welcome-rule {
   width: 72px;
@@ -689,7 +597,7 @@ body.night-mode .welcome-screen h1 {
   font-size: 14px;
   color: var(--muted);
   line-height: 2;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .welcome-instructors span {
@@ -705,42 +613,303 @@ body.night-mode .welcome-screen h1 {
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(196, 163, 90, 0.55);
-  margin-top: 8px;
+  color: rgba(196,163,90,0.55);
 }
 
-.welcome-note {
-  margin-top: 56px;
-  padding: 20px 24px;
+/* Welcome action buttons */
+.welcome-actions {
+  margin-top: 40px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 11px 28px;
+  background: transparent;
   border: 1px solid var(--rule);
   border-radius: 4px;
-  background: rgba(196, 163, 90, 0.04);
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+  font-family: var(--display);
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition: all 0.2s;
 }
 
-body.night-mode .welcome-note {
-  background: rgba(196, 163, 90, 0.06);
+.action-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.action-btn.primary {
+  background: rgba(196,163,90,0.08);
+  border-color: rgba(196,163,90,0.35);
+  color: var(--accent);
 }
 
-.welcome-note p {
+.welcome-resume {
+  margin-top: 18px;
+  font-family: var(--display);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.resume-link {
+  cursor: pointer;
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.resume-link:hover { border-bottom-color: var(--accent); }
+
+
+/* ══════════════════════════════════════════════════════════
+   TEACHING VIEW — PHASE B
+   ══════════════════════════════════════════════════════════ */
+
+.teaching-view {
+  animation: fadeIn 0.2s ease;
+}
+
+.teaching-header { margin-bottom: 20px; }
+
+.teaching-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.t-tag {
+  font-family: var(--display);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.t-part {
+  background: rgba(26,26,78,0.07);
+  color: var(--primary);
+}
+body.night-mode .t-part {
+  background: rgba(250,246,240,0.07);
+  color: rgba(250,246,240,0.55);
+}
+
+.t-chapter {
+  background: rgba(196,163,90,0.1);
+  color: #8B7335;
+}
+body.night-mode .t-chapter { color: rgba(196,163,90,0.7); }
+
+.t-class {
+  background: rgba(139,58,98,0.07);
+  color: var(--rose);
+}
+body.night-mode .t-class { background: rgba(139,58,98,0.12); }
+
+.t-time {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+}
+
+.teaching-title {
+  font-family: var(--display);
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight: 500;
+  color: var(--primary);
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  margin-bottom: 8px;
+}
+body.night-mode .teaching-title { color: rgba(250,246,240,0.9); }
+
+.teaching-instructor {
   font-family: var(--display);
   font-size: 13px;
   font-style: italic;
   color: var(--muted);
-  line-height: 1.6;
+  letter-spacing: 0.04em;
 }
 
-.welcome-note .note-phase {
-  font-family: var(--display);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  opacity: 0.7;
-  margin-bottom: 6px;
+.teaching-rule {
+  width: 56px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  margin: 20px 0;
 }
+
+
+/* ══════════════════════════════════════════════════════════
+   MARKDOWN CONTENT RENDERING
+   ══════════════════════════════════════════════════════════ */
+
+.md-content h2 {
+  font-family: var(--display);
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 500;
+  color: var(--primary);
+  margin: 32px 0 12px;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+body.night-mode .md-content h2 { color: rgba(250,246,240,0.85); }
+
+.md-content h3 {
+  font-family: var(--display);
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 500;
+  color: var(--primary);
+  margin: 24px 0 8px;
+  letter-spacing: 0.01em;
+}
+body.night-mode .md-content h3 { color: rgba(250,246,240,0.75); }
+
+.md-content h4 {
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 18px 0 6px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.md-content p {
+  margin-bottom: 1em;
+  line-height: 1.85;
+}
+
+.md-content ul, .md-content ol {
+  margin: 0.5em 0 1.2em 1.6em;
+  line-height: 1.8;
+}
+
+.md-content li { margin-bottom: 0.4em; }
+
+.md-content strong {
+  font-weight: 600;
+  color: var(--primary);
+}
+body.night-mode .md-content strong { color: rgba(250,246,240,0.9); }
+
+.md-content em { font-style: italic; }
+
+.md-content code {
+  font-family: monospace;
+  font-size: 0.85em;
+  background: rgba(196,163,90,0.1);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--rose);
+}
+
+.md-content blockquote {
+  margin: 1.4em 0;
+  padding: 14px 20px;
+  border-left: 3px solid var(--accent);
+  background: rgba(196,163,90,0.05);
+  color: var(--muted);
+  font-style: italic;
+  font-size: 1.02em;
+  line-height: 1.7;
+  border-radius: 0 4px 4px 0;
+}
+body.night-mode .md-content blockquote { background: rgba(196,163,90,0.07); }
+
+.md-content .md-hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 28px 0;
+}
+
+/* Tables */
+.md-content .table-wrap {
+  overflow-x: auto;
+  margin: 1.2em 0;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+}
+
+.md-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+  font-family: var(--display);
+}
+
+.md-content th {
+  padding: 9px 14px;
+  text-align: left;
+  background: rgba(26,26,78,0.05);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+body.night-mode .md-content th {
+  background: rgba(250,246,240,0.05);
+  color: rgba(250,246,240,0.6);
+}
+
+.md-content td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  line-height: 1.55;
+}
+body.night-mode .md-content td { border-bottom-color: rgba(255,255,255,0.06); }
+
+.md-content tr:last-child td { border-bottom: none; }
+
+.md-content tr:hover td { background: rgba(196,163,90,0.03); }
+
+
+/* ══════════════════════════════════════════════════════════
+   TEACHING NAVIGATION (PREV / NEXT)
+   ══════════════════════════════════════════════════════════ */
+
+.teaching-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+
+.tnav-btn {
+  padding: 9px 22px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font-family: var(--display);
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  transition: all 0.2s;
+}
+
+.tnav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.tnav-btn:disabled { opacity: 0.25; cursor: default; }
+
+.teaching-position {
+  font-family: var(--display);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.pos-sep { opacity: 0.4; margin: 0 4px; }
 
 
 /* ══════════════════════════════════════════════════════════
@@ -771,29 +940,13 @@ body.night-mode .welcome-note {
    ══════════════════════════════════════════════════════════ */
 
 body.focus-mode #sidebar,
-body.focus-mode #sidebar-toggle {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-}
+body.focus-mode #sidebar-toggle { opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
 
-body.focus-mode #topbar {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-}
+body.focus-mode #topbar { opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
 
-body.focus-mode #content {
-  margin-left: 0;
-}
-
-body.focus-mode #progress-bar {
-  left: 0;
-}
-
-body.focus-mode #reading-area {
-  padding-top: 80px;
-}
+body.focus-mode #content { margin-left: 0; }
+body.focus-mode #progress-bar { left: 0; }
+body.focus-mode #reading-area { padding-top: 80px; }
 
 
 /* ══════════════════════════════════════════════════════════
@@ -803,55 +956,23 @@ body.focus-mode #reading-area {
 @media (max-width: 768px) {
   :root { --sidebar-width: 280px; }
 
-  #sidebar {
-    transform: translateX(-100%);
-    box-shadow: none;
-  }
-
-  #sidebar.open {
-    transform: translateX(0);
-    box-shadow: 6px 0 32px rgba(0,0,0,0.45);
-  }
-
-  #sidebar-overlay.visible {
-    display: block;
-  }
-
-  #sidebar-toggle {
-    display: flex;
-  }
-
-  #content {
-    margin-left: 0 !important;
-  }
-
-  #topbar {
-    padding: 10px 16px 10px 62px;
-  }
-
-  #reading-area {
-    padding: 32px 20px 100px;
-  }
-
-  #progress-bar {
-    left: 0 !important;
-  }
-
-  .welcome-screen {
-    padding: 48px 16px 60px;
-  }
+  #sidebar { transform: translateX(-100%); box-shadow: none; }
+  #sidebar.open { transform: translateX(0); box-shadow: 6px 0 32px rgba(0,0,0,0.45); }
+  #sidebar-overlay.visible { display: block; }
+  #sidebar-toggle { display: flex; }
+  #content { margin-left: 0 !important; }
+  #topbar { padding: 10px 16px 10px 62px; }
+  #reading-area { padding: 32px 20px 100px; }
+  #progress-bar { left: 0 !important; }
+  .welcome-screen { padding: 48px 16px 60px; }
+  .teaching-nav { flex-direction: column; gap: 16px; }
+  .teaching-nav .teaching-position { order: -1; }
+  .tnav-btn { width: 100%; text-align: center; }
 }
 
 @media (max-width: 480px) {
-  #cover-emblem {
-    width: 72px;
-    height: 72px;
-  }
-
-  #cover-title {
-    font-size: 32px;
-  }
-
+  #cover-title { font-size: 32px; }
+  #cover-eyebrow { font-size: 32px; }
   .book-tab { font-size: 9px; }
 }
 
@@ -868,17 +989,11 @@ body.focus-mode #reading-area {
 
   <div id="cover-content">
     <div id="cover-eyebrow">Suluk · Mount Qaf</div>
-
     <h1 id="cover-title">Digital Handbook</h1>
-
     <div id="cover-rule"></div>
-
     <div id="cover-subtitle">A personal companion for the Suluk teachings</div>
     <div id="cover-program">Kabir</div>
-
-    <button id="cover-enter" onclick="enterHandbook()">
-      Enter the Handbook
-    </button>
+    <button id="cover-enter" onclick="enterHandbook()">Enter the Handbook</button>
   </div>
 </section>
 
@@ -888,20 +1003,9 @@ body.focus-mode #reading-area {
      ══════════════════════════════════════════════ -->
 <div id="app" class="hidden">
 
-  <!-- Reading progress indicator -->
-  <div id="progress-bar" aria-hidden="true">
-    <div id="progress-fill"></div>
-  </div>
+  <div id="progress-bar" aria-hidden="true"><div id="progress-fill"></div></div>
 
-  <!-- Mobile: sidebar open button -->
-  <button id="sidebar-toggle"
-          onclick="toggleSidebar()"
-          aria-label="Open navigation"
-          aria-expanded="false">
-    ☰
-  </button>
-
-  <!-- Mobile: overlay to close sidebar -->
+  <button id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Open navigation" aria-expanded="false">☰</button>
   <div id="sidebar-overlay" onclick="closeSidebar()"></div>
 
   <!-- ─── Sidebar ─── -->
@@ -909,134 +1013,41 @@ body.focus-mode #reading-area {
 
     <div class="sidebar-header">
       <div class="sidebar-label">Suluk Digital Handbook</div>
-      <div class="sidebar-book-title" id="sidebar-book-title">
-        The Book of Concentration
-      </div>
+      <div class="sidebar-book-title" onclick="showWelcome()">The Book of Concentration</div>
     </div>
 
-    <!-- Controls -->
     <div class="sidebar-controls">
-      <button id="mode-toggle"
-              onclick="toggleNightMode()"
-              title="Toggle night / day mode"
-              aria-label="Toggle night mode">
+      <button id="mode-toggle" onclick="toggleNightMode()" title="Toggle night / day mode" aria-label="Toggle night mode">
         <span class="mode-icon" id="mode-icon">☾</span>
         <span id="mode-label">Day</span>
       </button>
       <div class="font-control" role="group" aria-label="Text size">
-        <button class="font-btn active"
-                id="font-btn-normal"
-                onclick="setFontSize('normal', this)"
-                title="Normal text size">A</button>
-        <button class="font-btn"
-                id="font-btn-large"
-                onclick="setFontSize('large', this)"
-                title="Large text size">A+</button>
-        <button class="font-btn"
-                id="font-btn-xl"
-                onclick="setFontSize('xl', this)"
-                title="Extra large text size">A++</button>
+        <button class="font-btn active" id="font-btn-normal" onclick="setFontSize('normal', this)" title="Normal">A</button>
+        <button class="font-btn" id="font-btn-large" onclick="setFontSize('large', this)" title="Large">A+</button>
+        <button class="font-btn" id="font-btn-xl" onclick="setFontSize('xl', this)" title="X-Large">A++</button>
       </div>
     </div>
 
-    <!-- Navigation links -->
+    <!-- Navigation — populated by JS after data loads -->
     <div class="sidebar-nav" id="sidebar-nav">
+      <div class="nav-section-label">Loading…</div>
+    </div>
 
-      <div class="nav-section-label">Handbook</div>
-
-      <a class="nav-item active"
-         id="nav-welcome"
-         onclick="showWelcome(this)"
-         role="button"
-         tabindex="0">
-        ◇ &thinsp;Welcome
-      </a>
-
-      <div class="nav-divider"></div>
-      <div class="nav-part-label">The Book of Concentration</div>
-
-      <a class="nav-item"
-         onclick="navPlaceholder(this, 'Part I — Pir Zia')"
-         role="button" tabindex="0">
-        Part I &hairsp;·&hairsp; Pir Zia Inayat Khan
-      </a>
-      <a class="nav-item"
-         onclick="navPlaceholder(this, 'Part II — Urs')"
-         role="button" tabindex="0">
-        Part II &hairsp;·&hairsp; Urs Qutbuddin
-      </a>
-      <a class="nav-item"
-         onclick="navPlaceholder(this, 'Part III — Mansur')"
-         role="button" tabindex="0">
-        Part III &hairsp;·&hairsp; Guide Mansur
-      </a>
-
-      <div class="nav-divider"></div>
-      <div class="nav-section-label">Personal</div>
-
-      <a class="nav-item"
-         onclick="navPlaceholder(this, 'Bookmarks')"
-         role="button" tabindex="0">
-        ◈ &thinsp;Bookmarks
-      </a>
-      <a class="nav-item"
-         onclick="navPlaceholder(this, 'Notes & Journal')"
-         role="button" tabindex="0">
-        ✦ &thinsp;Notes & Journal
-      </a>
-      <a class="nav-item"
-         onclick="navPlaceholder(this, 'Daily Practice')"
-         role="button" tabindex="0">
-        ○ &thinsp;Daily Practice
-      </a>
-
-      <div class="nav-divider"></div>
-      <div class="nav-section-label">Discover</div>
-
-      <a class="nav-item"
-         onclick="navPlaceholder(this, 'Audio Library')"
-         role="button" tabindex="0">
-        ♪ &thinsp;Audio Library
-      </a>
-      <a class="nav-item"
-         onclick="navPlaceholder(this, 'Search')"
-         role="button" tabindex="0">
-        ⊙ &thinsp;Search
-      </a>
-      <a class="nav-item"
-         onclick="navPlaceholder(this, 'Glossary')"
-         role="button" tabindex="0">
-        ◉ &thinsp;Glossary
-      </a>
-
-    </div><!-- /sidebar-nav -->
-
-    <!-- The Four Books selector -->
     <div class="sidebar-books">
       <div class="books-label">The Four Books</div>
       <div class="book-tabs">
-        <div class="book-tab current" title="The Book of Concentration — Current">
-          Conc.
-        </div>
-        <div class="book-tab future" title="The Book of Contemplation — Coming Soon">
-          Cont.
-        </div>
-        <div class="book-tab future" title="The Book of Meditation — Future">
-          Med.
-        </div>
-        <div class="book-tab future" title="The Book of Realization — Future">
-          Real.
-        </div>
+        <div class="book-tab current" title="The Book of Concentration">Conc.</div>
+        <div class="book-tab future" title="Coming Soon">Cont.</div>
+        <div class="book-tab future" title="Future">Med.</div>
+        <div class="book-tab future" title="Future">Real.</div>
       </div>
     </div>
 
-  </nav><!-- /sidebar -->
-
+  </nav>
 
   <!-- ─── Main Content ─── -->
   <main id="content">
 
-    <!-- Top bar -->
     <div id="topbar">
       <nav class="breadcrumb" aria-label="Page location">
         <span>Suluk Handbook</span>
@@ -1044,50 +1055,38 @@ body.focus-mode #reading-area {
         <span id="breadcrumb-current">Welcome</span>
       </nav>
       <div class="topbar-right">
-        <button class="topbar-btn"
-                id="focus-btn"
-                onclick="toggleFocusMode()"
-                title="Focus mode — hide chrome">
-          Focus
-        </button>
+        <button class="topbar-btn" id="focus-btn" onclick="toggleFocusMode()" title="Focus mode">Focus</button>
       </div>
     </div>
 
-    <!-- Reading area -->
     <div id="reading-area">
 
-      <!-- Welcome screen (Phase A placeholder) -->
+      <!-- Welcome screen -->
       <div id="welcome-screen" class="welcome-screen">
-
         <h1>The Book of<br>Concentration</h1>
-
         <div class="welcome-rule"></div>
-
-        <p class="welcome-lead">
-          333 teachings from the Concentration stage of the Suluk Academy,
-          gathered for contemplation and daily practice.
-        </p>
-
+        <p class="welcome-lead">333 teachings from the Concentration stage of the Suluk Academy, gathered for contemplation and daily practice.</p>
         <div class="welcome-instructors">
           <div><span>Part I</span> Pir Zia Inayat Khan</div>
           <div><span>Part II</span> Urs Qutbuddin Schellenberg</div>
           <div><span>Part III</span> Guide Mansur</div>
         </div>
+        <div class="welcome-stats">333 Teachings &nbsp;·&nbsp; 26 Chapters &nbsp;·&nbsp; 20 Sessions</div>
 
-        <div class="welcome-stats">
-          333 Teachings &nbsp;·&nbsp; 26 Chapters &nbsp;·&nbsp; 20 Sessions
+        <div id="welcome-actions" class="welcome-actions hidden">
+          <button class="action-btn primary" onclick="showTodaysTeaching()">◈ Today's Teaching</button>
+          <button class="action-btn" onclick="showRandomTeaching()">◇ Open a Teaching</button>
         </div>
 
-        <div class="welcome-note">
-          <div class="note-phase">Phase A Complete</div>
-          <p>The handbook shell is ready. Phase B will load all 333 teachings from the concentration data — the full book, fully readable on every device.</p>
-        </div>
+        <div id="welcome-resume" class="welcome-resume hidden"></div>
+      </div>
 
-      </div><!-- /welcome-screen -->
+      <!-- Teaching view — populated by JS -->
+      <div id="teaching-view" class="hidden"></div>
 
     </div><!-- /reading-area -->
 
-  </main><!-- /content -->
+  </main>
 
 </div><!-- /app -->
 
@@ -1095,9 +1094,10 @@ body.focus-mode #reading-area {
 <script>
 /* ══════════════════════════════════════════════════════════
    SULUK DIGITAL HANDBOOK
-   Phase A — Foundation JavaScript
+   Phase A + B
    ══════════════════════════════════════════════════════════ */
 
+/* ─── State ─── */
 const state = {
   nightMode:   false,
   fontSize:    'normal',
@@ -1105,8 +1105,12 @@ const state = {
   sidebarOpen: false,
 };
 
+let handbook     = null;
+let allTeachings = [];   // flat [{partKey, chapterKey, part, chapter, snippet, globalIndex}]
+let currentIdx   = -1;
 
-/* ─── Initialise on load ─── */
+
+/* ─── Boot ─── */
 document.addEventListener('DOMContentLoaded', () => {
   restorePrefs();
   bindKeyboard();
@@ -1115,30 +1119,23 @@ document.addEventListener('DOMContentLoaded', () => {
 function restorePrefs() {
   try {
     const prefs = JSON.parse(localStorage.getItem('suluk_prefs') || '{}');
-    if (prefs.nightMode) {
-      state.nightMode = true;
-      applyNightMode(false);
-    }
+    if (prefs.nightMode) { state.nightMode = true; applyNightMode(false); }
     if (prefs.fontSize && prefs.fontSize !== 'normal') {
       const btn = document.getElementById('font-btn-' + prefs.fontSize);
       if (btn) setFontSize(prefs.fontSize, btn, false);
     }
-  } catch (e) {
-    // localStorage unavailable — proceed with defaults
-  }
+  } catch(e) {}
 }
 
 function savePrefs() {
-  try {
-    localStorage.setItem('suluk_prefs', JSON.stringify({
-      nightMode: state.nightMode,
-      fontSize:  state.fontSize,
-    }));
-  } catch (e) {}
+  try { localStorage.setItem('suluk_prefs', JSON.stringify({ nightMode: state.nightMode, fontSize: state.fontSize })); } catch(e) {}
 }
 
 
-/* ─── Cover page ─── */
+/* ══════════════════════════════════════════════════════════
+   COVER
+   ══════════════════════════════════════════════════════════ */
+
 function enterHandbook() {
   const cover = document.getElementById('cover');
   const app   = document.getElementById('app');
@@ -1148,18 +1145,350 @@ function enterHandbook() {
   setTimeout(() => {
     cover.classList.add('hidden');
     app.classList.remove('hidden');
-
-    // Double rAF: wait for display:flex to paint, then transition opacity
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        app.classList.add('visible');
-      });
-    });
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      app.classList.add('visible');
+      loadHandbookData();
+    }));
   }, 700);
 }
 
 
-/* ─── Night / Day mode ─── */
+/* ══════════════════════════════════════════════════════════
+   PHASE B — DATA & READING
+   ══════════════════════════════════════════════════════════ */
+
+async function loadHandbookData() {
+  try {
+    const res = await fetch('data/handbook_concentration.json');
+    handbook = await res.json();
+    buildFlatIndex();
+    buildSidebarNav();
+
+    // Show welcome actions
+    document.getElementById('welcome-actions').classList.remove('hidden');
+
+    // Resume last position
+    try {
+      const last = localStorage.getItem('suluk_last_pos');
+      if (last !== null) {
+        const idx = parseInt(last);
+        if (!isNaN(idx) && idx >= 0 && idx < allTeachings.length) {
+          const t = allTeachings[idx];
+          const el = document.getElementById('welcome-resume');
+          el.innerHTML = `Resume: <span class="resume-link" onclick="showTeaching(${idx}, true)"><em>${t.snippet.title}</em></span>`;
+          el.classList.remove('hidden');
+        }
+      }
+    } catch(e) {}
+
+    // Deep-link via URL hash
+    const hash = location.hash.slice(1);
+    if (hash.startsWith('t')) {
+      const idx = parseInt(hash.slice(1));
+      if (!isNaN(idx) && idx >= 0 && idx < allTeachings.length) {
+        showTeaching(idx, false);
+      }
+    }
+
+  } catch(err) {
+    document.getElementById('sidebar-nav').innerHTML =
+      '<div class="nav-section-label" style="color:rgba(255,80,80,0.6)">Failed to load data</div>';
+    console.error('Handbook load error:', err);
+  }
+}
+
+/* ─── Build flat teachings array ─── */
+function buildFlatIndex() {
+  allTeachings = [];
+  for (const pk of ['I', 'II', 'III']) {
+    const part = handbook.parts[pk];
+    const chKeys = Object.keys(part.chapters).map(Number).sort((a,b) => a-b).map(String);
+    for (const ck of chKeys) {
+      const chapter = part.chapters[ck];
+      (chapter.snippets || []).forEach((snippet) => {
+        allTeachings.push({ partKey: pk, chapterKey: ck, part, chapter, snippet, globalIndex: allTeachings.length });
+      });
+    }
+  }
+}
+
+/* ─── Build sidebar navigation ─── */
+function buildSidebarNav() {
+  const nav = document.getElementById('sidebar-nav');
+  let h = '';
+
+  // Daily
+  h += '<div class="nav-section-label">Daily</div>';
+  h += '<a class="nav-item" id="nav-today" onclick="showTodaysTeaching(this)" role="button" tabindex="0">◈ &thinsp;Today\'s Teaching</a>';
+  h += '<a class="nav-item" id="nav-random" onclick="showRandomTeaching(this)" role="button" tabindex="0">◇ &thinsp;Open a Teaching</a>';
+
+  // Parts
+  for (const pk of ['I', 'II', 'III']) {
+    const part = handbook.parts[pk];
+    const instructorShort = part.instructor.replace('Urs Qutbuddin Schellenberg', 'Urs Qutbuddin').replace('Guide ', '').split(' ').slice(-2).join(' ');
+    const chKeys = Object.keys(part.chapters).map(Number).sort((a,b) => a-b).map(String);
+
+    h += '<div class="nav-divider"></div>';
+    h += `<div class="nav-part-toggle" onclick="togglePart('${pk}')" id="toggle-${pk}">
+      <span class="nav-part-arrow" id="arrow-${pk}">▸</span>
+      <span>Part ${pk} &hairsp;·&hairsp; ${instructorShort}</span>
+    </div>`;
+    h += `<div class="nav-part-chapters" id="part-chapters-${pk}" style="display:none">`;
+    chKeys.forEach(ck => {
+      const ch = part.chapters[ck];
+      h += `<a class="nav-item nav-chapter" id="nav-ch-${pk}-${ck}" onclick="goToChapter('${pk}','${ck}',this)" role="button" tabindex="0">${ch.display_number}. ${ch.title}<span class="ch-count">${(ch.snippets||[]).length}</span></a>`;
+    });
+    h += '</div>';
+  }
+
+  h += '<div class="nav-divider"></div>';
+  h += '<div class="nav-section-label">Personal</div>';
+  h += '<a class="nav-item" onclick="navPlaceholder(this,\'Bookmarks\')" role="button" tabindex="0">◈ &thinsp;Bookmarks</a>';
+  h += '<a class="nav-item" onclick="navPlaceholder(this,\'Notes & Journal\')" role="button" tabindex="0">✦ &thinsp;Notes & Journal</a>';
+  h += '<a class="nav-item" onclick="navPlaceholder(this,\'Daily Practice\')" role="button" tabindex="0">○ &thinsp;Daily Practice</a>';
+  h += '<div class="nav-divider"></div>';
+  h += '<div class="nav-section-label">Discover</div>';
+  h += '<a class="nav-item" onclick="navPlaceholder(this,\'Audio Library\')" role="button" tabindex="0">♪ &thinsp;Audio Library</a>';
+  h += '<a class="nav-item" onclick="navPlaceholder(this,\'Search\')" role="button" tabindex="0">⊙ &thinsp;Search</a>';
+  h += '<a class="nav-item" onclick="navPlaceholder(this,\'Glossary\')" role="button" tabindex="0">◉ &thinsp;Glossary</a>';
+
+  nav.innerHTML = h;
+}
+
+function togglePart(pk) {
+  const el    = document.getElementById('part-chapters-' + pk);
+  const arrow = document.getElementById('arrow-' + pk);
+  const open  = el.style.display === 'none';
+  el.style.display = open ? 'block' : 'none';
+  if (arrow) arrow.textContent = open ? '▾' : '▸';
+}
+
+
+/* ─── Show teaching ─── */
+function showTeaching(idx, scroll) {
+  if (!handbook || idx < 0 || idx >= allTeachings.length) return;
+  currentIdx = idx;
+  const t = allTeachings[idx];
+
+  // URL hash for deep link
+  try { history.replaceState(null, '', '#t' + idx); } catch(e) {}
+
+  // Save position
+  try { localStorage.setItem('suluk_last_pos', idx); } catch(e) {}
+
+  // Breadcrumb
+  document.getElementById('breadcrumb-current').textContent = t.chapter.title;
+
+  // Show/hide screens
+  document.getElementById('welcome-screen').classList.add('hidden');
+  const tv = document.getElementById('teaching-view');
+  tv.classList.remove('hidden');
+  tv.innerHTML = buildTeachingHTML(t, idx);
+
+  // Scroll to top
+  if (scroll !== false) {
+    document.getElementById('reading-area').scrollIntoView({ behavior: 'instant' });
+    window.scrollTo(0, 0);
+  }
+
+  // Highlight active chapter in sidebar
+  document.querySelectorAll('.nav-chapter').forEach(n => n.classList.remove('active'));
+  const chNav = document.getElementById('nav-ch-' + t.partKey + '-' + t.chapterKey);
+  if (chNav) {
+    chNav.classList.add('active');
+    // Auto-open the part
+    const partEl = document.getElementById('part-chapters-' + t.partKey);
+    const arrow  = document.getElementById('arrow-' + t.partKey);
+    if (partEl && partEl.style.display === 'none') {
+      partEl.style.display = 'block';
+      if (arrow) arrow.textContent = '▾';
+    }
+  }
+
+  // Clear daily/random active state
+  document.querySelectorAll('#nav-today, #nav-random').forEach(n => n.classList.remove('active'));
+}
+
+/* ─── Render a teaching ─── */
+function buildTeachingHTML(t, idx) {
+  const { part, chapter, snippet } = t;
+  const readTime = Math.max(1, Math.round((snippet.body || '').split(/\s+/).length / 200));
+  const isFirst  = idx === 0;
+  const isLast   = idx === allTeachings.length - 1;
+  const date     = snippet.date ? snippet.date.slice(0, 10) : '';
+
+  return `
+<div class="teaching-view">
+  <div class="teaching-header">
+    <div class="teaching-meta">
+      <span class="t-tag t-part">Part ${t.partKey}</span>
+      <span class="t-tag t-chapter">${chapter.title}</span>
+      <span class="t-tag t-class">${snippet.class_id || ''}</span>
+      <span class="t-tag t-time">~${readTime} min</span>
+    </div>
+    <h1 class="teaching-title">${escHtml(snippet.title)}</h1>
+    <div class="teaching-instructor">${escHtml(snippet.instructor || '')}</div>
+  </div>
+
+  <div class="teaching-rule"></div>
+
+  <div class="teaching-body md-content">
+    ${parseMarkdown(snippet.body || '')}
+  </div>
+
+  <div class="teaching-nav">
+    <button class="tnav-btn" onclick="prevTeaching()" ${isFirst ? 'disabled' : ''}>← Prev</button>
+    <span class="teaching-position">${idx + 1}<span class="pos-sep">/</span>${allTeachings.length}</span>
+    <button class="tnav-btn" onclick="nextTeaching()" ${isLast ? 'disabled' : ''}>Next →</button>
+  </div>
+</div>`;
+}
+
+function nextTeaching() { if (currentIdx < allTeachings.length - 1) showTeaching(currentIdx + 1, true); }
+function prevTeaching() { if (currentIdx > 0) showTeaching(currentIdx - 1, true); }
+
+function goToChapter(pk, ck, el) {
+  const idx = allTeachings.findIndex(t => t.partKey === pk && t.chapterKey === ck);
+  if (idx >= 0) showTeaching(idx, true);
+  setActiveNav(el);
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+/* ─── Special navigation ─── */
+function showTodaysTeaching(el) {
+  if (!handbook) return;
+  const idx = Math.floor(Date.now() / 86400000) % allTeachings.length;
+  showTeaching(idx, true);
+  if (el) setActiveNav(el);
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+function showRandomTeaching(el) {
+  if (!handbook) return;
+  let idx;
+  do { idx = Math.floor(Math.random() * allTeachings.length); } while (idx === currentIdx && allTeachings.length > 1);
+  showTeaching(idx, true);
+  if (el) setActiveNav(el);
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+/* ─── Welcome ─── */
+function showWelcome() {
+  document.getElementById('welcome-screen').classList.remove('hidden');
+  document.getElementById('teaching-view').classList.add('hidden');
+  document.getElementById('breadcrumb-current').textContent = 'Welcome';
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  try { history.replaceState(null, '', location.pathname); } catch(e) {}
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   MARKDOWN PARSER
+   ══════════════════════════════════════════════════════════ */
+
+function parseMarkdown(text) {
+  if (!text) return '';
+  const lines = text.split('\n');
+  let html = '';
+  let i = 0;
+
+  while (i < lines.length) {
+    const line  = lines[i];
+    const trim  = line.trim();
+
+    if (!trim) { i++; continue; }
+
+    // Headings — remap: # → h2, ## → h3, ### → h4
+    if (/^### /.test(line)) { html += `<h4>${inlineMd(line.slice(4))}</h4>`; i++; continue; }
+    if (/^## /.test(line))  { html += `<h3>${inlineMd(line.slice(3))}</h3>`; i++; continue; }
+    if (/^# /.test(line))   { html += `<h2>${inlineMd(line.slice(2))}</h2>`; i++; continue; }
+    // Deep headings
+    if (/^#{4,} /.test(line)) { html += `<h4>${inlineMd(line.replace(/^#+\s+/, ''))}</h4>`; i++; continue; }
+
+    // HR
+    if (/^---+$/.test(trim)) { html += '<hr class="md-hr">'; i++; continue; }
+
+    // Blockquote
+    if (/^> /.test(line)) {
+      const bq = [];
+      while (i < lines.length && /^>/.test(lines[i])) { bq.push(lines[i].replace(/^>\s?/, '')); i++; }
+      html += `<blockquote>${bq.map(inlineMd).join(' ')}</blockquote>`;
+      continue;
+    }
+
+    // Table
+    if (/^\|/.test(line)) {
+      const tbl = [];
+      while (i < lines.length && /^\|/.test(lines[i])) { tbl.push(lines[i]); i++; }
+      html += buildTable(tbl);
+      continue;
+    }
+
+    // Unordered list
+    if (/^[-*] /.test(line)) {
+      const items = [];
+      while (i < lines.length && /^[-*] /.test(lines[i])) { items.push(lines[i].replace(/^[-*] /, '')); i++; }
+      html += '<ul>' + items.map(it => `<li>${inlineMd(it)}</li>`).join('') + '</ul>';
+      continue;
+    }
+
+    // Ordered list
+    if (/^\d+\.\s/.test(line)) {
+      const items = [];
+      while (i < lines.length && /^\d+\.\s/.test(lines[i])) { items.push(lines[i].replace(/^\d+\.\s/, '')); i++; }
+      html += '<ol>' + items.map(it => `<li>${inlineMd(it)}</li>`).join('') + '</ol>';
+      continue;
+    }
+
+    // Paragraph
+    const para = [];
+    while (i < lines.length) {
+      const l = lines[i];
+      if (!l.trim() || /^[#>|]/.test(l) || /^[-*] /.test(l) || /^\d+\.\s/.test(l) || /^---+$/.test(l.trim())) break;
+      para.push(l.trim());
+      i++;
+    }
+    if (para.length) html += `<p>${inlineMd(para.join(' '))}</p>`;
+  }
+
+  return html;
+}
+
+function inlineMd(text) {
+  if (!text) return '';
+  return text
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')  // escape HTML first
+    .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*\n]+)\*/g, '<em>$1</em>')
+    .replace(/`([^`\n]+)`/g, '<code>$1</code>');
+}
+
+function buildTable(lines) {
+  const rows = lines
+    .map(l => l.split('|').slice(1, -1).map(c => c.trim()))
+    .filter(r => !r.every(c => /^:?-+:?$/.test(c)));
+
+  if (!rows.length) return '';
+
+  let h = '<div class="table-wrap"><table>';
+  h += '<thead><tr>' + rows[0].map(c => `<th>${inlineMd(c)}</th>`).join('') + '</tr></thead>';
+  if (rows.length > 1) {
+    h += '<tbody>' + rows.slice(1).map(r => '<tr>' + r.map(c => `<td>${inlineMd(c)}</td>`).join('') + '</tr>').join('') + '</tbody>';
+  }
+  h += '</table></div>';
+  return h;
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   PHASE A — UI CONTROLS
+   ══════════════════════════════════════════════════════════ */
+
 function toggleNightMode() {
   state.nightMode = !state.nightMode;
   applyNightMode(true);
@@ -1168,43 +1497,26 @@ function toggleNightMode() {
 
 function applyNightMode(animate) {
   if (!animate) {
-    // Suppress transitions during initial load
     document.body.style.transition = 'none';
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => { document.body.style.transition = ''; });
-    });
+    requestAnimationFrame(() => requestAnimationFrame(() => { document.body.style.transition = ''; }));
   }
-
   document.body.classList.toggle('night-mode', state.nightMode);
-
   const icon  = document.getElementById('mode-icon');
   const label = document.getElementById('mode-label');
-
-  if (state.nightMode) {
-    if (icon)  icon.textContent  = '☀';
-    if (label) label.textContent = 'Night';
-  } else {
-    if (icon)  icon.textContent  = '☾';
-    if (label) label.textContent = 'Day';
-  }
+  if (icon)  icon.textContent  = state.nightMode ? '☀' : '☾';
+  if (label) label.textContent = state.nightMode ? 'Night' : 'Day';
 }
 
-
-/* ─── Font size ─── */
 function setFontSize(size, btnEl, save = true) {
   state.fontSize = size;
   document.body.classList.remove('font-large', 'font-xl');
   if (size === 'large') document.body.classList.add('font-large');
   if (size === 'xl')    document.body.classList.add('font-xl');
-
   document.querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
   if (btnEl) btnEl.classList.add('active');
-
   if (save) savePrefs();
 }
 
-
-/* ─── Focus mode ─── */
 function toggleFocusMode() {
   state.focusMode = !state.focusMode;
   document.body.classList.toggle('focus-mode', state.focusMode);
@@ -1212,80 +1524,21 @@ function toggleFocusMode() {
   if (btn) btn.textContent = state.focusMode ? 'Exit Focus' : 'Focus';
 }
 
-
-/* ─── Mobile sidebar ─── */
-function toggleSidebar() {
-  state.sidebarOpen = !state.sidebarOpen;
-  applySidebarState();
-}
-
-function closeSidebar() {
-  state.sidebarOpen = false;
-  applySidebarState();
-}
+function toggleSidebar() { state.sidebarOpen = !state.sidebarOpen; applySidebarState(); }
+function closeSidebar()  { state.sidebarOpen = false; applySidebarState(); }
 
 function applySidebarState() {
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('sidebar-overlay');
   const toggle  = document.getElementById('sidebar-toggle');
-
   sidebar.classList.toggle('open', state.sidebarOpen);
   overlay.classList.toggle('visible', state.sidebarOpen);
   if (toggle) toggle.setAttribute('aria-expanded', state.sidebarOpen ? 'true' : 'false');
 }
 
-
-/* ─── Keyboard shortcuts ─── */
-function bindKeyboard() {
-  document.addEventListener('keydown', (e) => {
-    // Escape: close sidebar or focus mode
-    if (e.key === 'Escape') {
-      if (state.sidebarOpen) { closeSidebar(); return; }
-      if (state.focusMode)   { toggleFocusMode(); return; }
-    }
-
-    // Enter key on cover
-    const cover = document.getElementById('cover');
-    if (e.key === 'Enter' && cover && !cover.classList.contains('hidden')) {
-      enterHandbook();
-      return;
-    }
-
-    // N: toggle night mode (when not in a text input)
-    if (e.key === 'n' && !e.ctrlKey && !e.metaKey) {
-      const tag = document.activeElement.tagName.toLowerCase();
-      if (tag !== 'input' && tag !== 'textarea' && tag !== 'select') {
-        toggleNightMode();
-      }
-    }
-
-    // F: toggle focus mode
-    if (e.key === 'f' && !e.ctrlKey && !e.metaKey) {
-      const tag = document.activeElement.tagName.toLowerCase();
-      if (tag !== 'input' && tag !== 'textarea' && tag !== 'select') {
-        toggleFocusMode();
-      }
-    }
-  });
-}
-
-
-/* ─── Reading progress bar ─── */
-window.addEventListener('scroll', () => {
-  const doc    = document.documentElement;
-  const scrolled = doc.scrollTop || document.body.scrollTop;
-  const total    = doc.scrollHeight - doc.clientHeight;
-  const pct      = total > 0 ? (scrolled / total) * 100 : 0;
-  const fill     = document.getElementById('progress-fill');
-  if (fill) fill.style.width = pct + '%';
-}, { passive: true });
-
-
-/* ─── Navigation helpers (Phase A placeholders) ─── */
-function showWelcome(el) {
-  setActiveNav(el);
-  document.getElementById('breadcrumb-current').textContent = 'Welcome';
-  if (window.innerWidth <= 768) closeSidebar();
+function setActiveNav(el) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (el) el.classList.add('active');
 }
 
 function navPlaceholder(el, label) {
@@ -1294,11 +1547,39 @@ function navPlaceholder(el, label) {
   if (window.innerWidth <= 768) closeSidebar();
 }
 
-function setActiveNav(el) {
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  if (el) el.classList.add('active');
-}
-</script>
 
+/* ─── Keyboard shortcuts ─── */
+function bindKeyboard() {
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (state.sidebarOpen) { closeSidebar(); return; }
+      if (state.focusMode)   { toggleFocusMode(); return; }
+    }
+    if (e.key === 'Enter') {
+      const cover = document.getElementById('cover');
+      if (cover && !cover.classList.contains('hidden') && !cover.classList.contains('exiting')) {
+        enterHandbook(); return;
+      }
+    }
+    const tag = document.activeElement.tagName.toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+    if (e.key === 'n' && !e.ctrlKey && !e.metaKey) toggleNightMode();
+    if (e.key === 'f' && !e.ctrlKey && !e.metaKey) toggleFocusMode();
+    if (e.key === 'ArrowRight' && currentIdx >= 0) nextTeaching();
+    if (e.key === 'ArrowLeft'  && currentIdx >= 0) prevTeaching();
+  });
+}
+
+
+/* ─── Reading progress ─── */
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const pct = doc.scrollHeight > doc.clientHeight
+    ? (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100 : 0;
+  const fill = document.getElementById('progress-fill');
+  if (fill) fill.style.width = pct + '%';
+}, { passive: true });
+
+</script>
 </body>
 </html>
