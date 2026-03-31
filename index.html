@@ -1063,6 +1063,110 @@ body.night-mode .related-card-title { color: rgba(250,246,240,.85); }
 
 
 /* ══════════════════════════════════════════════════════════
+   PHASE G2 — LINKS & HOMEWORK
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Links ── */
+.links-page { max-width: var(--content-max); margin: 0 auto; }
+.links-toolbar { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+.links-toolbar select, .links-toolbar input {
+  font-family: var(--serif); font-size: 14px; padding: 7px 12px;
+  border: 1px solid var(--rule); border-radius: 6px; background: var(--bg);
+  color: var(--text); outline: none; transition: border-color .2s;
+}
+.links-toolbar select:focus, .links-toolbar input:focus { border-color: var(--accent); }
+.links-toolbar input { flex: 1; min-width: 140px; }
+.link-card {
+  padding: 14px 18px; border: 1px solid var(--rule); border-radius: 8px;
+  margin-bottom: 10px; cursor: pointer; transition: all .2s;
+}
+.link-card:hover { border-color: rgba(196,163,90,.3); background: rgba(196,163,90,.05); }
+.link-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.link-card-title { font-family: var(--display); font-size: 1em; font-weight: 500; color: var(--primary); line-height: 1.3; }
+body.night-mode .link-card-title { color: rgba(250,246,240,.85); }
+.link-card-url { font-family: var(--serif); font-size: 12px; color: var(--accent); word-break: break-all; margin-top: 3px; }
+.link-card-notes { font-family: var(--serif); font-size: .88em; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+.link-card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+.link-card-cat { font-family: var(--display); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 10px; background: rgba(196,163,90,.1); color: var(--accent); }
+.link-card-date { font-family: var(--display); font-size: 10px; color: var(--muted); letter-spacing: 0.05em; }
+.link-card-actions { display: flex; gap: 6px; }
+.link-card-actions button {
+  background: none; border: none; font-size: 13px; cursor: pointer;
+  color: var(--muted); padding: 2px 6px; border-radius: 4px; transition: color .2s;
+}
+.link-card-actions button:hover { color: var(--accent); }
+.link-card-actions button.danger:hover { color: #c0392b; }
+
+/* ── Add Link / Homework Form ── */
+.form-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 500;
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeIn .15s ease;
+}
+.form-modal {
+  background: var(--bg); border-radius: 12px; padding: 28px 32px;
+  width: 90%; max-width: 480px; box-shadow: 0 12px 40px rgba(0,0,0,.25);
+  animation: modalIn .2s ease;
+}
+@keyframes modalIn { from { opacity: 0; transform: scale(.95); } to { opacity: 1; transform: scale(1); } }
+.form-modal h2 { font-family: var(--display); font-size: 20px; font-weight: 400; color: var(--primary); margin-bottom: 18px; }
+body.night-mode .form-modal h2 { color: rgba(250,246,240,.88); }
+.form-field { margin-bottom: 14px; }
+.form-field label { display: block; font-family: var(--display); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--muted); margin-bottom: 5px; }
+.form-field input, .form-field textarea, .form-field select {
+  width: 100%; box-sizing: border-box; font-family: var(--serif); font-size: 14px;
+  padding: 8px 12px; border: 1px solid var(--rule); border-radius: 6px;
+  background: var(--bg); color: var(--text); outline: none; transition: border-color .2s;
+}
+.form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--accent); }
+.form-field textarea { resize: vertical; min-height: 60px; }
+.form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+.form-btn {
+  font-family: var(--display); font-size: 13px; padding: 8px 20px;
+  border-radius: 6px; cursor: pointer; border: 1px solid var(--rule);
+  background: transparent; color: var(--text); letter-spacing: 0.04em; transition: all .2s;
+}
+.form-btn.primary { background: rgba(196,163,90,.12); border-color: var(--accent); color: var(--accent); }
+.form-btn.primary:hover { background: rgba(196,163,90,.22); }
+.form-btn:hover { border-color: var(--accent); }
+
+/* ── Homework ── */
+.hw-page { max-width: var(--content-max); margin: 0 auto; }
+.hw-stats { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.hw-stat { text-align: center; padding: 12px 20px; border: 1px solid var(--rule); border-radius: 8px; flex: 1; min-width: 80px; }
+.hw-stat-num { font-family: var(--display); font-size: 24px; color: var(--accent); }
+.hw-stat-label { font-family: var(--display); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-top: 4px; }
+.hw-card {
+  padding: 16px 18px; border: 1px solid var(--rule); border-radius: 8px;
+  margin-bottom: 10px; transition: all .2s;
+}
+.hw-card:hover { border-color: rgba(196,163,90,.3); }
+.hw-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.hw-card-title { font-family: var(--display); font-size: 1em; font-weight: 500; color: var(--primary); line-height: 1.3; }
+body.night-mode .hw-card-title { color: rgba(250,246,240,.85); }
+.hw-card-desc { font-family: var(--serif); font-size: .88em; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+.hw-card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; flex-wrap: wrap; gap: 8px; }
+.hw-status {
+  font-family: var(--display); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 10px; cursor: pointer; transition: all .2s;
+}
+.hw-status.not-started { background: rgba(92,92,92,.1); color: var(--muted); }
+.hw-status.in-progress { background: rgba(196,163,90,.15); color: var(--accent); }
+.hw-status.complete { background: rgba(46,125,50,.12); color: #2e7d32; }
+body.night-mode .hw-status.complete { color: #66bb6a; }
+.hw-card-meta { font-family: var(--display); font-size: 10px; color: var(--muted); letter-spacing: 0.05em; }
+.hw-card-actions { display: flex; gap: 6px; }
+.hw-card-actions button {
+  background: none; border: none; font-size: 13px; cursor: pointer;
+  color: var(--muted); padding: 2px 6px; border-radius: 4px; transition: color .2s;
+}
+.hw-card-actions button:hover { color: var(--accent); }
+.hw-card-actions button.danger:hover { color: #c0392b; }
+
+
+/* ══════════════════════════════════════════════════════════
    MOBILE
    ══════════════════════════════════════════════════════════ */
 
@@ -1506,12 +1610,12 @@ function savePrefs() {
    PHASE C — USER DATA
    ══════════════════════════════════════════════════════════ */
 
-let userData = { bookmarks: [], notes: [], highlights: [], journal: {}, recentlyViewed: [], practiceLog: {} };
+let userData = { bookmarks: [], notes: [], highlights: [], journal: {}, recentlyViewed: [], practiceLog: {}, links: [], homework: [] };
 
 function loadUserData() {
   try {
     const s = localStorage.getItem('suluk_user_data');
-    if (s) userData = Object.assign({ bookmarks:[], notes:[], highlights:[], journal:{}, recentlyViewed:[], practiceLog:{} }, JSON.parse(s));
+    if (s) userData = Object.assign({ bookmarks:[], notes:[], highlights:[], journal:{}, recentlyViewed:[], practiceLog:{}, links:[], homework:[] }, JSON.parse(s));
   } catch(e) {}
 }
 function saveUserData() {
@@ -1924,6 +2028,10 @@ function buildSidebarNav() {
   h += '<a class="nav-item" onclick="showSearch(this)" role="button" tabindex="0">⊙ &thinsp;Search</a>';
   h += '<a class="nav-item" onclick="showGlossary(this)" role="button" tabindex="0">◉ &thinsp;Glossary</a>';
   h += '<a class="nav-item" onclick="showPracticeTracker(this)" role="button" tabindex="0">◎ &thinsp;Practice Tracker</a>';
+  h += '<div class="nav-divider"></div>';
+  h += '<div class="nav-section-label">Workspace</div>';
+  h += '<a class="nav-item" onclick="showLinks(this)" role="button" tabindex="0">⚯ &thinsp;Links</a>';
+  h += '<a class="nav-item" onclick="showHomework(this)" role="button" tabindex="0">▣ &thinsp;Homework</a>';
   nav.innerHTML = h;
 }
 
@@ -3270,6 +3378,258 @@ function shareTeaching(idx) {
       () => showToast('Could not copy link')
     );
   }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   PHASE G2 — LINKS & HOMEWORK
+   ══════════════════════════════════════════════════════════ */
+
+const LINK_CATEGORIES = ['Reading', 'Video', 'Audio', 'Practice', 'Community', 'Other'];
+
+function showLinks(el) {
+  setActiveNav(el);
+  const links = userData.links || [];
+  let h = listPageHeader('Links', links.length + ' saved link' + (links.length !== 1 ? 's' : ''));
+  h += '<div class="links-page">';
+
+  // Toolbar
+  h += '<div class="links-toolbar">';
+  h += '<button class="action-btn primary" onclick="openLinkForm()">+ Add Link</button>';
+  h += '<select id="link-filter" onchange="filterLinks()">';
+  h += '<option value="all">All Categories</option>';
+  LINK_CATEGORIES.forEach(c => { h += '<option value="' + c + '">' + c + '</option>'; });
+  h += '</select>';
+  h += '<input type="text" id="link-search" placeholder="Search links…" oninput="filterLinks()">';
+  h += '</div>';
+
+  // Links container
+  h += '<div id="links-list">';
+  h += renderLinks(links);
+  h += '</div></div>';
+  showPage(h);
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+function renderLinks(links) {
+  if (!links.length) return emptyState('⚯', 'No links saved yet. Tap "+ Add Link" to start collecting.');
+  let h = '';
+  links.forEach((lnk, i) => {
+    h += '<div class="link-card" data-cat="' + escHtml(lnk.category) + '">';
+    h += '<div class="link-card-header">';
+    h += '<div>';
+    h += '<div class="link-card-title">' + escHtml(lnk.title) + '</div>';
+    h += '<div class="link-card-url" onclick="event.stopPropagation(); window.open(\'' + escHtml(lnk.url) + '\', \'_blank\')">' + escHtml(lnk.url.replace(/^https?:\/\//, '').slice(0, 60)) + '</div>';
+    h += '</div>';
+    h += '<div class="link-card-actions">';
+    h += '<button onclick="event.stopPropagation(); window.open(\'' + escHtml(lnk.url) + '\', \'_blank\')" title="Open">↗</button>';
+    h += '<button onclick="event.stopPropagation(); editLink(' + i + ')" title="Edit">✎</button>';
+    h += '<button class="danger" onclick="event.stopPropagation(); deleteLink(' + i + ')" title="Delete">✕</button>';
+    h += '</div></div>';
+    if (lnk.notes) h += '<div class="link-card-notes">' + escHtml(lnk.notes) + '</div>';
+    h += '<div class="link-card-footer">';
+    h += '<span class="link-card-cat">' + escHtml(lnk.category) + '</span>';
+    h += '<span class="link-card-date">' + escHtml(lnk.added) + '</span>';
+    h += '</div></div>';
+  });
+  return h;
+}
+
+function filterLinks() {
+  const cat = document.getElementById('link-filter')?.value || 'all';
+  const q = (document.getElementById('link-search')?.value || '').toLowerCase().trim();
+  let filtered = userData.links || [];
+  if (cat !== 'all') filtered = filtered.filter(l => l.category === cat);
+  if (q) filtered = filtered.filter(l =>
+    l.title.toLowerCase().includes(q) || l.url.toLowerCase().includes(q) || (l.notes || '').toLowerCase().includes(q)
+  );
+  document.getElementById('links-list').innerHTML = renderLinks(filtered);
+}
+
+function openLinkForm(editIdx) {
+  const isEdit = editIdx !== undefined;
+  const lnk = isEdit ? userData.links[editIdx] : { title: '', url: '', category: 'Reading', notes: '' };
+  let h = '<div class="form-overlay" onclick="if(event.target===this)this.remove()">';
+  h += '<div class="form-modal">';
+  h += '<h2>' + (isEdit ? 'Edit Link' : 'Add Link') + '</h2>';
+  h += '<div class="form-field"><label>URL</label><input type="url" id="lnk-url" value="' + escHtml(lnk.url) + '" placeholder="https://…"></div>';
+  h += '<div class="form-field"><label>Title</label><input type="text" id="lnk-title" value="' + escHtml(lnk.title) + '" placeholder="Page title or description"></div>';
+  h += '<div class="form-field"><label>Category</label><select id="lnk-cat">';
+  LINK_CATEGORIES.forEach(c => {
+    h += '<option value="' + c + '"' + (lnk.category === c ? ' selected' : '') + '>' + c + '</option>';
+  });
+  h += '</select></div>';
+  h += '<div class="form-field"><label>Notes (optional)</label><textarea id="lnk-notes" placeholder="Why is this useful?">' + escHtml(lnk.notes || '') + '</textarea></div>';
+  h += '<div class="form-actions">';
+  h += '<button class="form-btn" onclick="this.closest(\'.form-overlay\').remove()">Cancel</button>';
+  h += '<button class="form-btn primary" onclick="saveLink(' + (isEdit ? editIdx : -1) + ')">Save</button>';
+  h += '</div></div></div>';
+  document.body.insertAdjacentHTML('beforeend', h);
+  document.getElementById('lnk-url').focus();
+}
+
+function editLink(idx) { openLinkForm(idx); }
+
+function saveLink(editIdx) {
+  const url = document.getElementById('lnk-url').value.trim();
+  const title = document.getElementById('lnk-title').value.trim();
+  const cat = document.getElementById('lnk-cat').value;
+  const notes = document.getElementById('lnk-notes').value.trim();
+  if (!url) { showToast('Please enter a URL'); return; }
+  const lnk = {
+    id: editIdx >= 0 ? userData.links[editIdx].id : 'lnk_' + Date.now(),
+    title: title || url,
+    url: url.startsWith('http') ? url : 'https://' + url,
+    category: cat,
+    notes: notes,
+    added: editIdx >= 0 ? userData.links[editIdx].added : today()
+  };
+  if (editIdx >= 0) {
+    userData.links[editIdx] = lnk;
+    showToast('Link updated');
+  } else {
+    userData.links.unshift(lnk);
+    showToast('Link saved');
+  }
+  saveUserData();
+  document.querySelector('.form-overlay')?.remove();
+  showLinks();
+}
+
+function deleteLink(idx) {
+  if (!confirm('Delete this link?')) return;
+  userData.links.splice(idx, 1);
+  saveUserData();
+  showToast('Link deleted');
+  showLinks();
+}
+
+
+/* ─── Homework ─── */
+
+const HW_STATUSES = ['not-started', 'in-progress', 'complete'];
+const HW_STATUS_LABELS = { 'not-started': 'Not Started', 'in-progress': 'In Progress', 'complete': 'Complete' };
+
+function showHomework(el) {
+  setActiveNav(el);
+  const hw = userData.homework || [];
+  const total = hw.length;
+  const complete = hw.filter(h => h.status === 'complete').length;
+  const inProgress = hw.filter(h => h.status === 'in-progress').length;
+
+  let h = listPageHeader('Homework', total + ' assignment' + (total !== 1 ? 's' : ''));
+  h += '<div class="hw-page">';
+
+  // Stats
+  if (total > 0) {
+    h += '<div class="hw-stats">';
+    h += '<div class="hw-stat"><div class="hw-stat-num">' + complete + '</div><div class="hw-stat-label">Complete</div></div>';
+    h += '<div class="hw-stat"><div class="hw-stat-num">' + inProgress + '</div><div class="hw-stat-label">In Progress</div></div>';
+    h += '<div class="hw-stat"><div class="hw-stat-num">' + (total - complete - inProgress) + '</div><div class="hw-stat-label">Not Started</div></div>';
+    h += '</div>';
+  }
+
+  // Add button
+  h += '<div style="margin-bottom: 20px"><button class="action-btn primary" onclick="openHomeworkForm()">+ Add Assignment</button></div>';
+
+  // Homework list
+  if (!total) {
+    h += emptyState('▣', 'No homework yet. Tap "+ Add Assignment" to track your practice commitments.');
+  } else {
+    // Sort: in-progress first, then not-started, then complete
+    const sorted = [...hw].map((item, i) => ({ ...item, _origIdx: i }));
+    sorted.sort((a, b) => {
+      const order = { 'in-progress': 0, 'not-started': 1, 'complete': 2 };
+      return (order[a.status] || 1) - (order[b.status] || 1);
+    });
+    sorted.forEach(item => {
+      const i = item._origIdx;
+      h += '<div class="hw-card">';
+      h += '<div class="hw-card-header">';
+      h += '<div class="hw-card-title">' + escHtml(item.title) + '</div>';
+      h += '<div class="hw-card-actions">';
+      h += '<button onclick="editHomework(' + i + ')" title="Edit">✎</button>';
+      h += '<button class="danger" onclick="deleteHomework(' + i + ')" title="Delete">✕</button>';
+      h += '</div></div>';
+      if (item.description) h += '<div class="hw-card-desc">' + escHtml(item.description) + '</div>';
+      h += '<div class="hw-card-footer">';
+      h += '<span class="hw-status ' + item.status + '" onclick="cycleHomeworkStatus(' + i + ')" title="Click to change status">' + HW_STATUS_LABELS[item.status] + '</span>';
+      const metaParts = [];
+      if (item.classId) metaParts.push(item.classId);
+      if (item.dueDate) metaParts.push('Due: ' + item.dueDate);
+      h += '<span class="hw-card-meta">' + escHtml(metaParts.join(' · ')) + '</span>';
+      h += '</div>';
+      if (item.notes) h += '<div class="hw-card-desc" style="margin-top:8px; font-style:italic">' + escHtml(item.notes) + '</div>';
+      h += '</div>';
+    });
+  }
+  h += '</div>';
+  showPage(h);
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+function openHomeworkForm(editIdx) {
+  const isEdit = editIdx !== undefined;
+  const hw = isEdit ? userData.homework[editIdx] : { title: '', classId: '', description: '', dueDate: '', notes: '' };
+  let h = '<div class="form-overlay" onclick="if(event.target===this)this.remove()">';
+  h += '<div class="form-modal">';
+  h += '<h2>' + (isEdit ? 'Edit Assignment' : 'Add Assignment') + '</h2>';
+  h += '<div class="form-field"><label>Title</label><input type="text" id="hw-title" value="' + escHtml(hw.title) + '" placeholder="e.g., 40-Day Breath Practice"></div>';
+  h += '<div class="form-field"><label>Class (optional)</label><input type="text" id="hw-class" value="' + escHtml(hw.classId || '') + '" placeholder="e.g., C12"></div>';
+  h += '<div class="form-field"><label>Description</label><textarea id="hw-desc" placeholder="What needs to be done?">' + escHtml(hw.description || '') + '</textarea></div>';
+  h += '<div class="form-field"><label>Due Date (optional)</label><input type="date" id="hw-due" value="' + escHtml(hw.dueDate || '') + '"></div>';
+  h += '<div class="form-field"><label>Notes (optional)</label><textarea id="hw-notes" placeholder="Progress notes, reflections…">' + escHtml(hw.notes || '') + '</textarea></div>';
+  h += '<div class="form-actions">';
+  h += '<button class="form-btn" onclick="this.closest(\'.form-overlay\').remove()">Cancel</button>';
+  h += '<button class="form-btn primary" onclick="saveHomework(' + (isEdit ? editIdx : -1) + ')">Save</button>';
+  h += '</div></div></div>';
+  document.body.insertAdjacentHTML('beforeend', h);
+  document.getElementById('hw-title').focus();
+}
+
+function editHomework(idx) { openHomeworkForm(idx); }
+
+function saveHomework(editIdx) {
+  const title = document.getElementById('hw-title').value.trim();
+  const classId = document.getElementById('hw-class').value.trim();
+  const description = document.getElementById('hw-desc').value.trim();
+  const dueDate = document.getElementById('hw-due').value;
+  const notes = document.getElementById('hw-notes').value.trim();
+  if (!title) { showToast('Please enter a title'); return; }
+  const item = {
+    id: editIdx >= 0 ? userData.homework[editIdx].id : 'hw_' + Date.now(),
+    title, classId, description, dueDate, notes,
+    status: editIdx >= 0 ? userData.homework[editIdx].status : 'not-started',
+    added: editIdx >= 0 ? userData.homework[editIdx].added : today()
+  };
+  if (editIdx >= 0) {
+    userData.homework[editIdx] = item;
+    showToast('Assignment updated');
+  } else {
+    userData.homework.unshift(item);
+    showToast('Assignment added');
+  }
+  saveUserData();
+  document.querySelector('.form-overlay')?.remove();
+  showHomework();
+}
+
+function cycleHomeworkStatus(idx) {
+  const hw = userData.homework[idx];
+  const currentPos = HW_STATUSES.indexOf(hw.status);
+  hw.status = HW_STATUSES[(currentPos + 1) % HW_STATUSES.length];
+  if (hw.status === 'complete') hw.completedDate = today();
+  saveUserData();
+  showToast(HW_STATUS_LABELS[hw.status]);
+  showHomework();
+}
+
+function deleteHomework(idx) {
+  if (!confirm('Delete this assignment?')) return;
+  userData.homework.splice(idx, 1);
+  saveUserData();
+  showToast('Assignment deleted');
+  showHomework();
 }
 
 
