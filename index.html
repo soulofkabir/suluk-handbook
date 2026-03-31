@@ -3583,12 +3583,10 @@ async function workerFetch(path, options = {}) {
 
 function showLibrary(el) {
   if (el) setActiveNav(el);
-  const area = document.getElementById('reading-area');
 
   if (!isLibraryConfigured()) {
-    area.innerHTML = `
-      <div class="library-page">
-        <h2 style="color: var(--accent); font-family: var(--display); font-weight: 400;">My Library</h2>
+    let h = listPageHeader('My Library', 'Connect your Cloudflare Worker');
+    h += `<div class="library-page">
         <div class="library-setup">
           <p>To use your personal library, connect your Cloudflare Worker.<br>
           Enter the Worker URL and auth token below.</p>
@@ -3605,16 +3603,14 @@ function showLibrary(el) {
           <p id="lib-setup-status" style="margin-top:12px; font-size:13px;"></p>
         </div>
       </div>`;
+    showPage(h);
+    if (window.innerWidth <= 768) closeSidebar();
     return;
   }
 
-  let catFilter = '';
-  let searchQuery = '';
-
-  area.innerHTML = `
-    <div class="library-page">
-      <h2 style="color: var(--accent); font-family: var(--display); font-weight: 400;">My Library</h2>
-
+  const fileCount = (userData.personalFiles || []).length;
+  let h = listPageHeader('My Library', fileCount + ' file' + (fileCount !== 1 ? 's' : ''));
+  h += `<div class="library-page">
       <div class="library-dropzone" id="lib-dropzone">
         <div class="library-dropzone-icon">⇧</div>
         <div class="library-dropzone-text">
@@ -3641,18 +3637,25 @@ function showLibrary(el) {
       <div class="library-stats" id="lib-stats"></div>
       <div class="library-grid" id="lib-grid"></div>
     </div>`;
+  showPage(h);
+  if (window.innerWidth <= 768) closeSidebar();
 
   // Setup drag-and-drop
   const dz = document.getElementById('lib-dropzone');
-  dz.addEventListener('dragover', (e) => { e.preventDefault(); dz.classList.add('dragover'); });
-  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
-  dz.addEventListener('drop', (e) => {
-    e.preventDefault();
-    dz.classList.remove('dragover');
-    handleLibraryFiles(e.dataTransfer.files);
-  });
+  if (dz) {
+    dz.addEventListener('dragover', (e) => { e.preventDefault(); dz.classList.add('dragover'); });
+    dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+    dz.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dz.classList.remove('dragover');
+      handleLibraryFiles(e.dataTransfer.files);
+    });
+  }
 
   renderLibrary();
+
+  // Auto-sync from cloud to pick up files uploaded from other devices
+  refreshLibraryFromWorker();
 }
 
 function renderLibrary() {
