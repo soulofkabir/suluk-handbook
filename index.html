@@ -3738,15 +3738,29 @@ async function handleLibraryFiles(fileList) {
     }
 
     try {
+      console.log('[Library] Uploading:', file.name, file.size, 'bytes, category:', category);
       const formData = new FormData();
       formData.append('file', file);
       formData.append('category', category);
 
-      const resp = await workerFetch('/upload', {
+      const c = getWorkerConfig();
+      console.log('[Library] POST to:', c.url + '/upload');
+      const resp = await fetch(c.url + '/upload', {
         method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + c.token },
         body: formData,
       });
+      console.log('[Library] Response status:', resp.status);
+
+      if (!resp.ok) {
+        const errData = await resp.text();
+        console.error('[Library] Upload error:', errData);
+        showToast('Upload failed: ' + resp.status);
+        continue;
+      }
+
       const result = await resp.json();
+      console.log('[Library] Upload result:', JSON.stringify(result));
 
       // Save metadata locally
       userData.personalFiles.push({
@@ -3761,6 +3775,7 @@ async function handleLibraryFiles(fileList) {
       saveUserData();
       uploaded++;
     } catch (err) {
+      console.error('[Library] Upload exception:', err);
       showToast('Upload failed: ' + err.message);
     }
   }
