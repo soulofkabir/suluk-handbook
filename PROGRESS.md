@@ -4,172 +4,112 @@
 **URL:** https://soulofkabir.github.io/suluk-handbook/
 **Architecture:** Single-file HTML + CSS + Vanilla JavaScript, GitHub Pages static hosting
 **Data:** `data/handbook_concentration.json`, `data/cross_reference_data.json`
+**Audio:** Cloudflare R2 bucket `suluk-audio` (public), 221 clips across 20 classes
+**Personal Files:** Cloudflare R2 bucket `suluk-personal` (private), via Worker at `suluk-worker.soulofkabir.workers.dev`
+**Design System:** "Crisp Pearl & True Bronze" — Nunito + Source Sans 3
 
 ---
 
-## Phase A — Foundation & Shell
+## Phase A — Foundation & Shell ✅
 
-**Goal:** Establish the project skeleton, animated cover, and core UI chrome.
-
-### Completed
-
-- **Project scaffold** — Single `index.html` with embedded CSS and JavaScript, `manifest.json`, `service-worker.js` for PWA structure, `/assets/images/` folder with all images from old handbook
-- **Animated cover page** — Full-screen opening screen with background image (`mount_qaf.JPG`), CSS keyframe animations (`fadeUp`, `fadeIn`, `bgReveal`), title/subtitle fade-in, "Enter the Handbook" button
-- **Design system** — CSS custom properties (`:root` variables) for all colors, fonts, spacing, and transitions; EB Garamond + Cormorant Garamond serif fonts via Google Fonts
+- **Project scaffold** — Single `index.html` with embedded CSS and JavaScript, `manifest.json`, `service-worker.js` for PWA structure, `/assets/images/` folder with all images
+- **Animated cover page** — Full-screen opening with Mount Qaf background, CSS keyframe animations, title/subtitle fade-in, "Enter the Handbook" button
+- **Design system** — CSS custom properties (`:root` variables) for all colors, fonts, spacing, and transitions
 - **Two-panel layout** — Fixed 320px sidebar + scrollable main content area, responsive mobile collapse
-- **Sidebar navigation** — Header with handbook title, nav list built dynamically via `buildSidebarNav()`, part/chapter hierarchy with collapsible sections
-- **Night / Day mode toggle** — Moon/sun icon button in header; `body.night-mode` class toggles all color variables; preference saved to `localStorage`
-- **Font size controls** — A− / A+ buttons; `--font-base` CSS variable adjusted 14px–24px range; preference persisted
-- **Reading progress bar** — Thin gold strip at top of viewport, width driven by scroll position
-- **URL deep linking** — Hash-based navigation (`#t42`) so any teaching can be bookmarked directly; `history.replaceState` keeps URL clean while reading
+- **Sidebar navigation** — Dynamic nav built via `buildSidebarNav()`, part/chapter hierarchy with collapsible sections
+- **Font size controls** — A / A+ / A++ buttons; `--font-base` CSS variable; preference persisted
+- **Reading progress bar** — Gold strip at top of viewport driven by scroll position
+- **URL deep linking** — Hash-based navigation (`#t42`) for direct teaching links
 
 ---
 
-## Phase B — Content Layer (333 Teachings)
+## Phase B — Content Layer (333 Teachings) ✅
 
-**Goal:** Load and render the full handbook content dynamically from JSON.
-
-### Completed
-
-- **JSON data pipeline** — `fetch('data/handbook_concentration.json')` on load; data structure: `{ parts: [{ title, chapters: [{ title, snippets: [{ id, title, body }] }] }] }`
-- **Dynamic sidebar nav** — Three Parts (I, II, III) → 26 Chapters → individual teachings; Part toggles collapse/expand; active state tracking with gold left-border highlight
-- **Teaching renderer** — `showTeaching(id)` displays title, chapter/part breadcrumb, body text with full Markdown rendering; smooth scroll to top on navigation
-- **Custom Markdown parser** — `parseMarkdown()` handles headings (H1–H4), bold/italic/underline inline styles, blockquotes, ordered/unordered lists, horizontal rules, tables; `buildTable()` for pipe-separated tables
-- **Chapter view** — `showChapter(partIdx, chapterIdx)` renders chapter title + all snippets in sequence as continuous reading
-- **Part view** — `showPart(partIdx)` renders part intro + all chapters
-- **Keyboard navigation** — Left/right arrow keys move between teachings; `Escape` closes modals
-- **Recently Viewed auto-tracking** — Every `showTeaching()` call logs to `suluk_user_data.recentlyViewed` in `localStorage` (capped at 20 entries with timestamps)
+- **JSON data pipeline** — `fetch('data/handbook_concentration.json')` on load
+- **Dynamic sidebar nav** — Three Parts (I, II, III) → 26 Chapters → individual teachings
+- **Teaching renderer** — `showTeaching(id)` with title, breadcrumb, full Markdown body
+- **Custom Markdown parser** — Headings, bold/italic/underline, blockquotes, lists, tables
+- **Full Book mode** — Continuous scroll of all 333 teachings with front matter and appendices A–E
+- **Keyboard navigation** — Arrow keys, Escape for modals
 
 ---
 
-## Phase C — Personal Learning Layer
+## Phase C — Personal Learning Layer ✅
 
-**Goal:** Let the reader annotate, save, and export their engagement with the text.
-
-### Completed
-
-- **Bookmarks** — Star icon on every teaching; `suluk_user_data.bookmarks` array stores `{ id, title, chapterTitle, date }`; bookmarks panel in sidebar lists all saved items with click-to-navigate and delete; bookmark count badge on nav item
-- **Notes** — Note icon on every teaching; modal with textarea + note type selector (Reflection, Question, Practice, Insight); notes stored with teaching reference, chapter, date; notes panel lists all notes with full metadata
-- **Text Highlights** — Select any passage and press the highlight toolbar that appears; highlights saved as `{ teachingId, text, color, date }` in `localStorage`; yellow marks re-applied on re-render
-- **Journal** — Dedicated journal section in sidebar; full-page journal entry editor with date stamp and current teaching reference pre-filled; entries listed chronologically
-- **Recently Viewed panel** — Sidebar nav item "Recently Viewed" shows last 20 teachings with timestamps and direct navigation
-- **Export** — "Export My Data" button in sidebar; generates JSON file containing all bookmarks, notes, highlights, and journal entries; downloads as `suluk-handbook-data.json`
-- **Data persistence** — All user data in single `suluk_user_data` object in `localStorage`; survives page refresh, browser restart
+- **Bookmarks** — Star icon per teaching, sidebar panel
+- **Notes** — Modal with type selector (Reflection, Question, Practice, Insight)
+- **Text Highlights** — Select text → highlight toolbar, colors persisted
+- **Journal** — Full-page journal editor with date/teaching reference
+- **Recently Viewed** — Last 20 teachings with timestamps
+- **Export** — Download all user data as JSON
 
 ---
 
-## Color & Visual Theme Overhaul
+## Phase D — Audio Integration ✅
 
-**Goal:** Match the exact cream/indigo/gold palette and typography of the original Book of Concentration handbook.
-
-### Completed
-
-- **Palette extracted from original HTML** — Read the full 10,555-line source of `The_Book_of_Concentration.html` to obtain exact hex values used throughout
-- **Light mode color variables updated:**
-  ```
-  --bg: #FDFCF9        (warm cream page background)
-  --primary: #1A1A4E   (deep indigo for headings)
-  --accent: #C4A35A    (gold for active states and highlights)
-  --dark-gold: #8B7335 (deeper gold for decorative rules)
-  --text: #2A2A2A      (near-black body text)
-  --muted: #5C5C5C     (secondary text)
-  --rule: #D4C9A8      (warm divider lines)
-  --rose: #8B3A62      (rose for special callouts)
-  ```
-- **Sidebar light-mode overrides** — `body:not(.night-mode)` CSS block applies solid (non-transparent) colors so sidebar is crisp and readable:
-  - Background: `#F5F3EE` (slightly warm off-white)
-  - Right border: `1px solid #D4C9A8` (rule color, not gold)
-  - Header bottom border: `2px solid #C4A35A` (gold accent)
-  - Nav text: solid `#2A2A2A`
-  - Active nav item: `#1A1A4E` with `rgba(26,26,78,0.06)` background tint
-  - Part toggle headings: bold `#1A1A4E`
-- **Typography** — EB Garamond 18px base, Cormorant Garamond for display headings; line height 1.8; content max-width 840px
-- **Night mode preserved** — All overrides scoped to `body:not(.night-mode)` so dark mode is unaffected
+- **Audio manifest** — `data/audio_manifest.json` with 221 clips across 20 classes (C1–C20)
+- **Audio hosting** — Cloudflare R2 bucket `suluk-audio` (public URL: `https://pub-655e0e7533694c53a63276368afd5e43.r2.dev`)
+- **Audio Library page** — Sidebar nav "♪ Audio Library"; collapsible class cards with instructor, date, duration, clip count
+- **Persistent bottom audio bar** — Play/pause, progress seek, time display, skip, speed control (0.75×–2×)
+- **Playlist mode** — 221 clips auto-advance; skip buttons navigate playlist
+- **Timestamp fix** — C6 and C9 had mixed MM:SS:FF formats causing wrong durations (6463 min, 6932 min); all normalized to HH:MM:SS
+- **Reading/listening separated** — Inline audio removed from teaching views; Audio Library is the dedicated listening experience
 
 ---
 
-## Full Book — Continuous Scroll Mode
+## Phase E — Search, Glossary, Practice Tracker ✅
 
-**Goal:** Render the entire handbook as one long scrollable page, matching the structure and content of the original printed/web book.
-
-### Completed
-
-- **Sidebar nav entry** — "☰ Read Full Book" added to sidebar navigation list
-- **Full Book CSS** — Dedicated CSS classes for every section: `.fb-title-page`, `.fb-dedication`, `.fb-toc`, `.fb-toc-chapter`, `.fb-appendix`, `.fb-pqr-*`, `.fb-xref-*`, `.fb-schedule-table`, `.fb-prayer-img`, `.fb-colophon`, etc.
-- **Sticky back bar** — Fixed bar at top with "← Back to Handbook" button so reader can exit at any time
-
-### Sections Rendered
-
-**Front Matter**
-- **Title Page** — Handbook title, subtitle, author (Pir Zia Inayat-Khan), organization (Inayatiyya Suluk Academy), decorative rule
-- **Dedication** — Full dedication text as in original
-- **Table of Contents** — Built dynamically from `handbookData`; three Parts with all chapter titles; each entry is a clickable anchor link that jumps to that section within the full book
-
-**Introduction**
-- Full introduction text (static, matches original)
-
-**Main Content — 333 Teachings**
-- All three Parts with decorative part dividers
-- All 26 chapters with chapter headings
-- All 333 individual teachings rendered with Markdown
-- Chapter and part anchors for TOC deep links
-
-**Appendices**
-
-| Appendix | Title | Implementation |
-|---|---|---|
-| A | Class Schedule | Static 20-session table with dates and teaching topics |
-| B | Cross-Reference Index | Async `fetch('data/cross_reference_data.json')`; renders topic clusters → entries → snippet citations |
-| C | Practice Quick-Reference | 80 named practices in 6 categories; two-column card layout |
-| D | Colophon | Publication information, copyright, acknowledgements |
-| E | Prayer Movement Images | `saum_movements_1/2/3.png`, `salat_movements_1/2.png` with captions |
+- **Full-text search** — Search across all 333 teachings with weighted scoring (title 10×, instructor 5×, body 1×)
+- **Topic filters** — All (333), Prayers (24), Chivalric Rules (12), Breath (19), Concentration/Visualization/Meditation (63), Fikr/Zikr/Wazifa (13), Movements (20), Teachings (112), Stories (20), Quotes/Sayings/Poetry (24), Deep Study/Arabic Terms (26) — each with count badge
+- **Instructor filter** — All, Mansur, Pir Zia Inayat Khan, Urs Qutbuddin, Urs Qutbuddin Schellenberg
+- **Browse-all mode** — Empty search shows all teachings filtered by topic/instructor
+- **Recent searches** — Last 8 searches saved as clickable chips
+- **Glossary** — 40 Sufi/spiritual terms with alphabet jump bar, search filter, inline tooltips on recognized terms
+- **Practice Tracker** — 24 practices across 6 categories; checkbox per day; streak counter; progress stats
+- **Related Teachings** — Algorithm shows top 3 related teachings below each teaching
+- **Share button** — Copies teaching URL to clipboard
 
 ---
 
-## Data Files
+## Phase G1 — Skip Cover & PDF Download ✅
 
-| File | Source | Purpose |
-|---|---|---|
-| `data/handbook_concentration.json` | Converted from old handbook | All 333 teachings, structured by Part/Chapter/Snippet |
-| `data/cross_reference_data.json` | Copied from Suluk_Project source | Appendix B cross-reference topic index |
-| `data/audio_manifest.json` | Built from 20 local segments.json files | 221 audio clips across 20 classes, with Cloudflare R2 URLs |
-| `data/glossary.json` | Created manually | 40 Sufi/spiritual terms with origins and definitions |
-| `assets/images/` | Copied from Suluk_Project/Images | All artwork: cover image, instructor portraits, prayer movement diagrams |
+- **Skip cover on refresh** — `localStorage.suluk_entered` flag skips cover animation on return visits
+- **PDF download** — "Download PDF" link in sidebar, downloads `assets/The_Book_of_Concentration.pdf` (3.1 MB)
 
 ---
 
-## Phase D — Audio Integration (Completed 2026-03-31)
+## Phase G2 — Links & Homework ✅
 
-**Goal:** Stream class audio recordings inline with teachings and via a dedicated Audio Library.
-
-### Completed
-
-- **Audio manifest** — `data/audio_manifest.json` with 221 clips across 20 classes (C1–C20), metadata includes segment number, title, filename, category, start/end times
-- **Audio hosting** — All 219 MP3s uploaded to Cloudflare R2 bucket `suluk-audio` (public URL: `https://pub-655e0e7533694c53a63276368afd5e43.r2.dev`). 2 clips missing from source (C6_06, C9_04)
-- **Audio Library page** — Sidebar nav entry "♪ Audio Library"; collapsible class cards showing instructor, date, duration, clip count; click-to-play individual clips
-- **Persistent bottom audio bar** — Fixed bar with play/pause, progress seek, time display, skip forward/back, speed control (0.75×–2×), close button
-- **Inline teaching audio** — Each teaching shows its class's audio clips below the body text
-- **Playlist mode** — Flat playlist built from all 221 clips; auto-advances to next clip on end; skip buttons navigate the playlist
-- **Error handling** — Toast messages for missing audio, play failures; graceful fallback for 2 missing clips
-
-### Audio Hosting Journey
-- Initially tried Google Drive (`uc?export=download` URLs) — files were public but Drive blocks streaming from third-party sites via referrer checks
-- Extracted 219 file IDs via Google Apps Script → Google Sheet → CSV
-- Switched to **Cloudflare R2** — direct `audio/mpeg` responses, no redirects, proper CORS, free 10GB tier
+- **Links page** — Add/edit/delete links with title, URL, category, notes; filter and search; modal form
+- **Homework tracker** — Add assignments with title, class, description, due date; status cycling (not-started → in-progress → complete); progress stats
 
 ---
 
-## Phase E — Practice & Intelligence (Completed 2026-03-31)
+## Phase G3 — Personal Content Library ✅
 
-**Goal:** Add search, glossary, practice tracking, related teachings, and sharing.
+- **Cloudflare Worker** — `suluk-worker` at `https://suluk-worker.soulofkabir.workers.dev`; handles upload, download, delete, list, backup; bearer token auth; CORS for GitHub Pages + localhost
+- **Private R2 bucket** — `suluk-personal` for personal file storage
+- **Library UI** — Sidebar nav "My Library"; drag-and-drop + browse upload; category organization (Books, Notes, Presentations, Images, Homework, Other); grid view with thumbnails; file preview modal; download, edit, delete; cloud sync
+- **Cross-device sync** — Auto-syncs from cloud on page open to pick up files from other devices
+- **Setup flow** — First-time setup for Worker URL and auth token; Test Connection validates; Settings gear to update/disconnect
+- **Worker source:** `/Users/heartmath/Documents/Suluk_Project/suluk-worker/`
 
-### Completed
+---
 
-- **Full-text search** — Search across all 333 teachings; title matches weighted 10× vs body; filter by Part (I/II/III); results show title, chapter, and highlighted matching text
-- **Glossary** — 40 Sufi/spiritual terms in `data/glossary.json`; dedicated glossary page with alphabet jump bar and search filter; inline tooltips on recognized terms within teaching text (uses TreeWalker/NodeFilter.SHOW_TEXT for injection)
-- **Practice Tracker** — 24 practices across 6 categories; checkbox completion per day; streak counter; progress stats; data persisted in `localStorage` under `suluk_user_data.practiceLog`
-- **Related Teachings** — Algorithm scores by same chapter (+5), same part (+2), title word overlap (+3); shows top 3 related teachings below each teaching
-- **Share button** — Copies teaching title + direct URL to clipboard via navigator.clipboard API
+## Design System — "Crisp Pearl & True Bronze" ✅
+
+- **Palette:**
+  - Background: Crisp Pearl `#FCFBF8` — off-white, prevents screen glare
+  - Sidebar: `#F7F5F1`
+  - Body text: Espresso `#302B27` — warm dark brown, softer than black
+  - Headers/Accents: Bronze Gold `#8C6222` — earthy gold
+  - Muted text: `#7A756E`
+  - Rules/Borders: Warm Taupe `#D4CFC6`
+- **Fonts:** Nunito (headings/UI/display) + Source Sans 3 (body text)
+- **Accessibility:** Designed for dyslexia/ASD (age 50+) — medium contrast, `line-height: 1.8`, no dark mode
+- **Night mode removed:** All CSS rules, JS functions, keyboard shortcut, toggle button deleted
+- **Cover page:** Crisp Pearl background with translucent overlay on Mount Qaf image, bronze gold title
+- **Sidebar nav:** Bold (700) Espresso text, bronze gold active state
 
 ---
 
@@ -196,48 +136,37 @@
 | `c514e04` | Inayatiyya-inspired color scheme: white bg, golden accents, no dark mode |
 | `9284c54` | Phase G3: Personal Content Library UI |
 | `6620361` | Fix escHtml bug in library |
+| `6c23376` | Clean up debug logging, update PROGRESS.md with G1-G3 |
+| `377027f` | Fix library navigation bug, add auto-sync from cloud |
+| `8031424` | Enhanced Search: topic filters, instructor filter, browse-all, recent searches |
+| `b9545a0` | Fix audio manifest timestamps: normalize C6/C9 MM:SS:FF format |
+| `4ca02c6` | Collapsible teaching audio section with smart clip matching |
+| `6c631cf` | New design system: Crisp Pearl & True Bronze, Nunito + Source Sans 3 |
+| `ab6eeab` | Separate reading and listening: remove inline audio from teaching view |
+| `dccc76f` | Bold sidebar nav text in Espresso #302B27 |
 
 ---
 
-## Phase G1 — Skip Cover & Compare Portals ✅
+## Pending / Future Phases
 
-- **Skip cover on refresh** — `localStorage.suluk_entered` flag set on first entry; `DOMContentLoaded` checks flag and skips cover animation, shows app directly
-- **PDF download** — Added "Download PDF" link in sidebar under Daily section, downloads `assets/The_Book_of_Concentration.pdf` (3.1 MB)
-- **Portal comparison** — Verified digital handbook surpasses old `The_Book_of_Concentration.html` in all features (audio, search, bookmarks, notes, glossary, practice tracker, night mode)
+### Phase G4 — AI Study Companion (Not Yet Started)
+- Add `/ai-chat` endpoint to Cloudflare Worker proxying to Claude API
+- Chat UI in handbook for asking questions about teachings
+- Context-aware: sends current teaching text as context
 
----
-
-## Phase G2 — Links & Homework ✅
-
-- **Links page** — Sidebar nav "Links" under Workspace section; add/edit/delete links with title, URL, category, notes; filter by category; search; modal form overlay; data stored in `localStorage` under `userData.links`
-- **Homework tracker** — Sidebar nav "Homework"; add assignments with title, class, description, due date; status cycling (not-started → in-progress → complete); progress stats bar; edit/delete; data in `userData.homework`
-
----
-
-## Accessibility Color Scheme Overhaul ✅
-
-- **Design inspiration:** Inayatiyya.org — pure white background, golden accent `#C69214`, EB Garamond font
-- **Accessibility:** Designed for dyslexia/ASD — medium contrast, `line-height: 1.8`, no dark mode
-- **Cover page:** White background with light translucent overlay on Mount Qaf image, golden title text
-- **Night mode removed:** All CSS rules (~195 lines removed), JS functions, keyboard shortcut, toggle button
-- **Sidebar:** `#FAFAFA` background, golden section labels, `#E3E5EB` border rules
-
----
-
-## Phase G3 — Personal Content Library ✅
-
-- **Cloudflare Worker** — `suluk-worker` deployed at `https://suluk-worker.soulofkabir.workers.dev`; handles upload, download, delete, list, backup; bearer token auth; CORS for GitHub Pages + localhost
-- **Private R2 bucket** — `suluk-personal` for file storage (separate from public `suluk-audio`)
-- **Library UI** — Sidebar nav "My Library" under Workspace; drag-and-drop + browse upload; category organization (Books, Notes, Presentations, Images, Homework, Other); grid view with thumbnails; file preview modal (images inline, PDFs in iframe, text rendered); download, edit, delete per file; cloud sync button; settings with connect/disconnect
-- **Setup flow** — First-time setup prompts for Worker URL and auth token; Test Connection button validates credentials; config stored in `localStorage`
-- **Worker source:** `/Users/heartmath/Documents/Suluk_Project/suluk-worker/`
-
----
-
-## Phase F — Polish & PWA (Not Yet Started)
-
+### Phase G5 — UI Polish (Ongoing)
 - Reading statistics (teachings read, time spent)
 - Learning timeline visualization
-- PWA offline mode (service worker caching)
-- GitHub sync for user data backup
 - Instructor portrait integration
+- Favicon (currently 404)
+- Fix deprecated `<meta name="apple-mobile-web-app-capable">` → `mobile-web-app-capable`
+
+### Phase F — PWA & Offline (Not Yet Started)
+- PWA offline mode (service worker caching)
+- Background sync for user data
+- App install prompt
+
+### Known Minor Issues
+- `favicon.ico` returns 404 — need to add a favicon
+- `<meta name="apple-mobile-web-app-capable">` is deprecated — should use `mobile-web-app-capable`
+- Part III teachings have no `class_id` (no audio mapping) — these are from Pir Vilayat, audio not available
