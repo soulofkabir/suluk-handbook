@@ -953,6 +953,127 @@ body.focus-mode #audio-bar { left: 0; }
 .hw-card-actions button:hover { color: var(--accent); }
 .hw-card-actions button.danger:hover { color: #c0392b; }
 
+/* ── Personal Content Library ── */
+.library-page { max-width: var(--content-max); margin: 0 auto; }
+.library-toolbar { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+.library-toolbar select, .library-toolbar input {
+  font-family: var(--serif); font-size: 14px; padding: 7px 12px;
+  border: 1px solid var(--rule); border-radius: 6px; background: var(--bg);
+  color: var(--text); outline: none; transition: border-color .2s;
+}
+.library-toolbar select:focus, .library-toolbar input:focus { border-color: var(--accent); }
+.library-toolbar input { flex: 1; min-width: 140px; }
+
+.library-setup {
+  text-align: center; padding: 40px 20px;
+  border: 2px dashed var(--rule); border-radius: 12px; margin-bottom: 24px;
+}
+.library-setup p { font-family: var(--serif); color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+.library-setup input {
+  font-family: var(--serif); font-size: 14px; padding: 8px 14px;
+  border: 1px solid var(--rule); border-radius: 6px; background: var(--bg);
+  color: var(--text); width: 80%; max-width: 400px; text-align: center;
+}
+.library-setup input:focus { border-color: var(--accent); outline: none; }
+.library-setup .form-btn { margin-top: 12px; }
+
+.library-dropzone {
+  border: 2px dashed var(--rule); border-radius: 12px; padding: 32px 20px;
+  text-align: center; cursor: pointer; transition: all .3s; margin-bottom: 24px;
+}
+.library-dropzone:hover, .library-dropzone.dragover {
+  border-color: var(--accent); background: rgba(198,146,20,.04);
+}
+.library-dropzone-icon { font-size: 28px; margin-bottom: 8px; color: var(--accent); }
+.library-dropzone-text { font-family: var(--serif); font-size: 14px; color: var(--muted); }
+.library-dropzone-text strong { color: var(--accent); cursor: pointer; }
+
+.library-upload-progress {
+  display: none; padding: 12px 18px; border: 1px solid var(--rule);
+  border-radius: 8px; margin-bottom: 16px; background: rgba(198,146,20,.04);
+}
+.library-upload-progress.active { display: block; }
+.library-upload-bar {
+  height: 4px; background: var(--rule); border-radius: 2px; overflow: hidden; margin-top: 8px;
+}
+.library-upload-fill {
+  height: 100%; background: var(--accent); border-radius: 2px; width: 0%;
+  transition: width .3s ease;
+}
+.library-upload-label { font-family: var(--display); font-size: 12px; color: var(--muted); }
+
+.library-stats { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.library-stat { text-align: center; padding: 12px 20px; border: 1px solid var(--rule); border-radius: 8px; flex: 1; min-width: 80px; }
+.library-stat-num { font-family: var(--display); font-size: 24px; color: var(--accent); }
+.library-stat-label { font-family: var(--display); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-top: 4px; }
+
+.library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.library-card {
+  padding: 16px; border: 1px solid var(--rule); border-radius: 8px;
+  transition: all .2s; position: relative;
+}
+.library-card:hover { border-color: rgba(198,146,20,.3); background: rgba(198,146,20,.03); }
+.library-card-preview {
+  width: 100%; height: 120px; border-radius: 6px; margin-bottom: 10px;
+  background: var(--sidebar-bg); display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.library-card-preview img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.library-card-preview .file-type-icon {
+  font-size: 36px; color: var(--muted); opacity: .5;
+}
+.library-card-name {
+  font-family: var(--display); font-size: .9em; font-weight: 500; color: var(--primary);
+  line-height: 1.3; word-break: break-word;
+}
+.library-card-meta {
+  font-family: var(--display); font-size: 10px; color: var(--muted);
+  letter-spacing: 0.05em; margin-top: 6px;
+}
+.library-card-cat {
+  font-family: var(--display); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 10px; background: rgba(198,146,20,.1); color: var(--accent);
+  display: inline-block; margin-top: 6px;
+}
+.library-card-actions {
+  display: flex; gap: 6px; margin-top: 8px;
+}
+.library-card-actions button {
+  background: none; border: none; font-size: 13px; cursor: pointer;
+  color: var(--muted); padding: 2px 6px; border-radius: 4px; transition: color .2s;
+}
+.library-card-actions button:hover { color: var(--accent); }
+.library-card-actions button.danger:hover { color: #c0392b; }
+
+/* File preview modal */
+.file-preview-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 600;
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeIn .15s ease;
+}
+.file-preview-modal {
+  background: var(--bg); border-radius: 12px; padding: 20px;
+  width: 90%; max-width: 800px; max-height: 90vh; overflow: auto;
+  box-shadow: 0 12px 40px rgba(0,0,0,.3); animation: modalIn .2s ease;
+}
+.file-preview-modal .preview-header {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
+}
+.file-preview-modal .preview-title {
+  font-family: var(--display); font-size: 16px; font-weight: 500; color: var(--primary);
+}
+.file-preview-modal .preview-close {
+  background: none; border: none; font-size: 20px; cursor: pointer;
+  color: var(--muted); padding: 4px 8px; border-radius: 4px; transition: color .2s;
+}
+.file-preview-modal .preview-close:hover { color: var(--accent); }
+.file-preview-modal .preview-content { text-align: center; }
+.file-preview-modal .preview-content img { max-width: 100%; max-height: 70vh; border-radius: 6px; }
+.file-preview-modal .preview-content iframe { width: 100%; height: 70vh; border: none; border-radius: 6px; }
+.file-preview-modal .preview-content .no-preview {
+  padding: 40px; color: var(--muted); font-family: var(--serif);
+}
+
 
 /* ══════════════════════════════════════════════════════════
    MOBILE
@@ -1355,6 +1476,10 @@ let handbook     = null;
 let allTeachings = [];
 let currentIdx   = -1;
 
+/* ─── Worker config (Personal Library) ─── */
+const WORKER_URL = localStorage.getItem('suluk_worker_url') || '';
+const WORKER_TOKEN = localStorage.getItem('suluk_worker_token') || '';
+
 /* ─── Boot ─── */
 document.addEventListener('DOMContentLoaded', () => {
   restorePrefs();
@@ -1393,12 +1518,12 @@ function savePrefs() {
    PHASE C — USER DATA
    ══════════════════════════════════════════════════════════ */
 
-let userData = { bookmarks: [], notes: [], highlights: [], journal: {}, recentlyViewed: [], practiceLog: {}, links: [], homework: [] };
+let userData = { bookmarks: [], notes: [], highlights: [], journal: {}, recentlyViewed: [], practiceLog: {}, links: [], homework: [], personalFiles: [] };
 
 function loadUserData() {
   try {
     const s = localStorage.getItem('suluk_user_data');
-    if (s) userData = Object.assign({ bookmarks:[], notes:[], highlights:[], journal:{}, recentlyViewed:[], practiceLog:{}, links:[], homework:[] }, JSON.parse(s));
+    if (s) userData = Object.assign({ bookmarks:[], notes:[], highlights:[], journal:{}, recentlyViewed:[], practiceLog:{}, links:[], homework:[], personalFiles:[] }, JSON.parse(s));
   } catch(e) {}
 }
 function saveUserData() {
@@ -1815,6 +1940,7 @@ function buildSidebarNav() {
   h += '<div class="nav-section-label">Workspace</div>';
   h += '<a class="nav-item" onclick="showLinks(this)" role="button" tabindex="0">⚯ &thinsp;Links</a>';
   h += '<a class="nav-item" onclick="showHomework(this)" role="button" tabindex="0">▣ &thinsp;Homework</a>';
+  h += '<a class="nav-item" onclick="showLibrary(this)" role="button" tabindex="0">◫ &thinsp;My Library</a>';
   nav.innerHTML = h;
 }
 
@@ -3399,6 +3525,521 @@ function deleteHomework(idx) {
   saveUserData();
   showToast('Assignment deleted');
   showHomework();
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   PHASE G3 — PERSONAL CONTENT LIBRARY
+   ══════════════════════════════════════════════════════════ */
+
+const LIBRARY_CATEGORIES = ['Books', 'Notes', 'Presentations', 'Images', 'Homework', 'Other'];
+const FILE_ICONS = {
+  'application/pdf': '📄', 'image/': '🖼', 'video/': '🎬', 'audio/': '🎵',
+  'text/': '📝', 'application/vnd.ms-powerpoint': '📊',
+  'application/vnd.openxmlformats-officedocument.presentationml': '📊',
+};
+
+function getFileIcon(type) {
+  for (const [prefix, icon] of Object.entries(FILE_ICONS)) {
+    if (type && type.startsWith(prefix)) return icon;
+  }
+  return '📎';
+}
+
+function formatFileSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+function getWorkerConfig() {
+  return {
+    url: localStorage.getItem('suluk_worker_url') || '',
+    token: localStorage.getItem('suluk_worker_token') || '',
+  };
+}
+
+function isLibraryConfigured() {
+  const c = getWorkerConfig();
+  return c.url && c.token;
+}
+
+async function workerFetch(path, options = {}) {
+  const c = getWorkerConfig();
+  if (!c.url || !c.token) throw new Error('Library not configured');
+  const resp = await fetch(c.url + path, {
+    ...options,
+    headers: {
+      'Authorization': 'Bearer ' + c.token,
+      ...(options.headers || {}),
+    },
+  });
+  if (!resp.ok) {
+    const err = await resp.json().catch(() => ({ error: 'Request failed' }));
+    throw new Error(err.error || 'Request failed');
+  }
+  return resp;
+}
+
+function showLibrary(el) {
+  if (el) setActiveNav(el);
+  const area = document.getElementById('reading-area');
+
+  if (!isLibraryConfigured()) {
+    area.innerHTML = `
+      <div class="library-page">
+        <h2 style="color: var(--accent); font-family: var(--display); font-weight: 400;">My Library</h2>
+        <div class="library-setup">
+          <p>To use your personal library, connect your Cloudflare Worker.<br>
+          Enter the Worker URL and auth token below.</p>
+          <div class="form-field" style="margin-bottom:12px">
+            <label>Worker URL</label>
+            <input type="url" id="lib-setup-url" placeholder="https://suluk-worker.yourname.workers.dev" />
+          </div>
+          <div class="form-field" style="margin-bottom:12px">
+            <label>Auth Token</label>
+            <input type="password" id="lib-setup-token" placeholder="Your secret token" />
+          </div>
+          <button class="form-btn primary" onclick="saveLibraryConfig()">Connect</button>
+          <button class="form-btn" onclick="testLibraryConfig()" style="margin-left:8px">Test Connection</button>
+          <p id="lib-setup-status" style="margin-top:12px; font-size:13px;"></p>
+        </div>
+      </div>`;
+    return;
+  }
+
+  let catFilter = '';
+  let searchQuery = '';
+
+  area.innerHTML = `
+    <div class="library-page">
+      <h2 style="color: var(--accent); font-family: var(--display); font-weight: 400;">My Library</h2>
+
+      <div class="library-dropzone" id="lib-dropzone">
+        <div class="library-dropzone-icon">⇧</div>
+        <div class="library-dropzone-text">
+          Drag files here or <strong onclick="document.getElementById('lib-file-input').click()">browse</strong>
+        </div>
+        <input type="file" id="lib-file-input" multiple style="display:none" onchange="handleLibraryFiles(this.files)" />
+      </div>
+
+      <div class="library-upload-progress" id="lib-upload-progress">
+        <div class="library-upload-label" id="lib-upload-label">Uploading...</div>
+        <div class="library-upload-bar"><div class="library-upload-fill" id="lib-upload-fill"></div></div>
+      </div>
+
+      <div class="library-toolbar">
+        <select id="lib-cat-filter" onchange="filterLibrary()">
+          <option value="">All Categories</option>
+          ${LIBRARY_CATEGORIES.map(c => '<option value="'+c+'">'+c+'</option>').join('')}
+        </select>
+        <input type="text" id="lib-search" placeholder="Search files…" oninput="filterLibrary()" />
+        <button class="form-btn" onclick="refreshLibraryFromWorker()" title="Sync with cloud">↻ Sync</button>
+        <button class="form-btn" onclick="showLibrarySettings()" title="Settings">⚙</button>
+      </div>
+
+      <div class="library-stats" id="lib-stats"></div>
+      <div class="library-grid" id="lib-grid"></div>
+    </div>`;
+
+  // Setup drag-and-drop
+  const dz = document.getElementById('lib-dropzone');
+  dz.addEventListener('dragover', (e) => { e.preventDefault(); dz.classList.add('dragover'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+  dz.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dz.classList.remove('dragover');
+    handleLibraryFiles(e.dataTransfer.files);
+  });
+
+  renderLibrary();
+}
+
+function renderLibrary() {
+  const files = userData.personalFiles || [];
+  const catFilter = document.getElementById('lib-cat-filter')?.value || '';
+  const search = (document.getElementById('lib-search')?.value || '').toLowerCase();
+
+  let filtered = files;
+  if (catFilter) filtered = filtered.filter(f => f.category === catFilter);
+  if (search) filtered = filtered.filter(f => (f.name || '').toLowerCase().includes(search));
+
+  // Stats
+  const statsEl = document.getElementById('lib-stats');
+  if (statsEl) {
+    const totalSize = files.reduce((s, f) => s + (f.size || 0), 0);
+    const cats = [...new Set(files.map(f => f.category))];
+    statsEl.innerHTML = `
+      <div class="library-stat"><div class="library-stat-num">${files.length}</div><div class="library-stat-label">Files</div></div>
+      <div class="library-stat"><div class="library-stat-num">${formatFileSize(totalSize)}</div><div class="library-stat-label">Total Size</div></div>
+      <div class="library-stat"><div class="library-stat-num">${cats.length}</div><div class="library-stat-label">Categories</div></div>`;
+  }
+
+  // Grid
+  const grid = document.getElementById('lib-grid');
+  if (!grid) return;
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<p style="color:var(--muted); font-family:var(--serif); grid-column:1/-1; text-align:center; padding:40px 0;">' +
+      (files.length === 0 ? 'No files yet — upload something to get started.' : 'No files match your filter.') + '</p>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map((f, i) => {
+    const realIdx = files.indexOf(f);
+    const isImage = (f.type || '').startsWith('image/');
+    const icon = getFileIcon(f.type);
+    const previewUrl = isImage && f.key ? getWorkerConfig().url + '/file/' + encodeURIComponent(f.key) : '';
+
+    return `
+      <div class="library-card">
+        <div class="library-card-preview" onclick="previewLibraryFile(${realIdx})">
+          ${isImage && previewUrl
+            ? `<img src="${previewUrl}" alt="${f.name}" onerror="this.outerHTML='<div class=\\'file-type-icon\\'>${icon}</div>'" crossorigin="use-credentials" />`
+            : `<div class="file-type-icon">${icon}</div>`
+          }
+        </div>
+        <div class="library-card-name">${escapeHtml(f.name || 'Unnamed')}</div>
+        <div class="library-card-meta">${formatFileSize(f.size || 0)} · ${f.uploaded || ''}</div>
+        <div class="library-card-cat">${f.category || 'Other'}</div>
+        <div class="library-card-actions">
+          <button onclick="downloadLibraryFile(${realIdx})" title="Download">⤓</button>
+          <button onclick="previewLibraryFile(${realIdx})" title="Preview">◎</button>
+          <button onclick="editLibraryFile(${realIdx})" title="Edit category">✎</button>
+          <button class="danger" onclick="deleteLibraryFile(${realIdx})" title="Delete">✕</button>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function filterLibrary() {
+  renderLibrary();
+}
+
+async function handleLibraryFiles(fileList) {
+  if (!fileList || fileList.length === 0) return;
+
+  const progressEl = document.getElementById('lib-upload-progress');
+  const labelEl = document.getElementById('lib-upload-label');
+  const fillEl = document.getElementById('lib-upload-fill');
+  if (progressEl) progressEl.classList.add('active');
+
+  const total = fileList.length;
+  let uploaded = 0;
+
+  for (const file of fileList) {
+    if (labelEl) labelEl.textContent = `Uploading ${uploaded + 1} of ${total}: ${file.name}`;
+    if (fillEl) fillEl.style.width = ((uploaded / total) * 100) + '%';
+
+    // Ask for category on first file, reuse for batch
+    let category = 'Other';
+    if (total === 1) {
+      category = await pickCategory(file.name);
+    }
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('category', category);
+
+      const resp = await workerFetch('/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const result = await resp.json();
+
+      // Save metadata locally
+      userData.personalFiles.push({
+        id: 'file_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
+        key: result.key,
+        name: result.name || file.name,
+        size: result.size || file.size,
+        type: result.type || file.type,
+        category: result.category || category,
+        uploaded: new Date().toISOString().split('T')[0],
+      });
+      saveUserData();
+      uploaded++;
+    } catch (err) {
+      showToast('Upload failed: ' + err.message);
+    }
+  }
+
+  if (fillEl) fillEl.style.width = '100%';
+  if (labelEl) labelEl.textContent = `Done — ${uploaded} file${uploaded !== 1 ? 's' : ''} uploaded`;
+  setTimeout(() => { if (progressEl) progressEl.classList.remove('active'); }, 2000);
+
+  showToast(uploaded + ' file' + (uploaded !== 1 ? 's' : '') + ' uploaded');
+  renderLibrary();
+}
+
+function pickCategory(fileName) {
+  return new Promise((resolve) => {
+    const overlay = document.createElement('div');
+    overlay.className = 'form-overlay';
+    overlay.innerHTML = `
+      <div class="form-modal">
+        <h2>Choose Category</h2>
+        <p style="font-family:var(--serif); font-size:14px; color:var(--muted); margin-bottom:16px;">
+          File: ${escapeHtml(fileName)}
+        </p>
+        <div class="form-field">
+          <label>Category</label>
+          <select id="upload-cat-select">
+            ${LIBRARY_CATEGORIES.map(c => '<option value="'+c+'">'+c+'</option>').join('')}
+          </select>
+        </div>
+        <div class="form-actions">
+          <button class="form-btn primary" id="upload-cat-ok">Upload</button>
+        </div>
+      </div>`;
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) { overlay.remove(); resolve('Other'); }
+    });
+    document.getElementById('upload-cat-ok').addEventListener('click', () => {
+      const cat = document.getElementById('upload-cat-select').value;
+      overlay.remove();
+      resolve(cat);
+    });
+  });
+}
+
+async function downloadLibraryFile(idx) {
+  const f = userData.personalFiles[idx];
+  if (!f || !f.key) return;
+  try {
+    const resp = await workerFetch('/file/' + encodeURIComponent(f.key));
+    const blob = await resp.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = f.name || 'file'; a.click();
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    showToast('Download failed: ' + err.message);
+  }
+}
+
+async function previewLibraryFile(idx) {
+  const f = userData.personalFiles[idx];
+  if (!f || !f.key) return;
+  const config = getWorkerConfig();
+  const fileUrl = config.url + '/file/' + encodeURIComponent(f.key);
+  const type = f.type || '';
+
+  const overlay = document.createElement('div');
+  overlay.className = 'file-preview-overlay';
+
+  let contentHtml = '';
+  if (type.startsWith('image/')) {
+    contentHtml = `<img src="${fileUrl}" alt="${escapeHtml(f.name)}" crossorigin="use-credentials" />`;
+  } else if (type === 'application/pdf') {
+    contentHtml = `<iframe src="${fileUrl}#toolbar=1" title="${escapeHtml(f.name)}"></iframe>`;
+  } else if (type.startsWith('text/')) {
+    contentHtml = '<div class="no-preview">Loading text...</div>';
+  } else {
+    contentHtml = `<div class="no-preview">
+      <p style="font-size:48px; margin-bottom:16px;">${getFileIcon(type)}</p>
+      <p>${escapeHtml(f.name)}</p>
+      <p style="font-size:13px; margin-top:8px;">${formatFileSize(f.size || 0)} · ${type || 'unknown type'}</p>
+      <button class="form-btn primary" onclick="downloadLibraryFile(${idx})" style="margin-top:16px;">Download File</button>
+    </div>`;
+  }
+
+  overlay.innerHTML = `
+    <div class="file-preview-modal">
+      <div class="preview-header">
+        <div class="preview-title">${escapeHtml(f.name)}</div>
+        <button class="preview-close" onclick="this.closest('.file-preview-overlay').remove()">✕</button>
+      </div>
+      <div class="preview-content">${contentHtml}</div>
+    </div>`;
+
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+
+  // For text files, fetch and render
+  if (type.startsWith('text/')) {
+    try {
+      const resp = await workerFetch('/file/' + encodeURIComponent(f.key));
+      const text = await resp.text();
+      overlay.querySelector('.no-preview').outerHTML =
+        `<pre style="text-align:left; white-space:pre-wrap; font-family:var(--serif); font-size:14px; line-height:1.7; max-height:70vh; overflow:auto; padding:16px;">${escapeHtml(text)}</pre>`;
+    } catch (err) {
+      overlay.querySelector('.no-preview').textContent = 'Failed to load: ' + err.message;
+    }
+  }
+}
+
+function editLibraryFile(idx) {
+  const f = userData.personalFiles[idx];
+  if (!f) return;
+  const overlay = document.createElement('div');
+  overlay.className = 'form-overlay';
+  overlay.innerHTML = `
+    <div class="form-modal">
+      <h2>Edit File</h2>
+      <div class="form-field">
+        <label>File Name</label>
+        <input type="text" id="edit-file-name" value="${escapeHtml(f.name || '')}" />
+      </div>
+      <div class="form-field">
+        <label>Category</label>
+        <select id="edit-file-cat">
+          ${LIBRARY_CATEGORIES.map(c => '<option value="'+c+'"'+(f.category===c?' selected':'')+'>'+c+'</option>').join('')}
+        </select>
+      </div>
+      <div class="form-actions">
+        <button class="form-btn" onclick="this.closest('.form-overlay').remove()">Cancel</button>
+        <button class="form-btn primary" onclick="saveLibraryFileEdit(${idx})">Save</button>
+      </div>
+    </div>`;
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+}
+
+function saveLibraryFileEdit(idx) {
+  const f = userData.personalFiles[idx];
+  if (!f) return;
+  f.name = document.getElementById('edit-file-name').value.trim() || f.name;
+  f.category = document.getElementById('edit-file-cat').value;
+  saveUserData();
+  document.querySelector('.form-overlay')?.remove();
+  showToast('File updated');
+  renderLibrary();
+}
+
+async function deleteLibraryFile(idx) {
+  const f = userData.personalFiles[idx];
+  if (!f) return;
+  if (!confirm('Delete "' + (f.name || 'this file') + '"? This removes it from cloud storage.')) return;
+
+  try {
+    await workerFetch('/file/' + encodeURIComponent(f.key), { method: 'DELETE' });
+  } catch (err) {
+    showToast('Cloud delete failed: ' + err.message);
+    // Still remove locally
+  }
+
+  userData.personalFiles.splice(idx, 1);
+  saveUserData();
+  showToast('File deleted');
+  renderLibrary();
+}
+
+async function refreshLibraryFromWorker() {
+  showToast('Syncing with cloud...');
+  try {
+    const resp = await workerFetch('/files');
+    const data = await resp.json();
+    const remoteFiles = data.files || [];
+
+    // Merge: keep local metadata, add any remote files not in local
+    const localKeys = new Set(userData.personalFiles.map(f => f.key));
+    let added = 0;
+    for (const rf of remoteFiles) {
+      if (rf.key.startsWith('_backups/')) continue; // skip backup files
+      if (!localKeys.has(rf.key)) {
+        userData.personalFiles.push({
+          id: 'file_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
+          key: rf.key,
+          name: rf.name,
+          size: rf.size,
+          type: rf.type,
+          category: rf.category || 'Other',
+          uploaded: rf.uploaded ? new Date(rf.uploaded).toISOString().split('T')[0] : '',
+        });
+        added++;
+      }
+    }
+
+    // Remove local entries whose keys are gone from remote
+    const remoteKeys = new Set(remoteFiles.map(f => f.key));
+    userData.personalFiles = userData.personalFiles.filter(f => remoteKeys.has(f.key));
+
+    saveUserData();
+    showToast(added > 0 ? `Synced — ${added} new file${added !== 1 ? 's' : ''} found` : 'Library is up to date');
+    renderLibrary();
+  } catch (err) {
+    showToast('Sync failed: ' + err.message);
+  }
+}
+
+function saveLibraryConfig() {
+  const url = document.getElementById('lib-setup-url').value.trim().replace(/\/+$/, '');
+  const token = document.getElementById('lib-setup-token').value.trim();
+  if (!url || !token) { showToast('Please enter both URL and token'); return; }
+  localStorage.setItem('suluk_worker_url', url);
+  localStorage.setItem('suluk_worker_token', token);
+  showToast('Library connected');
+  showLibrary();
+}
+
+async function testLibraryConfig() {
+  const url = document.getElementById('lib-setup-url').value.trim().replace(/\/+$/, '');
+  const token = document.getElementById('lib-setup-token').value.trim();
+  const statusEl = document.getElementById('lib-setup-status');
+  if (!url || !token) { if (statusEl) statusEl.textContent = '⚠ Enter URL and token first'; return; }
+  if (statusEl) statusEl.textContent = 'Testing...';
+
+  try {
+    const resp = await fetch(url + '/files', {
+      headers: { 'Authorization': 'Bearer ' + token },
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      if (statusEl) statusEl.innerHTML = '<span style="color:#2e7d32">✓ Connected — ' + (data.count || 0) + ' files found</span>';
+    } else {
+      const err = await resp.json().catch(() => ({}));
+      if (statusEl) statusEl.innerHTML = '<span style="color:#c0392b">✕ ' + (err.error || 'Connection failed — check URL and token') + '</span>';
+    }
+  } catch (e) {
+    if (statusEl) statusEl.innerHTML = '<span style="color:#c0392b">✕ Network error — check the URL</span>';
+  }
+}
+
+function showLibrarySettings() {
+  const config = getWorkerConfig();
+  const overlay = document.createElement('div');
+  overlay.className = 'form-overlay';
+  overlay.innerHTML = `
+    <div class="form-modal">
+      <h2>Library Settings</h2>
+      <div class="form-field">
+        <label>Worker URL</label>
+        <input type="url" id="lib-settings-url" value="${escapeHtml(config.url)}" />
+      </div>
+      <div class="form-field">
+        <label>Auth Token</label>
+        <input type="password" id="lib-settings-token" value="${escapeHtml(config.token)}" />
+      </div>
+      <div class="form-actions">
+        <button class="form-btn danger" onclick="disconnectLibrary()" style="margin-right:auto">Disconnect</button>
+        <button class="form-btn" onclick="this.closest('.form-overlay').remove()">Cancel</button>
+        <button class="form-btn primary" onclick="updateLibrarySettings()">Save</button>
+      </div>
+    </div>`;
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+}
+
+function updateLibrarySettings() {
+  const url = document.getElementById('lib-settings-url').value.trim().replace(/\/+$/, '');
+  const token = document.getElementById('lib-settings-token').value.trim();
+  if (!url || !token) { showToast('URL and token required'); return; }
+  localStorage.setItem('suluk_worker_url', url);
+  localStorage.setItem('suluk_worker_token', token);
+  document.querySelector('.form-overlay')?.remove();
+  showToast('Settings saved');
+}
+
+function disconnectLibrary() {
+  if (!confirm('Disconnect library? Your files stay in the cloud but won\'t be accessible until you reconnect.')) return;
+  localStorage.removeItem('suluk_worker_url');
+  localStorage.removeItem('suluk_worker_token');
+  document.querySelector('.form-overlay')?.remove();
+  showToast('Library disconnected');
+  showLibrary();
 }
 
 
