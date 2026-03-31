@@ -2629,15 +2629,34 @@ async function loadAudioManifest() {
   try {
     const res = await fetch('data/audio_manifest.json');
     audioManifest = await res.json();
+    buildAudioPlaylist();
     return audioManifest;
   } catch(e) { audioManifest = { classes: {} }; return audioManifest; }
+}
+
+function buildAudioPlaylist() {
+  if (!audioManifest) return;
+  audioPlaylist = [];
+  const classes = audioManifest.classes || {};
+  const classIds = Object.keys(classes).sort((a, b) => parseInt(a.replace('C','')) - parseInt(b.replace('C','')));
+  for (const cid of classIds) {
+    const cls = classes[cid];
+    (cls.clips || []).forEach((clip, i) => {
+      audioPlaylist.push({ classId: cid, clipIdx: i, clip, classInfo: cls });
+    });
+  }
 }
 
 function initAudioElement() {
   if (audioEl) return;
   audioEl = new Audio();
+  // No crossOrigin needed — Drive URLs redirect and serve with CORS *
   audioEl.addEventListener('timeupdate', updateAudioProgress);
   audioEl.addEventListener('ended', () => audioSkip(1));
+  audioEl.addEventListener('error', () => {
+    showToast('Audio failed to load — check sharing settings');
+    closeAudio();
+  });
   audioEl.addEventListener('play', () => {
     document.getElementById('ab-play-btn')?.classList.add('playing');
     document.getElementById('ab-play-btn').textContent = '⏸';
@@ -2663,14 +2682,9 @@ async function showAudioLibrary(el) {
   if (!classIds.length) {
     h += emptyState('♪', 'No audio clips available yet');
   } else {
-    // Build flat playlist
-    audioPlaylist = [];
     for (const cid of classIds) {
       const cls = classes[cid];
       const clips = cls.clips || [];
-      clips.forEach((clip, i) => {
-        audioPlaylist.push({ classId: cid, clipIdx: i, clip, classInfo: cls });
-      });
 
       const duration = clips.reduce((sum, c) => {
         return sum + timeDiffSeconds(c.start_time, c.end_time);
@@ -2735,13 +2749,17 @@ function playAudioClip(plIdx) {
   audioCurrentIdx = plIdx;
   audioEl.src = item.clip.url;
   audioEl.playbackRate = audioSpeeds[audioSpeedIdx];
-  audioEl.play();
 
-  // Show bar
+  // Show bar immediately so user sees feedback
   const bar = document.getElementById('audio-bar');
   bar.classList.add('visible');
   document.getElementById('ab-title').textContent = item.clip.title;
   document.getElementById('ab-meta').textContent = `${item.classId} · ${item.classInfo.instructor || ''}`;
+
+  audioEl.play().catch(err => {
+    console.warn('Audio play failed:', err.message);
+    showToast('Tap play to start audio');
+  });
 }
 
 function toggleAudioPlay() {
