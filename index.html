@@ -3699,7 +3699,7 @@ function renderLibrary() {
             : `<div class="file-type-icon">${icon}</div>`
           }
         </div>
-        <div class="library-card-name">${escapeHtml(f.name || 'Unnamed')}</div>
+        <div class="library-card-name">${escHtml(f.name || 'Unnamed')}</div>
         <div class="library-card-meta">${formatFileSize(f.size || 0)} · ${f.uploaded || ''}</div>
         <div class="library-card-cat">${f.category || 'Other'}</div>
         <div class="library-card-actions">
@@ -3796,7 +3796,7 @@ function pickCategory(fileName) {
       <div class="form-modal">
         <h2>Choose Category</h2>
         <p style="font-family:var(--serif); font-size:14px; color:var(--muted); margin-bottom:16px;">
-          File: ${escapeHtml(fileName)}
+          File: ${escHtml(fileName)}
         </p>
         <div class="form-field">
           <label>Category</label>
@@ -3847,15 +3847,15 @@ async function previewLibraryFile(idx) {
 
   let contentHtml = '';
   if (type.startsWith('image/')) {
-    contentHtml = `<img src="${fileUrl}" alt="${escapeHtml(f.name)}" crossorigin="use-credentials" />`;
+    contentHtml = `<img src="${fileUrl}" alt="${escHtml(f.name)}" crossorigin="use-credentials" />`;
   } else if (type === 'application/pdf') {
-    contentHtml = `<iframe src="${fileUrl}#toolbar=1" title="${escapeHtml(f.name)}"></iframe>`;
+    contentHtml = `<iframe src="${fileUrl}#toolbar=1" title="${escHtml(f.name)}"></iframe>`;
   } else if (type.startsWith('text/')) {
     contentHtml = '<div class="no-preview">Loading text...</div>';
   } else {
     contentHtml = `<div class="no-preview">
       <p style="font-size:48px; margin-bottom:16px;">${getFileIcon(type)}</p>
-      <p>${escapeHtml(f.name)}</p>
+      <p>${escHtml(f.name)}</p>
       <p style="font-size:13px; margin-top:8px;">${formatFileSize(f.size || 0)} · ${type || 'unknown type'}</p>
       <button class="form-btn primary" onclick="downloadLibraryFile(${idx})" style="margin-top:16px;">Download File</button>
     </div>`;
@@ -3864,7 +3864,7 @@ async function previewLibraryFile(idx) {
   overlay.innerHTML = `
     <div class="file-preview-modal">
       <div class="preview-header">
-        <div class="preview-title">${escapeHtml(f.name)}</div>
+        <div class="preview-title">${escHtml(f.name)}</div>
         <button class="preview-close" onclick="this.closest('.file-preview-overlay').remove()">✕</button>
       </div>
       <div class="preview-content">${contentHtml}</div>
@@ -3879,7 +3879,7 @@ async function previewLibraryFile(idx) {
       const resp = await workerFetch('/file/' + encodeURIComponent(f.key));
       const text = await resp.text();
       overlay.querySelector('.no-preview').outerHTML =
-        `<pre style="text-align:left; white-space:pre-wrap; font-family:var(--serif); font-size:14px; line-height:1.7; max-height:70vh; overflow:auto; padding:16px;">${escapeHtml(text)}</pre>`;
+        `<pre style="text-align:left; white-space:pre-wrap; font-family:var(--serif); font-size:14px; line-height:1.7; max-height:70vh; overflow:auto; padding:16px;">${escHtml(text)}</pre>`;
     } catch (err) {
       overlay.querySelector('.no-preview').textContent = 'Failed to load: ' + err.message;
     }
@@ -3896,7 +3896,7 @@ function editLibraryFile(idx) {
       <h2>Edit File</h2>
       <div class="form-field">
         <label>File Name</label>
-        <input type="text" id="edit-file-name" value="${escapeHtml(f.name || '')}" />
+        <input type="text" id="edit-file-name" value="${escHtml(f.name || '')}" />
       </div>
       <div class="form-field">
         <label>Category</label>
@@ -4022,11 +4022,11 @@ function showLibrarySettings() {
       <h2>Library Settings</h2>
       <div class="form-field">
         <label>Worker URL</label>
-        <input type="url" id="lib-settings-url" value="${escapeHtml(config.url)}" />
+        <input type="url" id="lib-settings-url" value="${escHtml(config.url)}" />
       </div>
       <div class="form-field">
         <label>Auth Token</label>
-        <input type="password" id="lib-settings-token" value="${escapeHtml(config.token)}" />
+        <input type="password" id="lib-settings-token" value="${escHtml(config.token)}" />
       </div>
       <div class="form-actions">
         <button class="form-btn danger" onclick="disconnectLibrary()" style="margin-right:auto">Disconnect</button>
