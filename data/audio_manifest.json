@@ -113,7 +113,7 @@
           "filename": "01_session_end_and_next_steps.mp3",
           "category": "closing",
           "start_time": "00:00:05",
-          "end_time": "01:44",
+          "end_time": "00:01:44",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_01_session_end_and_next_steps.mp3"
         },
         {
@@ -121,8 +121,8 @@
           "title": "Recap: Concentration & Breath",
           "filename": "02_recap_concentration_and_breath.mp3",
           "category": "teaching",
-          "start_time": "01:44",
-          "end_time": "09:56",
+          "start_time": "00:01:44",
+          "end_time": "00:09:56",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_02_recap_concentration_and_breath.mp3"
         },
         {
@@ -130,8 +130,8 @@
           "title": "Breath Sphere Visualization",
           "filename": "03_breath_sphere_visualization.mp3",
           "category": "meditation",
-          "start_time": "09:56",
-          "end_time": "17:14",
+          "start_time": "00:09:56",
+          "end_time": "00:17:14",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_03_breath_sphere_visualization.mp3"
         },
         {
@@ -139,8 +139,8 @@
           "title": "Preparing for Listening Practice",
           "filename": "04_preparing_for_listening_practice.mp3",
           "category": "practice",
-          "start_time": "17:14",
-          "end_time": "19:21",
+          "start_time": "00:17:14",
+          "end_time": "00:19:21",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_04_preparing_for_listening_practice.mp3"
         },
         {
@@ -148,8 +148,8 @@
           "title": "Music for Contemplation",
           "filename": "05_music_for_contemplation.mp3",
           "category": "meditation",
-          "start_time": "19:21",
-          "end_time": "27:35",
+          "start_time": "00:19:21",
+          "end_time": "00:27:35",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_05_music_for_contemplation.mp3"
         },
         {
@@ -157,8 +157,8 @@
           "title": "The Luminous Self and Persona",
           "filename": "06_the_luminous_self_and_persona.mp3",
           "category": "teaching",
-          "start_time": "27:35",
-          "end_time": "37:00",
+          "start_time": "00:27:35",
+          "end_time": "00:37:00",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_06_the_luminous_self_and_persona.mp3"
         },
         {
@@ -166,8 +166,8 @@
           "title": "Gaze Concentration Practice",
           "filename": "07_gaze_concentration_practice.mp3",
           "category": "practice",
-          "start_time": "37:00",
-          "end_time": "39:23",
+          "start_time": "00:37:00",
+          "end_time": "00:39:23",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_07_gaze_concentration_practice.mp3"
         },
         {
@@ -175,8 +175,8 @@
           "title": "Moon and Star Visualization",
           "filename": "08_moon_and_star_visualization.mp3",
           "category": "meditation",
-          "start_time": "39:23",
-          "end_time": "42:32",
+          "start_time": "00:39:23",
+          "end_time": "00:42:32",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_08_moon_and_star_visualization.mp3"
         },
         {
@@ -184,8 +184,8 @@
           "title": "Walking as a Practice",
           "filename": "09_walking_as_a_practice.mp3",
           "category": "practice",
-          "start_time": "42:32",
-          "end_time": "44:48",
+          "start_time": "00:42:32",
+          "end_time": "00:44:48",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_09_walking_as_a_practice.mp3"
         },
         {
@@ -193,8 +193,8 @@
           "title": "Closing Prayer and Blessing",
           "filename": "10_closing_prayer_and_blessing.mp3",
           "category": "prayer",
-          "start_time": "44:48",
-          "end_time": "50:07",
+          "start_time": "00:44:48",
+          "end_time": "00:50:07",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_10_closing_prayer_and_blessing.mp3"
         }
       ]
@@ -782,7 +782,7 @@
           "filename": "07_closing_prayers_and_blessing.mp3",
           "category": "prayer|closing",
           "start_time": "00:44:51",
-          "end_time": "59:51",
+          "end_time": "00:59:51",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C16/Concentration_Audio_C16_07_closing_prayers_and_blessing.mp3"
         }
       ]
@@ -1214,7 +1214,7 @@
         },
         {
           "segment": 6,
-          "title": "Itis\u00e2l Practice: Intoning Ha",
+          "title": "Itisâl Practice: Intoning Ha",
           "filename": "06_itisal_practice_intoning_ha.mp3",
           "category": "practice",
           "start_time": "00:35:31",
@@ -1511,8 +1511,8 @@
           "title": "Invocation and The One's Attributes",
           "filename": "01_invocation_and_the_ones_attributes.mp3",
           "category": "prayer|teaching",
-          "start_time": "00:04",
-          "end_time": "04:40",
+          "start_time": "00:00:04",
+          "end_time": "00:04:40",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_01_invocation_and_the_ones_attributes.mp3"
         },
         {
@@ -1520,8 +1520,8 @@
           "title": "Illuminated Souls and Messenger",
           "filename": "02_illuminated_souls_and_messenger.mp3",
           "category": "teaching",
-          "start_time": "04:40",
-          "end_time": "09:50",
+          "start_time": "00:04:40",
+          "end_time": "00:09:50",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_02_illuminated_souls_and_messenger.mp3"
         },
         {
@@ -1529,8 +1529,8 @@
           "title": "Reflection on 'I' Exercise",
           "filename": "03_reflection_on_i_exercise.mp3",
           "category": "discussion",
-          "start_time": "09:50",
-          "end_time": "13:29",
+          "start_time": "00:09:50",
+          "end_time": "00:13:29",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_03_reflection_on_i_exercise.mp3"
         },
         {
@@ -1538,8 +1538,8 @@
           "title": "New Task: Earth Orientation",
           "filename": "04_new_task_earth_orientation.mp3",
           "category": "practice",
-          "start_time": "13:29",
-          "end_time": "17:02",
+          "start_time": "00:13:29",
+          "end_time": "00:17:02",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_04_new_task_earth_orientation.mp3"
         },
         {
@@ -1547,8 +1547,8 @@
           "title": "Overcoming Prayer Resistance",
           "filename": "05_overcoming_prayer_resistance.mp3",
           "category": "teaching",
-          "start_time": "17:02",
-          "end_time": "25:32",
+          "start_time": "00:17:02",
+          "end_time": "00:25:32",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_05_overcoming_prayer_resistance.mp3"
         },
         {
@@ -1556,8 +1556,8 @@
           "title": "Saum Prayer: Praise Be To Thee",
           "filename": "06_saum_prayer_praise_be_to_thee.mp3",
           "category": "prayer|teaching",
-          "start_time": "25:32",
-          "end_time": "31:25",
+          "start_time": "00:25:32",
+          "end_time": "00:31:25",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_06_saum_prayer_praise_be_to_thee.mp3"
         },
         {
@@ -1565,8 +1565,8 @@
           "title": "Saum Prayer: Omnipotent Being",
           "filename": "07_saum_prayer_omnipotent_being.mp3",
           "category": "prayer|teaching",
-          "start_time": "31:25",
-          "end_time": "34:33",
+          "start_time": "00:31:25",
+          "end_time": "00:34:33",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_07_saum_prayer_omnipotent_being.mp3"
         },
         {
@@ -1574,8 +1574,8 @@
           "title": "Saum Prayer: Parental Arms",
           "filename": "08_saum_prayer_parental_arms.mp3",
           "category": "prayer|teaching",
-          "start_time": "34:33",
-          "end_time": "39:51",
+          "start_time": "00:34:33",
+          "end_time": "00:39:51",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_08_saum_prayer_parental_arms.mp3"
         },
         {
@@ -1583,8 +1583,8 @@
           "title": "Saum Prayer: Merciful Sovereign",
           "filename": "09_saum_prayer_merciful_sovereign.mp3",
           "category": "prayer|teaching",
-          "start_time": "39:51",
-          "end_time": "42:13",
+          "start_time": "00:39:51",
+          "end_time": "00:42:13",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_09_saum_prayer_merciful_sovereign.mp3"
         },
         {
@@ -1592,8 +1592,8 @@
           "title": "Full Saum and Salat Prayers",
           "filename": "10_full_saum_and_salat_prayers.mp3",
           "category": "prayer",
-          "start_time": "42:13",
-          "end_time": "44:03",
+          "start_time": "00:42:13",
+          "end_time": "00:44:03",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_10_full_saum_and_salat_prayers.mp3"
         },
         {
@@ -1601,8 +1601,8 @@
           "title": "Post-Prayer Silence & Wholesome Life",
           "filename": "11_post_prayer_silence_and_wholesome_life.mp3",
           "category": "teaching",
-          "start_time": "44:03",
-          "end_time": "46:17",
+          "start_time": "00:44:03",
+          "end_time": "00:46:17",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_11_post_prayer_silence_and_wholesome_life.mp3"
         },
         {
@@ -1610,8 +1610,8 @@
           "title": "Wholesome Life: Pure Diet",
           "filename": "12_wholesome_life_pure_diet.mp3",
           "category": "teaching",
-          "start_time": "46:17",
-          "end_time": "50:04",
+          "start_time": "00:46:17",
+          "end_time": "00:50:04",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_12_wholesome_life_pure_diet.mp3"
         },
         {
@@ -1619,8 +1619,8 @@
           "title": "Wholesome Life: Air & Regularity",
           "filename": "13_wholesome_life_air_and_regularity.mp3",
           "category": "teaching",
-          "start_time": "50:04",
-          "end_time": "52:52",
+          "start_time": "00:50:04",
+          "end_time": "00:52:52",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_13_wholesome_life_air_and_regularity.mp3"
         },
         {
@@ -1628,8 +1628,8 @@
           "title": "Wholesome Life: Thought & Feeling",
           "filename": "14_wholesome_life_thought_and_feeling.mp3",
           "category": "teaching",
-          "start_time": "52:52",
-          "end_time": "55:10",
+          "start_time": "00:52:52",
+          "end_time": "00:55:10",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_14_wholesome_life_thought_and_feeling.mp3"
         },
         {
@@ -1637,8 +1637,8 @@
           "title": "Trust, Hope, and Enduring Life",
           "filename": "15_trust_hope_and_enduring_life.mp3",
           "category": "reading|teaching",
-          "start_time": "55:10",
-          "end_time": "58:49",
+          "start_time": "00:55:10",
+          "end_time": "00:58:49",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_15_trust_hope_and_enduring_life.mp3"
         },
         {
@@ -1646,7 +1646,7 @@
           "title": "Rule: No Advantage from Ignorance",
           "filename": "16_rule_no_advantage_from_ignorance.mp3",
           "category": "discussion",
-          "start_time": "58:49",
+          "start_time": "00:58:49",
           "end_time": "1:04:18",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_16_rule_no_advantage_from_ignorance.mp3"
         },
@@ -1673,7 +1673,7 @@
           "filename": "01_opening_reflection_body_temple.mp3",
           "category": "teaching",
           "start_time": "00:00:05",
-          "end_time": "01:06:00",
+          "end_time": "00:01:06",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_01_opening_reflection_body_temple.mp3"
         },
         {
@@ -1681,8 +1681,8 @@
           "title": "Yellow Color Meditation",
           "filename": "02_yellow_color_meditation.mp3",
           "category": "meditation",
-          "start_time": "01:06:00",
-          "end_time": "05:51:00",
+          "start_time": "00:01:06",
+          "end_time": "00:05:51",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_02_yellow_color_meditation.mp3"
         },
         {
@@ -1690,8 +1690,8 @@
           "title": "Reflecting on Yellow Practice",
           "filename": "03_reflecting_on_yellow_practice.mp3",
           "category": "teaching|reading|practice",
-          "start_time": "05:51:00",
-          "end_time": "09:04:00",
+          "start_time": "00:05:51",
+          "end_time": "00:09:04",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_03_reflecting_on_yellow_practice.mp3"
         },
         {
@@ -1699,8 +1699,8 @@
           "title": "Star Visualization Practice",
           "filename": "04_star_visualization_practice.mp3",
           "category": "practice|meditation",
-          "start_time": "09:04:00",
-          "end_time": "16:38:00",
+          "start_time": "00:09:04",
+          "end_time": "00:16:38",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_04_star_visualization_practice.mp3"
         },
         {
@@ -1708,8 +1708,8 @@
           "title": "Common Sense & Smell Teaching",
           "filename": "05_common_sense_and_smell_teaching.mp3",
           "category": "teaching",
-          "start_time": "16:38:00",
-          "end_time": "22:22:00",
+          "start_time": "00:16:38",
+          "end_time": "00:22:22",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_05_common_sense_and_smell_teaching.mp3"
         },
         {
@@ -1717,8 +1717,8 @@
           "title": "Rose Essence Smell Practice",
           "filename": "06_rose_essence_smell_practice.mp3",
           "category": "practice|meditation",
-          "start_time": "22:22:00",
-          "end_time": "26:47:00",
+          "start_time": "00:22:22",
+          "end_time": "00:26:47",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_06_rose_essence_smell_practice.mp3"
         },
         {
@@ -1726,8 +1726,8 @@
           "title": "The Point Concentration Teaching",
           "filename": "07_the_point_concentration_teaching.mp3",
           "category": "teaching|practice",
-          "start_time": "26:47:00",
-          "end_time": "31:17:00",
+          "start_time": "00:26:47",
+          "end_time": "00:31:17",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_07_the_point_concentration_teaching.mp3"
         },
         {
@@ -1735,8 +1735,8 @@
           "title": "Dot Gaze Concentration",
           "filename": "08_dot_gaze_concentration.mp3",
           "category": "practice",
-          "start_time": "31:17:00",
-          "end_time": "34:51:00",
+          "start_time": "00:31:17",
+          "end_time": "00:34:51",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_08_dot_gaze_concentration.mp3"
         },
         {
@@ -1744,8 +1744,8 @@
           "title": "Faculties of Mind: Imagination",
           "filename": "09_faculties_of_mind_imagination.mp3",
           "category": "teaching",
-          "start_time": "34:51:00",
-          "end_time": "39:25:00",
+          "start_time": "00:34:51",
+          "end_time": "00:39:25",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_09_faculties_of_mind_imagination.mp3"
         },
         {
@@ -1753,8 +1753,8 @@
           "title": "Imagination Exercise: Encounter",
           "filename": "10_imagination_exercise_encounter.mp3",
           "category": "practice",
-          "start_time": "39:25:00",
-          "end_time": "47:47:00",
+          "start_time": "00:39:25",
+          "end_time": "00:47:47",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_10_imagination_exercise_encounter.mp3"
         },
         {
@@ -1762,8 +1762,8 @@
           "title": "Salat Prayer: Lineages & Meaning",
           "filename": "11_salat_prayer_lineages_and_meaning.mp3",
           "category": "teaching",
-          "start_time": "47:47:00",
-          "end_time": "54:15:00",
+          "start_time": "00:47:47",
+          "end_time": "00:54:15",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_11_salat_prayer_lineages_and_meaning.mp3"
         },
         {
@@ -1771,7 +1771,7 @@
           "title": "Salat: Ahl al-Bayt and Revelation",
           "filename": "12_salat_ahl_al_bayt_and_revelation.mp3",
           "category": "teaching",
-          "start_time": "54:15:00",
+          "start_time": "00:54:15",
           "end_time": "01:01:46",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_12_salat_ahl_al_bayt_and_revelation.mp3"
         },
@@ -1825,7 +1825,7 @@
           "filename": "01_opening_and_invocation.mp3",
           "category": "prayer",
           "start_time": "00:00:05",
-          "end_time": "01:07",
+          "end_time": "00:01:07",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_01_opening_and_invocation.mp3"
         },
         {
@@ -1833,8 +1833,8 @@
           "title": "Teaching on Concentration",
           "filename": "02_teaching_on_concentration.mp3",
           "category": "teaching",
-          "start_time": "01:07",
-          "end_time": "07:47",
+          "start_time": "00:01:07",
+          "end_time": "00:07:47",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_02_teaching_on_concentration.mp3"
         },
         {
@@ -1842,8 +1842,8 @@
           "title": "Meaning of Amin Prayer",
           "filename": "03_meaning_of_amin_prayer.mp3",
           "category": "teaching|prayer",
-          "start_time": "07:47",
-          "end_time": "15:20",
+          "start_time": "00:07:47",
+          "end_time": "00:15:20",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_03_meaning_of_amin_prayer.mp3"
         },
         {
@@ -1851,8 +1851,8 @@
           "title": "Chivalric Rule: Do Not Boast",
           "filename": "04_chivalric_rule_do_not_boast.mp3",
           "category": "discussion|teaching",
-          "start_time": "15:20",
-          "end_time": "25:26",
+          "start_time": "00:15:20",
+          "end_time": "00:25:26",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_04_chivalric_rule_do_not_boast.mp3"
         },
         {
@@ -1860,8 +1860,8 @@
           "title": "Murshid on Ego and Vanity",
           "filename": "05_murshid_on_ego_and_vanity.mp3",
           "category": "reading",
-          "start_time": "25:26",
-          "end_time": "30:31",
+          "start_time": "00:25:26",
+          "end_time": "00:30:31",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_05_murshid_on_ego_and_vanity.mp3"
         },
         {
@@ -1869,8 +1869,8 @@
           "title": "Working with the Ego",
           "filename": "06_working_with_the_ego.mp3",
           "category": "discussion|teaching",
-          "start_time": "30:31",
-          "end_time": "37:21",
+          "start_time": "00:30:31",
+          "end_time": "00:37:21",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_06_working_with_the_ego.mp3"
         },
         {
@@ -1878,8 +1878,8 @@
           "title": "Breath Purification Practice",
           "filename": "07_breath_purification_practice.mp3",
           "category": "practice",
-          "start_time": "37:21",
-          "end_time": "52:10",
+          "start_time": "00:37:21",
+          "end_time": "00:52:10",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_07_breath_purification_practice.mp3"
         },
         {
@@ -1887,8 +1887,8 @@
           "title": "Breath Alignment & Recalibration",
           "filename": "08_breath_alignment_and_recalibration.mp3",
           "category": "teaching",
-          "start_time": "52:10",
-          "end_time": "59:23",
+          "start_time": "00:52:10",
+          "end_time": "00:59:23",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_08_breath_alignment_and_recalibration.mp3"
         },
         {
@@ -1896,7 +1896,7 @@
           "title": "Murshid on Sobriety Reading",
           "filename": "09_murshid_on_sobriety_reading.mp3",
           "category": "reading",
-          "start_time": "59:23",
+          "start_time": "00:59:23",
           "end_time": "01:03:26",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_09_murshid_on_sobriety_reading.mp3"
         },
@@ -2065,8 +2065,8 @@
           "title": "Opening, Invocation, Journey Intro",
           "filename": "01_opening_invocation_journey_intro.mp3",
           "category": "teaching",
-          "start_time": "00:05:54",
-          "end_time": "04:58:80",
+          "start_time": "00:00:05",
+          "end_time": "00:04:58",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_01_opening_invocation_journey_intro.mp3"
         },
         {
@@ -2074,8 +2074,8 @@
           "title": "Traveling Well, Light Load",
           "filename": "02_traveling_well_light_load.mp3",
           "category": "teaching",
-          "start_time": "04:58:80",
-          "end_time": "10:47:48",
+          "start_time": "00:04:58",
+          "end_time": "00:10:47",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_02_traveling_well_light_load.mp3"
         },
         {
@@ -2083,8 +2083,8 @@
           "title": "Murshid Reading: Destroying Impressions",
           "filename": "03_murshid_reading_destroying_impressions.mp3",
           "category": "reading",
-          "start_time": "10:47:48",
-          "end_time": "19:11:00",
+          "start_time": "00:10:47",
+          "end_time": "00:19:11",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_03_murshid_reading_destroying_impressions.mp3"
         },
         {
@@ -2092,8 +2092,8 @@
           "title": "Elemental Purification Practice",
           "filename": "04_elemental_purification_practice.mp3",
           "category": "practice",
-          "start_time": "19:11:00",
-          "end_time": "30:34:64",
+          "start_time": "00:19:11",
+          "end_time": "00:30:34",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_04_elemental_purification_practice.mp3"
         },
         {
@@ -2101,8 +2101,8 @@
           "title": "Post-Purification Prayer & Guidance",
           "filename": "05_post_purification_prayer_guidance.mp3",
           "category": "prayer",
-          "start_time": "30:34:64",
-          "end_time": "35:07:93",
+          "start_time": "00:30:34",
+          "end_time": "00:35:07",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_05_post_purification_prayer_guidance.mp3"
         },
         {
@@ -2110,8 +2110,8 @@
           "title": "Breath Practice: Swing Analogy",
           "filename": "06_breath_practice_swing_analogy.mp3",
           "category": "meditation",
-          "start_time": "35:07:93",
-          "end_time": "42:19:93",
+          "start_time": "00:35:07",
+          "end_time": "00:42:19",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_06_breath_practice_swing_analogy.mp3"
         },
         {
@@ -2119,8 +2119,8 @@
           "title": "Earth Energy and Ha Mantra Intro",
           "filename": "07_earth_energy_ha_mantra_intro.mp3",
           "category": "teaching",
-          "start_time": "42:19:93",
-          "end_time": "53:20:94",
+          "start_time": "00:42:19",
+          "end_time": "00:53:20",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_07_earth_energy_ha_mantra_intro.mp3"
         },
         {
@@ -2128,8 +2128,8 @@
           "title": "Ha Mantra Intonation Practice",
           "filename": "08_ha_mantra_intonation_practice.mp3",
           "category": "practice",
-          "start_time": "53:20:94",
-          "end_time": "58:16:85",
+          "start_time": "00:53:20",
+          "end_time": "00:58:16",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_08_ha_mantra_intonation_practice.mp3"
         },
         {
@@ -2137,8 +2137,8 @@
           "title": "Chivalric Rule: Do Not Claim",
           "filename": "09_chivalric_rule_do_not_claim.mp3",
           "category": "discussion",
-          "start_time": "58:16:85",
-          "end_time": "1:07:09:63",
+          "start_time": "00:58:16",
+          "end_time": "01:07:09",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_09_chivalric_rule_do_not_claim.mp3"
         },
         {
@@ -2146,7 +2146,7 @@
           "title": "Blue Color Meditation",
           "filename": "10_blue_color_meditation.mp3",
           "category": "meditation",
-          "start_time": "1:07:09:63",
+          "start_time": "01:07:09",
           "end_time": "1:17:33",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_10_blue_color_meditation.mp3"
         }
