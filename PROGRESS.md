@@ -190,6 +190,47 @@
 | `eacf8da` | Populate audio manifest with 219 Google Drive URLs |
 | `086f10b` | Fix audio: build playlist on manifest load, add error handling |
 | `f8ed56c` | Switch audio hosting from Google Drive to Cloudflare R2 |
+| `79e9165` | Phase G1: Skip cover on refresh |
+| `761a626` | Add PDF download link to sidebar |
+| `d672876` | Phase G2: Links page and Homework tracker |
+| `c514e04` | Inayatiyya-inspired color scheme: white bg, golden accents, no dark mode |
+| `9284c54` | Phase G3: Personal Content Library UI |
+| `6620361` | Fix escHtml bug in library |
+
+---
+
+## Phase G1 — Skip Cover & Compare Portals ✅
+
+- **Skip cover on refresh** — `localStorage.suluk_entered` flag set on first entry; `DOMContentLoaded` checks flag and skips cover animation, shows app directly
+- **PDF download** — Added "Download PDF" link in sidebar under Daily section, downloads `assets/The_Book_of_Concentration.pdf` (3.1 MB)
+- **Portal comparison** — Verified digital handbook surpasses old `The_Book_of_Concentration.html` in all features (audio, search, bookmarks, notes, glossary, practice tracker, night mode)
+
+---
+
+## Phase G2 — Links & Homework ✅
+
+- **Links page** — Sidebar nav "Links" under Workspace section; add/edit/delete links with title, URL, category, notes; filter by category; search; modal form overlay; data stored in `localStorage` under `userData.links`
+- **Homework tracker** — Sidebar nav "Homework"; add assignments with title, class, description, due date; status cycling (not-started → in-progress → complete); progress stats bar; edit/delete; data in `userData.homework`
+
+---
+
+## Accessibility Color Scheme Overhaul ✅
+
+- **Design inspiration:** Inayatiyya.org — pure white background, golden accent `#C69214`, EB Garamond font
+- **Accessibility:** Designed for dyslexia/ASD — medium contrast, `line-height: 1.8`, no dark mode
+- **Cover page:** White background with light translucent overlay on Mount Qaf image, golden title text
+- **Night mode removed:** All CSS rules (~195 lines removed), JS functions, keyboard shortcut, toggle button
+- **Sidebar:** `#FAFAFA` background, golden section labels, `#E3E5EB` border rules
+
+---
+
+## Phase G3 — Personal Content Library ✅
+
+- **Cloudflare Worker** — `suluk-worker` deployed at `https://suluk-worker.soulofkabir.workers.dev`; handles upload, download, delete, list, backup; bearer token auth; CORS for GitHub Pages + localhost
+- **Private R2 bucket** — `suluk-personal` for file storage (separate from public `suluk-audio`)
+- **Library UI** — Sidebar nav "My Library" under Workspace; drag-and-drop + browse upload; category organization (Books, Notes, Presentations, Images, Homework, Other); grid view with thumbnails; file preview modal (images inline, PDFs in iframe, text rendered); download, edit, delete per file; cloud sync button; settings with connect/disconnect
+- **Setup flow** — First-time setup prompts for Worker URL and auth token; Test Connection button validates credentials; config stored in `localStorage`
+- **Worker source:** `/Users/heartmath/Documents/Suluk_Project/suluk-worker/`
 
 ---
 
