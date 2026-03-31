@@ -656,9 +656,15 @@ body.focus-mode #audio-bar { left: 0; }
 }
 .teaching-audio-label {
   font-family: var(--display); font-size: 11px; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+  text-transform: uppercase; color: var(--muted); cursor: pointer; user-select: none;
+  display: flex; align-items: center; gap: 6px;
 }
-.teaching-audio-clips { display: flex; flex-direction: column; gap: 4px; }
+.teaching-audio-label .ta-arrow { font-size: 10px; transition: transform .2s; }
+.teaching-audio-label .ta-arrow.open { transform: rotate(90deg); }
+.teaching-audio-clips { display: none; flex-direction: column; gap: 4px; margin-top: 8px; }
+.teaching-audio-clips.open { display: flex; }
+.ta-clip.suggested { background: rgba(196,163,90,.1); border-left: 2px solid var(--accent); }
+.ta-clip.suggested .ta-clip-title { font-weight: 500; }
 .ta-clip {
   display: flex; align-items: center; gap: 8px; padding: 6px 8px;
   border-radius: 4px; cursor: pointer; transition: background .12s;
@@ -2873,22 +2879,53 @@ function buildTeachingAudio(t) {
   const clips = cls.clips || [];
   if (!clips.length) return '';
 
-  let h = `<div class="teaching-audio">
-    <div class="teaching-audio-label">♪ Audio from Class ${classId}</div>
-    <div class="teaching-audio-clips">`;
+  // Find best matching clip by title similarity
+  const teachWords = (t.snippet.title || '').toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(w => w.length > 2);
+  let bestIdx = -1, bestScore = 0;
+  clips.forEach((clip, i) => {
+    const clipWords = (clip.title || '').toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/);
+    let score = 0;
+    for (const tw of teachWords) {
+      for (const cw of clipWords) {
+        if (cw.includes(tw) || tw.includes(cw)) score++;
+      }
+    }
+    if (score > bestScore) { bestScore = score; bestIdx = i; }
+  });
+
+  const totalDur = Math.round(clips.reduce((s, c) => s + timeDiffSeconds(c.start_time, c.end_time), 0) / 60);
+  const uid = 'ta-' + classId + '-' + Date.now();
+
+  let h = '<div class="teaching-audio">';
+  h += '<div class="teaching-audio-label" onclick="toggleTeachingAudio(\'' + uid + '\')">';
+  h += '<span class="ta-arrow" id="' + uid + '-arrow">▸</span>';
+  h += '♪ Audio from Class ' + classId + ' — ' + escHtml(cls.instructor || '') + ' · ' + clips.length + ' clips · ~' + totalDur + ' min';
+  h += '</div>';
+  h += '<div class="teaching-audio-clips" id="' + uid + '">';
+
   clips.forEach((clip, i) => {
     const plIdx = audioPlaylist.findIndex(p => p.classId === classId && p.clipIdx === i);
     const dur = formatDuration(timeDiffSeconds(clip.start_time, clip.end_time));
     const hasUrl = !!clip.url;
     const onclick = hasUrl ? 'playAudioClip(' + plIdx + ')' : "showToast('Audio not yet uploaded')";
-    h += '<div class="ta-clip" onclick="' + onclick + '">' +
+    const suggested = (i === bestIdx && bestScore >= 2) ? ' suggested' : '';
+    h += '<div class="ta-clip' + suggested + '" onclick="' + onclick + '">' +
       '<div class="ta-clip-play">' + (hasUrl ? '▶' : '—') + '</div>' +
       '<div class="ta-clip-title">' + escHtml(clip.title) + '</div>' +
       '<span class="ta-clip-dur">' + dur + '</span>' +
       '</div>';
   });
+
   h += '</div></div>';
   return h;
+}
+
+function toggleTeachingAudio(uid) {
+  const el = document.getElementById(uid);
+  const arrow = document.getElementById(uid + '-arrow');
+  if (!el) return;
+  const open = el.classList.toggle('open');
+  if (arrow) { arrow.classList.toggle('open', open); arrow.textContent = open ? '▾' : '▸'; }
 }
 
 
