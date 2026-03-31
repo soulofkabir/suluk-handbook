@@ -685,7 +685,7 @@ body.focus-mode #audio-bar { left: 0; }
 /* ── Search ── */
 .search-page { max-width: var(--content-max); margin: 0 auto; }
 .search-box {
-  display: flex; gap: 10px; margin-bottom: 8px;
+  display: flex; gap: 10px; margin-bottom: 12px;
 }
 .search-input {
   flex: 1; padding: 11px 16px; font-family: var(--serif); font-size: 16px;
@@ -700,15 +700,24 @@ body.focus-mode #audio-bar { left: 0; }
   color: var(--accent); cursor: pointer; letter-spacing: 0.08em; transition: all .2s; white-space: nowrap;
 }
 .search-btn:hover { background: rgba(196,163,90,.18); }
+.search-filter-section { margin-bottom: 16px; }
+.search-filter-label {
+  font-family: var(--display); font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--muted); margin-bottom: 6px;
+}
 .search-filters {
-  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+  display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px;
 }
 .search-filter {
   padding: 5px 12px; font-family: var(--display); font-size: 11px; letter-spacing: 0.06em;
   border: 1px solid var(--rule); border-radius: 20px; cursor: pointer;
   color: var(--muted); background: transparent; transition: all .2s;
 }
+.search-filter:hover { border-color: rgba(198,146,20,.4); color: var(--accent); }
 .search-filter.active { border-color: var(--accent); color: var(--accent); background: rgba(196,163,90,.08); }
+.search-filter .filter-count {
+  font-size: 9px; opacity: .7; margin-left: 3px;
+}
 .search-meta { font-family: var(--display); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 16px; }
 .search-result { padding: 14px 0; border-bottom: 1px solid var(--rule); cursor: pointer; transition: background .15s; }
 .search-result:hover { background: rgba(196,163,90,.04); }
@@ -718,6 +727,18 @@ body.focus-mode #audio-bar { left: 0; }
   background: rgba(196,163,90,.25); color: inherit; padding: 0 2px; border-radius: 2px;
 }
 .search-result-meta { font-family: var(--display); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+.search-recent { margin-bottom: 24px; }
+.search-recent-title {
+  font-family: var(--display); font-size: 10px; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--muted); margin-bottom: 8px;
+}
+.search-recent-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.search-recent-item {
+  padding: 4px 12px; font-family: var(--serif); font-size: 13px;
+  border: 1px solid var(--rule); border-radius: 16px; cursor: pointer;
+  color: var(--muted); background: transparent; transition: all .2s;
+}
+.search-recent-item:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ── Glossary ── */
 .glossary-page { max-width: var(--content-max); margin: 0 auto; }
@@ -2892,35 +2913,128 @@ function buildSearchIndex() {
   }));
 }
 
+/* ─── Search topic mapping ─── */
+const SEARCH_TOPICS = [
+  { id: 'all',             label: 'All' },
+  { id: 'prayers',         label: 'Prayers',          match: 'Prayers & Invocations' },
+  { id: 'rules',           label: 'Chivalric Rules',  match: 'Chivalric Rules & Iron Rules' },
+  { id: 'breath',          label: 'Breath',            match: 'Breath Practices' },
+  { id: 'concentration',   label: 'Concentration, Visualization & Meditation', match: 'Concentration, Visualization & Meditation' },
+  { id: 'fikr',            label: 'Fikr/Zikr/Wazifa', match: 'Fikr, Zikr & Wazifa' },
+  { id: 'movements',       label: 'Movements',         match: 'Movements, Rituals & Techniques' },
+  { id: 'teachings',       label: 'Teachings',          match: 'Teachings & Wisdom' },
+  { id: 'stories',         label: 'Stories',            match: 'Stories & Parables' },
+  { id: 'poetry',          label: 'Quotes, Sayings & Poetry', match: 'Quotes, Sayings & Poetry' },
+  { id: 'deep',            label: 'Deep Study & Arabic Terms', match: 'Deep Study & Arabic Terms' },
+];
+
+function getTopicCounts() {
+  if (!searchIndex) return {};
+  const counts = { all: searchIndex.length };
+  for (const topic of SEARCH_TOPICS) {
+    if (topic.id === 'all') continue;
+    counts[topic.id] = searchIndex.filter(item => item.chapter === topic.match).length;
+  }
+  return counts;
+}
+
+function getInstructors() {
+  if (!searchIndex) return [];
+  const set = new Set();
+  for (const item of searchIndex) {
+    if (item.instructor) set.add(item.instructor);
+  }
+  return [...set].sort();
+}
+
+function getRecentSearches() {
+  try { return JSON.parse(localStorage.getItem('suluk_recent_searches') || '[]'); } catch { return []; }
+}
+function saveRecentSearch(q) {
+  if (!q || q.length < 2) return;
+  let recent = getRecentSearches().filter(s => s !== q);
+  recent.unshift(q);
+  recent = recent.slice(0, 8);
+  try { localStorage.setItem('suluk_recent_searches', JSON.stringify(recent)); } catch {}
+}
+
 function showSearch(el) {
   if (!handbook) return;
   setActiveNav(el);
   buildSearchIndex();
+  const counts = getTopicCounts();
+  const instructors = getInstructors();
+  const recent = getRecentSearches();
+
   let h = listPageHeader('Search', `${allTeachings.length} teachings`);
-  h += `<div class="search-page">
-    <div class="search-box">
-      <input type="text" class="search-input" id="search-input" placeholder="Search teachings…" oninput="runSearch()" autofocus>
-      <button class="search-btn" onclick="runSearch()">Search</button>
-    </div>
-    <div class="search-filters">
-      <button class="search-filter active" data-filter="all" onclick="setSearchFilter(this,'all')">All</button>
-      <button class="search-filter" data-filter="I" onclick="setSearchFilter(this,'I')">Part I</button>
-      <button class="search-filter" data-filter="II" onclick="setSearchFilter(this,'II')">Part II</button>
-      <button class="search-filter" data-filter="III" onclick="setSearchFilter(this,'III')">Part III</button>
-    </div>
-    <div id="search-meta" class="search-meta"></div>
-    <div id="search-results"></div>
-  </div>`;
+  h += '<div class="search-page">';
+  h += '<div class="search-box">';
+  h += '<input type="text" class="search-input" id="search-input" placeholder="Enter keywords or leave empty to browse all" oninput="runSearch()" autofocus>';
+  h += '<button class="search-btn" onclick="runSearch()">Search</button>';
+  h += '</div>';
+
+  // Recent searches
+  if (recent.length > 0) {
+    h += '<div class="search-recent"><div class="search-recent-title">Recent Searches</div><div class="search-recent-list">';
+    recent.forEach(s => {
+      h += '<span class="search-recent-item" onclick="applyRecentSearch(\'' + escHtml(s.replace(/'/g, "\\'")) + '\')">' + escHtml(s) + '</span>';
+    });
+    h += '</div></div>';
+  }
+
+  // Topic filters
+  h += '<div class="search-filter-section">';
+  h += '<div class="search-filter-label">Topics</div>';
+  h += '<div class="search-filters" id="search-topic-filters">';
+  SEARCH_TOPICS.forEach(t => {
+    const count = counts[t.id] || 0;
+    const active = t.id === 'all' ? ' active' : '';
+    h += '<button class="search-filter' + active + '" data-topic="' + t.id + '" onclick="setSearchTopic(this,\'' + t.id + '\')">';
+    h += t.label + '<span class="filter-count">(' + count + ')</span></button>';
+  });
+  h += '</div></div>';
+
+  // Instructor filter
+  h += '<div class="search-filter-section">';
+  h += '<div class="search-filter-label">Instructor</div>';
+  h += '<div class="search-filters" id="search-instructor-filters">';
+  h += '<button class="search-filter active" data-instructor="all" onclick="setSearchInstructor(this,\'all\')">All</button>';
+  instructors.forEach(name => {
+    h += '<button class="search-filter" data-instructor="' + escHtml(name) + '" onclick="setSearchInstructor(this,\'' + escHtml(name.replace(/'/g, "\\'")) + '\')">' + escHtml(name) + '</button>';
+  });
+  h += '</div></div>';
+
+  h += '<div id="search-meta" class="search-meta"></div>';
+  h += '<div id="search-results"></div>';
+  h += '</div>';
   showPage(h);
+  if (window.innerWidth <= 768) closeSidebar();
+
+  // Auto-run to show browse-all results
+  runSearch();
 }
 
-let _searchFilter = 'all';
+let _searchTopic = 'all';
+let _searchInstructor = 'all';
 let _searchDebounce = null;
 
-function setSearchFilter(btn, filter) {
-  _searchFilter = filter;
-  document.querySelectorAll('.search-filter').forEach(b => b.classList.remove('active'));
+function setSearchTopic(btn, topic) {
+  _searchTopic = topic;
+  document.querySelectorAll('#search-topic-filters .search-filter').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  runSearch();
+}
+
+function setSearchInstructor(btn, instructor) {
+  _searchInstructor = instructor;
+  document.querySelectorAll('#search-instructor-filters .search-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  runSearch();
+}
+
+function applyRecentSearch(q) {
+  const input = document.getElementById('search-input');
+  if (input) { input.value = q; input.focus(); }
   runSearch();
 }
 
@@ -2934,58 +3048,102 @@ function _doSearch() {
   const container = document.getElementById('search-results');
   const meta = document.getElementById('search-meta');
   if (!container) return;
-  if (q.length < 2) {
-    container.innerHTML = '';
-    meta.textContent = q.length === 1 ? 'Type at least 2 characters…' : '';
-    return;
-  }
+
+  // Save to recent if meaningful
+  if (q.length >= 2) saveRecentSearch(q);
 
   const words = q.split(/\s+/).filter(w => w.length >= 2);
   const results = [];
+  const browseAll = q.length === 0;
 
   for (const item of searchIndex) {
-    if (_searchFilter !== 'all' && item.partKey !== _searchFilter) continue;
-    const haystack = (item.title + ' ' + item.body + ' ' + item.instructor + ' ' + item.chapter).toLowerCase();
+    // Topic filter
+    if (_searchTopic !== 'all') {
+      const topicDef = SEARCH_TOPICS.find(t => t.id === _searchTopic);
+      if (topicDef && topicDef.match && item.chapter !== topicDef.match) continue;
+    }
+    // Instructor filter
+    if (_searchInstructor !== 'all' && item.instructor !== _searchInstructor) continue;
+
+    if (browseAll) {
+      results.push({ ...item, score: 0 });
+      continue;
+    }
+
+    if (q.length < 2) continue;
+
     let score = 0;
     let matched = true;
     for (const w of words) {
-      const titleHits = (item.title.toLowerCase().match(new RegExp(w, 'g')) || []).length;
-      const bodyHits  = (item.body.toLowerCase().match(new RegExp(w, 'g')) || []).length;
-      if (titleHits + bodyHits === 0) { matched = false; break; }
-      score += titleHits * 10 + bodyHits;
+      const titleHits = (item.title.toLowerCase().match(new RegExp(w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
+      const bodyHits  = (item.body.toLowerCase().match(new RegExp(w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
+      const instrHits = (item.instructor.toLowerCase().match(new RegExp(w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
+      if (titleHits + bodyHits + instrHits === 0) { matched = false; break; }
+      score += titleHits * 10 + instrHits * 5 + bodyHits;
     }
     if (matched) results.push({ ...item, score });
   }
 
-  results.sort((a, b) => b.score - a.score);
-  meta.textContent = `${results.length} result${results.length !== 1 ? 's' : ''} for "${q}"`;
+  if (!browseAll) results.sort((a, b) => b.score - a.score);
 
-  if (results.length === 0) {
+  const topicLabel = _searchTopic === 'all' ? '' : SEARCH_TOPICS.find(t => t.id === _searchTopic)?.label || '';
+  const instrLabel = _searchInstructor === 'all' ? '' : _searchInstructor;
+  let metaText = '';
+  if (browseAll) {
+    const parts = [results.length + ' teaching' + (results.length !== 1 ? 's' : '')];
+    if (topicLabel) parts.push('in ' + topicLabel);
+    if (instrLabel) parts.push('by ' + instrLabel);
+    metaText = parts.join(' ');
+  } else if (q.length < 2) {
+    metaText = 'Type at least 2 characters or leave empty to browse all';
+  } else {
+    metaText = results.length + ' result' + (results.length !== 1 ? 's' : '') + ' for "' + q + '"';
+    if (topicLabel) metaText += ' in ' + topicLabel;
+    if (instrLabel) metaText += ' by ' + instrLabel;
+  }
+  if (meta) meta.textContent = metaText;
+
+  if (results.length === 0 && q.length >= 2) {
     container.innerHTML = emptyState('⊙', 'No teachings match your search');
     return;
   }
+  if (results.length === 0 && browseAll) {
+    container.innerHTML = emptyState('⊙', 'No teachings in this combination');
+    return;
+  }
+  if (q.length >= 1 && q.length < 2) { container.innerHTML = ''; return; }
 
   const shown = results.slice(0, 50);
-  const escapedWords = words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-  const re = new RegExp('(' + escapedWords.join('|') + ')', 'gi');
+
+  let re = null;
+  if (words.length > 0) {
+    const escapedWords = words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    re = new RegExp('(' + escapedWords.join('|') + ')', 'gi');
+  }
 
   container.innerHTML = shown.map(r => {
-    const bodyLower = r.body.toLowerCase();
-    let excerptStart = 0;
-    for (const w of words) {
-      const pos = bodyLower.indexOf(w);
-      if (pos > 0) { excerptStart = Math.max(0, pos - 60); break; }
+    let excerptHtml, titleHtml;
+    if (re) {
+      const bodyLower = r.body.toLowerCase();
+      let excerptStart = 0;
+      for (const w of words) {
+        const pos = bodyLower.indexOf(w);
+        if (pos > 0) { excerptStart = Math.max(0, pos - 60); break; }
+      }
+      const excerpt = (excerptStart > 0 ? '…' : '') + r.body.slice(excerptStart, excerptStart + 200).trim() + '…';
+      titleHtml = escHtml(r.title).replace(re, '<mark>$1</mark>');
+      excerptHtml = escHtml(excerpt).replace(re, '<mark>$1</mark>');
+    } else {
+      titleHtml = escHtml(r.title);
+      excerptHtml = escHtml(r.body.slice(0, 180).trim()) + '…';
     }
-    const excerpt = (excerptStart > 0 ? '…' : '') + r.body.slice(excerptStart, excerptStart + 200).trim() + '…';
-    const highlightedTitle = escHtml(r.title).replace(re, '<mark>$1</mark>');
-    const highlightedExcerpt = escHtml(excerpt).replace(re, '<mark>$1</mark>');
 
-    return `<div class="search-result" onclick="showTeaching(${r.idx})">
-      <div class="search-result-title">${highlightedTitle}</div>
-      <div class="search-result-excerpt">${highlightedExcerpt}</div>
-      <div class="search-result-meta">Part ${r.partKey} · ${escHtml(r.chapter)} · ${escHtml(r.instructor)}</div>
-    </div>`;
-  }).join('');
+    return '<div class="search-result" onclick="showTeaching(' + r.idx + ')">' +
+      '<div class="search-result-title">' + titleHtml + '</div>' +
+      '<div class="search-result-excerpt">' + excerptHtml + '</div>' +
+      '<div class="search-result-meta">Part ' + r.partKey + ' · ' + escHtml(r.chapter) + ' · ' + escHtml(r.instructor) + '</div>' +
+    '</div>';
+  }).join('') + (results.length > 50 ? '<div class="search-meta" style="padding:16px 0; text-align:center;">Showing 50 of ' + results.length + ' results</div>' : '');
 }
 
 
