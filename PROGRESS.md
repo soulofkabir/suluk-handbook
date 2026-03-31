@@ -132,7 +132,44 @@
 |---|---|---|
 | `data/handbook_concentration.json` | Converted from old handbook | All 333 teachings, structured by Part/Chapter/Snippet |
 | `data/cross_reference_data.json` | Copied from Suluk_Project source | Appendix B cross-reference topic index |
+| `data/audio_manifest.json` | Built from 20 local segments.json files | 221 audio clips across 20 classes, with Cloudflare R2 URLs |
+| `data/glossary.json` | Created manually | 40 Sufi/spiritual terms with origins and definitions |
 | `assets/images/` | Copied from Suluk_Project/Images | All artwork: cover image, instructor portraits, prayer movement diagrams |
+
+---
+
+## Phase D — Audio Integration (Completed 2026-03-31)
+
+**Goal:** Stream class audio recordings inline with teachings and via a dedicated Audio Library.
+
+### Completed
+
+- **Audio manifest** — `data/audio_manifest.json` with 221 clips across 20 classes (C1–C20), metadata includes segment number, title, filename, category, start/end times
+- **Audio hosting** — All 219 MP3s uploaded to Cloudflare R2 bucket `suluk-audio` (public URL: `https://pub-655e0e7533694c53a63276368afd5e43.r2.dev`). 2 clips missing from source (C6_06, C9_04)
+- **Audio Library page** — Sidebar nav entry "♪ Audio Library"; collapsible class cards showing instructor, date, duration, clip count; click-to-play individual clips
+- **Persistent bottom audio bar** — Fixed bar with play/pause, progress seek, time display, skip forward/back, speed control (0.75×–2×), close button
+- **Inline teaching audio** — Each teaching shows its class's audio clips below the body text
+- **Playlist mode** — Flat playlist built from all 221 clips; auto-advances to next clip on end; skip buttons navigate the playlist
+- **Error handling** — Toast messages for missing audio, play failures; graceful fallback for 2 missing clips
+
+### Audio Hosting Journey
+- Initially tried Google Drive (`uc?export=download` URLs) — files were public but Drive blocks streaming from third-party sites via referrer checks
+- Extracted 219 file IDs via Google Apps Script → Google Sheet → CSV
+- Switched to **Cloudflare R2** — direct `audio/mpeg` responses, no redirects, proper CORS, free 10GB tier
+
+---
+
+## Phase E — Practice & Intelligence (Completed 2026-03-31)
+
+**Goal:** Add search, glossary, practice tracking, related teachings, and sharing.
+
+### Completed
+
+- **Full-text search** — Search across all 333 teachings; title matches weighted 10× vs body; filter by Part (I/II/III); results show title, chapter, and highlighted matching text
+- **Glossary** — 40 Sufi/spiritual terms in `data/glossary.json`; dedicated glossary page with alphabet jump bar and search filter; inline tooltips on recognized terms within teaching text (uses TreeWalker/NodeFilter.SHOW_TEXT for injection)
+- **Practice Tracker** — 24 practices across 6 categories; checkbox completion per day; streak counter; progress stats; data persisted in `localStorage` under `suluk_user_data.practiceLog`
+- **Related Teachings** — Algorithm scores by same chapter (+5), same part (+2), title word overlap (+3); shows top 3 related teachings below each teaching
+- **Share button** — Copies teaching title + direct URL to clipboard via navigator.clipboard API
 
 ---
 
@@ -147,27 +184,17 @@
 | Color overhaul | Light sidebar matching old handbook palette (multiple iterations) |
 | Full Book v1 | Continuous scroll mode (teachings only) |
 | Full Book complete | All front matter + appendices A–E added; cross-reference JSON copied |
+| `c907922` | Color theme overhaul rework — match old handbook exactly |
+| `ddb9db5` | Phase E: Search, Glossary, Practice Tracker, Related, Share |
+| `7ec895f` | Phase D: Audio Library, inline player, persistent bottom bar |
+| `eacf8da` | Populate audio manifest with 219 Google Drive URLs |
+| `086f10b` | Fix audio: build playlist on manifest load, add error handling |
+| `f8ed56c` | Switch audio hosting from Google Drive to Cloudflare R2 |
 
 ---
 
-## Phases Planned (Not Yet Started)
+## Phase F — Polish & PWA (Not Yet Started)
 
-### Phase D — Audio Integration
-- Upload 219 audio clips to Google Drive
-- Build `audio_manifest.json` with clip metadata
-- Inline audio player on each teaching
-- Mini persistent bottom audio bar
-- Playlist mode, playback speed control
-
-### Phase E — Practice & Intelligence
-- Full-text search across all teachings
-- Filter by part, chapter, practice type
-- Inline glossary tooltips
-- Practice tracker (log completed practices)
-- Related teachings suggestions
-- Share individual teachings
-
-### Phase F — Polish & PWA
 - Reading statistics (teachings read, time spent)
 - Learning timeline visualization
 - PWA offline mode (service worker caching)
