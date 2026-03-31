@@ -1475,6 +1475,16 @@ document.addEventListener('DOMContentLoaded', () => {
   setupHighlightListener();
   loadGlossary(); // preload for inline tooltips
   loadAudioManifest(); // preload for teaching audio sections
+
+  // Skip cover page if user has entered before
+  if (localStorage.getItem('suluk_entered')) {
+    document.getElementById('cover').classList.add('hidden');
+    document.getElementById('cover').style.display = 'none';
+    const app = document.getElementById('app');
+    app.classList.remove('hidden');
+    app.classList.add('visible');
+    loadHandbookData();
+  }
 });
 
 function restorePrefs() {
@@ -2101,6 +2111,7 @@ function buildTable(lines) {
 function enterHandbook() {
   const cover = document.getElementById('cover');
   const app   = document.getElementById('app');
+  localStorage.setItem('suluk_entered', 'true');
   cover.classList.add('exiting');
   setTimeout(() => {
     cover.classList.add('hidden');
