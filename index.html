@@ -70,10 +70,7 @@ body {
   opacity: 0;
   animation: bgReveal 3s ease 0.4s forwards;
 }
-#cover-bg::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(165deg, rgba(252,251,248,.84) 0%, rgba(252,251,248,.76) 45%, rgba(252,251,248,.90) 100%);
-}
+#cover-bg::after { display: none; }
 @keyframes bgReveal { to { opacity: 1; } }
 
 #cover-content {
@@ -88,6 +85,7 @@ body {
   font-weight: 500; color: var(--accent);
   letter-spacing: 0.06em; line-height: 1.15;
   opacity: 0; margin-bottom: 0;
+  text-shadow: 0 1px 8px rgba(252,251,248,.9), 0 0 30px rgba(252,251,248,.7);
 }
 #cover-eyebrow { animation: fadeUp 1s ease 2.2s forwards; }
 #cover-title   { animation: fadeUp 1s ease 2.6s forwards; }
