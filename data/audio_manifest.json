@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "total_clips": 221,
-  "note": "Audio hosted on Google Drive. URLs are direct download links.",
+  "note": "Audio hosted on Cloudflare R2.",
   "classes": {
     "C1": {
       "part": "I",
@@ -16,7 +16,7 @@
           "category": "prayer",
           "start_time": "00:00:07",
           "end_time": "00:03:05",
-          "url": "https://drive.google.com/uc?export=download&id=1tSwkLfhBv6I9JQywcN1DLCtFVjvjtbOq"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C1/Concentration_Audio_C1_01_opening_and_invocation.mp3"
         },
         {
           "segment": 2,
@@ -25,7 +25,7 @@
           "category": "teaching",
           "start_time": "00:03:05",
           "end_time": "00:13:25",
-          "url": "https://drive.google.com/uc?export=download&id=1kD1-sHDWyEFOa1ZxSWh6EXJTLxXjy4CM"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C1/Concentration_Audio_C1_02_suluk_journey_and_companionship.mp3"
         },
         {
           "segment": 3,
@@ -34,7 +34,7 @@
           "category": "teaching",
           "start_time": "00:13:25",
           "end_time": "00:23:04",
-          "url": "https://drive.google.com/uc?export=download&id=1AUuTRTtBUwjvJvlWf7dv_Hh6eFwYbfLN"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C1/Concentration_Audio_C1_03_suluk_meaning_and_intention.mp3"
         },
         {
           "segment": 4,
@@ -43,7 +43,7 @@
           "category": "teaching",
           "start_time": "00:23:04",
           "end_time": "00:30:16",
-          "url": "https://drive.google.com/uc?export=download&id=17FK1kWeFgq31leUU7YyWWy1lQXKTqg2u"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C1/Concentration_Audio_C1_04_inayatiyya_prayer_introduction.mp3"
         },
         {
           "segment": 5,
@@ -52,7 +52,7 @@
           "category": "practice",
           "start_time": "00:30:16",
           "end_time": "00:34:53",
-          "url": "https://drive.google.com/uc?export=download&id=16hCaQRkUrlMVvNVRlWRS5jat8IYJzp_Q"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C1/Concentration_Audio_C1_05_standing_practice_and_alif.mp3"
         },
         {
           "segment": 6,
@@ -61,7 +61,7 @@
           "category": "teaching",
           "start_time": "00:34:53",
           "end_time": "00:40:07",
-          "url": "https://drive.google.com/uc?export=download&id=1qWkoaOuNv6xMdYKmUsjYPo9DOE_s2RxM"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C1/Concentration_Audio_C1_06_the_story_of_alif.mp3"
         },
         {
           "segment": 7,
@@ -70,7 +70,7 @@
           "category": "teaching",
           "start_time": "00:40:07",
           "end_time": "00:42:56",
-          "url": "https://drive.google.com/uc?export=download&id=1-JGQmdv3ocnZW04Y12DKG0XAu2hyCtGg"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C1/Concentration_Audio_C1_07_quality_in_practice_four_stages.mp3"
         },
         {
           "segment": 8,
@@ -79,7 +79,7 @@
           "category": "teaching",
           "start_time": "00:42:56",
           "end_time": "00:50:40",
-          "url": "https://drive.google.com/uc?export=download&id=1Yd1Xqr-MQX5NNf8EBChL2Woh5zH-KlEN"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C1/Concentration_Audio_C1_08_understanding_concentration_practice.mp3"
         },
         {
           "segment": 9,
@@ -88,7 +88,7 @@
           "category": "teaching",
           "start_time": "00:50:40",
           "end_time": "00:53:12",
-          "url": "https://drive.google.com/uc?export=download&id=1tUYMM4lrr9RO1ccpEcbBU0S1xcGmHnjn"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C1/Concentration_Audio_C1_09_later_stages_contemplation_to_realization.mp3"
         },
         {
           "segment": 10,
@@ -97,7 +97,7 @@
           "category": "teaching",
           "start_time": "00:53:12",
           "end_time": "1:04:54",
-          "url": "https://drive.google.com/uc?export=download&id=1LhcssRvoTlYHYhE7EorUVUdfmZAQQUrp"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C1/Concentration_Audio_C1_10_introducing_the_qaf_suluk_class.mp3"
         }
       ]
     },
@@ -114,7 +114,7 @@
           "category": "closing",
           "start_time": "00:00:05",
           "end_time": "01:44",
-          "url": "https://drive.google.com/uc?export=download&id=1k8xAFNGYuNdJ5BD10rwHR8sSTAlJw3Jl"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_01_session_end_and_next_steps.mp3"
         },
         {
           "segment": 2,
@@ -123,7 +123,7 @@
           "category": "teaching",
           "start_time": "01:44",
           "end_time": "09:56",
-          "url": "https://drive.google.com/uc?export=download&id=1qUR-tli7U3fsbFaalCBNmLnzc06EXmvb"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_02_recap_concentration_and_breath.mp3"
         },
         {
           "segment": 3,
@@ -132,7 +132,7 @@
           "category": "meditation",
           "start_time": "09:56",
           "end_time": "17:14",
-          "url": "https://drive.google.com/uc?export=download&id=1v2kveXowkAJDAZk3nMUPqF6aEZfePDkC"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_03_breath_sphere_visualization.mp3"
         },
         {
           "segment": 4,
@@ -141,7 +141,7 @@
           "category": "practice",
           "start_time": "17:14",
           "end_time": "19:21",
-          "url": "https://drive.google.com/uc?export=download&id=1IvmKV5zCzOu-SrBx5bk8-1aRHvbrLPDj"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_04_preparing_for_listening_practice.mp3"
         },
         {
           "segment": 5,
@@ -150,7 +150,7 @@
           "category": "meditation",
           "start_time": "19:21",
           "end_time": "27:35",
-          "url": "https://drive.google.com/uc?export=download&id=1mX5kkTeQHVzlipa-dyNyD-HhqwvLNaAd"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_05_music_for_contemplation.mp3"
         },
         {
           "segment": 6,
@@ -159,7 +159,7 @@
           "category": "teaching",
           "start_time": "27:35",
           "end_time": "37:00",
-          "url": "https://drive.google.com/uc?export=download&id=18clkN7bOo2p0_z-5pLAeEcX5S3DO3wUx"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_06_the_luminous_self_and_persona.mp3"
         },
         {
           "segment": 7,
@@ -168,7 +168,7 @@
           "category": "practice",
           "start_time": "37:00",
           "end_time": "39:23",
-          "url": "https://drive.google.com/uc?export=download&id=1XCM2s33yXOArVAXM_r3XTPjCpdyt9fwf"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_07_gaze_concentration_practice.mp3"
         },
         {
           "segment": 8,
@@ -177,7 +177,7 @@
           "category": "meditation",
           "start_time": "39:23",
           "end_time": "42:32",
-          "url": "https://drive.google.com/uc?export=download&id=1ttsPTm5DvXciwp_sJI3WyYQp9A85eaZ2"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_08_moon_and_star_visualization.mp3"
         },
         {
           "segment": 9,
@@ -186,7 +186,7 @@
           "category": "practice",
           "start_time": "42:32",
           "end_time": "44:48",
-          "url": "https://drive.google.com/uc?export=download&id=1igrw2Soq0K2Y17kX3gPcNOibO-4gr-et"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_09_walking_as_a_practice.mp3"
         },
         {
           "segment": 10,
@@ -195,7 +195,7 @@
           "category": "prayer",
           "start_time": "44:48",
           "end_time": "50:07",
-          "url": "https://drive.google.com/uc?export=download&id=1GyBM7M4dDcXUr1RsCZ3CEwK-s_AhngL3"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C10/Concentration_Audio_C10_10_closing_prayer_and_blessing.mp3"
         }
       ]
     },
@@ -212,7 +212,7 @@
           "category": "teaching",
           "start_time": "00:00:05",
           "end_time": "00:05:18",
-          "url": "https://drive.google.com/uc?export=download&id=1qfB4nn6ufHEN5O4_9lEJbSet9-Bh2IG5"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C11/Concentration_Audio_C11_01_opening_and_teacher_introduction.mp3"
         },
         {
           "segment": 2,
@@ -221,7 +221,7 @@
           "category": "teaching",
           "start_time": "00:05:18",
           "end_time": "00:14:09",
-          "url": "https://drive.google.com/uc?export=download&id=1VjLNVuQKoPKHMv2_WkkYLkLF1eCGZfN1"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C11/Concentration_Audio_C11_02_concentration_and_weekend_themes.mp3"
         },
         {
           "segment": 3,
@@ -230,7 +230,7 @@
           "category": "teaching",
           "start_time": "00:14:09",
           "end_time": "00:16:55",
-          "url": "https://drive.google.com/uc?export=download&id=1XJMNV0Lg7yotHy7spdpohhG_CBK4w2nc"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C11/Concentration_Audio_C11_03_introducing_elements_practice.mp3"
         },
         {
           "segment": 4,
@@ -239,7 +239,7 @@
           "category": "practice",
           "start_time": "00:16:55",
           "end_time": "00:26:53",
-          "url": "https://drive.google.com/uc?export=download&id=1dPDH7jhCEpOHUJOuE9DcVQvltmFHs2bN"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C11/Concentration_Audio_C11_04_five_elements_breathing_practice.mp3"
         },
         {
           "segment": 5,
@@ -248,7 +248,7 @@
           "category": "teaching",
           "start_time": "00:26:53",
           "end_time": "00:37:47",
-          "url": "https://drive.google.com/uc?export=download&id=1AhIu91v_xuMHha6UAkCpTDa14PMN6NlJ"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C11/Concentration_Audio_C11_05_teaching_on_the_earth_element.mp3"
         },
         {
           "segment": 6,
@@ -257,7 +257,7 @@
           "category": "teaching",
           "start_time": "00:37:47",
           "end_time": "00:42:08",
-          "url": "https://drive.google.com/uc?export=download&id=1Ud17M6N4rB5XwNj9yuT5w7OPy3ZPvRx9"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C11/Concentration_Audio_C11_06_prayer_as_gratitude.mp3"
         },
         {
           "segment": 7,
@@ -266,7 +266,7 @@
           "category": "reading|practice",
           "start_time": "00:42:08",
           "end_time": "00:52:50",
-          "url": "https://drive.google.com/uc?export=download&id=1TqkPbrfnfzKT4tkMn1eLoXaQMnb4hVrC"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C11/Concentration_Audio_C11_07_ayaz_story_and_gratitude_zikr.mp3"
         },
         {
           "segment": 8,
@@ -275,7 +275,7 @@
           "category": "discussion|teaching",
           "start_time": "00:52:50",
           "end_time": "00:56:16",
-          "url": "https://drive.google.com/uc?export=download&id=13TxbIEqjxzuPiyn8FRxJBM0TkBTxzvwO"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C11/Concentration_Audio_C11_08_introducing_rule_of_day.mp3"
         },
         {
           "segment": 9,
@@ -284,7 +284,7 @@
           "category": "discussion|teaching",
           "start_time": "00:56:16",
           "end_time": "01:04:54",
-          "url": "https://drive.google.com/uc?export=download&id=1mLwgR6gnItt-nod6Ih39xTK0O5zObvN5"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C11/Concentration_Audio_C11_09_discussion_on_reproaching_others.mp3"
         },
         {
           "segment": 10,
@@ -293,7 +293,7 @@
           "category": "practice|closing",
           "start_time": "01:04:54",
           "end_time": "1:12:01",
-          "url": "https://drive.google.com/uc?export=download&id=1jbURa9jGe5YwfAsvoxvE4992dM4_45gB"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C11/Concentration_Audio_C11_10_rule_recitation_and_break.mp3"
         }
       ]
     },
@@ -310,7 +310,7 @@
           "category": "teaching",
           "start_time": "00:00:06",
           "end_time": "00:02:57",
-          "url": "https://drive.google.com/uc?export=download&id=13XS8VuEMd-gEcwhc050CgDDvLmYqXwjW"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_01_opening_and_body_awareness.mp3"
         },
         {
           "segment": 2,
@@ -319,7 +319,7 @@
           "category": "practice",
           "start_time": "00:02:57",
           "end_time": "00:15:28",
-          "url": "https://drive.google.com/uc?export=download&id=12VZthefbXRwq5rvm0WgPuVlwPDXKp5g1"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_02_earth_element_practice.mp3"
         },
         {
           "segment": 3,
@@ -328,7 +328,7 @@
           "category": "discussion",
           "start_time": "00:15:28",
           "end_time": "00:17:03",
-          "url": "https://drive.google.com/uc?export=download&id=1weXv6sWywGOT6De67JQt_BU_91XsYrQc"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_03_element_work_reflection.mp3"
         },
         {
           "segment": 4,
@@ -337,7 +337,7 @@
           "category": "reading",
           "start_time": "00:17:03",
           "end_time": "00:21:28",
-          "url": "https://drive.google.com/uc?export=download&id=1eUoGZkJG6xq0TOIUgZhVFTpsXZBp3cne"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_04_murshid_reading_minds_flow.mp3"
         },
         {
           "segment": 5,
@@ -346,7 +346,7 @@
           "category": "teaching",
           "start_time": "00:21:28",
           "end_time": "00:26:35",
-          "url": "https://drive.google.com/uc?export=download&id=1kleBZOHTfyUXvQmLtUo9F0XGI9c7AC3I"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_05_teaching_mind_as_a_tree.mp3"
         },
         {
           "segment": 6,
@@ -355,7 +355,7 @@
           "category": "teaching",
           "start_time": "00:26:35",
           "end_time": "00:29:32",
-          "url": "https://drive.google.com/uc?export=download&id=1CnJPfKGaYGH0kc4O6RaW1-Iy9EqEXRkq"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_06_story_the_two_monks.mp3"
         },
         {
           "segment": 7,
@@ -364,7 +364,7 @@
           "category": "teaching",
           "start_time": "00:29:32",
           "end_time": "00:30:41",
-          "url": "https://drive.google.com/uc?export=download&id=1PRONKwybwIYBxSEoQFzPEUyCQ1GbQCtq"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_07_concentration_as_minds_guardian.mp3"
         },
         {
           "segment": 8,
@@ -373,7 +373,7 @@
           "category": "meditation",
           "start_time": "00:30:41",
           "end_time": "00:45:17",
-          "url": "https://drive.google.com/uc?export=download&id=1ryaHUokE1UfHrvAnH7iqL6dkN_ZsOAhY"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_08_practice_inspiring_being_visualization.mp3"
         },
         {
           "segment": 9,
@@ -382,7 +382,7 @@
           "category": "reading",
           "start_time": "00:45:17",
           "end_time": "00:47:43",
-          "url": "https://drive.google.com/uc?export=download&id=1KB9LdTOSL9OXuG0mPGrWpF1Z5dsJSSMO"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_09_murshid_reading_breaths_influence.mp3"
         },
         {
           "segment": 10,
@@ -391,7 +391,7 @@
           "category": "practice",
           "start_time": "00:47:43",
           "end_time": "00:52:29",
-          "url": "https://drive.google.com/uc?export=download&id=1qSVuadfep_DLAIMwtHOiSd1Ioeh6uuqP"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_10_breath_influence_practice.mp3"
         },
         {
           "segment": 11,
@@ -400,7 +400,7 @@
           "category": "teaching",
           "start_time": "00:52:29",
           "end_time": "00:55:56",
-          "url": "https://drive.google.com/uc?export=download&id=1bGjqr0eojN9o-2c-ft1BA5lQaIccNfXP"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_11_concentration_muscle_and_social_media.mp3"
         },
         {
           "segment": 12,
@@ -409,7 +409,7 @@
           "category": "reading",
           "start_time": "00:55:56",
           "end_time": "01:01:15",
-          "url": "https://drive.google.com/uc?export=download&id=1t0dl6QJ-Oh0p2yr688p4d6w-Z3THXL1h"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_12_reading_the_tortoise_tale.mp3"
         },
         {
           "segment": 13,
@@ -418,7 +418,7 @@
           "category": "discussion",
           "start_time": "01:01:15",
           "end_time": "01:06:55",
-          "url": "https://drive.google.com/uc?export=download&id=14dO3xqu7ALVZO2mOLWK8Y9EYQWZRucll"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_13_discussion_tortoise_tale_lessons.mp3"
         },
         {
           "segment": 14,
@@ -427,7 +427,7 @@
           "category": "meditation",
           "start_time": "01:06:55",
           "end_time": "01:09:08",
-          "url": "https://drive.google.com/uc?export=download&id=1DUlfDMgEkBGG7d6Lu8kW6Vyx6dTS4p3N"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_14_visualization_the_open_door.mp3"
         },
         {
           "segment": 15,
@@ -436,7 +436,7 @@
           "category": "prayer",
           "start_time": "01:09:08",
           "end_time": "1:13:08",
-          "url": "https://drive.google.com/uc?export=download&id=1yXviKheojREqjMXQkrIE3rsLOvXbesaq"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C12/Concentration_Audio_C12_15_closing_prayer_salawat.mp3"
         }
       ]
     },
@@ -453,7 +453,7 @@
           "category": "prayer",
           "start_time": "00:00:06",
           "end_time": "00:01:11",
-          "url": "https://drive.google.com/uc?export=download&id=1_kWitwCvKmd0TwYFUZa-AsU8Oi4YgBOn"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C13/Concentration_Audio_C13_01_opening_and_invocation.mp3"
         },
         {
           "segment": 2,
@@ -462,7 +462,7 @@
           "category": "teaching",
           "start_time": "00:01:11",
           "end_time": "00:07:57",
-          "url": "https://drive.google.com/uc?export=download&id=1CmhZfYIHNZFYXyggTHLBqcIZxufF1rFE"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C13/Concentration_Audio_C13_02_teaching_on_water_element.mp3"
         },
         {
           "segment": 3,
@@ -471,7 +471,7 @@
           "category": "meditation",
           "start_time": "00:07:57",
           "end_time": "00:11:23",
-          "url": "https://drive.google.com/uc?export=download&id=16H_pvzl4gGD7GBdbzS7hm1ixoWygvRxA"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C13/Concentration_Audio_C13_03_water_element_inner_awareness.mp3"
         },
         {
           "segment": 4,
@@ -480,7 +480,7 @@
           "category": "teaching",
           "start_time": "00:11:23",
           "end_time": "00:18:51",
-          "url": "https://drive.google.com/uc?export=download&id=17q_xwmkI8GvPPoc-szI2LmNA2NSZnAjz"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C13/Concentration_Audio_C13_04_water_qualities_and_breath.mp3"
         },
         {
           "segment": 5,
@@ -489,7 +489,7 @@
           "category": "teaching",
           "start_time": "00:18:51",
           "end_time": "00:21:34",
-          "url": "https://drive.google.com/uc?export=download&id=1NTZiej2vX_iFbNQUmlthFbYMBWtkO6iC"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C13/Concentration_Audio_C13_05_water_character_and_personality.mp3"
         },
         {
           "segment": 6,
@@ -498,7 +498,7 @@
           "category": "practice",
           "start_time": "00:21:34",
           "end_time": "00:30:24",
-          "url": "https://drive.google.com/uc?export=download&id=1qYMzbZzUjL1hWT65rRfJV9qG5AqmTaCS"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C13/Concentration_Audio_C13_06_water_breath_visualization.mp3"
         },
         {
           "segment": 7,
@@ -507,7 +507,7 @@
           "category": "prayer",
           "start_time": "00:30:24",
           "end_time": "00:32:37",
-          "url": "https://drive.google.com/uc?export=download&id=1lEfd5Z3XSw2VDn2MpRRm0NBmkF2O9cHb"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C13/Concentration_Audio_C13_07_water_transformation_and_prayer.mp3"
         },
         {
           "segment": 8,
@@ -516,7 +516,7 @@
           "category": "teaching|discussion",
           "start_time": "00:32:37",
           "end_time": "00:39:53",
-          "url": "https://drive.google.com/uc?export=download&id=1YJuhrE6Xa7hYR2QaCb9RC-FFQ0wFUrGC"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C13/Concentration_Audio_C13_08_tears_regret_and_forgiveness.mp3"
         },
         {
           "segment": 9,
@@ -525,7 +525,7 @@
           "category": "teaching",
           "start_time": "00:39:53",
           "end_time": "00:53:59",
-          "url": "https://drive.google.com/uc?export=download&id=1kBgm024I1viL3fRUxNyg1xx0GGiQLFIc"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C13/Concentration_Audio_C13_09_repentance_divine_impulse_mercy.mp3"
         },
         {
           "segment": 10,
@@ -534,7 +534,7 @@
           "category": "prayer",
           "start_time": "00:53:59",
           "end_time": "00:59:58",
-          "url": "https://drive.google.com/uc?export=download&id=1NLuWjzC8hvbrZcIIGRdkOT8-fntwzbog"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C13/Concentration_Audio_C13_10_astaghfirullah_invocation.mp3"
         },
         {
           "segment": 11,
@@ -543,7 +543,7 @@
           "category": "meditation",
           "start_time": "00:59:58",
           "end_time": "01:05:50",
-          "url": "https://drive.google.com/uc?export=download&id=13uc7VR5pntqctwT6XXuex-c0ZbZKFF6-"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C13/Concentration_Audio_C13_11_contemplation_and_return.mp3"
         },
         {
           "segment": 12,
@@ -552,7 +552,7 @@
           "category": "discussion|teaching",
           "start_time": "01:05:50",
           "end_time": "1:15:59",
-          "url": "https://drive.google.com/uc?export=download&id=1qd9xX87hcfYyWEVRPAMP8sUtBZGfxMWM"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C13/Concentration_Audio_C13_12_chivalric_rule_do_not_spare.mp3"
         }
       ]
     },
@@ -569,7 +569,7 @@
           "category": "teaching",
           "start_time": "00:00:05",
           "end_time": "00:06:29",
-          "url": "https://drive.google.com/uc?export=download&id=1ktvBn3mvAef_-kAfL0zetp67DuUnyDQ6"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C14/Concentration_Audio_C14_01_opening_story_repentance_teaching.mp3"
         },
         {
           "segment": 2,
@@ -578,7 +578,7 @@
           "category": "teaching",
           "start_time": "00:06:29",
           "end_time": "00:16:44",
-          "url": "https://drive.google.com/uc?export=download&id=1O78QrYtfucx8kzp0LWU0oKzTnAnNO-z0"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C14/Concentration_Audio_C14_02_distracted_lady_story_and_teaching.mp3"
         },
         {
           "segment": 3,
@@ -587,7 +587,7 @@
           "category": "meditation",
           "start_time": "00:16:44",
           "end_time": "00:25:51",
-          "url": "https://drive.google.com/uc?export=download&id=1dVp70yhGnxNwf4dd2seN2btDDA62FSV-"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C14/Concentration_Audio_C14_03_tailbone_concentration_practice.mp3"
         },
         {
           "segment": 4,
@@ -596,7 +596,7 @@
           "category": "teaching",
           "start_time": "00:25:51",
           "end_time": "00:35:20",
-          "url": "https://drive.google.com/uc?export=download&id=1VIghn8K9X2YglIA1cyWAIIZwtJdgwXdD"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C14/Concentration_Audio_C14_04_jataka_tale_murshid_story_teaching.mp3"
         },
         {
           "segment": 5,
@@ -605,7 +605,7 @@
           "category": "meditation",
           "start_time": "00:35:20",
           "end_time": "00:70:16",
-          "url": "https://drive.google.com/uc?export=download&id=1b5cEmnDMnpczMy_EbPI9_1SwN_9Tj3v4"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C14/Concentration_Audio_C14_05_color_concentration_practice.mp3"
         },
         {
           "segment": 6,
@@ -614,7 +614,7 @@
           "category": "prayer",
           "start_time": "00:70:16",
           "end_time": "1:13:06",
-          "url": "https://drive.google.com/uc?export=download&id=113nLAqaZ50QUSvn3FdvnjIM-c3n2Arge"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C14/Concentration_Audio_C14_06_closing_salawat_prayer.mp3"
         }
       ]
     },
@@ -631,7 +631,7 @@
           "category": "prayer",
           "start_time": "00:00:05",
           "end_time": "00:01:31",
-          "url": "https://drive.google.com/uc?export=download&id=1bUwIYEvBdAPYG3B69RT3-iqV-rEA-4QJ"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C15/Concentration_Audio_C15_01_opening_and_invocation.mp3"
         },
         {
           "segment": 2,
@@ -640,7 +640,7 @@
           "category": "practice",
           "start_time": "00:01:31",
           "end_time": "00:09:27",
-          "url": "https://drive.google.com/uc?export=download&id=15sv6s6o0-Vo0DVp0cNq_1uW2DDA6D7JZ"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C15/Concentration_Audio_C15_02_elemental_breath_earth.mp3"
         },
         {
           "segment": 3,
@@ -649,7 +649,7 @@
           "category": "practice",
           "start_time": "00:09:27",
           "end_time": "00:15:28",
-          "url": "https://drive.google.com/uc?export=download&id=1dchs0BQ-Ff9F6WZiyct1QlKH387tMEHb"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C15/Concentration_Audio_C15_03_elemental_breath_water.mp3"
         },
         {
           "segment": 4,
@@ -658,7 +658,7 @@
           "category": "practice",
           "start_time": "00:15:28",
           "end_time": "00:20:57",
-          "url": "https://drive.google.com/uc?export=download&id=1yCjZEUo4fOuEeAG62ZuH2824lsXsdheE"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C15/Concentration_Audio_C15_04_elemental_breath_fire.mp3"
         },
         {
           "segment": 5,
@@ -667,7 +667,7 @@
           "category": "prayer|teaching",
           "start_time": "00:20:57",
           "end_time": "00:35:39",
-          "url": "https://drive.google.com/uc?export=download&id=1CiMBQSaheSmx13jUTAkFkptFAdmpkd6t"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C15/Concentration_Audio_C15_05_fire_element_teaching_and_prayer.mp3"
         },
         {
           "segment": 6,
@@ -676,7 +676,7 @@
           "category": "reading",
           "start_time": "00:35:39",
           "end_time": "00:37:07",
-          "url": "https://drive.google.com/uc?export=download&id=1MxoigVC9wq7IrmiSvyk206dRmlnMVNOG"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C15/Concentration_Audio_C15_06_murshid_reading_fire_personality.mp3"
         },
         {
           "segment": 7,
@@ -685,7 +685,7 @@
           "category": "teaching|meditation",
           "start_time": "00:37:07",
           "end_time": "00:44:19",
-          "url": "https://drive.google.com/uc?export=download&id=1apDnr7mW_DZV6qbUPsLIgoONo6iZt_gU"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C15/Concentration_Audio_C15_07_fire_transformation_and_concentration.mp3"
         },
         {
           "segment": 8,
@@ -694,7 +694,7 @@
           "category": "teaching",
           "start_time": "00:44:19",
           "end_time": "00:51:49",
-          "url": "https://drive.google.com/uc?export=download&id=1It8VhNCXMe6ZStBmye_r1EewK28SxkWE"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C15/Concentration_Audio_C15_08_teaching_on_supplication_prayer.mp3"
         },
         {
           "segment": 9,
@@ -703,7 +703,7 @@
           "category": "practice",
           "start_time": "00:51:49",
           "end_time": "01:05:38",
-          "url": "https://drive.google.com/uc?export=download&id=1NZLUK32YaRijp2ADVT6fNGpwX80va8eN"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C15/Concentration_Audio_C15_09_supplication_prayer_practice.mp3"
         },
         {
           "segment": 10,
@@ -712,7 +712,7 @@
           "category": "discussion",
           "start_time": "01:05:38",
           "end_time": "1:11:31",
-          "url": "https://drive.google.com/uc?export=download&id=1pd1KpQ5gQ9Xf7pZzzzYDmpvj0KhylDXC"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C15/Concentration_Audio_C15_10_chivalric_rule_discussion.mp3"
         }
       ]
     },
@@ -729,7 +729,7 @@
           "category": "practice",
           "start_time": "00:00:05",
           "end_time": "00:07:45",
-          "url": "https://drive.google.com/uc?export=download&id=1WLnM7FHv5sGMiOytyKYNjm-UmdL0Loyp"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C16/Concentration_Audio_C16_01_guided_body_concentration_practice.mp3"
         },
         {
           "segment": 2,
@@ -738,7 +738,7 @@
           "category": "reading|teaching",
           "start_time": "00:07:45",
           "end_time": "00:12:56",
-          "url": "https://drive.google.com/uc?export=download&id=1clKHoeNGNcH0HZJlAONNRAa-MoWmqQ3Z"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C16/Concentration_Audio_C16_02_murshid_reading_and_fana_introduction.mp3"
         },
         {
           "segment": 3,
@@ -747,7 +747,7 @@
           "category": "teaching|practice",
           "start_time": "00:12:56",
           "end_time": "00:20:33",
-          "url": "https://drive.google.com/uc?export=download&id=1XBdabs0N8Q4fyAvJnvhqmX9re9XZ6cHo"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C16/Concentration_Audio_C16_03_fana_fish_sheikh_image_stage.mp3"
         },
         {
           "segment": 4,
@@ -756,7 +756,7 @@
           "category": "teaching|practice",
           "start_time": "00:20:33",
           "end_time": "00:30:44",
-          "url": "https://drive.google.com/uc?export=download&id=1AuXwJpfbpvlldFypivw9DLEvByYGHOjO"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C16/Concentration_Audio_C16_04_fana_fish_sheikh_presence_and_communion.mp3"
         },
         {
           "segment": 5,
@@ -765,7 +765,7 @@
           "category": "teaching",
           "start_time": "00:30:44",
           "end_time": "00:37:01",
-          "url": "https://drive.google.com/uc?export=download&id=1Tk7Ibll5v3--tefrPizhFQ459K_quayC"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C16/Concentration_Audio_C16_05_concentration_and_baba_farid_story.mp3"
         },
         {
           "segment": 6,
@@ -774,7 +774,7 @@
           "category": "teaching",
           "start_time": "00:37:01",
           "end_time": "00:44:51",
-          "url": "https://drive.google.com/uc?export=download&id=1f14MFXY2eYUHbqrWQCU0GKYpWyXQ_BOP"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C16/Concentration_Audio_C16_06_the_four_planes_of_magnetism.mp3"
         },
         {
           "segment": 7,
@@ -783,7 +783,7 @@
           "category": "prayer|closing",
           "start_time": "00:44:51",
           "end_time": "59:51",
-          "url": "https://drive.google.com/uc?export=download&id=102Fwe6nDceXrdvR04aWI4uHwZMuaOjDd"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C16/Concentration_Audio_C16_07_closing_prayers_and_blessing.mp3"
         }
       ]
     },
@@ -800,7 +800,7 @@
           "category": "discussion",
           "start_time": "00:00:09",
           "end_time": "00:05:45",
-          "url": "https://drive.google.com/uc?export=download&id=1zz3WcKiabQf-IW0N5S649IsXmKXPzXOc"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C17/Concentration_Audio_C17_01_opening_and_community_support.mp3"
         },
         {
           "segment": 2,
@@ -809,7 +809,7 @@
           "category": "teaching",
           "start_time": "00:05:45",
           "end_time": "00:16:40",
-          "url": "https://drive.google.com/uc?export=download&id=11bqCQHdwUdta98bX2RzgNV0lYqN669Mw"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C17/Concentration_Audio_C17_02_elemental_breath_practice_introduction.mp3"
         },
         {
           "segment": 3,
@@ -818,7 +818,7 @@
           "category": "teaching",
           "start_time": "00:16:40",
           "end_time": "00:31:23",
-          "url": "https://drive.google.com/uc?export=download&id=11qi9okfRSKLOQ7CLtStrAvZtM8JA1HJL"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C17/Concentration_Audio_C17_03_deeper_meaning_of_elements.mp3"
         },
         {
           "segment": 4,
@@ -827,7 +827,7 @@
           "category": "practice",
           "start_time": "00:31:23",
           "end_time": "00:37:46",
-          "url": "https://drive.google.com/uc?export=download&id=15WTQ_bJCqzBwySDqQeR486Ks6eOXGaoD"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C17/Concentration_Audio_C17_04_elemental_breath_earth.mp3"
         },
         {
           "segment": 5,
@@ -836,7 +836,7 @@
           "category": "practice",
           "start_time": "00:37:46",
           "end_time": "00:44:50",
-          "url": "https://drive.google.com/uc?export=download&id=1tspEjOZPrgWyRQwkH95VkOr4-tcqjirl"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C17/Concentration_Audio_C17_05_elemental_breath_water.mp3"
         },
         {
           "segment": 6,
@@ -845,7 +845,7 @@
           "category": "practice",
           "start_time": "00:44:50",
           "end_time": "00:50:50",
-          "url": "https://drive.google.com/uc?export=download&id=18LjcZ1HcpGg3rEef48WpS0yat8vq4XlO"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C17/Concentration_Audio_C17_06_elemental_breath_fire.mp3"
         },
         {
           "segment": 7,
@@ -854,7 +854,7 @@
           "category": "practice",
           "start_time": "00:50:50",
           "end_time": "01:00:42",
-          "url": "https://drive.google.com/uc?export=download&id=1i39IJ3sen3giwON_uW-ffnRS5o2b9cqG"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C17/Concentration_Audio_C17_07_elemental_breath_air_and_nayaz.mp3"
         },
         {
           "segment": 8,
@@ -863,7 +863,7 @@
           "category": "teaching",
           "start_time": "01:00:42",
           "end_time": "01:05:21",
-          "url": "https://drive.google.com/uc?export=download&id=1FQk41eEE6rtWmTq5iFde--thE7La3bgd"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C17/Concentration_Audio_C17_08_invocation_as_prayer_aspect.mp3"
         },
         {
           "segment": 9,
@@ -872,7 +872,7 @@
           "category": "teaching",
           "start_time": "01:05:21",
           "end_time": "01:12:12",
-          "url": "https://drive.google.com/uc?export=download&id=1hcTVYfz3ck3ZNuIEYz0Bm1SSdf28RyUO"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C17/Concentration_Audio_C17_09_rumi_story_invocation_and_ideal.mp3"
         },
         {
           "segment": 10,
@@ -881,7 +881,7 @@
           "category": "reading",
           "start_time": "01:12:12",
           "end_time": "1:22:15",
-          "url": "https://drive.google.com/uc?export=download&id=1G5OP20htfvpUb7s2GjH5DDyFNvJG2nFR"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C17/Concentration_Audio_C17_10_invocation_music_and_poetry.mp3"
         }
       ]
     },
@@ -898,7 +898,7 @@
           "category": "meditation",
           "start_time": "00:00:05",
           "end_time": "00:06:57",
-          "url": "https://drive.google.com/uc?export=download&id=1hhq4vNKq53XadBuOqnNQ6imcpoIxIAEP"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C18/Concentration_Audio_C18_01_opening_and_breath_practice.mp3"
         },
         {
           "segment": 2,
@@ -907,7 +907,7 @@
           "category": "teaching",
           "start_time": "00:06:57",
           "end_time": "00:16:50",
-          "url": "https://drive.google.com/uc?export=download&id=1W4w2e300PeeVgSVikDuLLnxHFH3ilMtA"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C18/Concentration_Audio_C18_02_air_element_and_balancing.mp3"
         },
         {
           "segment": 3,
@@ -916,7 +916,7 @@
           "category": "discussion",
           "start_time": "00:16:50",
           "end_time": "00:26:35",
-          "url": "https://drive.google.com/uc?export=download&id=1vBidJJphMyGVZ-4u3_Q_T7YheZu0scI0"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C18/Concentration_Audio_C18_03_chivalric_rule_discussion.mp3"
         },
         {
           "segment": 4,
@@ -925,7 +925,7 @@
           "category": "teaching",
           "start_time": "00:26:35",
           "end_time": "00:39:37",
-          "url": "https://drive.google.com/uc?export=download&id=1cH7SixqBisFuaHHSn0CW7Qv13tX3rBRk"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C18/Concentration_Audio_C18_04_meditation_postures.mp3"
         },
         {
           "segment": 5,
@@ -934,7 +934,7 @@
           "category": "meditation",
           "start_time": "00:39:37",
           "end_time": "00:44:37",
-          "url": "https://drive.google.com/uc?export=download&id=1Fc5sw1qvqhF_w3psSu2P9OcO9g7KK53D"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C18/Concentration_Audio_C18_05_body_density_and_expansion.mp3"
         },
         {
           "segment": 6,
@@ -943,7 +943,7 @@
           "category": "practice",
           "start_time": "00:44:37",
           "end_time": "00:55:25",
-          "url": "https://drive.google.com/uc?export=download&id=1AMshBCXU56makp5j5LvmvwaTzSPs8ahR"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C18/Concentration_Audio_C18_06_casting_inner_light.mp3"
         },
         {
           "segment": 7,
@@ -952,7 +952,7 @@
           "category": "teaching",
           "start_time": "00:55:25",
           "end_time": "01:06:52",
-          "url": "https://drive.google.com/uc?export=download&id=116umMn2Hbq11GO7S-ls_-rhal9Rcn1d-"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C18/Concentration_Audio_C18_07_understanding_concentration.mp3"
         },
         {
           "segment": 8,
@@ -961,7 +961,7 @@
           "category": "closing",
           "start_time": "01:06:52",
           "end_time": "1:11:00",
-          "url": "https://drive.google.com/uc?export=download&id=1pdUAbekl7N4-xPHdoaTU5I_4EwBLaRVS"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C18/Concentration_Audio_C18_08_closing_prayer_and_farewell.mp3"
         }
       ]
     },
@@ -978,7 +978,7 @@
           "category": "prayer",
           "start_time": "00:00:05",
           "end_time": "00:04:06",
-          "url": "https://drive.google.com/uc?export=download&id=1Irihz7ONS08uyYxWL9sCmCEwpgWqYHYe"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C19/Concentration_Audio_C19_01_opening_and_gratitude.mp3"
         },
         {
           "segment": 2,
@@ -987,7 +987,7 @@
           "category": "practice",
           "start_time": "00:04:06",
           "end_time": "00:12:02",
-          "url": "https://drive.google.com/uc?export=download&id=1T-41uXkJfYHOaKoAjtC32w-fVsUTQO6e"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C19/Concentration_Audio_C19_02_earth_element_breath_practice.mp3"
         },
         {
           "segment": 3,
@@ -996,7 +996,7 @@
           "category": "practice",
           "start_time": "00:12:02",
           "end_time": "00:16:01",
-          "url": "https://drive.google.com/uc?export=download&id=13D5DSpHKse4PyvpTbMmIT7YziL39RznK"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C19/Concentration_Audio_C19_03_water_element_breath.mp3"
         },
         {
           "segment": 4,
@@ -1005,7 +1005,7 @@
           "category": "practice",
           "start_time": "00:16:01",
           "end_time": "00:19:09",
-          "url": "https://drive.google.com/uc?export=download&id=1fPIeAITi6eOV8_rWwIsdbJZwkzKqHQLq"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C19/Concentration_Audio_C19_04_fire_element_breath.mp3"
         },
         {
           "segment": 5,
@@ -1014,7 +1014,7 @@
           "category": "practice",
           "start_time": "00:19:09",
           "end_time": "00:22:42",
-          "url": "https://drive.google.com/uc?export=download&id=14Ht4Y6HI24hT35U6Bao1HJjyq9i17g-y"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C19/Concentration_Audio_C19_05_air_element_breath.mp3"
         },
         {
           "segment": 6,
@@ -1023,7 +1023,7 @@
           "category": "practice",
           "start_time": "00:22:42",
           "end_time": "00:31:47",
-          "url": "https://drive.google.com/uc?export=download&id=1LTLH5Ivox5Y-fJidbuJI1eUEb_2-pBTG"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C19/Concentration_Audio_C19_06_ether_element_and_union.mp3"
         },
         {
           "segment": 7,
@@ -1032,7 +1032,7 @@
           "category": "reading",
           "start_time": "00:31:47",
           "end_time": "00:36:32",
-          "url": "https://drive.google.com/uc?export=download&id=1Y6emt6vlhlMh-xJuYAIspxyx8lpUfE33"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C19/Concentration_Audio_C19_07_nayaz_prayer_and_ether_character.mp3"
         },
         {
           "segment": 8,
@@ -1041,7 +1041,7 @@
           "category": "teaching",
           "start_time": "00:36:32",
           "end_time": "00:41:33",
-          "url": "https://drive.google.com/uc?export=download&id=15EqpbX9je7eydB2Z1Y-BrYDUWlRexCki"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C19/Concentration_Audio_C19_08_elements_and_concentration.mp3"
         },
         {
           "segment": 9,
@@ -1050,7 +1050,7 @@
           "category": "teaching",
           "start_time": "00:41:33",
           "end_time": "00:49:23",
-          "url": "https://drive.google.com/uc?export=download&id=1ukN3ViCtG5LCwataebkrhFgtJhm1STnC"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C19/Concentration_Audio_C19_09_prayer_stages_and_union.mp3"
         },
         {
           "segment": 10,
@@ -1059,7 +1059,7 @@
           "category": "reading",
           "start_time": "00:49:23",
           "end_time": "00:55:48",
-          "url": "https://drive.google.com/uc?export=download&id=1uTpfLPKekexXD0MboMwczqcE19IPnV8i"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C19/Concentration_Audio_C19_10_fifth_prayer_aspect_reading.mp3"
         },
         {
           "segment": 11,
@@ -1068,7 +1068,7 @@
           "category": "closing",
           "start_time": "00:55:48",
           "end_time": "1:08:25",
-          "url": "https://drive.google.com/uc?export=download&id=1Z5GpHHeK2E_MMEfNMuxmIYkRi-W3vHYj"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C19/Concentration_Audio_C19_11_prayer_aspects_review_and_closing.mp3"
         }
       ]
     },
@@ -1085,7 +1085,7 @@
           "category": "teaching",
           "start_time": "00:00:08",
           "end_time": "00:06:28",
-          "url": "https://drive.google.com/uc?export=download&id=1xPR49p6qpg4N2lBre5CdngsKQ6qS-qvn"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C2/Concentration_Audio_C2_01_murshids_teaching_story.mp3"
         },
         {
           "segment": 2,
@@ -1094,7 +1094,7 @@
           "category": "teaching|reading",
           "start_time": "00:06:28",
           "end_time": "00:13:56",
-          "url": "https://drive.google.com/uc?export=download&id=1mdJCryec-Ue-NcTkS_Utvg2l00lTy3C5"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C2/Concentration_Audio_C2_02_breath_introduction_murshid_reading.mp3"
         },
         {
           "segment": 3,
@@ -1103,7 +1103,7 @@
           "category": "practice|meditation",
           "start_time": "00:13:56",
           "end_time": "00:21:48",
-          "url": "https://drive.google.com/uc?export=download&id=1mGI6r_Ym37RtNbYD4tEHuH__fY9nTvuV"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C2/Concentration_Audio_C2_03_guided_breath_practice.mp3"
         },
         {
           "segment": 4,
@@ -1112,7 +1112,7 @@
           "category": "discussion",
           "start_time": "00:21:48",
           "end_time": "00:35:48",
-          "url": "https://drive.google.com/uc?export=download&id=1AJ4vEGIhfLTSIO0UHzaoUDj6Z2BBq1cL"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C2/Concentration_Audio_C2_04_chivalric_rules_discussion.mp3"
         },
         {
           "segment": 5,
@@ -1121,7 +1121,7 @@
           "category": "meditation|practice",
           "start_time": "00:35:48",
           "end_time": "00:41:39",
-          "url": "https://drive.google.com/uc?export=download&id=1qmb2DW8O5eQ5z1eja3wwP7XlFCNKNlra"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C2/Concentration_Audio_C2_05_concentration_black_color.mp3"
         },
         {
           "segment": 6,
@@ -1130,7 +1130,7 @@
           "category": "reading|teaching",
           "start_time": "00:41:39",
           "end_time": "00:49:40",
-          "url": "https://drive.google.com/uc?export=download&id=1C3H914od6FjOrmtdWIF0NWGzPfEYYDyR"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C2/Concentration_Audio_C2_06_blacks_resonance_sensus_communis.mp3"
         },
         {
           "segment": 7,
@@ -1139,7 +1139,7 @@
           "category": "practice",
           "start_time": "00:49:40",
           "end_time": "00:53:18",
-          "url": "https://drive.google.com/uc?export=download&id=1ZmACy1jdN47zlkif24c2TdCwUEi09VvQ"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C2/Concentration_Audio_C2_07_sandpaper_concentration_exercise.mp3"
         },
         {
           "segment": 8,
@@ -1148,7 +1148,7 @@
           "category": "reading|teaching",
           "start_time": "00:53:18",
           "end_time": "00:58:50",
-          "url": "https://drive.google.com/uc?export=download&id=1TND8dgHe7YxccSlaS2axmvcFZImss2Rm"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C2/Concentration_Audio_C2_08_murshid_on_concentration_and_interest.mp3"
         },
         {
           "segment": 9,
@@ -1157,7 +1157,7 @@
           "category": "prayer",
           "start_time": "00:58:50",
           "end_time": "1:13:50",
-          "url": "https://drive.google.com/uc?export=download&id=1EbEjbhY-fQPEyYevVNNEV7lqKsic8_53"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C2/Concentration_Audio_C2_09_closing_salat_prayer.mp3"
         }
       ]
     },
@@ -1174,7 +1174,7 @@
           "category": "discussion",
           "start_time": "00:00:05",
           "end_time": "00:04:33",
-          "url": "https://drive.google.com/uc?export=download&id=1yEq50sB9F28ndSlUX3oJ7LtMejPpTvPs"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C20/Concentration_Audio_C20_01_opening_and_salat_prayer_discussion.mp3"
         },
         {
           "segment": 2,
@@ -1183,7 +1183,7 @@
           "category": "discussion",
           "start_time": "00:04:33",
           "end_time": "00:14:36",
-          "url": "https://drive.google.com/uc?export=download&id=1eEoUB_HwdiRQh_05GaYzAGpAqC7BLfge"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C20/Concentration_Audio_C20_02_chivalric_rule_harm_no_one.mp3"
         },
         {
           "segment": 3,
@@ -1192,7 +1192,7 @@
           "category": "teaching",
           "start_time": "00:14:36",
           "end_time": "00:22:00",
-          "url": "https://drive.google.com/uc?export=download&id=1mLUYcL1V0RdvPg9LwikVPzTWt_Vi1Wmk"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C20/Concentration_Audio_C20_03_fana_fi_rasul_intro_and_reading.mp3"
         },
         {
           "segment": 4,
@@ -1201,7 +1201,7 @@
           "category": "teaching",
           "start_time": "00:22:00",
           "end_time": "00:32:50",
-          "url": "https://drive.google.com/uc?export=download&id=1BcEe-V414De7QinqMWZ5tm8ukOYWWxjh"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C20/Concentration_Audio_C20_04_fana_fi_rasul_explanation.mp3"
         },
         {
           "segment": 5,
@@ -1210,7 +1210,7 @@
           "category": "practice",
           "start_time": "00:32:50",
           "end_time": "00:35:31",
-          "url": "https://drive.google.com/uc?export=download&id=1F9O-_Xw96lAY0v5ByBrkXeFcUgp_5Ta1"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C20/Concentration_Audio_C20_05_fana_fi_rasul_chanting.mp3"
         },
         {
           "segment": 6,
@@ -1219,7 +1219,7 @@
           "category": "practice",
           "start_time": "00:35:31",
           "end_time": "00:40:18",
-          "url": "https://drive.google.com/uc?export=download&id=1cCfsNGssGPO8ZHc_LIBJvmXrsTwafv3M"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C20/Concentration_Audio_C20_06_itisal_practice_intoning_ha.mp3"
         },
         {
           "segment": 7,
@@ -1228,7 +1228,7 @@
           "category": "discussion",
           "start_time": "00:40:18",
           "end_time": "00:51:38",
-          "url": "https://drive.google.com/uc?export=download&id=1gVzlAyPySDAveDqXeJ7hTvgI_KstpiIE"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C20/Concentration_Audio_C20_07_jataka_tale_and_concentration_discussion.mp3"
         },
         {
           "segment": 8,
@@ -1237,7 +1237,7 @@
           "category": "teaching",
           "start_time": "00:51:38",
           "end_time": "00:59:22",
-          "url": "https://drive.google.com/uc?export=download&id=13WV9pmxDUNtAZG27PiZOn6UHcTQ4NNPq"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C20/Concentration_Audio_C20_08_single_mindedness_and_daily_practice.mp3"
         },
         {
           "segment": 9,
@@ -1246,7 +1246,7 @@
           "category": "meditation",
           "start_time": "00:59:22",
           "end_time": "01:09:53",
-          "url": "https://drive.google.com/uc?export=download&id=1KYdtLjZLwLPtLmedwcE4D7blwkWK50KD"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C20/Concentration_Audio_C20_09_color_concentration_practice.mp3"
         },
         {
           "segment": 10,
@@ -1255,7 +1255,7 @@
           "category": "closing",
           "start_time": "01:09:53",
           "end_time": "1:12:14",
-          "url": "https://drive.google.com/uc?export=download&id=1sLgo8xG_OQ2agx4-l8UT9fUxwczo6TcM"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C20/Concentration_Audio_C20_10_closing_and_saum_prayer.mp3"
         }
       ]
     },
@@ -1272,7 +1272,7 @@
           "category": "teaching",
           "start_time": "00:00:04",
           "end_time": "00:12:49",
-          "url": "https://drive.google.com/uc?export=download&id=1tj6hc7FKfH-sdbUQ5JHOHAXLo5ZjcwzP"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C3/Concentration_Audio_C3_01_invocation_and_aman_prayer_meaning.mp3"
         },
         {
           "segment": 2,
@@ -1281,7 +1281,7 @@
           "category": "discussion",
           "start_time": "00:12:49",
           "end_time": "00:19:43",
-          "url": "https://drive.google.com/uc?export=download&id=1y3oJsln_mSq56Yt07KJVmdWXstNd7o-X"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C3/Concentration_Audio_C3_02_hejirat_day_and_pirzadi_noor.mp3"
         },
         {
           "segment": 3,
@@ -1290,7 +1290,7 @@
           "category": "practice",
           "start_time": "00:19:43",
           "end_time": "00:26:47",
-          "url": "https://drive.google.com/uc?export=download&id=1nzfR4CsVqsAhrjnr79etqOOqbRdGe6WP"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C3/Concentration_Audio_C3_03_saum_and_salat_prayer_movements.mp3"
         },
         {
           "segment": 4,
@@ -1299,7 +1299,7 @@
           "category": "teaching",
           "start_time": "00:26:47",
           "end_time": "00:36:55",
-          "url": "https://drive.google.com/uc?export=download&id=1bYNAoOmCX83ZmJrniyWwximfUfFQb6-B"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C3/Concentration_Audio_C3_04_rabita_and_blessing_our_devices.mp3"
         },
         {
           "segment": 5,
@@ -1308,7 +1308,7 @@
           "category": "meditation",
           "start_time": "00:36:55",
           "end_time": "00:42:10",
-          "url": "https://drive.google.com/uc?export=download&id=1UW75KJ0m0KPz343EUiNLZcWM22U-Ga0n"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C3/Concentration_Audio_C3_05_concentration_on_a_dear_one.mp3"
         },
         {
           "segment": 6,
@@ -1317,7 +1317,7 @@
           "category": "discussion",
           "start_time": "00:42:10",
           "end_time": "00:57:42",
-          "url": "https://drive.google.com/uc?export=download&id=1AkyKzC6NjhICoLmk-FW3KuxNictjdb1p"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C3/Concentration_Audio_C3_06_chivalric_rule_speak_not_against.mp3"
         },
         {
           "segment": 7,
@@ -1326,7 +1326,7 @@
           "category": "practice",
           "start_time": "00:57:42",
           "end_time": "01:09:20",
-          "url": "https://drive.google.com/uc?export=download&id=1BPVLhYqbECgzbJKbnLbZNHufi6x_GRCq"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C3/Concentration_Audio_C3_07_waking_ablution_and_daily_practices.mp3"
         },
         {
           "segment": 8,
@@ -1335,7 +1335,7 @@
           "category": "breath_practice",
           "start_time": "01:09:20",
           "end_time": "1:17:56",
-          "url": "https://drive.google.com/uc?export=download&id=1Y8hBQVnH5a_7nz3JX3FO9vR6R2OH1UgQ"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C3/Concentration_Audio_C3_08_invisible_rain_breath_practice.mp3"
         }
       ]
     },
@@ -1352,7 +1352,7 @@
           "category": "opening",
           "start_time": "00:00:07",
           "end_time": "00:01:09",
-          "url": "https://drive.google.com/uc?export=download&id=1DuTXXZcB_7mzXUVEYxwv760YresVW1J1"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_01_welcome_and_new_practice_intro.mp3"
         },
         {
           "segment": 2,
@@ -1361,7 +1361,7 @@
           "category": "practice",
           "start_time": "00:01:09",
           "end_time": "00:03:31",
-          "url": "https://drive.google.com/uc?export=download&id=1KA8b_HBpQqr5lFcC7eIzhLGxyH1zgrXl"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_02_wakeful_sleep_and_breath_practice.mp3"
         },
         {
           "segment": 3,
@@ -1370,7 +1370,7 @@
           "category": "teaching",
           "start_time": "00:03:31",
           "end_time": "00:05:49",
-          "url": "https://drive.google.com/uc?export=download&id=1bEO88CF8nMwXBgcfhm_Dvj0RqKAqCcqX"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_03_understanding_breath_and_life_field.mp3"
         },
         {
           "segment": 4,
@@ -1379,7 +1379,7 @@
           "category": "practice",
           "start_time": "00:05:49",
           "end_time": "00:10:27",
-          "url": "https://drive.google.com/uc?export=download&id=1TmjCrlzToZVA9fTvccKDGa95VeBea7lQ"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_04_breathing_through_soles_of_feet.mp3"
         },
         {
           "segment": 5,
@@ -1388,7 +1388,7 @@
           "category": "meditation",
           "start_time": "00:10:27",
           "end_time": "00:15:35",
-          "url": "https://drive.google.com/uc?export=download&id=1pkBsgJCXBWsFi_4MexNVNEc7VXNpjUTL"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_05_white_color_visualization_meditation.mp3"
         },
         {
           "segment": 6,
@@ -1397,7 +1397,7 @@
           "category": "discussion",
           "start_time": "00:15:35",
           "end_time": "00:21:39",
-          "url": "https://drive.google.com/uc?export=download&id=1SvygIbMvxTznVbNUARshcSVOLIJMGBoo"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_06_reflecting_on_white_color_practice.mp3"
         },
         {
           "segment": 7,
@@ -1406,7 +1406,7 @@
           "category": "teaching",
           "start_time": "00:21:39",
           "end_time": "00:28:01",
-          "url": "https://drive.google.com/uc?export=download&id=1vjIKA1hH1vHk7HxSHTBFTdoZAylcpDLj"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_07_love_and_concentration_story.mp3"
         },
         {
           "segment": 8,
@@ -1415,7 +1415,7 @@
           "category": "teaching",
           "start_time": "00:28:01",
           "end_time": "00:33:49",
-          "url": "https://drive.google.com/uc?export=download&id=13QDyeidcI6FPnaZ2nUPZGcWjv0JQ1ZPx"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_08_jalali_and_jamali_aspects_of_concentration.mp3"
         },
         {
           "segment": 9,
@@ -1424,7 +1424,7 @@
           "category": "meditation",
           "start_time": "00:33:49",
           "end_time": "00:40:26",
-          "url": "https://drive.google.com/uc?export=download&id=1vf0CU7VElY9A62FoqtgwWCk7q7Bs74lN"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_09_flower_visualization_meditation.mp3"
         },
         {
           "segment": 10,
@@ -1433,7 +1433,7 @@
           "category": "practice",
           "start_time": "00:40:26",
           "end_time": "00:44:35",
-          "url": "https://drive.google.com/uc?export=download&id=1MOeAp7XSTapaZ5ab5XCS-d_n04BpndTr"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_10_cardamom_seed_taste_concentration.mp3"
         },
         {
           "segment": 11,
@@ -1442,7 +1442,7 @@
           "category": "teaching",
           "start_time": "00:44:35",
           "end_time": "00:47:59",
-          "url": "https://drive.google.com/uc?export=download&id=1ChXmYEuZ21xKXyXEd6FU78-JKe3ZrEZB"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_11_interest_and_indifference_in_practice.mp3"
         },
         {
           "segment": 12,
@@ -1451,7 +1451,7 @@
           "category": "teaching",
           "start_time": "00:47:59",
           "end_time": "00:52:54",
-          "url": "https://drive.google.com/uc?export=download&id=1-N-A_5zTprWzs43TFWl4fNEwBM7YBkDF"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_12_memory_and_revisiting_the_past.mp3"
         },
         {
           "segment": 13,
@@ -1460,7 +1460,7 @@
           "category": "meditation",
           "start_time": "00:52:54",
           "end_time": "00:56:56",
-          "url": "https://drive.google.com/uc?export=download&id=1g9ya0Hkbjmujpcj5O0cSpHTTjCV-TCJ1"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_13_recalilng_a_beautiful_moment.mp3"
         },
         {
           "segment": 14,
@@ -1469,7 +1469,7 @@
           "category": "practice",
           "start_time": "00:56:56",
           "end_time": "01:01:38",
-          "url": "https://drive.google.com/uc?export=download&id=12v8ITD5xrjk76q6lXiHiAgFIjVvVe7u3"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_14_green_dot_gaze_concentration.mp3"
         },
         {
           "segment": 15,
@@ -1478,7 +1478,7 @@
           "category": "discussion",
           "start_time": "01:01:38",
           "end_time": "01:06:06",
-          "url": "https://drive.google.com/uc?export=download&id=18nnuSP_ikRu5q9iYeXV26gR3wxOj8vRd"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_15_new_daily_task_abstain_from_i.mp3"
         },
         {
           "segment": 16,
@@ -1487,7 +1487,7 @@
           "category": "teaching",
           "start_time": "01:06:06",
           "end_time": "01:12:41",
-          "url": "https://drive.google.com/uc?export=download&id=1rjvEyS03tTrhH_xrZIELu8m_4gt4_9FP"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_16_salat_prayer_explanation.mp3"
         },
         {
           "segment": 17,
@@ -1496,7 +1496,7 @@
           "category": "prayer",
           "start_time": "01:12:41",
           "end_time": "1:17:00",
-          "url": "https://drive.google.com/uc?export=download&id=1VALBoDC38nBgHwRqc7iOb-2G-6DlG77g"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C4/Concentration_Audio_C4_17_salat_prayer_and_ameen.mp3"
         }
       ]
     },
@@ -1513,7 +1513,7 @@
           "category": "prayer|teaching",
           "start_time": "00:04",
           "end_time": "04:40",
-          "url": "https://drive.google.com/uc?export=download&id=1-OfSRL1CoWlfJbipasi5IuD6H4BjCgJx"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_01_invocation_and_the_ones_attributes.mp3"
         },
         {
           "segment": 2,
@@ -1522,7 +1522,7 @@
           "category": "teaching",
           "start_time": "04:40",
           "end_time": "09:50",
-          "url": "https://drive.google.com/uc?export=download&id=1pocb2EmT7DOkvsGfHzj8tsQDxz3p6I1s"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_02_illuminated_souls_and_messenger.mp3"
         },
         {
           "segment": 3,
@@ -1531,7 +1531,7 @@
           "category": "discussion",
           "start_time": "09:50",
           "end_time": "13:29",
-          "url": "https://drive.google.com/uc?export=download&id=1Tr5DluiSqtg03DKOIdBleW8_Z9pYy18f"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_03_reflection_on_i_exercise.mp3"
         },
         {
           "segment": 4,
@@ -1540,7 +1540,7 @@
           "category": "practice",
           "start_time": "13:29",
           "end_time": "17:02",
-          "url": "https://drive.google.com/uc?export=download&id=1lpUCE9RRa9IHHanK_Z4tqjVEu0KwlSTy"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_04_new_task_earth_orientation.mp3"
         },
         {
           "segment": 5,
@@ -1549,7 +1549,7 @@
           "category": "teaching",
           "start_time": "17:02",
           "end_time": "25:32",
-          "url": "https://drive.google.com/uc?export=download&id=103Ja9kRbh_8smqzwdn8KHDWBAaX61czn"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_05_overcoming_prayer_resistance.mp3"
         },
         {
           "segment": 6,
@@ -1558,7 +1558,7 @@
           "category": "prayer|teaching",
           "start_time": "25:32",
           "end_time": "31:25",
-          "url": "https://drive.google.com/uc?export=download&id=1mKRt2RiOgG-aZsRHGhF381Zv4Mg3Jd0u"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_06_saum_prayer_praise_be_to_thee.mp3"
         },
         {
           "segment": 7,
@@ -1567,7 +1567,7 @@
           "category": "prayer|teaching",
           "start_time": "31:25",
           "end_time": "34:33",
-          "url": "https://drive.google.com/uc?export=download&id=1fxak8xZF5mPNZ-0Wc62OfEgEcsgljBkP"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_07_saum_prayer_omnipotent_being.mp3"
         },
         {
           "segment": 8,
@@ -1576,7 +1576,7 @@
           "category": "prayer|teaching",
           "start_time": "34:33",
           "end_time": "39:51",
-          "url": "https://drive.google.com/uc?export=download&id=1nJ2rcGh5BxPHijJyWgOgVOx3EJOpZkMR"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_08_saum_prayer_parental_arms.mp3"
         },
         {
           "segment": 9,
@@ -1585,7 +1585,7 @@
           "category": "prayer|teaching",
           "start_time": "39:51",
           "end_time": "42:13",
-          "url": "https://drive.google.com/uc?export=download&id=1P3TG7Y8tr_-wmec08ji4oSl2thE6vPpY"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_09_saum_prayer_merciful_sovereign.mp3"
         },
         {
           "segment": 10,
@@ -1594,7 +1594,7 @@
           "category": "prayer",
           "start_time": "42:13",
           "end_time": "44:03",
-          "url": "https://drive.google.com/uc?export=download&id=1WFUkiZ_qMStZm-FkhY3swFz6cWoaHCtg"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_10_full_saum_and_salat_prayers.mp3"
         },
         {
           "segment": 11,
@@ -1603,7 +1603,7 @@
           "category": "teaching",
           "start_time": "44:03",
           "end_time": "46:17",
-          "url": "https://drive.google.com/uc?export=download&id=1ojsGB_0RwSc8PqKCUQhmn6aOd0EC-cK1"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_11_post_prayer_silence_and_wholesome_life.mp3"
         },
         {
           "segment": 12,
@@ -1612,7 +1612,7 @@
           "category": "teaching",
           "start_time": "46:17",
           "end_time": "50:04",
-          "url": "https://drive.google.com/uc?export=download&id=19lBCKsiTpwMbsH3SkPuOLS8kFLpqbEKk"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_12_wholesome_life_pure_diet.mp3"
         },
         {
           "segment": 13,
@@ -1621,7 +1621,7 @@
           "category": "teaching",
           "start_time": "50:04",
           "end_time": "52:52",
-          "url": "https://drive.google.com/uc?export=download&id=1zIiZ5kX4ovlpaVLlqsPAtrtUNrWqB8ws"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_13_wholesome_life_air_and_regularity.mp3"
         },
         {
           "segment": 14,
@@ -1630,7 +1630,7 @@
           "category": "teaching",
           "start_time": "52:52",
           "end_time": "55:10",
-          "url": "https://drive.google.com/uc?export=download&id=1qkxSzkaYJM6DrcpzVi8VUVi_CdsXmtXu"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_14_wholesome_life_thought_and_feeling.mp3"
         },
         {
           "segment": 15,
@@ -1639,7 +1639,7 @@
           "category": "reading|teaching",
           "start_time": "55:10",
           "end_time": "58:49",
-          "url": "https://drive.google.com/uc?export=download&id=1Ad0X2WkSvw9vMg7T871Nn9iuccCGVcFA"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_15_trust_hope_and_enduring_life.mp3"
         },
         {
           "segment": 16,
@@ -1648,7 +1648,7 @@
           "category": "discussion",
           "start_time": "58:49",
           "end_time": "1:04:18",
-          "url": "https://drive.google.com/uc?export=download&id=1MSHIrNCIJKQ-W8r20jp7qYYVBGGkvWee"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_16_rule_no_advantage_from_ignorance.mp3"
         },
         {
           "segment": 17,
@@ -1657,7 +1657,7 @@
           "category": "closing",
           "start_time": "1:04:18",
           "end_time": "1:18:28",
-          "url": "https://drive.google.com/uc?export=download&id=12oaO_EpF4pT8i3kzSzNPRBZKfGXBVZXu"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C5/Concentration_Audio_C5_17_closing_and_farewell.mp3"
         }
       ]
     },
@@ -1674,7 +1674,7 @@
           "category": "teaching",
           "start_time": "00:00:05",
           "end_time": "01:06:00",
-          "url": "https://drive.google.com/uc?export=download&id=1ONHrwTjc8RdAp0xWGhInLR3OoBmdft96"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_01_opening_reflection_body_temple.mp3"
         },
         {
           "segment": 2,
@@ -1683,7 +1683,7 @@
           "category": "meditation",
           "start_time": "01:06:00",
           "end_time": "05:51:00",
-          "url": "https://drive.google.com/uc?export=download&id=1OqHvyGRqRqak72Faf65fDl3r2gLl4GIE"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_02_yellow_color_meditation.mp3"
         },
         {
           "segment": 3,
@@ -1692,7 +1692,7 @@
           "category": "teaching|reading|practice",
           "start_time": "05:51:00",
           "end_time": "09:04:00",
-          "url": "https://drive.google.com/uc?export=download&id=10aU2HyKrS8NDLgyy2egxGDniO2EAdZPD"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_03_reflecting_on_yellow_practice.mp3"
         },
         {
           "segment": 4,
@@ -1701,7 +1701,7 @@
           "category": "practice|meditation",
           "start_time": "09:04:00",
           "end_time": "16:38:00",
-          "url": "https://drive.google.com/uc?export=download&id=1eV0d_9M1qImJ4fcEsiAYADTDBHEwU6RQ"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_04_star_visualization_practice.mp3"
         },
         {
           "segment": 5,
@@ -1710,7 +1710,7 @@
           "category": "teaching",
           "start_time": "16:38:00",
           "end_time": "22:22:00",
-          "url": "https://drive.google.com/uc?export=download&id=12f4XgS7HYekyAYsSpwVPl4Ns7odIuA6O"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_05_common_sense_and_smell_teaching.mp3"
         },
         {
           "segment": 6,
@@ -1719,7 +1719,7 @@
           "category": "practice|meditation",
           "start_time": "22:22:00",
           "end_time": "26:47:00",
-          "url": ""
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_06_rose_essence_smell_practice.mp3"
         },
         {
           "segment": 7,
@@ -1728,7 +1728,7 @@
           "category": "teaching|practice",
           "start_time": "26:47:00",
           "end_time": "31:17:00",
-          "url": "https://drive.google.com/uc?export=download&id=1XYYwF-fQElA1EJevI9lW2lRe6lhASDFh"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_07_the_point_concentration_teaching.mp3"
         },
         {
           "segment": 8,
@@ -1737,7 +1737,7 @@
           "category": "practice",
           "start_time": "31:17:00",
           "end_time": "34:51:00",
-          "url": "https://drive.google.com/uc?export=download&id=1AlL3T1zumrxM0YoQsPuYWc87YY8CzX6k"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_08_dot_gaze_concentration.mp3"
         },
         {
           "segment": 9,
@@ -1746,7 +1746,7 @@
           "category": "teaching",
           "start_time": "34:51:00",
           "end_time": "39:25:00",
-          "url": "https://drive.google.com/uc?export=download&id=19ntZLgY4PG1UTVyXEZ3vL9_OhS9BR29X"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_09_faculties_of_mind_imagination.mp3"
         },
         {
           "segment": 10,
@@ -1755,7 +1755,7 @@
           "category": "practice",
           "start_time": "39:25:00",
           "end_time": "47:47:00",
-          "url": "https://drive.google.com/uc?export=download&id=1u0mT-2rioJyQrm0P-0n_0Sqh0a7cmqCT"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_10_imagination_exercise_encounter.mp3"
         },
         {
           "segment": 11,
@@ -1764,7 +1764,7 @@
           "category": "teaching",
           "start_time": "47:47:00",
           "end_time": "54:15:00",
-          "url": "https://drive.google.com/uc?export=download&id=1pt4TboQZ9uerDJA56bjBcm7YhfupeHZI"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_11_salat_prayer_lineages_and_meaning.mp3"
         },
         {
           "segment": 12,
@@ -1773,7 +1773,7 @@
           "category": "teaching",
           "start_time": "54:15:00",
           "end_time": "01:01:46",
-          "url": "https://drive.google.com/uc?export=download&id=1gp9CfFzC5zAQsVFi1u06ZT8wzmnJsErz"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_12_salat_ahl_al_bayt_and_revelation.mp3"
         },
         {
           "segment": 13,
@@ -1782,7 +1782,7 @@
           "category": "teaching|prayer",
           "start_time": "01:01:46",
           "end_time": "01:05:51",
-          "url": "https://drive.google.com/uc?export=download&id=1kp2sri6HOjzqR3uMR4fuE79Iuybrl0wz"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_13_gratitude_and_mountain_of_qaf.mp3"
         },
         {
           "segment": 14,
@@ -1791,7 +1791,7 @@
           "category": "prayer",
           "start_time": "01:05:51",
           "end_time": "01:08:15",
-          "url": "https://drive.google.com/uc?export=download&id=142opF5kaZpGEhZHT5criwUCn5oey2Hia"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_14_salat_prayer_recitation.mp3"
         },
         {
           "segment": 15,
@@ -1800,7 +1800,7 @@
           "category": "prayer|closing",
           "start_time": "01:08:15",
           "end_time": "01:10:43",
-          "url": "https://drive.google.com/uc?export=download&id=1OW3IFtHC-uSjLgIC7VdCxoleIiCaCQpD"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_15_khatam_prayer_and_blessing.mp3"
         },
         {
           "segment": 16,
@@ -1809,7 +1809,7 @@
           "category": "closing",
           "start_time": "01:10:43",
           "end_time": "1:16:27",
-          "url": "https://drive.google.com/uc?export=download&id=1I7c4KIR04z-n3qc1EpkeGkdPVKYcwChb"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C6/Concentration_Audio_C6_16_closing_remarks_and_music.mp3"
         }
       ]
     },
@@ -1826,7 +1826,7 @@
           "category": "prayer",
           "start_time": "00:00:05",
           "end_time": "01:07",
-          "url": "https://drive.google.com/uc?export=download&id=15yZsWOd7UYFsOyP7pPg_iXE0lkM_w810"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_01_opening_and_invocation.mp3"
         },
         {
           "segment": 2,
@@ -1835,7 +1835,7 @@
           "category": "teaching",
           "start_time": "01:07",
           "end_time": "07:47",
-          "url": "https://drive.google.com/uc?export=download&id=18E-RyIi2Nb2tvZOMLBH71BZjT7C7beyf"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_02_teaching_on_concentration.mp3"
         },
         {
           "segment": 3,
@@ -1844,7 +1844,7 @@
           "category": "teaching|prayer",
           "start_time": "07:47",
           "end_time": "15:20",
-          "url": "https://drive.google.com/uc?export=download&id=1QeXZf2MHYeWXft_ZDPo9DDb_w-G6TzBi"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_03_meaning_of_amin_prayer.mp3"
         },
         {
           "segment": 4,
@@ -1853,7 +1853,7 @@
           "category": "discussion|teaching",
           "start_time": "15:20",
           "end_time": "25:26",
-          "url": "https://drive.google.com/uc?export=download&id=1LipD9LeYYko9RagoM_9XQCghtoLCk_FC"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_04_chivalric_rule_do_not_boast.mp3"
         },
         {
           "segment": 5,
@@ -1862,7 +1862,7 @@
           "category": "reading",
           "start_time": "25:26",
           "end_time": "30:31",
-          "url": "https://drive.google.com/uc?export=download&id=1vPcX9UtTc32dPMJVqtFqX-cB7KA2fpdT"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_05_murshid_on_ego_and_vanity.mp3"
         },
         {
           "segment": 6,
@@ -1871,7 +1871,7 @@
           "category": "discussion|teaching",
           "start_time": "30:31",
           "end_time": "37:21",
-          "url": "https://drive.google.com/uc?export=download&id=1EkHR33dFZhY0RG1q3RXkYdVax43dRzm0"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_06_working_with_the_ego.mp3"
         },
         {
           "segment": 7,
@@ -1880,7 +1880,7 @@
           "category": "practice",
           "start_time": "37:21",
           "end_time": "52:10",
-          "url": "https://drive.google.com/uc?export=download&id=1gkXVYJksWZVP1j1rZGjStBnQVWwIWobm"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_07_breath_purification_practice.mp3"
         },
         {
           "segment": 8,
@@ -1889,7 +1889,7 @@
           "category": "teaching",
           "start_time": "52:10",
           "end_time": "59:23",
-          "url": "https://drive.google.com/uc?export=download&id=1wZqxtWT_s3PkKgcVZweZmZiuVk6bGTiG"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_08_breath_alignment_and_recalibration.mp3"
         },
         {
           "segment": 9,
@@ -1898,7 +1898,7 @@
           "category": "reading",
           "start_time": "59:23",
           "end_time": "01:03:26",
-          "url": "https://drive.google.com/uc?export=download&id=1aHfHP6QAm0r0JGTWICFCqgHEjEdU3VMa"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_09_murshid_on_sobriety_reading.mp3"
         },
         {
           "segment": 10,
@@ -1907,7 +1907,7 @@
           "category": "discussion",
           "start_time": "01:03:26",
           "end_time": "01:12:52",
-          "url": "https://drive.google.com/uc?export=download&id=1kolyccFVGz_3HCT6FJrq16Fvnar9nfuz"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_10_reflecting_on_sobriety.mp3"
         },
         {
           "segment": 11,
@@ -1916,7 +1916,7 @@
           "category": "meditation|reading|practice",
           "start_time": "01:12:52",
           "end_time": "1:18:55",
-          "url": "https://drive.google.com/uc?export=download&id=1LoTzeXEJQgW7TakJ39ktU6oUtIad99Qz"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C7/Concentration_Audio_C7_11_red_color_visualization_and_reflection.mp3"
         }
       ]
     },
@@ -1933,7 +1933,7 @@
           "category": "reading",
           "start_time": "00:00:38",
           "end_time": "00:03:26",
-          "url": "https://drive.google.com/uc?export=download&id=1Pu_f8SZKchE7pi7C9DS9ijzXF_amJNrj"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_01_murshids_lesson_on_concentration.mp3"
         },
         {
           "segment": 2,
@@ -1942,7 +1942,7 @@
           "category": "teaching",
           "start_time": "00:03:26",
           "end_time": "00:12:15",
-          "url": "https://drive.google.com/uc?export=download&id=1mheSK1k4AqSDOpl4OCGyYgNN8_XEHgJx"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_02_concentration_effort_and_commitment.mp3"
         },
         {
           "segment": 3,
@@ -1951,7 +1951,7 @@
           "category": "teaching",
           "start_time": "00:12:15",
           "end_time": "00:17:30",
-          "url": "https://drive.google.com/uc?export=download&id=1aRGRWqFhFYpWOZ5ikXNqtr3riY7Ig6YX"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_03_concentration_hold_and_release.mp3"
         },
         {
           "segment": 4,
@@ -1960,7 +1960,7 @@
           "category": "meditation",
           "start_time": "00:17:30",
           "end_time": "00:20:37",
-          "url": "https://drive.google.com/uc?export=download&id=1pPevwLwe4dvZpH52QMixnE4N-zxszNJB"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_04_exhaling_residue_practice.mp3"
         },
         {
           "segment": 5,
@@ -1969,7 +1969,7 @@
           "category": "teaching",
           "start_time": "00:20:37",
           "end_time": "00:23:56",
-          "url": "https://drive.google.com/uc?export=download&id=1P4qR7TD0zZCjHpD2huLBkhPIkRQJM0a8"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_05_birbal_and_akbar_story.mp3"
         },
         {
           "segment": 6,
@@ -1978,7 +1978,7 @@
           "category": "teaching",
           "start_time": "00:23:56",
           "end_time": "00:27:50",
-          "url": "https://drive.google.com/uc?export=download&id=1YYORQ4UP12n8c3ort-lwalpIy-68ZOGG"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_06_qualities_of_the_crescent_moon.mp3"
         },
         {
           "segment": 7,
@@ -1987,7 +1987,7 @@
           "category": "visualization",
           "start_time": "00:27:50",
           "end_time": "00:31:58",
-          "url": "https://drive.google.com/uc?export=download&id=11xoAlny3cbXEyimhgvIsfgKedRCwXXsM"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_07_crescent_moon_visualization.mp3"
         },
         {
           "segment": 8,
@@ -1996,7 +1996,7 @@
           "category": "teaching",
           "start_time": "00:31:58",
           "end_time": "00:40:37",
-          "url": "https://drive.google.com/uc?export=download&id=1PNXMl8OiMMkP0Le20z-FxGHiRAnUP9gC"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_08_rethinking_the_sense_of_sight.mp3"
         },
         {
           "segment": 9,
@@ -2005,7 +2005,7 @@
           "category": "teaching",
           "start_time": "00:40:37",
           "end_time": "00:45:48",
-          "url": "https://drive.google.com/uc?export=download&id=1RXbvKBL_ENf1mIJfZkpCIRO2_FdUSYz_"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_09_inner_vision_and_outgoing_light.mp3"
         },
         {
           "segment": 10,
@@ -2014,7 +2014,7 @@
           "category": "practice",
           "start_time": "00:45:48",
           "end_time": "00:52:59",
-          "url": "https://drive.google.com/uc?export=download&id=1tR1qyohhDOggkq1yy3Ha3ZMPGN7s4DIy"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_10_point_gaze_practice.mp3"
         },
         {
           "segment": 11,
@@ -2023,7 +2023,7 @@
           "category": "reading",
           "start_time": "00:52:59",
           "end_time": "00:56:35",
-          "url": "https://drive.google.com/uc?export=download&id=1mb7bfmvKxPM_uBUxK3I3HIGFWVpHrx_7"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_11_murshid_on_divine_willpower.mp3"
         },
         {
           "segment": 12,
@@ -2032,7 +2032,7 @@
           "category": "teaching",
           "start_time": "00:56:35",
           "end_time": "01:03:19",
-          "url": "https://drive.google.com/uc?export=download&id=1p75Rs5pPN-WOhE4RhHZHaE1erv0SMWz7"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_12_willpower_and_divine_alignment.mp3"
         },
         {
           "segment": 13,
@@ -2041,7 +2041,7 @@
           "category": "practice",
           "start_time": "01:03:19",
           "end_time": "01:06:21",
-          "url": "https://drive.google.com/uc?export=download&id=1Ab89l_O3jQjOeTEobjbjpb9zb1k8pSWW"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_13_daily_task_remember_god.mp3"
         },
         {
           "segment": 14,
@@ -2050,7 +2050,7 @@
           "category": "prayer",
           "start_time": "01:06:21",
           "end_time": "1:09:45",
-          "url": "https://drive.google.com/uc?export=download&id=1sbz-njlNdwbOpYA4XqbVX8OjuRi6rqS5"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C8/Concentration_Audio_C8_14_salawat_prayer.mp3"
         }
       ]
     },
@@ -2067,7 +2067,7 @@
           "category": "teaching",
           "start_time": "00:05:54",
           "end_time": "04:58:80",
-          "url": "https://drive.google.com/uc?export=download&id=1Ws-dMibXYdMYzBvakunh0sTV1E_qqrqz"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_01_opening_invocation_journey_intro.mp3"
         },
         {
           "segment": 2,
@@ -2076,7 +2076,7 @@
           "category": "teaching",
           "start_time": "04:58:80",
           "end_time": "10:47:48",
-          "url": "https://drive.google.com/uc?export=download&id=1p5d0X0PWiSwpYy7DWHjWLjNmsF_qwBD4"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_02_traveling_well_light_load.mp3"
         },
         {
           "segment": 3,
@@ -2085,7 +2085,7 @@
           "category": "reading",
           "start_time": "10:47:48",
           "end_time": "19:11:00",
-          "url": "https://drive.google.com/uc?export=download&id=16ouZtNyjuG7gwjsVHJf3weL8e9En1Ied"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_03_murshid_reading_destroying_impressions.mp3"
         },
         {
           "segment": 4,
@@ -2094,7 +2094,7 @@
           "category": "practice",
           "start_time": "19:11:00",
           "end_time": "30:34:64",
-          "url": ""
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_04_elemental_purification_practice.mp3"
         },
         {
           "segment": 5,
@@ -2103,7 +2103,7 @@
           "category": "prayer",
           "start_time": "30:34:64",
           "end_time": "35:07:93",
-          "url": "https://drive.google.com/uc?export=download&id=13K4vj7WYoSlYOuEOAlFJtdNXQJCBfdx9"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_05_post_purification_prayer_guidance.mp3"
         },
         {
           "segment": 6,
@@ -2112,7 +2112,7 @@
           "category": "meditation",
           "start_time": "35:07:93",
           "end_time": "42:19:93",
-          "url": "https://drive.google.com/uc?export=download&id=1ebJj28-vuDt90tH-VVx8lvB20lzkkXRU"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_06_breath_practice_swing_analogy.mp3"
         },
         {
           "segment": 7,
@@ -2121,7 +2121,7 @@
           "category": "teaching",
           "start_time": "42:19:93",
           "end_time": "53:20:94",
-          "url": "https://drive.google.com/uc?export=download&id=13jECVagjsBVWX8iFsvepuwyUBbTzBUrr"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_07_earth_energy_ha_mantra_intro.mp3"
         },
         {
           "segment": 8,
@@ -2130,7 +2130,7 @@
           "category": "practice",
           "start_time": "53:20:94",
           "end_time": "58:16:85",
-          "url": "https://drive.google.com/uc?export=download&id=199ROSoMNuUyggtEYQwib5c_SkHgJ8sy7"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_08_ha_mantra_intonation_practice.mp3"
         },
         {
           "segment": 9,
@@ -2139,7 +2139,7 @@
           "category": "discussion",
           "start_time": "58:16:85",
           "end_time": "1:07:09:63",
-          "url": "https://drive.google.com/uc?export=download&id=1Xa94DxDVPLKIRPZSTdf0sYLyfrzbWdif"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_09_chivalric_rule_do_not_claim.mp3"
         },
         {
           "segment": 10,
@@ -2148,7 +2148,7 @@
           "category": "meditation",
           "start_time": "1:07:09:63",
           "end_time": "1:17:33",
-          "url": "https://drive.google.com/uc?export=download&id=1YiCQx8m0spKClT_aNJhM25oUS4vuoczW"
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_10_blue_color_meditation.mp3"
         }
       ]
     }
