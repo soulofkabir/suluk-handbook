@@ -1550,9 +1550,80 @@ function loadUserData() {
     const s = localStorage.getItem('suluk_user_data');
     if (s) userData = Object.assign({ bookmarks:[], notes:[], highlights:[], journal:{}, recentlyViewed:[], practiceLog:{}, links:[], homework:[], personalFiles:[] }, JSON.parse(s));
   } catch(e) {}
+  // Pull cloud data in background after local load
+  syncFromCloud();
 }
 function saveUserData() {
   try { localStorage.setItem('suluk_user_data', JSON.stringify(userData)); } catch(e) {}
+  debouncedSyncToCloud();
+}
+
+/* ─── Cloud Sync ─── */
+let _syncTimer = null;
+let _syncing = false;
+
+function debouncedSyncToCloud() {
+  if (_syncTimer) clearTimeout(_syncTimer);
+  _syncTimer = setTimeout(() => syncToCloud(), 2000);
+}
+
+async function syncToCloud() {
+  if (!isLibraryConfigured() || _syncing) return;
+  _syncing = true;
+  try {
+    const payload = JSON.stringify(userData);
+    await workerFetch('/backup-data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: payload,
+    });
+    localStorage.setItem('suluk_last_sync', new Date().toISOString());
+    console.log('[Sync] Pushed to cloud');
+  } catch(e) {
+    console.warn('[Sync] Push failed:', e.message);
+  } finally {
+    _syncing = false;
+  }
+}
+
+async function syncFromCloud() {
+  if (!isLibraryConfigured()) return;
+  try {
+    const resp = await workerFetch('/backup-data');
+    const cloud = await resp.json();
+    if (!cloud || cloud.error) return;
+    mergeUserData(cloud);
+    try { localStorage.setItem('suluk_user_data', JSON.stringify(userData)); } catch(e) {}
+    localStorage.setItem('suluk_last_sync', new Date().toISOString());
+    console.log('[Sync] Pulled from cloud & merged');
+  } catch(e) {
+    if (e.message && !e.message.includes('not configured')) console.warn('[Sync] Pull failed:', e.message);
+  }
+}
+
+function mergeUserData(cloud) {
+  // Merge arrays by unique id/key, keeping the union of both
+  const arrayKeys = ['bookmarks', 'notes', 'highlights', 'links', 'homework', 'personalFiles', 'recentlyViewed'];
+  arrayKeys.forEach(key => {
+    if (!Array.isArray(cloud[key])) return;
+    const local = userData[key] || [];
+    const idField = key === 'bookmarks' ? 'idx' : key === 'recentlyViewed' ? 'idx' : 'id';
+    const merged = [...local];
+    const existingIds = new Set(local.map(item => item[idField]));
+    cloud[key].forEach(item => {
+      if (item[idField] !== undefined && !existingIds.has(item[idField])) {
+        merged.push(item);
+      }
+    });
+    userData[key] = merged;
+  });
+
+  // Merge objects (journal, practiceLog) — keep entries from both
+  const objKeys = ['journal', 'practiceLog'];
+  objKeys.forEach(key => {
+    if (!cloud[key] || typeof cloud[key] !== 'object') return;
+    userData[key] = Object.assign({}, cloud[key], userData[key]);
+  });
 }
 
 
