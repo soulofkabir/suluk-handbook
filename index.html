@@ -1550,8 +1550,8 @@ function loadUserData() {
     const s = localStorage.getItem('suluk_user_data');
     if (s) userData = Object.assign({ bookmarks:[], notes:[], highlights:[], journal:{}, recentlyViewed:[], practiceLog:{}, links:[], homework:[], personalFiles:[] }, JSON.parse(s));
   } catch(e) {}
-  // Pull cloud data in background after local load
-  syncFromCloud();
+  // Full two-way sync on boot: push local → pull cloud → merge
+  fullSync();
 }
 function saveUserData() {
   try { localStorage.setItem('suluk_user_data', JSON.stringify(userData)); } catch(e) {}
@@ -1571,11 +1571,10 @@ async function syncToCloud() {
   if (!isLibraryConfigured() || _syncing) return;
   _syncing = true;
   try {
-    const payload = JSON.stringify(userData);
     await workerFetch('/backup-data', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: payload,
+      body: JSON.stringify(userData),
     });
     localStorage.setItem('suluk_last_sync', new Date().toISOString());
     console.log('[Sync] Pushed to cloud');
@@ -1601,8 +1600,37 @@ async function syncFromCloud() {
   }
 }
 
+async function fullSync() {
+  if (!isLibraryConfigured()) return;
+  try {
+    // Step 1: Pull cloud data and merge into local
+    const resp = await workerFetch('/backup-data');
+    const cloud = await resp.json();
+    if (cloud && !cloud.error) {
+      mergeUserData(cloud);
+      console.log('[Sync] Pulled & merged from cloud');
+    }
+  } catch(e) {
+    // 404 = no backup yet, that's fine
+    if (e.message && !e.message.includes('not configured')) console.log('[Sync] No cloud backup yet or pull failed');
+  }
+  // Step 2: Push merged data back to cloud (ensures local-only items get uploaded)
+  try {
+    await workerFetch('/backup-data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData),
+    });
+    try { localStorage.setItem('suluk_user_data', JSON.stringify(userData)); } catch(e) {}
+    localStorage.setItem('suluk_last_sync', new Date().toISOString());
+    console.log('[Sync] Full sync complete');
+    showToast('Data synced');
+  } catch(e) {
+    console.warn('[Sync] Push failed:', e.message);
+  }
+}
+
 function mergeUserData(cloud) {
-  // Merge arrays by unique id/key, keeping the union of both
   const arrayKeys = ['bookmarks', 'notes', 'highlights', 'links', 'homework', 'personalFiles', 'recentlyViewed'];
   arrayKeys.forEach(key => {
     if (!Array.isArray(cloud[key])) return;
@@ -1617,13 +1645,86 @@ function mergeUserData(cloud) {
     });
     userData[key] = merged;
   });
-
-  // Merge objects (journal, practiceLog) — keep entries from both
   const objKeys = ['journal', 'practiceLog'];
   objKeys.forEach(key => {
     if (!cloud[key] || typeof cloud[key] !== 'object') return;
     userData[key] = Object.assign({}, cloud[key], userData[key]);
   });
+}
+
+/* ─── Sync Settings Page ─── */
+function showSyncSettings(el) {
+  if (el) setActiveNav(el);
+  const c = { url: localStorage.getItem('suluk_worker_url') || '', token: localStorage.getItem('suluk_worker_token') || '' };
+  const lastSync = localStorage.getItem('suluk_last_sync');
+  const configured = c.url && c.token;
+  const counts = {
+    links: (userData.links || []).length,
+    bookmarks: (userData.bookmarks || []).length,
+    homework: (userData.homework || []).length,
+    notes: (userData.notes || []).length,
+    highlights: (userData.highlights || []).length,
+    journal: Object.keys(userData.journal || {}).length,
+  };
+  let h = listPageHeader('Sync & Settings', configured ? 'Connected' : 'Not configured');
+  h += '<div style="max-width:600px;margin:0 auto;padding:0 20px">';
+
+  // Connection status
+  h += '<div style="padding:20px;border-radius:8px;margin-bottom:24px;background:' + (configured ? 'rgba(34,120,60,.08)' : 'rgba(140,98,34,.08)') + '">';
+  h += '<div style="font-weight:600;font-family:var(--display);margin-bottom:8px">' + (configured ? '● Connected to Cloud' : '○ Not Connected') + '</div>';
+  if (lastSync) h += '<div style="font-size:13px;color:var(--muted)">Last synced: ' + new Date(lastSync).toLocaleString() + '</div>';
+  if (configured) {
+    h += '<div style="font-size:13px;color:var(--muted);margin-top:4px">Worker: ' + escHtml(c.url.replace(/^https?:\/\//, '').slice(0, 40)) + '</div>';
+  }
+  h += '</div>';
+
+  // Data summary
+  h += '<div style="margin-bottom:24px">';
+  h += '<div style="font-weight:600;font-family:var(--display);margin-bottom:12px">Your Data</div>';
+  h += '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">';
+  [['Links', counts.links], ['Bookmarks', counts.bookmarks], ['Homework', counts.homework],
+   ['Notes', counts.notes], ['Highlights', counts.highlights], ['Journal', counts.journal]].forEach(([label, n]) => {
+    h += '<div style="text-align:center;padding:12px;background:var(--accent-light);border-radius:6px">';
+    h += '<div style="font-size:22px;font-weight:700;color:var(--accent)">' + n + '</div>';
+    h += '<div style="font-size:12px;color:var(--muted)">' + label + '</div></div>';
+  });
+  h += '</div></div>';
+
+  // Sync button
+  if (configured) {
+    h += '<button class="action-btn primary" onclick="manualSync()" style="width:100%;margin-bottom:16px">⟳ Sync Now</button>';
+  }
+
+  // Configuration form
+  h += '<div style="margin-bottom:24px">';
+  h += '<div style="font-weight:600;font-family:var(--display);margin-bottom:12px">' + (configured ? 'Update Connection' : 'Connect to Cloud') + '</div>';
+  h += '<p style="font-size:13px;color:var(--muted);margin-bottom:12px">Enter your Cloudflare Worker URL and auth token to sync data across all your browsers and devices.</p>';
+  h += '<div class="form-field" style="margin-bottom:12px"><label style="font-size:13px;font-weight:600">Worker URL</label>';
+  h += '<input type="url" id="sync-url" value="' + escHtml(c.url) + '" placeholder="https://suluk-worker.xxxx.workers.dev" style="width:100%;padding:10px;border:1px solid var(--rule);border-radius:6px;font-size:14px"></div>';
+  h += '<div class="form-field" style="margin-bottom:12px"><label style="font-size:13px;font-weight:600">Auth Token</label>';
+  h += '<input type="password" id="sync-token" value="' + escHtml(c.token) + '" placeholder="Your secret token" style="width:100%;padding:10px;border:1px solid var(--rule);border-radius:6px;font-size:14px"></div>';
+  h += '<button class="action-btn primary" onclick="saveSyncConfig()" style="width:100%">Save & Connect</button>';
+  h += '</div>';
+
+  h += '</div>';
+  showPage(h);
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+function saveSyncConfig() {
+  const url = document.getElementById('sync-url').value.trim().replace(/\/+$/, '');
+  const token = document.getElementById('sync-token').value.trim();
+  if (!url || !token) { showToast('Please enter both URL and token'); return; }
+  localStorage.setItem('suluk_worker_url', url);
+  localStorage.setItem('suluk_worker_token', token);
+  showToast('Saved! Syncing…');
+  fullSync().then(() => showSyncSettings());
+}
+
+async function manualSync() {
+  showToast('Syncing…');
+  await fullSync();
+  showSyncSettings();
 }
 
 
@@ -2037,6 +2138,7 @@ function buildSidebarNav() {
   h += '<a class="nav-item" onclick="showLinks(this)" role="button" tabindex="0">⚯ &thinsp;Links</a>';
   h += '<a class="nav-item" onclick="showHomework(this)" role="button" tabindex="0">▣ &thinsp;Homework</a>';
   h += '<a class="nav-item" onclick="showLibrary(this)" role="button" tabindex="0">◫ &thinsp;My Library</a>';
+  h += '<a class="nav-item" onclick="showSyncSettings(this)" role="button" tabindex="0">⟳ &thinsp;Sync & Settings</a>';
   nav.innerHTML = h;
 }
 
