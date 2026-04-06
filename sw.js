@@ -4,8 +4,8 @@
  * Strategy: Cache-first for assets, network-first for data (with cache fallback).
  */
 
-const CACHE_NAME = 'suluk-v2';
-const DATA_CACHE = 'suluk-data-v2';
+const CACHE_NAME = 'suluk-v3';
+const DATA_CACHE = 'suluk-data-v3';
 
 // Core assets to pre-cache on install
 const CORE_ASSETS = [
@@ -119,12 +119,25 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Everything else (HTML, images, favicon) — cache-first, network fallback
+  // HTML pages — network-first so code updates are always picked up
+  if (event.request.destination === 'document' || url.pathname.endsWith('.html') || url.pathname.endsWith('/')) {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Everything else (images, favicon, etc.) — cache-first, network fallback
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
       return fetch(event.request).then((response) => {
-        // Cache successful responses for future offline use
         if (response.ok && url.origin === self.location.origin) {
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
