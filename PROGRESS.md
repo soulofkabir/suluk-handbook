@@ -157,6 +157,16 @@
 
 ---
 
+## Admin Mode ✅
+
+- **Hidden admin panel** — Workspace section (Links, Homework, My Library, Sync & Settings) only visible in admin mode
+- **Activation** — Type `suluk` on keyboard (not in input field) to toggle
+- **Persistence** — Admin state saved in `localStorage.suluk_admin`, survives refresh
+- **Public visitors** see all Discover, Personal, and content features — just not the private Workspace
+- **Commit:** `9ef610d`
+
+---
+
 ## Design System — "Crisp Pearl & True Bronze" ✅
 
 - **Palette:**
@@ -177,6 +187,8 @@
 
 | Commit | Description |
 |---|---|
+| `9ef610d` | Admin mode: Workspace hidden from public visitors, toggle with 'suluk' |
+| `167fb2b` | Update PROGRESS.md — all phases A through G5 complete |
 | `5cf9c4e` | Phase G4: AI Study Companion — Chat UI powered by Gemini 2.5 Flash |
 | `43b9153` | Phase G5: UI Polish — Instructor portraits, reading stats, learning timeline |
 | `c11d1d5` | Cover image: contain instead of cover to show full Mount Qaf image |
