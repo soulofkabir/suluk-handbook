@@ -3633,18 +3633,10 @@ function hideGlossaryTooltip() {
 let chatMessages = [];
 let chatTeachingContext = null;
 
+const CHAT_WORKER_URL = 'https://suluk-worker.soulofkabir.workers.dev';
+
 function showStudyCompanion(el) {
   if (el) setActiveNav(el);
-  if (!isLibraryConfigured()) {
-    let h = listPageHeader('Study Companion', 'AI-powered study help');
-    h += '<div style="max-width:500px;margin:40px auto;text-align:center;padding:0 20px">';
-    h += '<div style="font-size:48px;margin-bottom:16px">◈</div>';
-    h += '<p style="color:var(--muted);margin-bottom:20px">To use the Study Companion, please configure your cloud connection first in Sync & Settings.</p>';
-    h += '<button class="action-btn primary" onclick="showSyncSettings()">Go to Sync & Settings</button>';
-    h += '</div>';
-    showPage(h);
-    return;
-  }
 
   // Load saved chat from this session
   const saved = sessionStorage.getItem('suluk_chat');
@@ -3746,15 +3738,23 @@ async function sendChat() {
     buildSearchIndex();
     const relevantTeachings = findRelevantTeachings(msg, 5);
 
-    const resp = await workerFetch('/chat', {
+    const c = getWorkerConfig();
+    const chatUrl = (c.url || CHAT_WORKER_URL) + '/chat';
+    const chatHeaders = { 'Content-Type': 'application/json' };
+    if (c.token) chatHeaders['Authorization'] = 'Bearer ' + c.token;
+    const resp = await fetch(chatUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: chatHeaders,
       body: JSON.stringify({
         messages: chatMessages,
         teachingContext: chatTeachingContext,
         handbookContext: relevantTeachings,
       }),
     });
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({ error: 'Request failed' }));
+      throw new Error(err.error || 'Chat request failed');
+    }
     const data = await resp.json();
     const reply = data.reply || 'I could not generate a response.';
 
