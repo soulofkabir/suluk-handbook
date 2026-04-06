@@ -3,17 +3,19 @@
 **Project:** Suluk Academy Personal Learning Companion
 **URL:** https://soulofkabir.github.io/suluk-handbook/
 **Architecture:** Single-file HTML + CSS + Vanilla JavaScript, GitHub Pages static hosting
-**Data:** `data/handbook_concentration.json`, `data/cross_reference_data.json`
+**Data:** `data/handbook_concentration.json`, `data/cross_reference_data.json`, `data/glossary.json`, `data/audio_manifest.json`
 **Audio:** Cloudflare R2 bucket `suluk-audio` (public), 221 clips across 20 classes
 **Personal Files:** Cloudflare R2 bucket `suluk-personal` (private), via Worker at `suluk-worker.soulofkabir.workers.dev`
+**AI Chat:** Gemini 2.5 Flash via Cloudflare Worker `/chat` endpoint
 **Design System:** "Crisp Pearl & True Bronze" — Nunito + Source Sans 3
 
 ---
 
 ## Phase A — Foundation & Shell ✅
 
-- **Project scaffold** — Single `index.html` with embedded CSS and JavaScript, `manifest.json`, `service-worker.js` for PWA structure, `/assets/images/` folder with all images
-- **Animated cover page** — Full-screen opening with Mount Qaf background, CSS keyframe animations, title/subtitle fade-in, "Enter the Handbook" button
+- **Project scaffold** — Single `index.html` with embedded CSS and JavaScript, `manifest.json`, `/assets/images/` folder with all images
+- **Animated cover page** — Full-screen opening with Mount Qaf background (full image, no overlay), white text with dark shadow, CSS keyframe animations, "Enter the Handbook" button
+- **Cover page behavior** — Shows on first visit; subsequent visits skip directly to handbook via `localStorage.suluk_entered` flag
 - **Design system** — CSS custom properties (`:root` variables) for all colors, fonts, spacing, and transitions
 - **Two-panel layout** — Fixed 320px sidebar + scrollable main content area, responsive mobile collapse
 - **Sidebar navigation** — Dynamic nav built via `buildSidebarNav()`, part/chapter hierarchy with collapsible sections
@@ -40,7 +42,7 @@
 - **Notes** — Modal with type selector (Reflection, Question, Practice, Insight)
 - **Text Highlights** — Select text → highlight toolbar, colors persisted
 - **Journal** — Full-page journal editor with date/teaching reference
-- **Recently Viewed** — Last 20 teachings with timestamps
+- **Recently Viewed** — Last 15 teachings with timestamps
 - **Export** — Download all user data as JSON
 
 ---
@@ -52,7 +54,7 @@
 - **Audio Library page** — Sidebar nav "♪ Audio Library"; collapsible class cards with instructor, date, duration, clip count
 - **Persistent bottom audio bar** — Play/pause, progress seek, time display, skip, speed control (0.75×–2×)
 - **Playlist mode** — 221 clips auto-advance; skip buttons navigate playlist
-- **Timestamp fix** — C6 and C9 had mixed MM:SS:FF formats causing wrong durations (6463 min, 6932 min); all normalized to HH:MM:SS
+- **Timestamp fix** — C6 and C9 had mixed MM:SS:FF formats; all normalized to HH:MM:SS
 - **Reading/listening separated** — Inline audio removed from teaching views; Audio Library is the dedicated listening experience
 
 ---
@@ -71,6 +73,20 @@
 
 ---
 
+## Phase F — PWA & Offline ✅
+
+- **Service Worker** (`sw.js`) with multi-strategy caching:
+  - Cache-first for core assets (HTML, images, favicon, fonts)
+  - Network-first for data files (teachings, glossary, audio manifest)
+  - Cache-on-play for audio files (offline listening after first play)
+- **Auto-registration** on boot with hourly update checks
+- **Update notification** — Toast when new version is available
+- **Install as app** — `beforeinstallprompt` captured; install button in Sync & Settings
+- **Offline reading** — All teachings, glossary, and images cached automatically
+- **Manifest updated** — Crisp Pearl theme colors, SVG favicon, apple-touch-icon
+
+---
+
 ## Phase G1 — Skip Cover & PDF Download ✅
 
 - **Skip cover on refresh** — `localStorage.suluk_entered` flag skips cover animation on return visits
@@ -85,88 +101,166 @@
 
 ---
 
-## Phase G3 — Personal Content Library ✅
+## Phase G3 — Personal Content Library & Cloud Sync ✅
 
-- **Cloudflare Worker** — `suluk-worker` at `https://suluk-worker.soulofkabir.workers.dev`; handles upload, download, delete, list, backup; bearer token auth; CORS for GitHub Pages + localhost
+- **Cloudflare Worker** — `suluk-worker` at `https://suluk-worker.soulofkabir.workers.dev`; handles upload, download, delete, list, backup, chat; bearer token auth; CORS for GitHub Pages + localhost
 - **Private R2 bucket** — `suluk-personal` for personal file storage
-- **Library UI** — Sidebar nav "My Library"; drag-and-drop + browse upload; category organization (Books, Notes, Presentations, Images, Homework, Other); grid view with thumbnails; file preview modal; download, edit, delete; cloud sync
-- **Cross-device sync** — Auto-syncs from cloud on page open to pick up files from other devices
-- **Setup flow** — First-time setup for Worker URL and auth token; Test Connection validates; Settings gear to update/disconnect
+- **Library UI** — Sidebar nav "My Library"; drag-and-drop + browse upload; category organization (Books, Notes, Presentations, Images, Homework, Other); grid view with thumbnails; file preview modal; download, edit, delete
+- **Cross-browser/device sync** — Automatic two-way cloud sync for ALL user data:
+  - On boot: pull from cloud → merge → push back (ensures local-only data gets uploaded)
+  - On every save: debounced 2-second push to cloud
+  - Smart merge: arrays by unique ID (no duplicates), objects merged keeping both sides
+  - Syncs: links, bookmarks, homework, notes, highlights, journal, practice log, reading log, personal files
+- **Sync & Settings page** — Configure Worker URL/token from any browser, connection status, data summary counts, manual "Sync Now" button, last sync timestamp
 - **Worker source:** `/Users/heartmath/Documents/Suluk_Project/suluk-worker/`
+
+---
+
+## Phase G4 — AI Study Companion ✅
+
+- **Gemini 2.5 Flash** via Cloudflare Worker `/chat` endpoint
+- **Worker proxy** — API key stored as Wrangler secret (`GEMINI_API_KEY`), never exposed to browser
+- **Rich system prompt** — Deep knowledge of Suluk Academy, Inayatiyya lineage, Sufi practices, Arabic/Persian terms
+- **Teaching context awareness** — When reading a teaching, the chat includes its title, chapter, instructor, and content excerpt for relevant answers
+- **Chat UI** — Full chat interface in sidebar under "Discover > Study Companion"
+  - Message history with styled bubbles (user = bronze, AI = light card)
+  - Markdown rendering in AI responses
+  - Session-persisted conversation (sessionStorage)
+  - Typing indicator, clear chat, context bar
+  - Keyboard: Enter to send, Shift+Enter for newline
+
+---
+
+## Phase G5 — UI Polish ✅
+
+- **Instructor portraits** — Circular 40px thumbnails in teaching headers
+  - Pir Zia Inayat Khan → `pir_zia_inayat_khan.JPG` (existing)
+  - Urs Qutbuddin / Schellenberg → `urs_qutbuddin.jpg` (downloaded from inayatiyya.org)
+  - Mansur / Guide Mansur → `mansur_rahm.png` (downloaded from inayatiyya.org)
+  - Mapping via `INSTRUCTOR_PORTRAITS` object
+- **Reading Statistics** — Sidebar nav "Reading Stats"
+  - Summary cards: teachings read, total words, estimated minutes, current streak
+  - 30-day activity bar chart
+  - Breakdown by instructor (with portraits and progress bars)
+  - Top chapters breakdown
+  - Powered by `readingLog` tracked on every `trackView()` call
+- **Learning Timeline** — Sidebar nav "Learning Timeline"
+  - Journey progress bar (X / total teachings, percentage)
+  - Chronological timeline grouped by date with dot indicators
+  - Clickable teaching cards to jump to any reading
+  - Per-day stats (teachings count, estimated reading time)
+- **Minor fixes completed:**
+  - SVG favicon (`assets/favicon.svg`) — bronze "S" on pearl background
+  - Deprecated `apple-mobile-web-app-capable` → `mobile-web-app-capable`
+  - Apple touch icon set to Inayatiyya emblem
+  - Part III empty `class_id` tag hidden (conditional rendering)
 
 ---
 
 ## Design System — "Crisp Pearl & True Bronze" ✅
 
 - **Palette:**
-  - Background: Crisp Pearl `#FCFBF8` — off-white, prevents screen glare
+  - Background: Crisp Pearl `#FCFBF8`
   - Sidebar: `#F7F5F1`
-  - Body text: Espresso `#302B27` — warm dark brown, softer than black
-  - Headers/Accents: Bronze Gold `#8C6222` — earthy gold
+  - Body text: Espresso `#302B27`
+  - Headers/Accents: Bronze Gold `#8C6222`
   - Muted text: `#7A756E`
   - Rules/Borders: Warm Taupe `#D4CFC6`
 - **Fonts:** Nunito (headings/UI/display) + Source Sans 3 (body text)
 - **Accessibility:** Designed for dyslexia/ASD (age 50+) — medium contrast, `line-height: 1.8`, no dark mode
-- **Night mode removed:** All CSS rules, JS functions, keyboard shortcut, toggle button deleted
-- **Cover page:** Crisp Pearl background with translucent overlay on Mount Qaf image, bronze gold title
+- **Cover page:** Full Mount Qaf image (no overlay, `background-size: contain`), white text with dark text-shadow
 - **Sidebar nav:** Bold (700) Espresso text, bronze gold active state
 
 ---
 
-## Git Commits (Chronological)
+## Git Commits (Recent)
 
 | Commit | Description |
 |---|---|
-| Initial | Project scaffold, cover page, shell |
-| Phase A | Sidebar, layout, night mode, font controls |
-| Phase B | JSON data loading, teaching renderer, Markdown parser |
-| Phase C | Bookmarks, notes, highlights, journal, export |
-| Color overhaul | Light sidebar matching old handbook palette (multiple iterations) |
-| Full Book v1 | Continuous scroll mode (teachings only) |
-| Full Book complete | All front matter + appendices A–E added; cross-reference JSON copied |
-| `c907922` | Color theme overhaul rework — match old handbook exactly |
-| `ddb9db5` | Phase E: Search, Glossary, Practice Tracker, Related, Share |
-| `7ec895f` | Phase D: Audio Library, inline player, persistent bottom bar |
-| `eacf8da` | Populate audio manifest with 219 Google Drive URLs |
-| `086f10b` | Fix audio: build playlist on manifest load, add error handling |
-| `f8ed56c` | Switch audio hosting from Google Drive to Cloudflare R2 |
-| `79e9165` | Phase G1: Skip cover on refresh |
-| `761a626` | Add PDF download link to sidebar |
-| `d672876` | Phase G2: Links page and Homework tracker |
-| `c514e04` | Inayatiyya-inspired color scheme: white bg, golden accents, no dark mode |
-| `9284c54` | Phase G3: Personal Content Library UI |
-| `6620361` | Fix escHtml bug in library |
-| `6c23376` | Clean up debug logging, update PROGRESS.md with G1-G3 |
-| `377027f` | Fix library navigation bug, add auto-sync from cloud |
-| `8031424` | Enhanced Search: topic filters, instructor filter, browse-all, recent searches |
-| `b9545a0` | Fix audio manifest timestamps: normalize C6/C9 MM:SS:FF format |
-| `4ca02c6` | Collapsible teaching audio section with smart clip matching |
-| `6c631cf` | New design system: Crisp Pearl & True Bronze, Nunito + Source Sans 3 |
-| `ab6eeab` | Separate reading and listening: remove inline audio from teaching view |
+| `5cf9c4e` | Phase G4: AI Study Companion — Chat UI powered by Gemini 2.5 Flash |
+| `43b9153` | Phase G5: UI Polish — Instructor portraits, reading stats, learning timeline |
+| `c11d1d5` | Cover image: contain instead of cover to show full Mount Qaf image |
+| `4615fb8` | Increase cover page subtitle and program name font sizes |
+| `8f122c1` | White cover page text with dark shadow for visibility over Mount Qaf image |
+| `bfff292` | Phase F: PWA & Offline — Service Worker with smart caching |
+| `2cb753a` | Fix minor issues: favicon, deprecated meta tag, empty class_id display |
+| `fc43bd6` | Add Sync & Settings page for cross-browser/device data sync |
+| `275016c` | Add automatic cloud sync for all user data across browsers/devices |
+| `2a07323` | Remove whitish overlay from cover page Mount Qaf image |
+| `a38f40b` | Update PROGRESS.md with comprehensive documentation |
 | `dccc76f` | Bold sidebar nav text in Espresso #302B27 |
+| `ab6eeab` | Separate reading and listening: remove inline audio from teaching view |
+| `6c631cf` | New design system: Crisp Pearl & True Bronze with Nunito + Source Sans 3 |
+| `4ca02c6` | Collapsible teaching audio section with smart clip matching |
+| `b9545a0` | Fix audio manifest timestamps: normalize C6/C9 MM:SS:FF format |
+| `8031424` | Enhanced Search: topic filters, instructor filter, browse-all, recent searches |
 
 ---
 
-## Pending / Future Phases
+## Sidebar Navigation (Complete)
 
-### Phase G4 — AI Study Companion (Not Yet Started)
-- Add `/ai-chat` endpoint to Cloudflare Worker proxying to Claude API
-- Chat UI in handbook for asking questions about teachings
-- Context-aware: sends current teaching text as context
+### Discover
+- ◈ Study Companion (AI chat)
+- ♪ Audio Library
+- ⊙ Search
+- ◉ Glossary
+- ◎ Practice Tracker
+- ▦ Reading Stats
+- ◷ Learning Timeline
 
-### Phase G5 — UI Polish (Ongoing)
-- Reading statistics (teachings read, time spent)
-- Learning timeline visualization
-- Instructor portrait integration
-- Favicon (currently 404)
-- Fix deprecated `<meta name="apple-mobile-web-app-capable">` → `mobile-web-app-capable`
+### Personal
+- ☆ Bookmarks
+- ✎ Notes
+- ◈ Highlights
+- ○ Recently Viewed
 
-### Phase F — PWA & Offline (Not Yet Started)
-- PWA offline mode (service worker caching)
-- Background sync for user data
-- App install prompt
+### Workspace
+- ⚯ Links
+- ▣ Homework
+- ◫ My Library
+- ⟳ Sync & Settings
 
-### Known Minor Issues
-- `favicon.ico` returns 404 — need to add a favicon
-- `<meta name="apple-mobile-web-app-capable">` is deprecated — should use `mobile-web-app-capable`
+---
+
+## Architecture Summary
+
+```
+Browser (GitHub Pages)
+  └── index.html (single file: HTML + CSS + JS)
+        ├── data/*.json (teachings, audio manifest, glossary, cross-references)
+        ├── assets/images/ (Mount Qaf, instructor portraits, prayer images)
+        ├── assets/favicon.svg
+        ├── sw.js (Service Worker for offline caching)
+        ├── manifest.json (PWA manifest)
+        └── localStorage (user data, prefs, worker config)
+
+Cloudflare Worker (suluk-worker.soulofkabir.workers.dev)
+  ├── POST /upload        → R2 suluk-personal
+  ├── GET  /files         → list R2 objects
+  ├── GET  /file/:key     → stream from R2
+  ├── DELETE /file/:key   → delete from R2
+  ├── POST /backup-data   → save user data JSON to R2
+  ├── GET  /backup-data   → retrieve user data backup
+  └── POST /chat          → proxy to Gemini 2.5 Flash API
+
+Cloudflare R2
+  ├── suluk-audio (public)    — 221 audio clips
+  └── suluk-personal (private) — files + backups
+```
+
+---
+
+## Known Minor Issues
+
 - Part III teachings have no `class_id` (no audio mapping) — these are from Pir Vilayat, audio not available
+- Gemini 2.5 Pro quota exceeded on free tier; using 2.5 Flash instead (works well)
+
+---
+
+## All Phases Complete ✅
+
+No pending phases. Future enhancements could include:
+- Additional books (Contemplation, Meditation, Realization) when content is available
+- Reading time tracking (time spent per teaching, not just word count estimate)
+- Spaced repetition for key teachings
+- Community features (shared notes/bookmarks)
