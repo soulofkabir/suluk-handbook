@@ -313,7 +313,14 @@ body {
   font-family: var(--display); font-size: clamp(22px,3.5vw,32px); font-weight: 500;
   color: var(--primary); line-height: 1.3; letter-spacing: 0.01em; margin-bottom: 8px;
 }
-.teaching-instructor { font-family: var(--display); font-size: 13px; font-style: italic; color: var(--muted); letter-spacing: 0.04em; }
+.teaching-instructor {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--display); font-size: 14px; font-style: italic; color: var(--muted); letter-spacing: 0.04em;
+}
+.instructor-portrait {
+  width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+  border: 2px solid var(--rule); flex-shrink: 0;
+}
 .teaching-rule { width: 56px; height: 1px; background: linear-gradient(90deg,var(--accent),transparent); margin: 20px 0; }
 
 
@@ -1592,7 +1599,7 @@ let userData = { bookmarks: [], notes: [], highlights: [], journal: {}, recently
 function loadUserData() {
   try {
     const s = localStorage.getItem('suluk_user_data');
-    if (s) userData = Object.assign({ bookmarks:[], notes:[], highlights:[], journal:{}, recentlyViewed:[], practiceLog:{}, links:[], homework:[], personalFiles:[] }, JSON.parse(s));
+    if (s) userData = Object.assign({ bookmarks:[], notes:[], highlights:[], journal:{}, recentlyViewed:[], practiceLog:{}, links:[], homework:[], personalFiles:[], readingLog:[] }, JSON.parse(s));
   } catch(e) {}
   // Full two-way sync on boot: push local → pull cloud → merge
   fullSync();
@@ -1675,11 +1682,11 @@ async function fullSync() {
 }
 
 function mergeUserData(cloud) {
-  const arrayKeys = ['bookmarks', 'notes', 'highlights', 'links', 'homework', 'personalFiles', 'recentlyViewed'];
+  const arrayKeys = ['bookmarks', 'notes', 'highlights', 'links', 'homework', 'personalFiles', 'recentlyViewed', 'readingLog'];
   arrayKeys.forEach(key => {
     if (!Array.isArray(cloud[key])) return;
     const local = userData[key] || [];
-    const idField = key === 'bookmarks' ? 'idx' : key === 'recentlyViewed' ? 'idx' : 'id';
+    const idField = key === 'bookmarks' ? 'idx' : key === 'recentlyViewed' ? 'idx' : key === 'readingLog' ? 'ts' : 'id';
     const merged = [...local];
     const existingIds = new Set(local.map(item => item[idField]));
     cloud[key].forEach(item => {
@@ -2070,6 +2077,18 @@ function buildJournalHistory() {
 /* ─── Recently Viewed ─── */
 function trackView(idx) {
   userData.recentlyViewed = [idx, ...userData.recentlyViewed.filter(i => i !== idx)].slice(0, 15);
+  // Track reading stats
+  if (!userData.readingLog) userData.readingLog = [];
+  const todayStr = today();
+  const last = userData.readingLog[0];
+  // Avoid duplicate entries for same teaching on same day
+  if (!last || last.idx !== idx || last.date !== todayStr) {
+    const t = allTeachings[idx];
+    const words = t ? (t.snippet.body || '').split(/\s+/).length : 0;
+    userData.readingLog.unshift({ idx, date: todayStr, words, ts: Date.now() });
+    // Keep last 500 entries
+    if (userData.readingLog.length > 500) userData.readingLog.length = 500;
+  }
   saveUserData();
 }
 
@@ -2190,6 +2209,8 @@ function buildSidebarNav() {
   h += '<a class="nav-item" onclick="showSearch(this)" role="button" tabindex="0">⊙ &thinsp;Search</a>';
   h += '<a class="nav-item" onclick="showGlossary(this)" role="button" tabindex="0">◉ &thinsp;Glossary</a>';
   h += '<a class="nav-item" onclick="showPracticeTracker(this)" role="button" tabindex="0">◎ &thinsp;Practice Tracker</a>';
+  h += '<a class="nav-item" onclick="showReadingStats(this)" role="button" tabindex="0">▦ &thinsp;Reading Stats</a>';
+  h += '<a class="nav-item" onclick="showTimeline(this)" role="button" tabindex="0">◷ &thinsp;Learning Timeline</a>';
   h += '<div class="nav-divider"></div>';
   h += '<div class="nav-section-label">Workspace</div>';
   h += '<a class="nav-item" onclick="showLinks(this)" role="button" tabindex="0">⚯ &thinsp;Links</a>';
@@ -2236,11 +2257,25 @@ function showTeaching(idx, scroll) {
   }
 }
 
+const INSTRUCTOR_PORTRAITS = {
+  'Pir Zia Inayat Khan': 'assets/images/pir_zia_inayat_khan.JPG',
+  'Urs Qutbuddin': 'assets/images/urs_qutbuddin.jpg',
+  'Urs Qutbuddin Schellenberg': 'assets/images/urs_qutbuddin.jpg',
+  'Mansur': 'assets/images/mansur_rahm.png',
+  'Guide Mansur': 'assets/images/mansur_rahm.png',
+};
+
+function getInstructorPortrait(name) {
+  return INSTRUCTOR_PORTRAITS[name] || '';
+}
+
 function buildTeachingHTML(t, idx) {
   const { part, chapter, snippet } = t;
   const readTime = Math.max(1, Math.round((snippet.body||'').split(/\s+/).length / 200));
   const noteCount = userData.notes.filter(n => n.idx === idx).length;
   const bookmarked = isBookmarked(idx);
+  const portrait = getInstructorPortrait(snippet.instructor || '');
+  const instructorName = escHtml(snippet.instructor || '');
 
   return `<div class="teaching-view">
   <div class="teaching-header">
@@ -2253,7 +2288,10 @@ function buildTeachingHTML(t, idx) {
       <button class="bm-btn ${bookmarked?'bookmarked':''}" id="bm-btn-${idx}" onclick="toggleBookmark(${idx})" title="${bookmarked?'Remove bookmark':'Bookmark'}">${bookmarked?'★':'☆'}</button>
     </div>
     <h1 class="teaching-title">${escHtml(snippet.title)}</h1>
-    <div class="teaching-instructor">${escHtml(snippet.instructor||'')}</div>
+    ${instructorName ? `<div class="teaching-instructor">
+      ${portrait ? `<img class="instructor-portrait" src="${portrait}" alt="${instructorName}">` : ''}
+      ${instructorName}
+    </div>` : ''}
   </div>
   <div class="teaching-rule"></div>
   <div class="teaching-body md-content">${parseMarkdown(snippet.body||'')}</div>
@@ -3549,6 +3587,212 @@ function showGlossaryTooltip(e) {
 
 function hideGlossaryTooltip() {
   if (_tooltipEl) _tooltipEl.classList.remove('visible');
+}
+
+
+/* ─── Reading Statistics ─── */
+
+function showReadingStats(el) {
+  if (el) setActiveNav(el);
+  const log = userData.readingLog || [];
+  const todayStr = today();
+
+  // Compute stats
+  const totalTeachings = new Set(log.map(e => e.idx)).size;
+  const totalWords = log.reduce((sum, e) => sum + (e.words || 0), 0);
+  const totalMinutes = Math.round(totalWords / 200);
+  const totalDays = new Set(log.map(e => e.date)).size;
+
+  // Streak calculation
+  let streak = 0;
+  const dates = [...new Set(log.map(e => e.date))].sort().reverse();
+  if (dates.length) {
+    let checkDate = new Date(todayStr);
+    // If no reading today, check if yesterday counts
+    if (dates[0] !== todayStr) {
+      checkDate.setDate(checkDate.getDate() - 1);
+      if (dates[0] !== checkDate.toISOString().slice(0, 10)) { streak = 0; }
+      else { streak = 1; checkDate.setDate(checkDate.getDate() - 1); }
+    }
+    if (dates[0] === todayStr || streak > 0) {
+      if (dates[0] === todayStr) { streak = 1; checkDate.setDate(checkDate.getDate() - 1); }
+      const dateSet = new Set(dates);
+      for (let i = 0; i < 365; i++) {
+        const ds = checkDate.toISOString().slice(0, 10);
+        if (dateSet.has(ds)) { streak++; checkDate.setDate(checkDate.getDate() - 1); }
+        else break;
+      }
+    }
+  }
+
+  // Readings per day (last 30 days)
+  const last30 = [];
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date(); d.setDate(d.getDate() - i);
+    const ds = d.toISOString().slice(0, 10);
+    const count = log.filter(e => e.date === ds).length;
+    last30.push({ date: ds, count, day: d.toLocaleDateString('en', { weekday: 'narrow' }) });
+  }
+  const maxCount = Math.max(1, ...last30.map(d => d.count));
+
+  // By instructor
+  const byInstructor = {};
+  log.forEach(e => {
+    const t = allTeachings[e.idx];
+    if (t) {
+      const name = t.snippet.instructor || 'Unknown';
+      byInstructor[name] = (byInstructor[name] || 0) + 1;
+    }
+  });
+
+  // By chapter
+  const byChapter = {};
+  log.forEach(e => {
+    const t = allTeachings[e.idx];
+    if (t) {
+      const ch = t.chapter.title;
+      byChapter[ch] = (byChapter[ch] || 0) + 1;
+    }
+  });
+
+  let h = listPageHeader('Reading Statistics', totalTeachings + ' teachings read');
+  h += '<div style="max-width:700px;margin:0 auto;padding:0 20px">';
+
+  // Summary cards
+  h += '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px">';
+  [['Teachings', totalTeachings], ['Words', totalWords.toLocaleString()], ['~Minutes', totalMinutes.toLocaleString()], ['Streak', streak + 'd']].forEach(([label, val]) => {
+    h += '<div style="text-align:center;padding:16px 8px;background:var(--accent-light);border-radius:8px">';
+    h += '<div style="font-size:26px;font-weight:700;color:var(--accent);font-family:var(--display)">' + val + '</div>';
+    h += '<div style="font-size:12px;color:var(--muted);margin-top:4px">' + label + '</div></div>';
+  });
+  h += '</div>';
+
+  // 30-day activity chart
+  h += '<div style="margin-bottom:28px">';
+  h += '<div style="font-weight:600;font-family:var(--display);margin-bottom:12px">Last 30 Days</div>';
+  h += '<div style="display:flex;align-items:flex-end;gap:3px;height:80px">';
+  last30.forEach(d => {
+    const pct = Math.max(4, (d.count / maxCount) * 100);
+    const bg = d.count > 0 ? 'var(--accent)' : 'var(--rule)';
+    const title = d.date + ': ' + d.count + ' reading' + (d.count !== 1 ? 's' : '');
+    h += '<div style="flex:1;height:' + pct + '%;background:' + bg + ';border-radius:3px 3px 0 0;min-width:4px" title="' + title + '"></div>';
+  });
+  h += '</div>';
+  h += '<div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:4px">';
+  h += '<span>30 days ago</span><span>Today</span></div>';
+  h += '</div>';
+
+  // By instructor breakdown
+  const instrEntries = Object.entries(byInstructor).sort((a, b) => b[1] - a[1]);
+  if (instrEntries.length) {
+    h += '<div style="margin-bottom:28px">';
+    h += '<div style="font-weight:600;font-family:var(--display);margin-bottom:12px">By Instructor</div>';
+    const instrMax = Math.max(1, instrEntries[0][1]);
+    instrEntries.forEach(([name, count]) => {
+      const portrait = getInstructorPortrait(name);
+      h += '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">';
+      if (portrait) h += '<img src="' + portrait + '" style="width:28px;height:28px;border-radius:50%;object-fit:cover">';
+      else h += '<div style="width:28px;height:28px;border-radius:50%;background:var(--rule);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted)">' + name.charAt(0) + '</div>';
+      h += '<div style="flex:1">';
+      h += '<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"><span>' + escHtml(name) + '</span><span style="color:var(--muted)">' + count + '</span></div>';
+      h += '<div style="height:6px;background:var(--rule);border-radius:3px"><div style="height:100%;width:' + (count / instrMax * 100) + '%;background:var(--accent);border-radius:3px"></div></div>';
+      h += '</div></div>';
+    });
+    h += '</div>';
+  }
+
+  // By chapter breakdown
+  const chapEntries = Object.entries(byChapter).sort((a, b) => b[1] - a[1]).slice(0, 10);
+  if (chapEntries.length) {
+    h += '<div style="margin-bottom:28px">';
+    h += '<div style="font-weight:600;font-family:var(--display);margin-bottom:12px">Top Chapters</div>';
+    const chapMax = Math.max(1, chapEntries[0][1]);
+    chapEntries.forEach(([name, count]) => {
+      h += '<div style="margin-bottom:8px">';
+      h += '<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"><span>' + escHtml(name) + '</span><span style="color:var(--muted)">' + count + '</span></div>';
+      h += '<div style="height:6px;background:var(--rule);border-radius:3px"><div style="height:100%;width:' + (count / chapMax * 100) + '%;background:var(--accent);border-radius:3px"></div></div>';
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+
+  if (!log.length) {
+    h += emptyState('◎', 'No reading data yet. Start reading teachings to see your statistics here.');
+  }
+
+  h += '</div>';
+  showPage(h);
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+
+/* ─── Learning Timeline ─── */
+
+function showTimeline(el) {
+  if (el) setActiveNav(el);
+  const log = userData.readingLog || [];
+
+  // Group by date
+  const byDate = {};
+  log.forEach(e => {
+    if (!byDate[e.date]) byDate[e.date] = [];
+    byDate[e.date].push(e);
+  });
+  const dates = Object.keys(byDate).sort().reverse();
+
+  let h = listPageHeader('Learning Timeline', dates.length + ' day' + (dates.length !== 1 ? 's' : '') + ' of study');
+  h += '<div style="max-width:700px;margin:0 auto;padding:0 20px">';
+
+  if (!dates.length) {
+    h += emptyState('○', 'Your learning timeline will appear here as you read teachings.');
+  } else {
+    // Milestones
+    const totalUnique = new Set(log.map(e => e.idx)).size;
+    const totalAvailable = allTeachings.length;
+    const pct = Math.round((totalUnique / totalAvailable) * 100);
+    h += '<div style="padding:16px;background:var(--accent-light);border-radius:8px;margin-bottom:24px">';
+    h += '<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">';
+    h += '<span style="font-weight:600;font-family:var(--display)">Journey Progress</span>';
+    h += '<span style="color:var(--muted)">' + totalUnique + ' / ' + totalAvailable + ' teachings (' + pct + '%)</span></div>';
+    h += '<div style="height:8px;background:var(--rule);border-radius:4px"><div style="height:100%;width:' + pct + '%;background:var(--accent);border-radius:4px;transition:width .5s"></div></div>';
+    h += '</div>';
+
+    // Timeline
+    h += '<div style="border-left:2px solid var(--rule);margin-left:16px;padding-left:24px">';
+    dates.forEach(date => {
+      const entries = byDate[date];
+      const d = new Date(date + 'T12:00:00');
+      const isToday = date === today();
+      const label = isToday ? 'Today' : d.toLocaleDateString('en', { weekday: 'long', month: 'short', day: 'numeric' });
+      const words = entries.reduce((s, e) => s + (e.words || 0), 0);
+
+      h += '<div style="position:relative;margin-bottom:24px">';
+      // Dot on timeline
+      h += '<div style="position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:' + (isToday ? 'var(--accent)' : 'var(--rule)') + ';border:2px solid var(--bg)"></div>';
+      // Date header
+      h += '<div style="font-weight:600;font-family:var(--display);font-size:14px;color:' + (isToday ? 'var(--accent)' : 'var(--primary)') + ';margin-bottom:8px">' + label + '</div>';
+      h += '<div style="font-size:12px;color:var(--muted);margin-bottom:8px">' + entries.length + ' teaching' + (entries.length !== 1 ? 's' : '') + ' · ~' + Math.max(1, Math.round(words / 200)) + ' min reading</div>';
+
+      // Teaching cards for this day
+      entries.forEach(e => {
+        const t = allTeachings[e.idx];
+        if (!t) return;
+        const portrait = getInstructorPortrait(t.snippet.instructor || '');
+        h += '<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bg);border:1px solid var(--rule);border-radius:6px;margin-bottom:6px;cursor:pointer" onclick="showTeaching(' + e.idx + ',true)">';
+        if (portrait) h += '<img src="' + portrait + '" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0">';
+        h += '<div style="flex:1;min-width:0">';
+        h += '<div style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + escHtml(t.snippet.title) + '</div>';
+        h += '<div style="font-size:11px;color:var(--muted)">' + escHtml(t.chapter.title) + (t.snippet.instructor ? ' · ' + escHtml(t.snippet.instructor) : '') + '</div>';
+        h += '</div></div>';
+      });
+      h += '</div>';
+    });
+    h += '</div>';
+  }
+
+  h += '</div>';
+  showPage(h);
+  if (window.innerWidth <= 768) closeSidebar();
 }
 
 
