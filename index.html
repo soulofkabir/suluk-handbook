@@ -3780,6 +3780,16 @@ function findRelevantTeachings(query, maxResults) {
   if (!searchIndex) return [];
   const terms = query.toLowerCase().split(/\s+/).filter(w => w.length > 1);
   if (!terms.length) return [];
+
+  // First: find chapters that match the query terms
+  const matchingChapters = new Set();
+  for (const item of searchIndex) {
+    const chapterLow = item.chapter.toLowerCase();
+    for (const term of terms) {
+      if (chapterLow.includes(term)) matchingChapters.add(item.chapter);
+    }
+  }
+
   const scored = [];
   for (const item of searchIndex) {
     let score = 0;
@@ -3787,11 +3797,14 @@ function findRelevantTeachings(query, maxResults) {
     const bodyLow = item.body.toLowerCase();
     const chapterLow = item.chapter.toLowerCase();
     const instructorLow = item.instructor.toLowerCase();
+
+    // If this teaching belongs to a matching chapter, give it high base score
+    if (matchingChapters.has(item.chapter)) score += 15;
+
     for (const term of terms) {
       if (titleLow.includes(term)) score += 10;
       if (chapterLow.includes(term)) score += 8;
       if (instructorLow.includes(term)) score += 5;
-      // Count body occurrences for better relevance
       const bodyMatches = bodyLow.split(term).length - 1;
       score += Math.min(bodyMatches * 2, 10);
     }
@@ -3802,12 +3815,14 @@ function findRelevantTeachings(query, maxResults) {
         title: item.title,
         chapter: item.chapter,
         instructor: item.instructor,
-        body: (t.snippet.body || '').slice(0, 1200),
+        body: (t.snippet.body || '').slice(0, 1500),
       });
     }
   }
   scored.sort((a, b) => b.score - a.score);
-  return scored.slice(0, maxResults);
+  // If a chapter matched, allow up to 15 results to capture full chapter
+  const limit = matchingChapters.size > 0 ? 15 : maxResults;
+  return scored.slice(0, limit);
 }
 
 function clearChat() {
