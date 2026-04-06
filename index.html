@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="The Suluk Digital Handbook — A personal companion for the Inayatiyya Suluk teachings">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
   <title>Suluk Digital Handbook</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/images/inayatiyya_emblem.jpg">
   <meta name="theme-color" content="#FCFBF8">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <style>
@@ -2190,7 +2191,7 @@ function buildTeachingHTML(t, idx) {
     <div class="teaching-meta">
       <span class="t-tag t-part">Part ${t.partKey}</span>
       <span class="t-tag t-chapter">${escHtml(chapter.title)}</span>
-      <span class="t-tag t-class">${snippet.class_id||''}</span>
+      ${snippet.class_id ? `<span class="t-tag t-class">${escHtml(snippet.class_id)}</span>` : ''}
       <span class="t-tag t-time">~${readTime} min</span>
       ${noteCount ? `<span class="note-indicator">✎ ${noteCount}</span>` : ''}
       <button class="bm-btn ${bookmarked?'bookmarked':''}" id="bm-btn-${idx}" onclick="toggleBookmark(${idx})" title="${bookmarked?'Remove bookmark':'Bookmark'}">${bookmarked?'★':'☆'}</button>
