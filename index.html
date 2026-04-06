@@ -1526,6 +1526,8 @@ body.focus-mode #audio-bar { left: 0; }
 
 /* ─── App state ─── */
 const state = { fontSize: 'normal', focusMode: false, sidebarOpen: false };
+let adminMode = !!localStorage.getItem('suluk_admin');
+let _adminBuffer = '';
 
 let handbook     = null;
 let allTeachings = [];
@@ -2232,12 +2234,14 @@ function buildSidebarNav() {
   h += '<a class="nav-item" onclick="showPracticeTracker(this)" role="button" tabindex="0">◎ &thinsp;Practice Tracker</a>';
   h += '<a class="nav-item" onclick="showReadingStats(this)" role="button" tabindex="0">▦ &thinsp;Reading Stats</a>';
   h += '<a class="nav-item" onclick="showTimeline(this)" role="button" tabindex="0">◷ &thinsp;Learning Timeline</a>';
-  h += '<div class="nav-divider"></div>';
-  h += '<div class="nav-section-label">Workspace</div>';
-  h += '<a class="nav-item" onclick="showLinks(this)" role="button" tabindex="0">⚯ &thinsp;Links</a>';
-  h += '<a class="nav-item" onclick="showHomework(this)" role="button" tabindex="0">▣ &thinsp;Homework</a>';
-  h += '<a class="nav-item" onclick="showLibrary(this)" role="button" tabindex="0">◫ &thinsp;My Library</a>';
-  h += '<a class="nav-item" onclick="showSyncSettings(this)" role="button" tabindex="0">⟳ &thinsp;Sync & Settings</a>';
+  if (adminMode) {
+    h += '<div class="nav-divider"></div>';
+    h += '<div class="nav-section-label">Workspace</div>';
+    h += '<a class="nav-item" onclick="showLinks(this)" role="button" tabindex="0">⚯ &thinsp;Links</a>';
+    h += '<a class="nav-item" onclick="showHomework(this)" role="button" tabindex="0">▣ &thinsp;Homework</a>';
+    h += '<a class="nav-item" onclick="showLibrary(this)" role="button" tabindex="0">◫ &thinsp;My Library</a>';
+    h += '<a class="nav-item" onclick="showSyncSettings(this)" role="button" tabindex="0">⟳ &thinsp;Sync & Settings</a>';
+  }
   nav.innerHTML = h;
 }
 
@@ -2505,6 +2509,19 @@ function bindKeyboard() {
     if (e.key==='f' && !e.ctrlKey && !e.metaKey) toggleFocusMode();
     if (e.key==='ArrowRight' && currentIdx>=0) nextTeaching();
     if (e.key==='ArrowLeft'  && currentIdx>=0) prevTeaching();
+    // Admin mode: type "suluk" to toggle
+    if (e.key.length === 1) {
+      _adminBuffer += e.key.toLowerCase();
+      if (_adminBuffer.length > 10) _adminBuffer = _adminBuffer.slice(-10);
+      if (_adminBuffer.endsWith('suluk')) {
+        adminMode = !adminMode;
+        if (adminMode) localStorage.setItem('suluk_admin', '1');
+        else localStorage.removeItem('suluk_admin');
+        _adminBuffer = '';
+        buildSidebarNav();
+        showToast(adminMode ? 'Admin mode enabled' : 'Admin mode disabled');
+      }
+    }
   });
 }
 
