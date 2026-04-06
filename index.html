@@ -3742,12 +3742,17 @@ async function sendChat() {
   msgArea.scrollTop = msgArea.scrollHeight;
 
   try {
+    // Search handbook for relevant teachings to provide as context
+    buildSearchIndex();
+    const relevantTeachings = findRelevantTeachings(msg, 5);
+
     const resp = await workerFetch('/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         messages: chatMessages,
         teachingContext: chatTeachingContext,
+        handbookContext: relevantTeachings,
       }),
     });
     const data = await resp.json();
@@ -3769,6 +3774,36 @@ async function sendChat() {
     btn.disabled = false;
     input.focus();
   }
+}
+
+function findRelevantTeachings(query, maxResults) {
+  if (!searchIndex) return [];
+  const terms = query.toLowerCase().split(/\s+/).filter(w => w.length > 2);
+  if (!terms.length) return [];
+  const scored = [];
+  for (const item of searchIndex) {
+    let score = 0;
+    const titleLow = item.title.toLowerCase();
+    const bodyLow = item.body.toLowerCase();
+    const chapterLow = item.chapter.toLowerCase();
+    for (const term of terms) {
+      if (titleLow.includes(term)) score += 10;
+      if (chapterLow.includes(term)) score += 5;
+      if (bodyLow.includes(term)) score += 1;
+    }
+    if (score > 0) {
+      const t = allTeachings[item.idx];
+      scored.push({
+        score,
+        title: item.title,
+        chapter: item.chapter,
+        instructor: item.instructor,
+        body: (t.snippet.body || '').slice(0, 800),
+      });
+    }
+  }
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, maxResults);
 }
 
 function clearChat() {
