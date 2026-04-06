@@ -3736,8 +3736,11 @@ async function sendChat() {
   try {
     // Search handbook for relevant teachings to provide as context
     buildSearchIndex();
-    const relevantTeachings = findRelevantTeachings(msg, 8);
+    const relevantTeachings = findRelevantTeachings(msg, 10);
     console.log('[Chat] Found', relevantTeachings.length, 'relevant teachings:', relevantTeachings.map(t => t.title));
+
+    // Include matching glossary terms
+    const glossaryContext = findRelevantGlossary(msg);
 
     const c = getWorkerConfig();
     const chatUrl = (c.url || CHAT_WORKER_URL) + '/chat';
@@ -3750,6 +3753,7 @@ async function sendChat() {
         messages: chatMessages,
         teachingContext: chatTeachingContext,
         handbookContext: relevantTeachings,
+        glossaryContext: glossaryContext,
       }),
     });
     if (!resp.ok) {
@@ -3824,6 +3828,16 @@ function findRelevantTeachings(query, maxResults) {
   // If a chapter matched, allow up to 15 results to capture full chapter
   const limit = matchingChapters.size > 0 ? 15 : maxResults;
   return scored.slice(0, limit);
+}
+
+function findRelevantGlossary(query) {
+  if (!glossaryData || !glossaryData.length) return [];
+  const terms = query.toLowerCase().split(/\s+/).filter(w => w.length > 1);
+  return glossaryData.filter(g => {
+    const termLow = g.term.toLowerCase();
+    const defLow = (g.definition || '').toLowerCase();
+    return terms.some(t => termLow.includes(t) || defLow.includes(t));
+  }).map(g => ({ term: g.term, definition: g.definition }));
 }
 
 function clearChat() {
