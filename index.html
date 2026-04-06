@@ -324,6 +324,26 @@ body {
 .teaching-rule { width: 56px; height: 1px; background: linear-gradient(90deg,var(--accent),transparent); margin: 20px 0; }
 
 
+/* ─── AI Chat ─── */
+.chat-container { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; height: calc(100vh - 140px); padding: 0 20px; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 16px 0; display: flex; flex-direction: column; gap: 12px; }
+.chat-msg { max-width: 85%; padding: 12px 16px; border-radius: 12px; font-size: 15px; line-height: 1.6; }
+.chat-msg.user { align-self: flex-end; background: var(--accent); color: #fff; border-bottom-right-radius: 4px; }
+.chat-msg.assistant { align-self: flex-start; background: var(--sidebar-bg); color: var(--text); border-bottom-left-radius: 4px; border: 1px solid var(--rule); }
+.chat-msg.assistant .md-content h2 { font-size: 16px; margin: 16px 0 8px; }
+.chat-msg.assistant .md-content p { margin: 0 0 8px; }
+.chat-msg.assistant .md-content p:last-child { margin-bottom: 0; }
+.chat-input-bar { display: flex; gap: 8px; padding: 12px 0 16px; border-top: 1px solid var(--rule); }
+.chat-input { flex: 1; padding: 12px 16px; border: 1px solid var(--rule); border-radius: 8px; font-size: 15px; font-family: var(--serif); background: var(--bg); color: var(--text); resize: none; min-height: 44px; max-height: 120px; }
+.chat-input:focus { outline: none; border-color: var(--accent); }
+.chat-send { padding: 0 20px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-family: var(--display); font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity .2s; }
+.chat-send:hover { opacity: .85; }
+.chat-send:disabled { opacity: .4; cursor: not-allowed; }
+.chat-typing { align-self: flex-start; padding: 12px 16px; font-size: 13px; color: var(--muted); font-style: italic; }
+.chat-context-bar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--accent-light); border-radius: 6px; margin-bottom: 8px; font-size: 12px; color: var(--muted); }
+.chat-context-bar button { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 14px; }
+
+
 /* ══════════════════════════════════════════════════════════
    MARKDOWN CONTENT
    ══════════════════════════════════════════════════════════ */
@@ -2205,6 +2225,7 @@ function buildSidebarNav() {
   h += '<a class="nav-item" onclick="viewRecent(this)" role="button" tabindex="0">○ &thinsp;Recently Viewed</a>';
   h += '<div class="nav-divider"></div>';
   h += '<div class="nav-section-label">Discover</div>';
+  h += '<a class="nav-item" onclick="showStudyCompanion(this)" role="button" tabindex="0">◈ &thinsp;Study Companion</a>';
   h += '<a class="nav-item" onclick="showAudioLibrary(this)" role="button" tabindex="0">♪ &thinsp;Audio Library</a>';
   h += '<a class="nav-item" onclick="showSearch(this)" role="button" tabindex="0">⊙ &thinsp;Search</a>';
   h += '<a class="nav-item" onclick="showGlossary(this)" role="button" tabindex="0">◉ &thinsp;Glossary</a>';
@@ -3587,6 +3608,157 @@ function showGlossaryTooltip(e) {
 
 function hideGlossaryTooltip() {
   if (_tooltipEl) _tooltipEl.classList.remove('visible');
+}
+
+
+/* ─── AI Study Companion ─── */
+
+let chatMessages = [];
+let chatTeachingContext = null;
+
+function showStudyCompanion(el) {
+  if (el) setActiveNav(el);
+  if (!isLibraryConfigured()) {
+    let h = listPageHeader('Study Companion', 'AI-powered study help');
+    h += '<div style="max-width:500px;margin:40px auto;text-align:center;padding:0 20px">';
+    h += '<div style="font-size:48px;margin-bottom:16px">◈</div>';
+    h += '<p style="color:var(--muted);margin-bottom:20px">To use the Study Companion, please configure your cloud connection first in Sync & Settings.</p>';
+    h += '<button class="action-btn primary" onclick="showSyncSettings()">Go to Sync & Settings</button>';
+    h += '</div>';
+    showPage(h);
+    return;
+  }
+
+  // Load saved chat from this session
+  const saved = sessionStorage.getItem('suluk_chat');
+  if (saved && !chatMessages.length) {
+    try { chatMessages = JSON.parse(saved); } catch(e) {}
+  }
+
+  // Check if user is reading a teaching — offer context
+  if (currentIdx >= 0 && allTeachings[currentIdx]) {
+    const t = allTeachings[currentIdx];
+    chatTeachingContext = {
+      title: t.snippet.title,
+      chapter: t.chapter.title,
+      instructor: t.snippet.instructor || '',
+      body: t.snippet.body || '',
+    };
+  }
+
+  let h = '<div class="chat-container">';
+
+  // Header
+  h += '<div style="padding:12px 0;border-bottom:1px solid var(--rule);margin-bottom:4px">';
+  h += '<div style="display:flex;align-items:center;justify-content:space-between">';
+  h += '<div>';
+  h += '<div style="font-family:var(--display);font-weight:700;font-size:18px;color:var(--primary)">Study Companion</div>';
+  h += '<div style="font-size:12px;color:var(--muted)">Powered by Gemini 2.5 Pro</div>';
+  h += '</div>';
+  h += '<button class="action-btn" onclick="clearChat()" style="font-size:12px">Clear Chat</button>';
+  h += '</div></div>';
+
+  // Context bar
+  if (chatTeachingContext) {
+    h += '<div class="chat-context-bar">';
+    h += '<span>◈ Reading: <strong>' + escHtml(chatTeachingContext.title) + '</strong></span>';
+    h += '<button onclick="chatTeachingContext=null;showStudyCompanion()" title="Remove context">✕</button>';
+    h += '</div>';
+  }
+
+  // Messages area
+  h += '<div class="chat-messages" id="chat-messages">';
+  if (!chatMessages.length) {
+    h += '<div style="text-align:center;padding:40px 20px;color:var(--muted)">';
+    h += '<div style="font-size:40px;margin-bottom:12px">◈</div>';
+    h += '<div style="font-family:var(--display);font-weight:600;margin-bottom:8px">Bismillah</div>';
+    h += '<div style="font-size:14px;line-height:1.6">Ask me about the Suluk teachings, practices, Arabic terms, or the wisdom of Hazrat Inayat Khan.</div>';
+    if (chatTeachingContext) {
+      h += '<div style="margin-top:12px;font-size:13px">Try: "Explain this teaching in simpler terms" or "What practices relate to this?"</div>';
+    }
+    h += '</div>';
+  } else {
+    chatMessages.forEach(m => {
+      if (m.role === 'user') {
+        h += '<div class="chat-msg user">' + escHtml(m.content) + '</div>';
+      } else {
+        h += '<div class="chat-msg assistant"><div class="md-content">' + parseMarkdown(m.content) + '</div></div>';
+      }
+    });
+  }
+  h += '</div>';
+
+  // Input bar
+  h += '<div class="chat-input-bar">';
+  h += '<textarea class="chat-input" id="chat-input" placeholder="Ask about the teachings…" rows="1" onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();sendChat()}"></textarea>';
+  h += '<button class="chat-send" id="chat-send-btn" onclick="sendChat()">Send</button>';
+  h += '</div>';
+
+  h += '</div>';
+  showPage(h);
+  if (window.innerWidth <= 768) closeSidebar();
+
+  // Scroll to bottom and focus
+  const msgArea = document.getElementById('chat-messages');
+  if (msgArea) msgArea.scrollTop = msgArea.scrollHeight;
+  setTimeout(() => document.getElementById('chat-input')?.focus(), 100);
+}
+
+async function sendChat() {
+  const input = document.getElementById('chat-input');
+  const btn = document.getElementById('chat-send-btn');
+  const msg = input?.value.trim();
+  if (!msg || !input) return;
+
+  // Add user message
+  chatMessages.push({ role: 'user', content: msg });
+  input.value = '';
+  input.style.height = 'auto';
+  btn.disabled = true;
+
+  // Render user message
+  const msgArea = document.getElementById('chat-messages');
+  // Clear welcome screen if first message
+  if (chatMessages.length === 1) msgArea.innerHTML = '';
+  msgArea.innerHTML += '<div class="chat-msg user">' + escHtml(msg) + '</div>';
+  msgArea.innerHTML += '<div class="chat-typing" id="chat-typing">Thinking…</div>';
+  msgArea.scrollTop = msgArea.scrollHeight;
+
+  try {
+    const resp = await workerFetch('/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messages: chatMessages,
+        teachingContext: chatTeachingContext,
+      }),
+    });
+    const data = await resp.json();
+    const reply = data.reply || 'I could not generate a response.';
+
+    chatMessages.push({ role: 'assistant', content: reply });
+    sessionStorage.setItem('suluk_chat', JSON.stringify(chatMessages));
+
+    // Remove typing indicator and add response
+    document.getElementById('chat-typing')?.remove();
+    msgArea.innerHTML += '<div class="chat-msg assistant"><div class="md-content">' + parseMarkdown(reply) + '</div></div>';
+    msgArea.scrollTop = msgArea.scrollHeight;
+  } catch(e) {
+    document.getElementById('chat-typing')?.remove();
+    msgArea.innerHTML += '<div class="chat-msg assistant" style="color:var(--rose)">Error: ' + escHtml(e.message) + '</div>';
+    msgArea.scrollTop = msgArea.scrollHeight;
+    // Remove the failed assistant response attempt from messages so retry works
+  } finally {
+    btn.disabled = false;
+    input.focus();
+  }
+}
+
+function clearChat() {
+  chatMessages = [];
+  chatTeachingContext = null;
+  sessionStorage.removeItem('suluk_chat');
+  showStudyCompanion();
 }
 
 
