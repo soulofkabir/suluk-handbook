@@ -83,40 +83,42 @@ body {
 #cover-eyebrow, #cover-title {
   font-family: var(--display);
   font-size: clamp(34px, 7vw, 52px);
-  font-weight: 500; color: var(--accent);
+  font-weight: 500; color: #FFFFFF;
   letter-spacing: 0.06em; line-height: 1.15;
   opacity: 0; margin-bottom: 0;
-  text-shadow: 0 1px 8px rgba(252,251,248,.9), 0 0 30px rgba(252,251,248,.7);
+  text-shadow: 0 2px 12px rgba(0,0,0,.5), 0 0 40px rgba(0,0,0,.3);
 }
 #cover-eyebrow { animation: fadeUp 1s ease 2.2s forwards; }
 #cover-title   { animation: fadeUp 1s ease 2.6s forwards; }
 #cover-rule {
   width: 100px; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent);
   margin: 22px 0; opacity: 0;
   animation: fadeIn 0.7s ease 3.2s forwards;
 }
 #cover-subtitle {
   font-family: var(--display); font-size: 16px; font-style: italic;
-  color: var(--muted); font-weight: 300; letter-spacing: 0.03em;
+  color: rgba(255,255,255,.85); font-weight: 300; letter-spacing: 0.03em;
   opacity: 0; animation: fadeUp 0.9s ease 3.4s forwards; margin-bottom: 6px;
+  text-shadow: 0 1px 8px rgba(0,0,0,.4);
 }
 #cover-program {
   font-family: var(--display); font-size: 11px;
-  color: var(--accent-dim); letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,.7); letter-spacing: 0.22em; text-transform: uppercase;
   opacity: 0; animation: fadeIn 0.7s ease 3.8s forwards; margin-bottom: 48px;
+  text-shadow: 0 1px 6px rgba(0,0,0,.4);
 }
 #cover-enter {
   display: inline-block; padding: 13px 48px;
-  background: transparent; border: 1px solid var(--accent-dim);
-  color: var(--accent); font-family: var(--display);
+  background: transparent; border: 1px solid rgba(255,255,255,.6);
+  color: #FFFFFF; font-family: var(--display);
   font-size: 13px; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase;
   cursor: pointer; opacity: 0; animation: fadeIn 0.7s ease 4.4s forwards;
   transition: background .3s, border-color .3s, color .3s; border-radius: 2px;
 }
 #cover-enter:hover, #cover-enter:focus {
-  background: var(--accent-light); border-color: var(--accent);
-  color: var(--dark-gold); outline: none;
+  background: rgba(255,255,255,.15); border-color: #FFFFFF;
+  color: #FFFFFF; outline: none;
 }
 #cover.exiting { animation: coverOut 0.75s ease forwards; }
 @keyframes coverOut { to { opacity: 0; pointer-events: none; } }
