@@ -3737,6 +3737,7 @@ async function sendChat() {
     // Search handbook for relevant teachings to provide as context
     buildSearchIndex();
     const relevantTeachings = findRelevantTeachings(msg, 8);
+    console.log('[Chat] Found', relevantTeachings.length, 'relevant teachings:', relevantTeachings.map(t => t.title));
 
     const c = getWorkerConfig();
     const chatUrl = (c.url || CHAT_WORKER_URL) + '/chat';
