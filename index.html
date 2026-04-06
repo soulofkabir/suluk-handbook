@@ -3736,7 +3736,7 @@ async function sendChat() {
   try {
     // Search handbook for relevant teachings to provide as context
     buildSearchIndex();
-    const relevantTeachings = findRelevantTeachings(msg, 5);
+    const relevantTeachings = findRelevantTeachings(msg, 8);
 
     const c = getWorkerConfig();
     const chatUrl = (c.url || CHAT_WORKER_URL) + '/chat';
@@ -3778,7 +3778,7 @@ async function sendChat() {
 
 function findRelevantTeachings(query, maxResults) {
   if (!searchIndex) return [];
-  const terms = query.toLowerCase().split(/\s+/).filter(w => w.length > 2);
+  const terms = query.toLowerCase().split(/\s+/).filter(w => w.length > 1);
   if (!terms.length) return [];
   const scored = [];
   for (const item of searchIndex) {
@@ -3786,10 +3786,14 @@ function findRelevantTeachings(query, maxResults) {
     const titleLow = item.title.toLowerCase();
     const bodyLow = item.body.toLowerCase();
     const chapterLow = item.chapter.toLowerCase();
+    const instructorLow = item.instructor.toLowerCase();
     for (const term of terms) {
       if (titleLow.includes(term)) score += 10;
-      if (chapterLow.includes(term)) score += 5;
-      if (bodyLow.includes(term)) score += 1;
+      if (chapterLow.includes(term)) score += 8;
+      if (instructorLow.includes(term)) score += 5;
+      // Count body occurrences for better relevance
+      const bodyMatches = bodyLow.split(term).length - 1;
+      score += Math.min(bodyMatches * 2, 10);
     }
     if (score > 0) {
       const t = allTeachings[item.idx];
@@ -3798,7 +3802,7 @@ function findRelevantTeachings(query, maxResults) {
         title: item.title,
         chapter: item.chapter,
         instructor: item.instructor,
-        body: (t.snippet.body || '').slice(0, 800),
+        body: (t.snippet.body || '').slice(0, 1200),
       });
     }
   }
