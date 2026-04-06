@@ -1514,6 +1514,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupHighlightListener();
   loadGlossary(); // preload for inline tooltips
   loadAudioManifest(); // preload for teaching audio sections
+  registerServiceWorker();
 
   // Skip cover page if user has entered before
   if (localStorage.getItem('suluk_entered')) {
@@ -1525,6 +1526,46 @@ document.addEventListener('DOMContentLoaded', () => {
     loadHandbookData();
   }
 });
+
+/* ─── Service Worker & PWA ─── */
+let deferredInstallPrompt = null;
+
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+  navigator.serviceWorker.register('sw.js', { scope: '/suluk-handbook/' })
+    .then(reg => {
+      console.log('[SW] Registered, scope:', reg.scope);
+      // Check for updates periodically
+      setInterval(() => reg.update(), 60 * 60 * 1000); // hourly
+      reg.addEventListener('updatefound', () => {
+        const newWorker = reg.installing;
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'activated' && navigator.serviceWorker.controller) {
+            showToast('Updated! Refresh for latest version.');
+          }
+        });
+      });
+    })
+    .catch(err => console.warn('[SW] Registration failed:', err));
+}
+
+// Capture install prompt for "Add to Home Screen"
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+});
+
+function installApp() {
+  if (!deferredInstallPrompt) {
+    showToast('App can be installed from your browser menu');
+    return;
+  }
+  deferredInstallPrompt.prompt();
+  deferredInstallPrompt.userChoice.then(result => {
+    if (result.outcome === 'accepted') showToast('App installed!');
+    deferredInstallPrompt = null;
+  });
+}
 
 function restorePrefs() {
   try {
@@ -1705,6 +1746,19 @@ function showSyncSettings(el) {
   h += '<div class="form-field" style="margin-bottom:12px"><label style="font-size:13px;font-weight:600">Auth Token</label>';
   h += '<input type="password" id="sync-token" value="' + escHtml(c.token) + '" placeholder="Your secret token" style="width:100%;padding:10px;border:1px solid var(--rule);border-radius:6px;font-size:14px"></div>';
   h += '<button class="action-btn primary" onclick="saveSyncConfig()" style="width:100%">Save & Connect</button>';
+  h += '</div>';
+
+  // Install App section
+  h += '<div style="margin-bottom:24px">';
+  h += '<div style="font-weight:600;font-family:var(--display);margin-bottom:12px">Install App</div>';
+  h += '<p style="font-size:13px;color:var(--muted);margin-bottom:12px">Install the Suluk Handbook as an app on your device for offline access and a fullscreen experience.</p>';
+  h += '<button class="action-btn" onclick="installApp()" style="width:100%">⊕ Install on this Device</button>';
+  h += '</div>';
+
+  // Offline status
+  h += '<div style="padding:16px;border-radius:8px;background:var(--accent-light);margin-bottom:24px">';
+  h += '<div style="font-weight:600;font-family:var(--display);margin-bottom:6px">Offline Access</div>';
+  h += '<p style="font-size:13px;color:var(--muted);margin:0">Teachings, glossary, and images are cached automatically for offline reading. Audio files are cached after first play. Cloud sync requires internet.</p>';
   h += '</div>';
 
   h += '</div>';
