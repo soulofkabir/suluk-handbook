@@ -1427,7 +1427,24 @@ body.focus-mode #audio-bar { left: 0; }
 .kw-edit-image-preview { width: 100%; max-height: 220px; object-fit: contain; background: var(--sidebar); border: 1px solid var(--rule); border-radius: 6px; margin-top: 8px; display: block; }
 .kw-edit-image-row { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
 .kw-edit-image-row button { font-size: 12px; padding: 6px 12px; }
-@media (max-width: 600px) { .kw-entry-title { font-size: 26px; } .kw-gallery { grid-template-columns: 1fr; } .kw-entry-titlerow { flex-direction: column; } }
+/* Landing tiles */
+.kw-landing { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-top: 12px; }
+.kw-tile { background: var(--bg); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; display: flex; flex-direction: column; }
+.kw-tile:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(140,98,34,0.14); border-color: var(--accent); }
+.kw-tile-cover { width: 100%; aspect-ratio: 16/9; background: var(--sidebar); overflow: hidden; }
+.kw-tile-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.kw-tile-body { padding: 18px 20px 22px; }
+.kw-tile-title { font-family: var(--display); font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+.kw-tile-meta { font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.kw-tile-desc { font-size: 14px; color: var(--muted); line-height: 1.55; }
+/* Deck reader */
+.kw-deck { max-width: 880px; margin: 16px auto 80px; display: flex; flex-direction: column; gap: 14px; }
+.kw-deck-page { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); display: block; }
+/* Essay reader */
+.kw-essay { max-width: 720px; margin: 16px auto 80px; font-size: calc(var(--font-base) + 1px); line-height: 1.85; color: var(--text); }
+.kw-essay p { margin: 0 0 18px; }
+.kw-essay-h { font-family: var(--display); font-size: 24px; color: var(--primary); margin: 32px 0 14px; font-weight: 700; }
+@media (max-width: 600px) { .kw-entry-title { font-size: 26px; } .kw-gallery { grid-template-columns: 1fr; } .kw-entry-titlerow { flex-direction: column; } .kw-landing { grid-template-columns: 1fr; } }
 
   </style>
 </head>
@@ -1572,6 +1589,7 @@ let _adminBuffer = '';
 let handbook     = null;
 let allTeachings = [];
 let kabirWritings = null;  // { entries: [...] }
+let kabirOther = null;     // { crimson_heart, light_dreaming, journey_extended }
 let kwCurrentIdx = -1;     // index into kabirWritings.entries (excluding dedication)
 let currentIdx   = -1;
 
@@ -2204,6 +2222,10 @@ async function loadHandbookData() {
       const kwRes = await fetch('data/writings/kabir_writings.json');
       if (kwRes.ok) kabirWritings = await kwRes.json();
     } catch(e) {}
+    try {
+      const koRes = await fetch('data/writings/kabir_other.json');
+      if (koRes.ok) kabirOther = await koRes.json();
+    } catch(e) {}
     buildSidebarNav();
     document.getElementById('welcome-actions').classList.remove('hidden');
     // Resume link
@@ -2221,9 +2243,13 @@ async function loadHandbookData() {
     } catch(e) {}
     // Deep link
     const hash = location.hash.slice(1);
-    if (hash.startsWith('t')) {
+    if (hash.startsWith('t') && !hash.startsWith('the')) {
       const idx = parseInt(hash.slice(1));
       if (!isNaN(idx) && idx >= 0 && idx < allTeachings.length) showTeaching(idx, false);
+    } else if (hash.startsWith('kw_') && kabirWritings) {
+      const reflections = kwGetEntries().filter(e => e.image);
+      const idx = reflections.findIndex(e => e.id === hash);
+      if (idx >= 0) { showKWReflections(); showKWEntry(idx); }
     }
   } catch(err) {
     document.getElementById('sidebar-nav').innerHTML = '<div class="nav-section-label" style="color:rgba(255,80,80,.6)">Failed to load</div>';
@@ -2275,7 +2301,6 @@ function buildSidebarNav() {
   h += '<a class="nav-item" onclick="viewRecent(this)" role="button" tabindex="0">○ &thinsp;Recently Viewed</a>';
   h += '<div class="nav-divider"></div>';
   h += '<div class="nav-section-label">Discover</div>';
-  h += '<a class="nav-item" onclick="showStudyCompanion(this)" role="button" tabindex="0">◈ &thinsp;Study Companion</a>';
   h += '<a class="nav-item" onclick="showAudioLibrary(this)" role="button" tabindex="0">♪ &thinsp;Audio Library</a>';
   h += '<a class="nav-item" onclick="showSearch(this)" role="button" tabindex="0">⊙ &thinsp;Search</a>';
   h += '<a class="nav-item" onclick="showGlossary(this)" role="button" tabindex="0">◉ &thinsp;Glossary</a>';
@@ -2285,6 +2310,7 @@ function buildSidebarNav() {
   if (adminMode) {
     h += '<div class="nav-divider"></div>';
     h += '<div class="nav-section-label">Workspace</div>';
+    h += '<a class="nav-item" onclick="showStudyCompanion(this)" role="button" tabindex="0">◈ &thinsp;Study Companion</a>';
     h += '<a class="nav-item" onclick="showKabirWritings(this)" role="button" tabindex="0">✦ &thinsp;Kabir\'s Writings</a>';
     h += '<a class="nav-item" onclick="showLinks(this)" role="button" tabindex="0">⚯ &thinsp;Links</a>';
     h += '<a class="nav-item" onclick="showHomework(this)" role="button" tabindex="0">▣ &thinsp;Homework</a>';
@@ -3791,6 +3817,10 @@ async function sendChat() {
     // Include matching glossary terms
     const glossaryContext = findRelevantGlossary(msg);
 
+    // Include Kabir's Writings (admin content) if loaded
+    const kabirContext = findRelevantKabirWritings(msg, 8);
+    if (kabirContext.length) console.log('[Chat] Found', kabirContext.length, 'Kabir reflections:', kabirContext.map(k => k.title));
+
     const c = getWorkerConfig();
     const chatUrl = (c.url || CHAT_WORKER_URL) + '/chat';
     const chatHeaders = { 'Content-Type': 'application/json' };
@@ -3803,6 +3833,7 @@ async function sendChat() {
         teachingContext: chatTeachingContext,
         handbookContext: relevantTeachings,
         glossaryContext: glossaryContext,
+        kabirContext: kabirContext,
       }),
     });
     if (!resp.ok) {
@@ -3877,6 +3908,44 @@ function findRelevantTeachings(query, maxResults) {
   // If a chapter matched, allow up to 15 results to capture full chapter
   const limit = matchingChapters.size > 0 ? 15 : maxResults;
   return scored.slice(0, limit);
+}
+
+function findRelevantKabirWritings(query, maxResults) {
+  if (!kabirWritings || !kabirWritings.entries) return [];
+  const terms = query.toLowerCase().split(/\s+/).filter(w => w.length > 1);
+  if (!terms.length) return [];
+  const entries = kwGetEntries().filter(e => e.image || e.body);
+  const scored = [];
+  for (const e of entries) {
+    const titleLow = (e.title || '').toLowerCase();
+    const bodyLow = (e.body || '').toLowerCase();
+    let score = 0;
+    for (const term of terms) {
+      if (titleLow.includes(term)) score += 10;
+      const matches = bodyLow.split(term).length - 1;
+      score += Math.min(matches * 2, 8);
+    }
+    if (score > 0) {
+      scored.push({ score, title: e.title, body: (e.body || '').slice(0, 1200), source: "Kabir's Writings" });
+    }
+  }
+  // Also pull from Journey Extended paragraphs
+  if (kabirOther && kabirOther.journey_extended) {
+    const paras = kabirOther.journey_extended.paragraphs || [];
+    paras.forEach((p, i) => {
+      const t = (p.text || '').toLowerCase();
+      let score = 0;
+      for (const term of terms) {
+        const m = t.split(term).length - 1;
+        score += Math.min(m * 2, 6);
+      }
+      if (score > 0) {
+        scored.push({ score, title: kabirOther.journey_extended.title + ' — ¶' + (i + 1), body: p.text.slice(0, 1200), source: 'The Journey of Light' });
+      }
+    });
+  }
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, maxResults || 8);
 }
 
 function findRelevantGlossary(query) {
@@ -4272,16 +4341,38 @@ function kwGetEntries() {
 
 function showKabirWritings(el) {
   setActiveNav(el);
+  let h = listPageHeader("Kabir's Writings", 'Reflections, poems, and journeys');
+  h += '<div class="kw-landing">';
+  const tiles = [
+    { id: 'reflections', title: 'Reflections', meta: (kabirWritings ? (kwGetEntries().filter(e=>e.image).length + ' entries') : ''), desc: 'A collection of contemplative reflections from the path.', cover: 'data/writings/images/kw_002.jpg', fn: 'showKWReflections()' },
+    { id: 'crimson',     title: 'Crimson Heart', meta: 'Visual meditation', desc: 'A meditation on the poem "A Quiet Encounter in the Garden."', cover: 'data/writings/images/ch_01.jpg', fn: "showKWDeck('crimson_heart')" },
+    { id: 'light',       title: 'Light Dreaming', meta: 'Five elements deck', desc: 'A journey through the five elements and the luminous path of return.', cover: 'data/writings/images/ld_01.jpg', fn: "showKWDeck('light_dreaming')" },
+    { id: 'extended',    title: 'The Journey of Light', meta: 'Extended essay', desc: 'A long-form telling of the journey from Luminos through the elements.', cover: 'data/writings/images/ld_02.jpg', fn: 'showKWExtended()' },
+  ];
+  tiles.forEach(t => {
+    h += `<div class="kw-tile" onclick="${t.fn}">`;
+    h += `<div class="kw-tile-cover"><img src="${escHtml(t.cover)}" alt="" loading="lazy"></div>`;
+    h += `<div class="kw-tile-body"><div class="kw-tile-title">${escHtml(t.title)}</div>`;
+    if (t.meta) h += `<div class="kw-tile-meta">${escHtml(t.meta)}</div>`;
+    h += `<div class="kw-tile-desc">${escHtml(t.desc)}</div>`;
+    h += `</div></div>`;
+  });
+  h += '</div>';
+  showPage(h);
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+function showKWReflections() {
   if (!kabirWritings || !kabirWritings.entries) {
-    showPage(listPageHeader("Kabir's Writings", '') + emptyState('✦', 'Writings not loaded yet.'));
-    if (window.innerWidth <= 768) closeSidebar();
+    showPage(listPageHeader("Reflections", '') + emptyState('✦', 'Reflections not loaded yet.'));
     return;
   }
   const entries = kwGetEntries();
   const dedication = entries.find(e => !e.image) || null;
   const reflections = entries.filter(e => e.image);
 
-  let h = listPageHeader("Kabir's Writings", reflections.length + ' reflection' + (reflections.length !== 1 ? 's' : ''));
+  let h = listPageHeader("Reflections", reflections.length + ' reflection' + (reflections.length !== 1 ? 's' : ''));
+  h += '<a class="kw-entry-back" onclick="showKabirWritings()">← Back to Kabir\'s Writings</a>';
   h += '<div class="kw-toolbar">';
   h += '<input type="text" id="kw-search" placeholder="Search reflections… (try \'soul\', \'breath\', \'light\')" oninput="filterKabirWritings()">';
   h += '<span class="kw-count" id="kw-count">' + reflections.length + ' shown</span>';
@@ -4298,13 +4389,6 @@ function showKabirWritings(el) {
   h += '<div id="kw-gallery" class="kw-gallery">' + renderKWGallery(reflections) + '</div>';
   showPage(h);
   if (window.innerWidth <= 768) closeSidebar();
-
-  // Deep link to entry
-  const hash = location.hash.slice(1);
-  if (hash.startsWith('kw_')) {
-    const idx = reflections.findIndex(e => e.id === hash);
-    if (idx >= 0) showKWEntry(idx);
-  }
 }
 
 function renderKWGallery(items) {
@@ -4354,7 +4438,7 @@ function showKWEntry(idx) {
   try { history.replaceState(null, '', '#' + e.id); } catch(err) {}
 
   let h = '<div class="kw-entry">';
-  h += '<a class="kw-entry-back" onclick="history.replaceState(null,\'\',location.pathname); showKabirWritings()">← Back to Kabir\'s Writings</a>';
+  h += '<a class="kw-entry-back" onclick="history.replaceState(null,\'\',location.pathname); showKWReflections()">← Back to Reflections</a>';
   if (e.image) h += '<img class="kw-entry-hero" src="' + escHtml(e.image) + '" alt="">';
   h += '<div class="kw-entry-titlerow">';
   h += '<h1 class="kw-entry-title">' + escHtml(e.title) + (e._edited ? ' <span class="kw-edited-tag" title="Edited">●</span>' : '') + '</h1>';
@@ -4457,7 +4541,7 @@ function kwSaveEdit(id) {
   // Re-render current entry
   const reflections = kwGetEntries().filter(e => e.image);
   const idx = reflections.findIndex(e => e.id === id);
-  if (idx >= 0) showKWEntry(idx); else showKabirWritings();
+  if (idx >= 0) showKWEntry(idx); else showKWReflections();
 }
 
 function kwResetEntry(id) {
@@ -4469,7 +4553,43 @@ function kwResetEntry(id) {
   showToast('Reset to original');
   const reflections = kwGetEntries().filter(e => e.image);
   const idx = reflections.findIndex(e => e.id === id);
-  if (idx >= 0) showKWEntry(idx); else showKabirWritings();
+  if (idx >= 0) showKWEntry(idx); else showKWReflections();
+}
+
+function showKWDeck(key) {
+  if (!kabirOther || !kabirOther[key]) {
+    showPage(listPageHeader('Not loaded', '') + emptyState('✦', 'Deck not loaded yet.'));
+    return;
+  }
+  const d = kabirOther[key];
+  let h = listPageHeader(d.title, d.subtitle || '');
+  h += '<a class="kw-entry-back" onclick="showKabirWritings()">← Back to Kabir\'s Writings</a>';
+  h += '<div class="kw-deck">';
+  d.pages.forEach((p, i) => {
+    h += `<img class="kw-deck-page" src="${escHtml(p)}" alt="page ${i+1}" loading="lazy">`;
+  });
+  h += '</div>';
+  showPage(h);
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+function showKWExtended() {
+  if (!kabirOther || !kabirOther.journey_extended) {
+    showPage(listPageHeader('Not loaded', '') + emptyState('✦', 'Essay not loaded yet.'));
+    return;
+  }
+  const d = kabirOther.journey_extended;
+  let h = listPageHeader(d.title, d.paragraphs.length + ' paragraphs');
+  h += '<a class="kw-entry-back" onclick="showKabirWritings()">← Back to Kabir\'s Writings</a>';
+  h += '<div class="kw-essay">';
+  d.paragraphs.forEach(p => {
+    const isHeading = p.style && p.style.toLowerCase().includes('heading');
+    if (isHeading) h += `<h2 class="kw-essay-h">${escHtml(p.text)}</h2>`;
+    else h += `<p>${escHtml(p.text)}</p>`;
+  });
+  h += '</div>';
+  showPage(h);
+  if (window.innerWidth <= 768) closeSidebar();
 }
 
 function kwExportJSON() {
