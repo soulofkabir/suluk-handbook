@@ -1418,7 +1418,15 @@ body.focus-mode #audio-bar { left: 0; }
 .kw-entry-nav button { background: none; border: 1px solid var(--rule); color: var(--accent); padding: 10px 18px; border-radius: 6px; font-family: var(--body); font-size: 14px; cursor: pointer; transition: all .15s ease; }
 .kw-entry-nav button:hover:not(:disabled) { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 .kw-entry-nav button:disabled { opacity: 0.35; cursor: default; }
-@media (max-width: 600px) { .kw-entry-title { font-size: 26px; } .kw-gallery { grid-template-columns: 1fr; } }
+.kw-entry-titlerow { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.kw-entry-titlerow .kw-entry-title { flex: 1; }
+.kw-edit-btn { background: none; border: 1px solid var(--rule); color: var(--accent); padding: 8px 14px; border-radius: 6px; font-family: var(--body); font-size: 13px; cursor: pointer; white-space: nowrap; transition: all .15s ease; }
+.kw-edit-btn:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.kw-edited-tag { color: var(--accent); font-size: 14px; margin-left: 6px; vertical-align: middle; }
+.kw-edit-image-preview { width: 100%; max-height: 220px; object-fit: contain; background: var(--sidebar); border: 1px solid var(--rule); border-radius: 6px; margin-top: 8px; display: block; }
+.kw-edit-image-row { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.kw-edit-image-row button { font-size: 12px; padding: 6px 12px; }
+@media (max-width: 600px) { .kw-entry-title { font-size: 26px; } .kw-gallery { grid-template-columns: 1fr; } .kw-entry-titlerow { flex-direction: column; } }
 
   </style>
 </head>
@@ -1649,12 +1657,13 @@ function savePrefs() {
    PHASE C — USER DATA
    ══════════════════════════════════════════════════════════ */
 
-let userData = { bookmarks: [], notes: [], highlights: [], journal: {}, recentlyViewed: [], practiceLog: {}, links: [], homework: [], personalFiles: [] };
+let userData = { bookmarks: [], notes: [], highlights: [], journal: {}, recentlyViewed: [], practiceLog: {}, links: [], homework: [], personalFiles: [], kwOverrides: {} };
 
 function loadUserData() {
   try {
     const s = localStorage.getItem('suluk_user_data');
-    if (s) userData = Object.assign({ bookmarks:[], notes:[], highlights:[], journal:{}, recentlyViewed:[], practiceLog:{}, links:[], homework:[], personalFiles:[], readingLog:[] }, JSON.parse(s));
+    if (s) userData = Object.assign({ bookmarks:[], notes:[], highlights:[], journal:{}, recentlyViewed:[], practiceLog:{}, links:[], homework:[], personalFiles:[], readingLog:[], kwOverrides:{} }, JSON.parse(s));
+    if (!userData.kwOverrides) userData.kwOverrides = {};
   } catch(e) {}
   // Full two-way sync on boot: push local → pull cloud → merge
   fullSync();
@@ -4245,6 +4254,21 @@ function shareTeaching(idx) {
 const LINK_CATEGORIES = ['Reading', 'Video', 'Audio', 'Practice', 'Community', 'Other'];
 
 /* ─── Kabir's Writings ─── */
+function kwMerge(e) {
+  const o = (userData.kwOverrides || {})[e.id];
+  if (!o) return e;
+  return Object.assign({}, e, {
+    title: o.title != null ? o.title : e.title,
+    body: o.body != null ? o.body : e.body,
+    image: o.image != null ? o.image : e.image,
+    _edited: true,
+  });
+}
+function kwGetEntries() {
+  if (!kabirWritings || !kabirWritings.entries) return [];
+  return kabirWritings.entries.map(kwMerge);
+}
+
 function showKabirWritings(el) {
   setActiveNav(el);
   if (!kabirWritings || !kabirWritings.entries) {
@@ -4252,7 +4276,7 @@ function showKabirWritings(el) {
     if (window.innerWidth <= 768) closeSidebar();
     return;
   }
-  const entries = kabirWritings.entries;
+  const entries = kwGetEntries();
   const dedication = entries.find(e => !e.image) || null;
   const reflections = entries.filter(e => e.image);
 
@@ -4260,6 +4284,7 @@ function showKabirWritings(el) {
   h += '<div class="kw-toolbar">';
   h += '<input type="text" id="kw-search" placeholder="Search reflections… (try \'soul\', \'breath\', \'light\')" oninput="filterKabirWritings()">';
   h += '<span class="kw-count" id="kw-count">' + reflections.length + ' shown</span>';
+  h += '<button class="action-btn" onclick="kwExportJSON()" title="Download merged JSON with your edits">⤓ Export JSON</button>';
   h += '</div>';
 
   if (dedication) {
@@ -4302,7 +4327,7 @@ function stripQuotes(s) {
 function filterKabirWritings() {
   if (!kabirWritings) return;
   const q = (document.getElementById('kw-search')?.value || '').toLowerCase().trim();
-  const reflections = kabirWritings.entries.filter(e => e.image);
+  const reflections = kwGetEntries().filter(e => e.image);
   let filtered = reflections;
   if (q) {
     // Weighted: title 10x, body 1x
@@ -4321,7 +4346,7 @@ function filterKabirWritings() {
 
 function showKWEntry(idx) {
   if (!kabirWritings) return;
-  const reflections = kabirWritings.entries.filter(e => e.image);
+  const reflections = kwGetEntries().filter(e => e.image);
   if (idx < 0 || idx >= reflections.length) return;
   kwCurrentIdx = idx;
   const e = reflections[idx];
@@ -4330,7 +4355,10 @@ function showKWEntry(idx) {
   let h = '<div class="kw-entry">';
   h += '<a class="kw-entry-back" onclick="history.replaceState(null,\'\',location.pathname); showKabirWritings()">← Back to Kabir\'s Writings</a>';
   if (e.image) h += '<img class="kw-entry-hero" src="' + escHtml(e.image) + '" alt="">';
-  h += '<h1 class="kw-entry-title">' + escHtml(e.title) + '</h1>';
+  h += '<div class="kw-entry-titlerow">';
+  h += '<h1 class="kw-entry-title">' + escHtml(e.title) + (e._edited ? ' <span class="kw-edited-tag" title="Edited">●</span>' : '') + '</h1>';
+  h += '<button class="kw-edit-btn" onclick="kwOpenEditForm(\'' + e.id + '\')" title="Edit this reflection">✎ Edit</button>';
+  h += '</div>';
   h += '<hr class="kw-entry-rule">';
   h += '<div class="kw-entry-body">' + escHtml(e.body) + '</div>';
   h += '<div class="kw-entry-nav">';
@@ -4343,6 +4371,119 @@ function showKWEntry(idx) {
   tv.classList.remove('hidden');
   tv.innerHTML = h;
   window.scrollTo(0, 0);
+}
+
+function kwOpenEditForm(id) {
+  const base = kabirWritings.entries.find(x => x.id === id);
+  if (!base) return;
+  const merged = kwMerge(base);
+  const hasOverride = !!(userData.kwOverrides || {})[id];
+
+  let h = '<div class="form-overlay" onclick="if(event.target===this)this.remove()">';
+  h += '<div class="form-modal" style="max-width:640px">';
+  h += '<h2>Edit Reflection</h2>';
+  h += '<div class="form-field"><label>Title</label><input type="text" id="kw-edit-title" value="' + escHtml(merged.title) + '"></div>';
+  h += '<div class="form-field"><label>Body</label><textarea id="kw-edit-body" rows="10" style="font-family:var(--body);line-height:1.7">' + escHtml(merged.body) + '</textarea></div>';
+  h += '<div class="form-field"><label>Image</label>';
+  h += '<img id="kw-edit-img-preview" class="kw-edit-image-preview" src="' + escHtml(merged.image) + '" alt="">';
+  h += '<div class="kw-edit-image-row">';
+  h += '<input type="file" id="kw-edit-img-file" accept="image/*" onchange="kwHandleImageUpload(event)" style="font-size:13px">';
+  h += '<button class="form-btn" onclick="kwResetImage(\'' + escHtml(base.image) + '\')">Use original image</button>';
+  h += '</div>';
+  h += '<div style="font-size:12px;color:var(--muted);margin-top:6px">Uploaded images are stored locally and synced to your other devices.</div>';
+  h += '</div>';
+  h += '<div class="form-actions">';
+  if (hasOverride) h += '<button class="form-btn danger" onclick="kwResetEntry(\'' + id + '\')" style="margin-right:auto">Reset to original</button>';
+  h += '<button class="form-btn" onclick="this.closest(\'.form-overlay\').remove()">Cancel</button>';
+  h += '<button class="form-btn primary" onclick="kwSaveEdit(\'' + id + '\')">Save</button>';
+  h += '</div></div></div>';
+  document.body.insertAdjacentHTML('beforeend', h);
+  document.getElementById('kw-edit-title').focus();
+}
+
+let _kwPendingImage = null;
+function kwHandleImageUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = new Image();
+    img.onload = () => {
+      const MAX_W = 1200;
+      const scale = img.width > MAX_W ? MAX_W / img.width : 1;
+      const w = Math.round(img.width * scale);
+      const h = Math.round(img.height * scale);
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.82);
+      _kwPendingImage = dataUrl;
+      document.getElementById('kw-edit-img-preview').src = dataUrl;
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function kwResetImage(originalSrc) {
+  _kwPendingImage = '__USE_ORIGINAL__';
+  document.getElementById('kw-edit-img-preview').src = originalSrc;
+}
+
+function kwSaveEdit(id) {
+  const base = kabirWritings.entries.find(x => x.id === id);
+  if (!base) return;
+  const newTitle = document.getElementById('kw-edit-title').value.trim();
+  const newBody = document.getElementById('kw-edit-body').value.trim();
+  if (!newTitle) { showToast('Title is required'); return; }
+
+  if (!userData.kwOverrides) userData.kwOverrides = {};
+  const ov = {};
+  if (newTitle !== base.title) ov.title = newTitle;
+  if (newBody !== base.body) ov.body = newBody;
+  if (_kwPendingImage && _kwPendingImage !== '__USE_ORIGINAL__') ov.image = _kwPendingImage;
+
+  if (Object.keys(ov).length === 0) {
+    delete userData.kwOverrides[id];
+  } else {
+    userData.kwOverrides[id] = ov;
+  }
+  _kwPendingImage = null;
+  saveUserData();
+  document.querySelector('.form-overlay')?.remove();
+  showToast('Reflection updated');
+  // Re-render current entry
+  const reflections = kwGetEntries().filter(e => e.image);
+  const idx = reflections.findIndex(e => e.id === id);
+  if (idx >= 0) showKWEntry(idx); else showKabirWritings();
+}
+
+function kwResetEntry(id) {
+  if (!confirm('Reset this reflection to its original title, body, and image?')) return;
+  if (userData.kwOverrides) delete userData.kwOverrides[id];
+  _kwPendingImage = null;
+  saveUserData();
+  document.querySelector('.form-overlay')?.remove();
+  showToast('Reset to original');
+  const reflections = kwGetEntries().filter(e => e.image);
+  const idx = reflections.findIndex(e => e.id === id);
+  if (idx >= 0) showKWEntry(idx); else showKabirWritings();
+}
+
+function kwExportJSON() {
+  if (!kabirWritings) return;
+  const merged = { entries: kwGetEntries().map(e => {
+    const out = { id: e.id, slide: e.slide, title: e.title, body: e.body, image: e.image };
+    return out;
+  }), count: kabirWritings.entries.length };
+  const blob = new Blob([JSON.stringify(merged, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'kabir_writings.json';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  showToast('Downloaded kabir_writings.json');
 }
 
 
