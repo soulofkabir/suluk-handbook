@@ -310,7 +310,41 @@ Cloudflare R2
 
 ---
 
-## All Phases Complete ✅
+## Phase I — Unified RAG Backend (In Progress) 🚧
+
+**Goal:** Give the Study Companion a real vector-retrieval corpus covering HIK canon, Sufi library, the Handbook, and Kabir's writings — grounded answers with clickable citations.
+
+**Stack decided:** Cloudflare Vectorize (768-dim cosine) + Workers AI `@cf/baai/bge-base-en-v1.5` embeddings + Gemini 2.5 Flash via existing Worker proxy. Free-tier first.
+
+### Done ✅
+
+- **HIK parser fix (fine-grained chapters)** — 10 of 27 HIK volumes had broken chapter detection (font-based classifier failed on post-1923 Nekbakht volumes where body and chapter titles share 11pt size). Built `toc_extractor.py` with 3 fallback strategies: (1) embedded `doc.get_toc()` bookmarks, (2) regex parse of printed TOC pages with dot-leader pattern, (3) `^CHAPTER [IVXLCDM]+` marker scan. Integrated into `hik_parser.py` as Phase 1.5 with a "pick-max" merge: run both font-based and TOC-based segmentation, keep whichever yields more chapters. Net result across the corpus: **11 wins, 16 unchanged, 0 regressions**.
+- **Corpus cleanup** — Moved 5 unprocessable PDFs to `_excluded_scanned/` (3 scans, 1 encoded-font `1925_Vol-II`, 1 watermark-only `1923_SufiMovement`). Final split: `hik/` 27 books, `sufi-library/` 10 books.
+- **Cloudflare Vectorize index provisioned** — `suluk-knowledge`, 768 dims, cosine metric. Metadata indexes on `namespace`, `book`, `author`.
+- **Worker bindings** — Added `[ai]` (Workers AI) and `[[vectorize]]` to `wrangler.toml`, deployed.
+- **New Worker endpoints** (`suluk-worker/src/index.js`):
+  - `POST /rag-ingest` (admin-gated) — batches of `{id, text, metadata}`, embeds via BGE, upserts to Vectorize.
+  - `POST /rag-search` (public) — embeds query, runs `VECTORIZE.query()` with optional metadata filter, returns top-K with metadata.
+  - `POST /rag-chat` (public) — RAG search → injects top 10 matches as `[H1]/[K1]/[L1]` citation tags into Gemini system prompt; preserves existing handbookContext/kabirContext/glossaryContext params.
+- **Ingest pipeline** (`PDF_to_MD/ingest_to_vectorize.py`) — walks `processed/hik/` and `processed/sufi-library/`, cleans junk metadata via `FILENAME_TITLE_OVERRIDES` (many PDFs had titles like `"G:\\MasterDoc1320c.wpd"` from Word conversion), batches 50 chunks, retries with backoff, caps text at 2200 chars for BGE's 512-token window.
+- **Debug: Cloudflare error 1010 on ingest** — Python `urllib` default User-Agent was being blocked by Cloudflare browser-integrity check. Fixed by sending a real `User-Agent` header.
+- **HIK namespace ingest complete** — **11,488 chunks** from 27 HIK volumes successfully upserted to Vectorize.
+
+### Pending ⏳
+
+- **Sufi-library namespace ingest (~1,255 chunks)** — Blocked on Workers AI free-tier daily quota: HIK ingest exhausted the 10,000-neuron daily allocation, so `sufi-library` batches failed with HTTP 500 (Workers AI error 4006). Retry after daily quota reset (~24h) — only 1,255 chunks remaining, comfortably under the daily cap.
+- **Wire Study Companion to `/rag-chat`** (frontend, `suluk-handbook/index.html`):
+  1. Swap endpoint at line 3825 from `/chat` → `/rag-chat` so the Worker performs vector retrieval server-side instead of relying only on the client-side handbook search.
+  2. **Namespace toggle** in the Companion header: Handbook / Kabir's Writings / HIK Library / All — passed as filter to `/rag-chat`.
+  3. **Citation chips** — render inline `[H1]/[K1]/[L1]` tags returned by `/rag-chat` as clickable chips (stub link for now; real chapter-reader is Phase I-6).
+  4. **Admin gate** — only show the "HIK Library" namespace option when admin token is present in localStorage.
+- **First end-to-end smoke test** — Also blocked on quota reset (query embedding consumes neurons too). Queries like "What does HIK say about breath?" should return grounded answers with citations.
+- **Phase I-6: Chapter-reader UI** — Clickable citations open the source chapter as rendered Markdown (requires serving the `processed/*/**/*.md` files and a lightweight reader view).
+- **Token hardening** — Current admin token `soulofkabir4476` is simple; rotate to a stronger secret once RAG stack is stable.
+
+---
+
+## All Earlier Phases Complete ✅
 
 Phases A → H all shipped. Future initiatives in the broader Suluk Project ecosystem:
 

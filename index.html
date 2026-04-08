@@ -340,6 +340,19 @@ body {
 .chat-send:hover { opacity: .85; }
 .chat-send:disabled { opacity: .4; cursor: not-allowed; }
 .chat-typing { align-self: flex-start; padding: 12px 16px; font-size: 13px; color: var(--muted); font-style: italic; }
+.cite-tag { display: inline-block; padding: 1px 6px; margin: 0 1px; font-size: 11px; font-weight: 700; border-radius: 4px; cursor: pointer; vertical-align: baseline; line-height: 1.4; user-select: none; transition: transform 0.1s; }
+.cite-tag:hover { transform: translateY(-1px); }
+.cite-L { background: rgba(184, 134, 11, 0.15); color: #8b5a00; border: 1px solid rgba(184, 134, 11, 0.35); }
+.cite-H { background: rgba(60, 110, 80, 0.15); color: #2e5a40; border: 1px solid rgba(60, 110, 80, 0.35); }
+.cite-K { background: rgba(140, 70, 100, 0.15); color: #6b3050; border: 1px solid rgba(140, 70, 100, 0.35); }
+.cite-sources { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--rule); }
+.cite-sources-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 8px; }
+.cite-source-row { display: flex; gap: 8px; align-items: flex-start; padding: 6px 4px; border-radius: 4px; transition: background 0.2s; }
+.cite-source-row.cite-flash { background: rgba(184, 134, 11, 0.18); }
+.cite-source-meta { flex: 1; min-width: 0; }
+.cite-source-title { font-size: 13px; font-weight: 600; color: var(--text); }
+.cite-source-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.cite-score { font-size: 10px; color: var(--muted); font-weight: 400; margin-left: 4px; }
 .chat-context-bar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--accent-light); border-radius: 6px; margin-bottom: 8px; font-size: 12px; color: var(--muted); }
 .chat-context-bar button { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 14px; }
 
@@ -3707,8 +3720,18 @@ function hideGlossaryTooltip() {
 
 let chatMessages = [];
 let chatTeachingContext = null;
+let chatNamespace = localStorage.getItem('suluk_chat_namespace') || 'sufi-library';
 
 const CHAT_WORKER_URL = 'https://suluk-worker.soulofkabir.workers.dev';
+
+function chatIsAdmin() {
+  return !!(localStorage.getItem('suluk_worker_token') || '').trim();
+}
+
+function setChatNamespace(ns) {
+  chatNamespace = ns;
+  localStorage.setItem('suluk_chat_namespace', ns);
+}
 
 function showStudyCompanion(el) {
   if (el) setActiveNav(el);
@@ -3733,13 +3756,34 @@ function showStudyCompanion(el) {
   let h = '<div class="chat-container">';
 
   // Header
+  const isAdmin = chatIsAdmin();
   h += '<div style="padding:12px 0;border-bottom:1px solid var(--rule);margin-bottom:4px">';
-  h += '<div style="display:flex;align-items:center;justify-content:space-between">';
+  h += '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">';
   h += '<div>';
   h += '<div style="font-family:var(--display);font-weight:700;font-size:18px;color:var(--primary)">Study Companion</div>';
-  h += '<div style="font-size:12px;color:var(--muted)">Powered by Gemini 2.5 Pro</div>';
+  h += '<div style="font-size:12px;color:var(--muted)">Gemini 2.5 Flash · Vector RAG over Sufi Library' + (isAdmin ? ' + HIK Library' : '') + '</div>';
   h += '</div>';
-  h += '<button class="action-btn" onclick="clearChat()" style="font-size:12px">Clear Chat</button>';
+  h += '<div style="display:flex;align-items:center;gap:8px">';
+  h += '<label style="font-size:11px;color:var(--muted)">Source:</label>';
+  h += '<select id="chat-namespace" onchange="setChatNamespace(this.value)" style="font-size:12px;padding:4px 6px;border:1px solid var(--rule);border-radius:4px;background:var(--bg)">';
+  const opts = [
+    { v: 'sufi-library', l: 'Sufi Library' },
+    { v: 'none', l: 'Handbook only' },
+  ];
+  if (isAdmin) {
+    opts.unshift({ v: 'all', l: 'All Libraries (HIK + Sufi)' });
+    opts.unshift({ v: 'hik', l: 'HIK Library' });
+  }
+  // If current selection is admin-only but user isn't admin, fall back
+  if (!isAdmin && (chatNamespace === 'hik' || chatNamespace === 'all')) {
+    setChatNamespace('sufi-library');
+  }
+  opts.forEach(o => {
+    h += '<option value="' + o.v + '"' + (chatNamespace === o.v ? ' selected' : '') + '>' + o.l + '</option>';
+  });
+  h += '</select>';
+  h += '<button class="action-btn" onclick="clearChat()" style="font-size:12px">Clear</button>';
+  h += '</div>';
   h += '</div></div>';
 
   // Context bar
@@ -3766,7 +3810,7 @@ function showStudyCompanion(el) {
       if (m.role === 'user') {
         h += '<div class="chat-msg user">' + escHtml(m.content) + '</div>';
       } else {
-        h += '<div class="chat-msg assistant"><div class="md-content">' + parseMarkdown(m.content) + '</div></div>';
+        h += renderAssistantMessage(m.content, m.corpusMatches || [], [], []);
       }
     });
   }
@@ -3822,7 +3866,7 @@ async function sendChat() {
     if (kabirContext.length) console.log('[Chat] Found', kabirContext.length, 'Kabir reflections:', kabirContext.map(k => k.title));
 
     const c = getWorkerConfig();
-    const chatUrl = (c.url || CHAT_WORKER_URL) + '/chat';
+    const chatUrl = (c.url || CHAT_WORKER_URL) + '/rag-chat';
     const chatHeaders = { 'Content-Type': 'application/json' };
     if (c.token) chatHeaders['Authorization'] = 'Bearer ' + c.token;
     const resp = await fetch(chatUrl, {
@@ -3830,6 +3874,7 @@ async function sendChat() {
       headers: chatHeaders,
       body: JSON.stringify({
         messages: chatMessages,
+        namespace: chatNamespace,
         teachingContext: chatTeachingContext,
         handbookContext: relevantTeachings,
         glossaryContext: glossaryContext,
@@ -3842,13 +3887,14 @@ async function sendChat() {
     }
     const data = await resp.json();
     const reply = data.reply || 'I could not generate a response.';
+    const corpusMatches = data.corpusMatches || [];
 
-    chatMessages.push({ role: 'assistant', content: reply });
+    chatMessages.push({ role: 'assistant', content: reply, corpusMatches: corpusMatches });
     sessionStorage.setItem('suluk_chat', JSON.stringify(chatMessages));
 
-    // Remove typing indicator and add response
+    // Remove typing indicator and add response with citation chips
     document.getElementById('chat-typing')?.remove();
-    msgArea.innerHTML += '<div class="chat-msg assistant"><div class="md-content">' + parseMarkdown(reply) + '</div></div>';
+    msgArea.innerHTML += renderAssistantMessage(reply, corpusMatches, relevantTeachings, kabirContext);
     msgArea.scrollTop = msgArea.scrollHeight;
   } catch(e) {
     document.getElementById('chat-typing')?.remove();
@@ -3858,6 +3904,72 @@ async function sendChat() {
   } finally {
     btn.disabled = false;
     input.focus();
+  }
+}
+
+/* Render an assistant message: parse markdown, turn [L1]/[H1]/[K1] tags into
+   inline clickable chips, and append a "Sources" footer listing each citation. */
+function renderAssistantMessage(reply, corpusMatches, handbookCtx, kabirCtx) {
+  let body = parseMarkdown(reply || '');
+
+  // Inline clickable tag spans for [L#], [H#], [K#]
+  body = body.replace(/\[([LHK])(\d+)\]/g, function(_, kind, num) {
+    return '<span class="cite-tag cite-' + kind + '" data-cite="' + kind + num + '" onclick="scrollToCite(\'' + kind + num + '\')">[' + kind + num + ']</span>';
+  });
+
+  let h = '<div class="chat-msg assistant"><div class="md-content">' + body + '</div>';
+
+  // Build a unified sources list
+  const sources = [];
+  (corpusMatches || []).forEach((m, i) => {
+    sources.push({
+      key: 'L' + (i + 1),
+      kind: 'L',
+      title: m.book || 'Library passage',
+      sub: [m.chapter_title, m.page_start ? 'p. ' + m.page_start : '', m.author].filter(Boolean).join(' · '),
+      score: m.score,
+    });
+  });
+  (handbookCtx || []).forEach((t, i) => {
+    sources.push({
+      key: 'H' + (i + 1),
+      kind: 'H',
+      title: t.title || 'Handbook teaching',
+      sub: [t.chapter, t.instructor].filter(Boolean).join(' · '),
+    });
+  });
+  (kabirCtx || []).forEach((k, i) => {
+    sources.push({
+      key: 'K' + (i + 1),
+      kind: 'K',
+      title: k.title || "Kabir's reflection",
+      sub: k.source || "Kabir's Writings",
+    });
+  });
+
+  if (sources.length) {
+    h += '<div class="cite-sources"><div class="cite-sources-label">Sources</div>';
+    sources.forEach(s => {
+      const scoreTxt = s.score ? ' <span class="cite-score">' + s.score.toFixed(2) + '</span>' : '';
+      h += '<div class="cite-source-row" id="cite-' + s.key + '">';
+      h += '<span class="cite-tag cite-' + s.kind + '">[' + s.key + ']</span>';
+      h += '<div class="cite-source-meta"><div class="cite-source-title">' + escHtml(s.title) + scoreTxt + '</div>';
+      if (s.sub) h += '<div class="cite-source-sub">' + escHtml(s.sub) + '</div>';
+      h += '</div></div>';
+    });
+    h += '</div>';
+  }
+
+  h += '</div>';
+  return h;
+}
+
+function scrollToCite(key) {
+  const el = document.getElementById('cite-' + key);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    el.classList.add('cite-flash');
+    setTimeout(() => el.classList.remove('cite-flash'), 1200);
   }
 }
 
