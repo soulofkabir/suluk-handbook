@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Editor / agent local state
+.claude/
+.vscode/
+.idea/
+
+# Source documents for Kabir's Writings — kept locally only,
+# not in the public repo. The processed JSON in data/writings/
+# (kabir_writings.json, kabir_other.json) IS tracked.
+data/writings/*.pdf
+data/writings/*.pptx
+data/writings/*.docx
+data/writings/*.png
+
+# Local scripts staging area
+scripts/
