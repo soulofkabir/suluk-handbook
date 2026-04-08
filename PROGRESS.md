@@ -157,13 +157,42 @@
 
 ---
 
+## Phase H — Kabir's Writings (Personal Corpus) ✅
+
+A four-piece personal contemplative library lives under the admin-only Workspace section. All content is extracted from source PPTX/PDF/DOCX files into JSON + image assets, with a clean Crisp Pearl & True Bronze reading experience matching the rest of the handbook.
+
+### Stage 1 — Reflections gallery (commits `b80b42e`, `393de9f`, `2dcae7f`, `98676a6`)
+- **Source:** `Kabir's Writings.pptx` (142 slides) → `data/writings/kabir_writings.json` (71 entries) + `data/writings/images/kw_NNN.jpg` (70 thumbnails, ~9 MB total)
+- **Extractor:** `data/writings/extract_kabir_writings.py` (python-pptx + Pillow). Reusable — drop a new PPTX in, rerun, JSON regenerates.
+- **Landing:** dedication card on top (slide 1, the message to Pir Zia), then a responsive gallery of 70 cards (3-col desktop, 1-col mobile)
+- **Cards:** clean cropped thumbnail + bronze title + 3-line clamped snippet
+- **Search:** weighted (title 10× / body 1×), live filter, instant count update
+- **Entry view:** hero image (capped 46vh, `object-fit: contain`), bold bronze title, body text, prev/next nav, deep link `#kw_NNN`
+- **In-app editor (admin only):** ✎ Edit button on each entry → modal with Title / Body / Image. Uploaded images auto-compressed to 1200 px wide JPEG @ q=82, stored as data URLs in `userData.kwOverrides`. Edits sync across devices via existing cloud-sync. "Edited" dot (●) marks overridden entries. Reset-to-original button per entry.
+- **Export JSON:** ⤓ button on the gallery toolbar downloads merged `kabir_writings.json` so edits can be baked into the deploy when ready.
+
+### Stage 2 — Other writings + AI integration (commit `bc87521`)
+- **Crimson Heart** (12 PDF pages) — visual meditation on the poem *A Quiet Encounter in the Garden*. Rendered via `pdftoppm` at 150 DPI, displayed as vertical scroll deck.
+- **Light Dreaming** (7 PDF pages) — *A Journey Through the Five Elements*. Source PPTX is image-only, so PDF was used as the rendered source. Same vertical scroll deck pattern.
+- **The Journey of Light — Extended** (DOCX, 18 paragraphs) — long-form essay version. Extracted via python-docx, rendered as flowing text with reading-optimised line height.
+- **4-tile landing:** "Kabir's Writings" sidebar item now opens a chooser with Reflections / Crimson Heart / Light Dreaming / The Journey of Light tiles. Each tile carries a cover image, a meta label, and a one-line description.
+- **Extractor:** `data/writings/extract_other_writings.py`. Output: `data/writings/kabir_other.json` + `ch_*.jpg`, `ld_*.jpg` images.
+- **Modal scroll fix:** `.form-modal` capped at `max-height: 90vh` with internal scroll so Save/Cancel are always reachable on any screen (also benefits Links, Homework, etc.).
+
+### Phase H — Study Companion AI integration ✅
+- **Moved to admin-only.** Study Companion no longer appears in the public Discover section — it lives under Workspace alongside Kabir's Writings, only visible after typing `suluk`.
+- **Kabir context in chat:** `findRelevantKabirWritings(query)` searches all 71 reflections + the Journey of Light extended essay paragraphs, weighted (title 10×, body 2× per match). Top 8 matches sent as `kabirContext` in the `/chat` payload.
+- **Worker updated** (`suluk-worker` v2c8d3ad): accepts `kabirContext`, includes it in the system prompt as `--- KABIR'S WRITINGS (personal reflections) ---`, with new rules instructing the model to treat both the handbook teachings and Kabir's writings as valid primary sources and to cite which source each answer draws from.
+
+---
+
 ## Admin Mode ✅
 
-- **Hidden admin panel** — Workspace section (Links, Homework, My Library, Sync & Settings) only visible in admin mode
+- **Hidden admin panel** — Workspace section only visible in admin mode. Now includes: Study Companion, Kabir's Writings, Links, Homework, My Library, Sync & Settings
 - **Activation** — Type `suluk` on keyboard (not in input field) to toggle
 - **Persistence** — Admin state saved in `localStorage.suluk_admin`, survives refresh
-- **Public visitors** see all Discover, Personal, and content features — just not the private Workspace
-- **Commit:** `9ef610d`
+- **Public visitors** see Daily, Personal, Discover (Audio Library, Search, Glossary, Practice Tracker, Reading Stats, Learning Timeline) — but no Study Companion, no Workspace, no Kabir's Writings
+- **Commits:** `9ef610d` (initial), `bc87521` (Study Companion + Kabir's Writings moved under admin)
 
 ---
 
@@ -187,6 +216,11 @@
 
 | Commit | Description |
 |---|---|
+| `bc87521` | Stage 2: Crimson Heart, Light Dreaming, Extended essay, Study Companion → admin, Kabir AI context |
+| `98676a6` | Fix: cap form-modal height at 90vh with internal scroll |
+| `2dcae7f` | KW edit: in-app form to override title/body/image + JSON export |
+| `393de9f` | Fix: KW back button + cap hero image height |
+| `b80b42e` | Stage 1: Kabir's Writings — gallery, search, entry view (admin-only) |
 | `9ef610d` | Admin mode: Workspace hidden from public visitors, toggle with 'suluk' |
 | `167fb2b` | Update PROGRESS.md — all phases A through G5 complete |
 | `5cf9c4e` | Phase G4: AI Study Companion — Chat UI powered by Gemini 2.5 Flash |
@@ -211,8 +245,7 @@
 
 ## Sidebar Navigation (Complete)
 
-### Discover
-- ◈ Study Companion (AI chat)
+### Discover (public)
 - ♪ Audio Library
 - ⊙ Search
 - ◉ Glossary
@@ -220,13 +253,15 @@
 - ▦ Reading Stats
 - ◷ Learning Timeline
 
-### Personal
+### Personal (public)
 - ☆ Bookmarks
 - ✎ Notes
 - ◈ Highlights
 - ○ Recently Viewed
 
-### Workspace
+### Workspace (admin only — type `suluk` to reveal)
+- ◈ Study Companion (AI chat, now Kabir-aware)
+- ✦ Kabir's Writings (4-tile landing → Reflections / Crimson Heart / Light Dreaming / Journey of Light)
 - ⚯ Links
 - ▣ Homework
 - ◫ My Library
@@ -240,11 +275,17 @@
 Browser (GitHub Pages)
   └── index.html (single file: HTML + CSS + JS)
         ├── data/*.json (teachings, audio manifest, glossary, cross-references)
+        ├── data/writings/ (admin-only)
+        │     ├── kabir_writings.json   (71 reflections)
+        │     ├── kabir_other.json      (Crimson Heart pages, Light Dreaming pages, Journey extended)
+        │     ├── images/ kw_*.jpg ch_*.jpg ld_*.jpg
+        │     ├── extract_kabir_writings.py   (PPTX → JSON pipeline)
+        │     └── extract_other_writings.py   (PDF + DOCX → JSON pipeline)
         ├── assets/images/ (Mount Qaf, instructor portraits, prayer images)
         ├── assets/favicon.svg
         ├── sw.js (Service Worker for offline caching)
         ├── manifest.json (PWA manifest)
-        └── localStorage (user data, prefs, worker config)
+        └── localStorage (user data, prefs, worker config, kwOverrides)
 
 Cloudflare Worker (suluk-worker.soulofkabir.workers.dev)
   ├── POST /upload        → R2 suluk-personal
@@ -271,8 +312,11 @@ Cloudflare R2
 
 ## All Phases Complete ✅
 
-No pending phases. Future enhancements could include:
-- Additional books (Contemplation, Meditation, Realization) when content is available
-- Reading time tracking (time spent per teaching, not just word count estimate)
-- Spaced repetition for key teachings
-- Community features (shared notes/bookmarks)
+Phases A → H all shipped. Future initiatives in the broader Suluk Project ecosystem:
+
+- **Initiative 2: Hazrat Inayat Khan Library** — separate portal (`hik-library`) on GitHub Pages with 50+ eBooks, mirroring the Crisp Pearl & True Bronze design language.
+- **Initiative 3: Universal Knowledge Vault** — separate portal (`kabir-vault`) for mixed-media (PDFs, YouTube, PPT, audio, video).
+- **Cross-portal AI Companion** — once HIK Library and Vault exist, extend `findRelevantKabirWritings` pattern to also search those corpora, so the Companion can pull from all four sources at once.
+- Additional handbook books (Contemplation, Meditation, Realization) when content is available.
+- Reading time tracking (time spent per teaching, not just word count estimate).
+- Spaced repetition for key teachings.
