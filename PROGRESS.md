@@ -329,18 +329,29 @@ Cloudflare R2
 - **Ingest pipeline** (`PDF_to_MD/ingest_to_vectorize.py`) — walks `processed/hik/` and `processed/sufi-library/`, cleans junk metadata via `FILENAME_TITLE_OVERRIDES` (many PDFs had titles like `"G:\\MasterDoc1320c.wpd"` from Word conversion), batches 50 chunks, retries with backoff, caps text at 2200 chars for BGE's 512-token window.
 - **Debug: Cloudflare error 1010 on ingest** — Python `urllib` default User-Agent was being blocked by Cloudflare browser-integrity check. Fixed by sending a real `User-Agent` header.
 - **HIK namespace ingest complete** — **11,488 chunks** from 27 HIK volumes successfully upserted to Vectorize.
+- **Study Companion wired to `/rag-chat`** (commit `0393f8c`) — Endpoint swapped from `/chat` → `/rag-chat`; namespace toggle dropdown in Companion header (Sufi Library / Handbook only, plus HIK Library / All Libraries when admin); inline `[L#]/[H#]/[K#]` citation chips with click-to-scroll Sources footer; server-side admin gate in `/rag-chat` enforces token for `hik`/`all` namespaces (not just UI hide).
+- **suluk-worker in git** — Worker source pushed to https://github.com/soulofkabir/suluk-worker.git (was previously local + Cloudflare only).
+- **Handbook repo hygiene** (`81b75a2`) — `.gitignore` added for `.DS_Store`, `.claude/`, `data/writings/*.pdf|pptx|docx|png`, `scripts/`.
+- **Ingest pipeline: `--skip-existing` checkpoint** — `_ingested_ids.txt` tracks completed IDs (deterministic chunk IDs), seeded with the 11,488 HIK IDs, so re-runs resume cleanly without re-embedding.
+- **OCR rescue for scanned PDFs** — OCRmyPDF + tesseract installed; 3 small scans OCR'd (Bjerregaard, 1923_SufiMovement, 2020_SufismAndMarifa). Bjerregaard + SufismAndMarifa usable; 1923_SufiMovement was watermark-only and remains unusable.
+- **HIK online scrape complete** (`scrape_hik_official.py`) — Polite 1 req/sec BFS crawl of hazrat-inayat-khan.org Study Database. **45 books, ~4,561 chunks** extracted into `processed/hik-online/` covering all 14 Volumes, Sayings (Gayan/Vadan/Nirtan/Bowl of Saki), Religious/Social/Supplementary Gathekas, Healing Papers, Message Papers, and by_date. Ready for ingest under new `hik-online` namespace (admin-gated).
+- **wahiduddin.net scraper sketched** (`scrape_wahiduddin.py`) — 400-line BFS crawler ready for tomorrow. Uses Dreamweaver `#BeginEditable "Body"` template fences for clean extraction; 2s/req honoring robots.txt crawl-delay; hand-encoded disallow prefixes; 13 seed paths; `--smoke` / `--max-pages` flags for staged testing.
 
 ### Pending ⏳
 
-- **Sufi-library namespace ingest (~1,255 chunks)** — Blocked on Workers AI free-tier daily quota: HIK ingest exhausted the 10,000-neuron daily allocation, so `sufi-library` batches failed with HTTP 500 (Workers AI error 4006). Retry after daily quota reset (~24h) — only 1,255 chunks remaining, comfortably under the daily cap.
-- **Wire Study Companion to `/rag-chat`** (frontend, `suluk-handbook/index.html`):
-  1. Swap endpoint at line 3825 from `/chat` → `/rag-chat` so the Worker performs vector retrieval server-side instead of relying only on the client-side handbook search.
-  2. **Namespace toggle** in the Companion header: Handbook / Kabir's Writings / HIK Library / All — passed as filter to `/rag-chat`.
-  3. **Citation chips** — render inline `[H1]/[K1]/[L1]` tags returned by `/rag-chat` as clickable chips (stub link for now; real chapter-reader is Phase I-6).
-  4. **Admin gate** — only show the "HIK Library" namespace option when admin token is present in localStorage.
-- **First end-to-end smoke test** — Also blocked on quota reset (query embedding consumes neurons too). Queries like "What does HIK say about breath?" should return grounded answers with citations.
-- **Phase I-6: Chapter-reader UI** — Clickable citations open the source chapter as rendered Markdown (requires serving the `processed/*/**/*.md` files and a lightweight reader view).
-- **Token hardening** — Current admin token `soulofkabir4476` is simple; rotate to a stronger secret once RAG stack is stable.
+**Tomorrow (when Workers AI neurons reset):**
+- **Sufi-library namespace ingest (~1,255 chunks)** — `python3 ingest_to_vectorize.py --skip-existing`. Blocked yesterday on daily 10,000-neuron cap; 1,255 chunks is comfortably under the daily allocation.
+- **First end-to-end smoke test** against `/rag-search` and `/rag-chat` (query embedding also consumes neurons).
+- **Ingest `hik-online` namespace** (~4,561 chunks from the HIK official scrape). Add `hik-online` to server-side admin gate + frontend dropdown.
+- **Run wahiduddin scraper** — smoke test → `--max-pages 20` sanity check → full crawl → ingest under `wahiduddin` namespace (also admin-gated).
+- **Re-ingest OCR'd books** — Move Bjerregaard + SufismAndMarifa into `sufi-library/` via `hik_parser.py`, then batch ingest.
+
+**Deferred / lower priority:**
+- **1925 Vol-II rescue** — PDF uses a custom font with Caesar-cipher (-3 shift) encoding. Add a Caesar decoder pass to `rescue_pdftotext_book.py` and re-run.
+- **Phase I-6: Chapter-reader UI** — Clickable citations open the source chapter as rendered Markdown (requires serving `processed/*/**/*.md` files and a lightweight reader view).
+- **Token hardening** — Rotate current admin token `soulofkabir4476` to a stronger secret once the RAG stack is stable.
+- **225 MB SufiMessage 14-vol PDF** — dedicated OCR session.
+- **Put `PDF_to_MD/` in git** too.
 
 ---
 

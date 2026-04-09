@@ -3761,7 +3761,7 @@ function showStudyCompanion(el) {
   h += '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">';
   h += '<div>';
   h += '<div style="font-family:var(--display);font-weight:700;font-size:18px;color:var(--primary)">Study Companion</div>';
-  h += '<div style="font-size:12px;color:var(--muted)">Gemini 2.5 Flash · Vector RAG over Sufi Library' + (isAdmin ? ' + HIK Library' : '') + '</div>';
+  h += '<div style="font-size:12px;color:var(--muted)">Gemini 2.5 Flash · Vector RAG — 22k+ chunks' + (isAdmin ? ' (all sources)' : '') + '</div>';
   h += '</div>';
   h += '<div style="display:flex;align-items:center;gap:8px">';
   h += '<label style="font-size:11px;color:var(--muted)">Source:</label>';
@@ -3771,11 +3771,16 @@ function showStudyCompanion(el) {
     { v: 'none', l: 'Handbook only' },
   ];
   if (isAdmin) {
-    opts.unshift({ v: 'all', l: 'All Libraries (HIK + Sufi)' });
-    opts.unshift({ v: 'hik', l: 'HIK Library' });
+    opts.unshift({ v: 'all', l: 'All Libraries' });
+    opts.unshift({ v: 'ruhaniat', l: 'Ruhaniat Esoteric Papers' });
+    opts.unshift({ v: 'sufi-message', l: 'A Sufi Message' });
+    opts.unshift({ v: 'sufi-canada', l: 'Sufi Movement Canada' });
+    opts.unshift({ v: 'hik-online', l: 'HIK Study Database' });
+    opts.unshift({ v: 'hik', l: 'HIK Complete Works' });
   }
   // If current selection is admin-only but user isn't admin, fall back
-  if (!isAdmin && (chatNamespace === 'hik' || chatNamespace === 'all')) {
+  const ADMIN_NS = ['hik','hik-online','ruhaniat','sufi-message','sufi-canada','all'];
+  if (!isAdmin && ADMIN_NS.includes(chatNamespace)) {
     setChatNamespace('sufi-library');
   }
   opts.forEach(o => {
