@@ -216,6 +216,8 @@ A four-piece personal contemplative library lives under the admin-only Workspace
 
 | Commit | Description |
 |---|---|
+| `4cc0579` | Phase I: 6-namespace dropdown, 22k+ subtitle, admin-gated namespace UI |
+| `b99d5a2` | Worker: try/catch on AI.run + Vectorize ops, JSON 503 on quota exhaustion |
 | `bc87521` | Stage 2: Crimson Heart, Light Dreaming, Extended essay, Study Companion → admin, Kabir AI context |
 | `98676a6` | Fix: cap form-modal height at 90vh with internal scroll |
 | `2dcae7f` | KW edit: in-app form to override title/body/image + JSON export |
@@ -294,7 +296,19 @@ Cloudflare Worker (suluk-worker.soulofkabir.workers.dev)
   ├── DELETE /file/:key   → delete from R2
   ├── POST /backup-data   → save user data JSON to R2
   ├── GET  /backup-data   → retrieve user data backup
-  └── POST /chat          → proxy to Gemini 2.5 Flash API
+  ├── POST /chat          → proxy to Gemini 2.5 Flash API
+  ├── POST /rag-ingest    → embed via Workers AI BGE → upsert to Vectorize (admin)
+  ├── POST /rag-search    → embed query → Vectorize.query() top-K (public)
+  └── POST /rag-chat      → RAG search → Gemini with citation context (public)
+
+Cloudflare Vectorize
+  └── suluk-knowledge (768-dim cosine, ~22.5k vectors)
+      ├── hik           — 27 HIK volumes + 1925 Vol-II decoded (~12,155 chunks)
+      ├── sufi-library   — 10 supplementary books + OCR'd (~3,100 chunks)
+      ├── hik-online     — hazrat-inayat-khan.org study database (~4,561 chunks)
+      ├── ruhaniat       — Ruhaniat Esoteric Papers Library (~4,378 chunks)
+      ├── sufi-canada    — Sufi Movement Canada website (38 chunks)
+      └── sufi-message   — A Sufi Message website + Quarterly PDFs (66 chunks)
 
 Cloudflare R2
   ├── suluk-audio (public)    — 221 audio clips
@@ -337,19 +351,27 @@ Cloudflare R2
 - **HIK online scrape complete** (`scrape_hik_official.py`) — Polite 1 req/sec BFS crawl of hazrat-inayat-khan.org Study Database. **45 books, ~4,561 chunks** extracted into `processed/hik-online/` covering all 14 Volumes, Sayings (Gayan/Vadan/Nirtan/Bowl of Saki), Religious/Social/Supplementary Gathekas, Healing Papers, Message Papers, and by_date. Ready for ingest under new `hik-online` namespace (admin-gated).
 - **wahiduddin.net scraper sketched** (`scrape_wahiduddin.py`) — 400-line BFS crawler ready for tomorrow. Uses Dreamweaver `#BeginEditable "Body"` template fences for clean extraction; 2s/req honoring robots.txt crawl-delay; hand-encoded disallow prefixes; 13 seed paths; `--smoke` / `--max-pages` flags for staged testing.
 
+- **Ruhaniat Esoteric Papers Library scraped** (`scrape_ruhaniat_pdfs.py`) — Downloaded 143 PDFs (51 MB) from ruhaniat.org across 8 sections: hik-papers, hik-prayers, hik-ten-sufi-thoughts, nyogen-senzaki, msl-gatha-githa-commentaries, msl-additional-commentaries, msl-other-papers, glossary. PyMuPDF text extraction. **4,378 chunks** into `processed/ruhaniat/`.
+- **Sufi Movement Canada scraped** (`scrape_suficanada.py`) — 14 pages across 4 sections from sufimovementincanada.ca, 10s/req honoring robots.txt Crawl-delay. **38 chunks** into `processed/sufi-canada/`.
+- **A Sufi Message scraped** (`scrape_sufimessage.py`) — 34 HTML teaching pages + 8 Sufi Quarterly PDFs from sufi-message.org. Word-count filter (< 280) removes 17 identical template-only class archive pages. **66 chunks** into `processed/sufi-message/`.
+- **OCR'd books processed** — Bjerregaard *Omar Khayyam & Sufism* (5 chapters, 32 chunks) + Topbas *Sufism & Marifa* (22 chapters, 77 chunks) added to `processed/sufi-library/`.
+- **1925 Vol-II Caesar cipher decoded** — Reverse-engineered the encoded-font PDF (905 pages). Primary fonts use a -29 codepoint shift; secondary editorial font uses a 30+ entry lookup table; separate digit map for page numbers. Font-aware PyMuPDF extraction + TOC parsing with offset=26. **121 chapters, 667 chunks** into `processed/hik/1925_hik_completeworks_vol_ii_jun_nov/`. Decoder saved as `--decode-font` mode in `rescue_pdftotext_book.py`.
+- **Ingest pipeline extended** (`ingest_to_vectorize.py`) — `ALL_NS` expanded to 6 namespaces: `hik`, `sufi-library`, `hik-online`, `ruhaniat`, `sufi-canada`, `sufi-message`. Default changed to `--namespace all`. Added `source_url` passthrough for scraped sources.
+- **Worker error handling** (commit `b99d5a2`) — try/catch around `env.AI.run()` in `/rag-ingest` and `/rag-search`; returns JSON 503 with detail instead of crashing with error 1101 when neuron quota is exhausted. Same for `env.VECTORIZE.upsert()` and `.query()`.
+- **Frontend namespace dropdown** (commit `4cc0579`) — Admin users see 6 source options: HIK Complete Works, HIK Study Database, Ruhaniat Esoteric Papers, A Sufi Message, Sufi Movement Canada, All Libraries. Server-side `ADMIN_NAMESPACES` gate enforces token for non-public namespaces. Subtitle updated to "22k+ chunks".
+- **Full corpus ingest** — All namespaces ingested into Vectorize. Total: **~22,562 chunks** (hik 12,155, sufi-library ~3,100, hik-online 4,561, ruhaniat 4,378, sufi-canada 38, sufi-message 66, plus OCR'd books). 894 chunks with checkpoint gaps from transient 503 retries — data is in Vectorize but needs one more ingest pass to sync the local checkpoint.
+
 ### Pending ⏳
 
-**Tomorrow (when Workers AI neurons reset):**
-- **Sufi-library namespace ingest (~1,255 chunks)** — `python3 ingest_to_vectorize.py --skip-existing`. Blocked yesterday on daily 10,000-neuron cap; 1,255 chunks is comfortably under the daily allocation.
-- **First end-to-end smoke test** against `/rag-search` and `/rag-chat` (query embedding also consumes neurons).
-- **Ingest `hik-online` namespace** (~4,561 chunks from the HIK official scrape). Add `hik-online` to server-side admin gate + frontend dropdown.
-- **Run wahiduddin scraper** — smoke test → `--max-pages 20` sanity check → full crawl → ingest under `wahiduddin` namespace (also admin-gated).
-- **Re-ingest OCR'd books** — Move Bjerregaard + SufismAndMarifa into `sufi-library/` via `hik_parser.py`, then batch ingest.
+**Next session (when Workers AI neurons reset):**
+- **Re-ingest 894 checkpoint-gap chunks** — `python3 ingest_to_vectorize.py --skip-existing`. Data already in Vectorize but checkpoint file missing these IDs.
+- **End-to-end smoke test** — `/rag-search` across all namespaces + `/rag-chat` through Study Companion UI.
 
 **Deferred / lower priority:**
-- **1925 Vol-II rescue** — PDF uses a custom font with Caesar-cipher (-3 shift) encoding. Add a Caesar decoder pass to `rescue_pdftotext_book.py` and re-run.
-- **Phase I-6: Chapter-reader UI** — Clickable citations open the source chapter as rendered Markdown (requires serving `processed/*/**/*.md` files and a lightweight reader view).
-- **Token hardening** — Rotate current admin token `soulofkabir4476` to a stronger secret once the RAG stack is stable.
+- **wahiduddin.net scrape** — Site is fully down (as of 2026-04-10). Scraper ready (`scrape_wahiduddin.py`), retry when site returns.
+- **murshidsam.org** — Richest content (~650 pages) but robots.txt blocks AI bots. Decision pending.
+- **Phase I-6: Chapter-reader UI** — Clickable citations open the source chapter as rendered Markdown.
+- **Token hardening** — Rotate current admin token to a stronger secret once the RAG stack is stable.
 - **225 MB SufiMessage 14-vol PDF** — dedicated OCR session.
 - **Put `PDF_to_MD/` in git** too.
 
