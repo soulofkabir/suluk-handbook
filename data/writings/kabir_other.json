@@ -32,6 +32,37 @@
     ],
     "source_pdf": "data/writings/The Journey of Light.pdf"
   },
+  "suluk_ascent": {
+    "title": "The Ascent of Mount Qaf",
+    "subtitle": "A Traveler's Field Guide for the Suluk Caravan",
+    "pages": [
+      "data/writings/images/sa-01.jpg", "data/writings/images/sa-02.jpg",
+      "data/writings/images/sa-03.jpg", "data/writings/images/sa-04.jpg",
+      "data/writings/images/sa-05.jpg", "data/writings/images/sa-06.jpg",
+      "data/writings/images/sa-07.jpg", "data/writings/images/sa-08.jpg",
+      "data/writings/images/sa-09.jpg", "data/writings/images/sa-10.jpg",
+      "data/writings/images/sa-11.jpg", "data/writings/images/sa-12.jpg",
+      "data/writings/images/sa-13.jpg", "data/writings/images/sa-14.jpg",
+      "data/writings/images/sa-15.jpg", "data/writings/images/sa-16.jpg",
+      "data/writings/images/sa-17.jpg", "data/writings/images/sa-18.jpg",
+      "data/writings/images/sa-19.jpg", "data/writings/images/sa-20.jpg"
+    ]
+  },
+  "purification_breaths": {
+    "title": "Purification Breaths",
+    "subtitle": "Daily Attunement & Elemental Purification",
+    "pages": [
+      "data/writings/images/pb-01.jpg", "data/writings/images/pb-02.jpg",
+      "data/writings/images/pb-03.jpg", "data/writings/images/pb-04.jpg",
+      "data/writings/images/pb-05.jpg", "data/writings/images/pb-06.jpg",
+      "data/writings/images/pb-07.jpg", "data/writings/images/pb-08.jpg",
+      "data/writings/images/pb-09.jpg", "data/writings/images/pb-10.jpg",
+      "data/writings/images/pb-11.jpg", "data/writings/images/pb-12.jpg",
+      "data/writings/images/pb-13.jpg", "data/writings/images/pb-14.jpg",
+      "data/writings/images/pb-15.jpg", "data/writings/images/pb-16.jpg",
+      "data/writings/images/pb-17.jpg", "data/writings/images/pb-18.jpg"
+    ]
+  },
   "journey_extended": {
     "title": "New Dimensions – The Journey of the Light",
     "paragraphs": [

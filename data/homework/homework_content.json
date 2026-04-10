@@ -1,0 +1,192 @@
+{
+  "readings": {
+    "gathas_v_morals": {
+      "title": "Gathas \u2014 Chapter V: Morals (Saluk)",
+      "subtitle": "Volume XIII of the Teachings of HIK",
+      "pages": [
+        "data/homework/images/gv-01.jpg",
+        "data/homework/images/gv-02.jpg",
+        "data/homework/images/gv-03.jpg",
+        "data/homework/images/gv-04.jpg",
+        "data/homework/images/gv-05.jpg",
+        "data/homework/images/gv-06.jpg",
+        "data/homework/images/gv-07.jpg",
+        "data/homework/images/gv-08.jpg",
+        "data/homework/images/gv-09.jpg",
+        "data/homework/images/gv-10.jpg",
+        "data/homework/images/gv-11.jpg",
+        "data/homework/images/gv-12.jpg",
+        "data/homework/images/gv-13.jpg",
+        "data/homework/images/gv-14.jpg",
+        "data/homework/images/gv-15.jpg",
+        "data/homework/images/gv-16.jpg",
+        "data/homework/images/gv-17.jpg",
+        "data/homework/images/gv-18.jpg",
+        "data/homework/images/gv-19.jpg",
+        "data/homework/images/gv-20.jpg",
+        "data/homework/images/gv-21.jpg",
+        "data/homework/images/gv-22.jpg",
+        "data/homework/images/gv-23.jpg",
+        "data/homework/images/gv-24.jpg",
+        "data/homework/images/gv-25.jpg",
+        "data/homework/images/gv-26.jpg",
+        "data/homework/images/gv-27.jpg",
+        "data/homework/images/gv-28.jpg",
+        "data/homework/images/gv-29.jpg",
+        "data/homework/images/gv-30.jpg",
+        "data/homework/images/gv-31.jpg",
+        "data/homework/images/gv-32.jpg",
+        "data/homework/images/gv-33.jpg",
+        "data/homework/images/gv-34.jpg",
+        "data/homework/images/gv-35.jpg"
+      ]
+    },
+    "gathas_vi_everyday": {
+      "title": "Gathas \u2014 Chapter VI: Everyday Life",
+      "subtitle": "Volume XIII of the Teachings of HIK",
+      "pages": [
+        "data/homework/images/ge-01.jpg",
+        "data/homework/images/ge-02.jpg",
+        "data/homework/images/ge-03.jpg",
+        "data/homework/images/ge-04.jpg",
+        "data/homework/images/ge-05.jpg",
+        "data/homework/images/ge-06.jpg",
+        "data/homework/images/ge-07.jpg",
+        "data/homework/images/ge-08.jpg",
+        "data/homework/images/ge-09.jpg",
+        "data/homework/images/ge-10.jpg",
+        "data/homework/images/ge-11.jpg",
+        "data/homework/images/ge-12.jpg",
+        "data/homework/images/ge-13.jpg",
+        "data/homework/images/ge-14.jpg",
+        "data/homework/images/ge-15.jpg",
+        "data/homework/images/ge-16.jpg",
+        "data/homework/images/ge-17.jpg",
+        "data/homework/images/ge-18.jpg",
+        "data/homework/images/ge-19.jpg",
+        "data/homework/images/ge-20.jpg",
+        "data/homework/images/ge-21.jpg",
+        "data/homework/images/ge-22.jpg",
+        "data/homework/images/ge-23.jpg",
+        "data/homework/images/ge-24.jpg",
+        "data/homework/images/ge-25.jpg",
+        "data/homework/images/ge-26.jpg",
+        "data/homework/images/ge-27.jpg",
+        "data/homework/images/ge-28.jpg",
+        "data/homework/images/ge-29.jpg",
+        "data/homework/images/ge-30.jpg"
+      ]
+    },
+    "mental_purification": {
+      "title": "Mental Purification \u2014 Selected Chapters",
+      "subtitle": "Volume IV of the Teachings of HIK",
+      "pages": [
+        "data/homework/images/mp-01.jpg",
+        "data/homework/images/mp-02.jpg",
+        "data/homework/images/mp-03.jpg",
+        "data/homework/images/mp-04.jpg",
+        "data/homework/images/mp-05.jpg",
+        "data/homework/images/mp-06.jpg",
+        "data/homework/images/mp-07.jpg",
+        "data/homework/images/mp-08.jpg",
+        "data/homework/images/mp-09.jpg",
+        "data/homework/images/mp-10.jpg",
+        "data/homework/images/mp-11.jpg",
+        "data/homework/images/mp-12.jpg",
+        "data/homework/images/mp-13.jpg",
+        "data/homework/images/mp-14.jpg",
+        "data/homework/images/mp-15.jpg",
+        "data/homework/images/mp-16.jpg",
+        "data/homework/images/mp-17.jpg",
+        "data/homework/images/mp-18.jpg",
+        "data/homework/images/mp-19.jpg",
+        "data/homework/images/mp-20.jpg",
+        "data/homework/images/mp-21.jpg",
+        "data/homework/images/mp-22.jpg",
+        "data/homework/images/mp-23.jpg",
+        "data/homework/images/mp-24.jpg",
+        "data/homework/images/mp-25.jpg",
+        "data/homework/images/mp-26.jpg",
+        "data/homework/images/mp-27.jpg",
+        "data/homework/images/mp-28.jpg",
+        "data/homework/images/mp-29.jpg",
+        "data/homework/images/mp-30.jpg",
+        "data/homework/images/mp-31.jpg",
+        "data/homework/images/mp-32.jpg",
+        "data/homework/images/mp-33.jpg",
+        "data/homework/images/mp-34.jpg",
+        "data/homework/images/mp-35.jpg",
+        "data/homework/images/mp-36.jpg",
+        "data/homework/images/mp-37.jpg",
+        "data/homework/images/mp-38.jpg",
+        "data/homework/images/mp-39.jpg",
+        "data/homework/images/mp-40.jpg"
+      ]
+    },
+    "concentration_i_part_i": {
+      "title": "Concentration I \u2014 Part I Homework",
+      "subtitle": "September\u2013October 2025",
+      "pages": [
+        "data/homework/images/ci1-1.jpg",
+        "data/homework/images/ci1-2.jpg",
+        "data/homework/images/ci1-3.jpg"
+      ]
+    },
+    "concentration_i_part_ii": {
+      "title": "Concentration I \u2014 Part II Homework",
+      "subtitle": "October\u2013November 2025",
+      "pages": [
+        "data/homework/images/ci2-1.jpg",
+        "data/homework/images/ci2-2.jpg",
+        "data/homework/images/ci2-3.jpg",
+        "data/homework/images/ci2-4.jpg"
+      ]
+    },
+    "concentration_ii_part_i": {
+      "title": "Concentration II \u2014 Part I Homework",
+      "subtitle": "November\u2013December 2025",
+      "pages": [
+        "data/homework/images/cii1-1.jpg",
+        "data/homework/images/cii1-2.jpg",
+        "data/homework/images/cii1-3.jpg"
+      ]
+    },
+    "concentration_ii_part_ii": {
+      "title": "Concentration II \u2014 Part II Homework",
+      "subtitle": "December 2025 \u2013 March 2026",
+      "pages": [
+        "data/homework/images/cii2-1.jpg",
+        "data/homework/images/cii2-2.jpg",
+        "data/homework/images/cii2-3.jpg"
+      ]
+    },
+    "contemplation_i_homework": {
+      "title": "Contemplation I \u2014 Part I Homework",
+      "subtitle": "The Practitioner's Journey: From Purification to Presence",
+      "pages": [
+        "data/homework/images/c1h-1.jpg",
+        "data/homework/images/c1h-2.jpg",
+        "data/homework/images/c1h-3.jpg"
+      ]
+    },
+    "contemplation_i_passages": {
+      "title": "Contemplation I \u2014 Homework Passages",
+      "subtitle": "Selected readings for contemplative practice",
+      "pages": [
+        "data/homework/images/c1p-1.jpg",
+        "data/homework/images/c1p-2.jpg",
+        "data/homework/images/c1p-3.jpg",
+        "data/homework/images/c1p-4.jpg",
+        "data/homework/images/c1p-5.jpg"
+      ]
+    },
+    "review_assignments": {
+      "title": "Review of Assignments",
+      "subtitle": "Concentration II to Contemplation I",
+      "pages": [
+        "data/homework/images/rev-1.jpg",
+        "data/homework/images/rev-2.jpg"
+      ]
+    }
+  }
+}

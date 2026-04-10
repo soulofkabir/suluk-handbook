@@ -1021,6 +1021,13 @@ body.focus-mode #audio-bar { left: 0; }
 }
 .hw-card-actions button:hover { color: var(--accent); }
 .hw-card-actions button.danger:hover { color: #c0392b; }
+.hw-read-btn { background: var(--accent) !important; color: #fff !important; border-radius: 4px; padding: 2px 10px !important; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; }
+.hw-read-btn:hover { opacity: 0.85; }
+.hw-reader { max-width: var(--content-max); margin: 0 auto; }
+.hw-reader-header { margin-bottom: 20px; }
+.hw-reader-title { font-family: var(--display); font-size: 26px; font-weight: 700; color: var(--primary); margin-top: 8px; }
+.hw-reader-subtitle { font-size: 15px; color: var(--accent); margin-top: 4px; }
+.hw-reader-meta { font-size: 13px; color: var(--muted); margin-top: 4px; }
 
 /* ── Personal Content Library ── */
 .library-page { max-width: var(--content-max); margin: 0 auto; }
@@ -1602,7 +1609,8 @@ let _adminBuffer = '';
 let handbook     = null;
 let allTeachings = [];
 let kabirWritings = null;  // { entries: [...] }
-let kabirOther = null;     // { crimson_heart, light_dreaming, journey_extended }
+let kabirOther = null;     // { crimson_heart, light_dreaming, journey_extended, suluk_ascent, purification_breaths }
+let homeworkContent = null; // { readings: { id: { title, subtitle, pages[] } } }
 let kwCurrentIdx = -1;     // index into kabirWritings.entries (excluding dedication)
 let currentIdx   = -1;
 
@@ -2239,6 +2247,11 @@ async function loadHandbookData() {
       const koRes = await fetch('data/writings/kabir_other.json');
       if (koRes.ok) kabirOther = await koRes.json();
     } catch(e) {}
+    try {
+      const hcRes = await fetch('data/homework/homework_content.json');
+      if (hcRes.ok) homeworkContent = await hcRes.json();
+    } catch(e) {}
+    seedHomeworkAssignments();
     buildSidebarNav();
     document.getElementById('welcome-actions').classList.remove('hidden');
     // Resume link
@@ -3104,7 +3117,10 @@ async function showAudioLibrary(el) {
   const manifest = await loadAudioManifest();
   const classes = manifest.classes || {};
   const classIds = Object.keys(classes).sort((a, b) => {
-    const numA = parseInt(a.replace('C', '')), numB = parseInt(b.replace('C', ''));
+    const isPA = a.startsWith('P'), isPB = b.startsWith('P');
+    if (isPA && !isPB) return 1;
+    if (!isPA && isPB) return -1;
+    const numA = parseInt(a.replace(/\D/g, '')), numB = parseInt(b.replace(/\D/g, ''));
     return numA - numB;
   });
 
@@ -3127,8 +3143,8 @@ async function showAudioLibrary(el) {
         <div class="audio-class-header" onclick="toggleAudioClass('${cid}')">
           <span class="audio-class-arrow" id="audio-arrow-${cid}">▸</span>
           <div class="audio-class-info">
-            <div class="audio-class-title">${escHtml(cid)} — ${escHtml(cls.instructor || '')}</div>
-            <div class="audio-class-meta">Part ${cls.part || '?'} · ${cls.date || ''} · ~${durStr}</div>
+            <div class="audio-class-title">${cid.startsWith('P') ? escHtml(cls.part || cid) : escHtml(cid)} — ${escHtml(cls.instructor || '')}</div>
+            <div class="audio-class-meta">${cls.date ? 'Part ' + (cls.part || '?') + ' · ' + cls.date + ' · ~' + durStr : (cls.part || 'Part ?') + ' · ' + clips.length + ' clips'}</div>
           </div>
           <span class="audio-class-count">${clips.length} clips</span>
         </div>
@@ -4465,6 +4481,8 @@ function showKabirWritings(el) {
     { id: 'crimson',     title: 'Crimson Heart', meta: 'Visual meditation', desc: 'A meditation on the poem "A Quiet Encounter in the Garden."', cover: 'data/writings/images/ch_01.jpg', fn: "showKWDeck('crimson_heart')" },
     { id: 'light',       title: 'Light Dreaming', meta: 'Five elements deck', desc: 'A journey through the five elements and the luminous path of return.', cover: 'data/writings/images/ld_01.jpg', fn: "showKWDeck('light_dreaming')" },
     { id: 'extended',    title: 'The Journey of Light', meta: 'Extended essay', desc: 'A long-form telling of the journey from Luminos through the elements.', cover: 'data/writings/images/ld_02.jpg', fn: 'showKWExtended()' },
+    { id: 'ascent',     title: 'The Ascent of Mount Qaf', meta: '20 pages', desc: 'A Traveler\'s Field Guide for the Suluk Caravan — maps, compass, and provisions.', cover: 'data/writings/images/sa-01.jpg', fn: "showKWDeck('suluk_ascent')" },
+    { id: 'breaths',    title: 'Purification Breaths', meta: '18 pages', desc: 'Daily Attunement & Elemental Purification — step-by-step breath practices.', cover: 'data/writings/images/pb-01.jpg', fn: "showKWDeck('purification_breaths')" },
   ];
   tiles.forEach(t => {
     h += `<div class="kw-tile" onclick="${t.fn}">`;
@@ -4886,6 +4904,9 @@ function showHomework(el) {
       h += '<div class="hw-card-header">';
       h += '<div class="hw-card-title">' + escHtml(item.title) + '</div>';
       h += '<div class="hw-card-actions">';
+      if (item.readingId && homeworkContent && homeworkContent.readings[item.readingId]) {
+        h += '<button class="hw-read-btn" onclick="event.stopPropagation(); showHomeworkReader(\'' + item.readingId + '\')" title="Read">Read</button>';
+      }
       h += '<button onclick="editHomework(' + i + ')" title="Edit">✎</button>';
       h += '<button class="danger" onclick="deleteHomework(' + i + ')" title="Delete">✕</button>';
       h += '</div></div>';
@@ -4970,6 +4991,91 @@ function deleteHomework(idx) {
   showHomework();
 }
 
+
+/* ─── Homework Reader & Seeding ─── */
+
+const HOMEWORK_SEEDS = [
+  { readingId: 'concentration_i_part_i',    title: 'Concentration I — Part I Homework',       classId: 'Concentration I',  description: 'September–October 2025 practice assignments.' },
+  { readingId: 'concentration_i_part_ii',   title: 'Concentration I — Part II Homework',      classId: 'Concentration I',  description: 'October–November 2025 practice assignments.' },
+  { readingId: 'gathas_v_morals',           title: 'Read: Gathas Ch V — Morals (Saluk)',       classId: 'Concentration I',  description: 'Volume XIII of the Teachings — Chapter V on moral development.' },
+  { readingId: 'gathas_vi_everyday',        title: 'Read: Gathas Ch VI — Everyday Life',       classId: 'Concentration I',  description: 'Volume XIII of the Teachings — Chapter VI on daily conduct.' },
+  { readingId: 'concentration_ii_part_i',   title: 'Concentration II — Part I Homework',      classId: 'Concentration II', description: 'November–December 2025 practice assignments.' },
+  { readingId: 'concentration_ii_part_ii',  title: 'Concentration II — Part II Homework',     classId: 'Concentration II', description: 'December 2025 – March 2026 practice assignments.' },
+  { readingId: 'mental_purification',       title: 'Read: Mental Purification — Selected Ch.', classId: 'Concentration II', description: 'Volume IV selected chapters on purifying the mind.' },
+  { readingId: 'review_assignments',        title: 'Review of Assignments',                    classId: 'Concentration II', description: 'Summary review from Concentration II to Contemplation I.' },
+  { readingId: 'contemplation_i_homework',  title: 'Contemplation I — Part I Homework',       classId: 'Contemplation I',  description: 'The Practitioner\'s Journey: From Purification to Presence.' },
+  { readingId: 'contemplation_i_passages',  title: 'Contemplation I — Homework Passages',     classId: 'Contemplation I',  description: 'Selected readings for contemplative practice.' },
+];
+
+function seedHomeworkAssignments() {
+  if (!homeworkContent || !homeworkContent.readings) return;
+  if (!userData.homework) userData.homework = [];
+  // Only seed readings that don't already exist (by readingId)
+  const existing = new Set(userData.homework.filter(h => h.readingId).map(h => h.readingId));
+  let added = 0;
+  HOMEWORK_SEEDS.forEach(seed => {
+    if (existing.has(seed.readingId)) return;
+    if (!homeworkContent.readings[seed.readingId]) return;
+    userData.homework.push({
+      id: 'hw_seed_' + seed.readingId,
+      title: seed.title,
+      classId: seed.classId,
+      description: seed.description,
+      dueDate: '',
+      notes: '',
+      status: 'not-started',
+      added: today(),
+      readingId: seed.readingId
+    });
+    added++;
+  });
+  if (added > 0) saveUserData();
+}
+
+function showHomeworkReader(readingId) {
+  if (!homeworkContent || !homeworkContent.readings[readingId]) {
+    showToast('Reading content not loaded');
+    return;
+  }
+  const r = homeworkContent.readings[readingId];
+  const pages = r.pages || [];
+  let h = '<div class="hw-reader">';
+  h += '<div class="hw-reader-header">';
+  h += '<a class="kw-entry-back" onclick="showHomework()">← Back to Homework</a>';
+  h += '<div class="hw-reader-title">' + escHtml(r.title) + '</div>';
+  if (r.subtitle) h += '<div class="hw-reader-subtitle">' + escHtml(r.subtitle) + '</div>';
+  h += '<div class="hw-reader-meta">' + pages.length + ' page' + (pages.length !== 1 ? 's' : '') + '</div>';
+  h += '</div>';
+  h += '<div class="kw-deck">';
+  pages.forEach((p, i) => {
+    h += '<img class="kw-deck-page" src="' + escHtml(p) + '" alt="page ' + (i+1) + '" loading="lazy">';
+  });
+  h += '</div>';
+  // Mark complete button
+  const hwItem = (userData.homework || []).find(hw => hw.readingId === readingId);
+  if (hwItem && hwItem.status !== 'complete') {
+    h += '<div style="text-align:center; margin: 32px 0 48px">';
+    h += '<button class="action-btn primary" onclick="markHomeworkComplete(\'' + readingId + '\')" style="font-size:16px; padding:12px 32px">Mark as Complete</button>';
+    h += '</div>';
+  } else if (hwItem) {
+    h += '<div style="text-align:center; margin: 32px 0 48px; color: var(--accent); font-weight:600">✓ Completed</div>';
+  }
+  h += '</div>';
+  showPage(h);
+  window.scrollTo(0, 0);
+  if (window.innerWidth <= 768) closeSidebar();
+}
+
+function markHomeworkComplete(readingId) {
+  const hw = (userData.homework || []).find(h => h.readingId === readingId);
+  if (hw) {
+    hw.status = 'complete';
+    hw.completedDate = today();
+    saveUserData();
+    showToast('Marked as complete!');
+    showHomeworkReader(readingId);
+  }
+}
 
 /* ══════════════════════════════════════════════════════════
    PHASE G3 — PERSONAL CONTENT LIBRARY

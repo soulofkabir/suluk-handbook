@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "total_clips": 221,
+  "total_clips": 224,
   "note": "Audio hosted on Cloudflare R2.",
   "classes": {
     "C1": {
@@ -2149,6 +2149,35 @@
           "start_time": "01:07:09",
           "end_time": "1:17:33",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_10_blue_color_meditation.mp3"
+        }
+      ]
+    },
+    "P1": {
+      "part": "Prayers",
+      "instructor": "Various",
+      "date": "",
+      "source": "",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Fazl Mullah Rahim Allah (Mansur)",
+          "filename": "fazl_mullah_rahim_allah.m4a",
+          "category": "prayer",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/prayers/fazl_mullah_rahim_allah.m4a"
+        },
+        {
+          "segment": 2,
+          "title": "Subuhun Quddusun",
+          "filename": "subuhun_quddusun.m4a",
+          "category": "prayer",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/prayers/subuhun_quddusun.m4a"
+        },
+        {
+          "segment": 3,
+          "title": "Ya Sabur-o Ya Wahhab-o",
+          "filename": "ya_sabur_ya_wahhab.m4a",
+          "category": "prayer",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/prayers/ya_sabur_ya_wahhab.m4a"
         }
       ]
     }
