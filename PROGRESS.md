@@ -361,19 +361,65 @@ Cloudflare R2
 - **Frontend namespace dropdown** (commit `4cc0579`) — Admin users see 6 source options: HIK Complete Works, HIK Study Database, Ruhaniat Esoteric Papers, A Sufi Message, Sufi Movement Canada, All Libraries. Server-side `ADMIN_NAMESPACES` gate enforces token for non-public namespaces. Subtitle updated to "22k+ chunks".
 - **Full corpus ingest** — All namespaces ingested into Vectorize. Total: **~22,562 chunks** (hik 12,155, sufi-library ~3,100, hik-online 4,561, ruhaniat 4,378, sufi-canada 38, sufi-message 66, plus OCR'd books). 894 chunks with checkpoint gaps from transient 503 retries — data is in Vectorize but needs one more ingest pass to sync the local checkpoint.
 
+### Review Folder Integration (commit `809dd4f`) ✅
+
+- **Kabir's Writings expanded to 6 tiles** — added Suluk Ascent (20 pages) and Purification Breaths (18 pages) alongside Reflections, Crimson Heart, Light Dreaming, Journey of Light.
+- **Homework Reader** — 10 pre-populated reading assignments with in-app page viewer. `homework_content.json` metadata, `seedHomeworkAssignments()` auto-populates on first load, `showHomeworkReader()` with full-page image scroll, `markHomeworkComplete()` tracking. Read button on each homework card.
+- **Audio Prayers** — 3 .m4a prayer recordings uploaded to R2 `prayers/` prefix (Fazl Mullah Rahim Allah, Subuhun Quddusun, Ya Sabur-o Ya Wahhab-o). P1 Prayers class added to `audio_manifest.json` (224 total clips, 21 classes).
+- **166 page images** generated from 10 PDFs/DOCXs via `pdftoppm -jpeg -r 150` and `soffice --headless --convert-to pdf`.
+- **Audio Library sort fix** — P-prefixed classes (Prayers) sort after C-prefixed (classes). Meta display adapts for dateless entries.
+
+### Toronto Corpus (commits `a74a684`, in progress) 🚧
+
+- **47 PDFs downloaded** from sufiorder.toronto.on.ca:
+  - 14 HIK Message Volumes (Vols 1-14, ~1.34M words)
+  - Complete Sayings (46,788 words)
+  - Toward The One by Pir Vilayat (698 pages, 86,343 words)
+  - Keeping in Touch newsletter compilation (946 pages, 296,982 words)
+  - 29 quarterly newsletters (28 image-based/scanned, 1 text)
+- **Processing pipeline** (`process_toronto.py`) — pdftotext extraction, chapter detection (CHAPTER/PART headers → form-feed page groups → single chapter fallback), paragraph-aware chunking at 500 words. Output: `toronto_chunks.jsonl`.
+- **4,151 chunks** produced: `hik-message` (3,285), `pir-vilayat` (866).
+- **1,651 chunks ingested** before neuron quota exhaustion. 2,500 remaining.
+- **Ingest script** (`ingest_toronto.py`) — flat JSONL reader, batch POST to /rag-ingest, checkpoint support.
+- **25+ HTML teaching pages** from Toronto site being scraped (HIK quotes, Pir Vilayat articles, prayers, Pir Zia teachings).
+
+### Study Companion Simplification (commit `a74a684`) ✅
+
+- **Namespace dropdown reduced to 2 options**: Handbook (local context) / Full Corpus (all Vectorize namespaces).
+- **Dynamic subtitle**: shows "Handbook context" or "RAG — 26k+ chunks across 8 sources".
+- **Default**: Full Corpus for admin users, Handbook for non-admin.
+
 ### Pending ⏳
 
-**Next session (when Workers AI neurons reset):**
-- **Re-ingest 894 checkpoint-gap chunks** — `python3 ingest_to_vectorize.py --skip-existing`. Data already in Vectorize but checkpoint file missing these IDs.
-- **End-to-end smoke test** — `/rag-search` across all namespaces + `/rag-chat` through Study Companion UI.
+**Immediate (when neurons reset):**
+- **Finish Toronto ingest** — 2,500 of 4,151 chunks remaining. `SULUK_AUTH_TOKEN=<token> python3 ingest_toronto.py --skip-existing`.
+- **Ingest Toronto HTML pages** — Teaching text from 25+ scraped web pages.
+- **Re-ingest 894 checkpoint-gap chunks** from earlier sessions.
+- **End-to-end smoke test** — Full Corpus search through Study Companion UI.
+
+**Short-term:**
+- **OCR 28 scanned Toronto newsletters** — Image-based PDFs from 2000-2007, need tesseract pipeline.
+- **Explore Pir Vilayat Archive** — pirvilayatarchive.org (403-blocked, needs Chrome MCP exploration).
+- **Assess Idries Shah Foundation** — "Read Shah for Free" library (JS-heavy site).
+- **Scrape Sufi Tavern** — 5 free e-book PDFs + blog articles.
+
+**Medium-term — Book 2: Contemplation:**
+- Contemplation scaffold exists (`contemplation_snippets.json`) with instructor roster (Pir Zia, Nizam un Nisa, Guide Mansur) but 0 snippets. Source materials in `Classes/Contemplation/Section_I/` and `Section_II/` need populating.
+- Create `handbook_contemplation.json`, segment audio, wire book selector buttons.
 
 **Deferred / lower priority:**
 - **wahiduddin.net scrape** — Site is fully down (as of 2026-04-10). Scraper ready (`scrape_wahiduddin.py`), retry when site returns.
 - **murshidsam.org** — Richest content (~650 pages) but robots.txt blocks AI bots. Decision pending.
-- **Phase I-6: Chapter-reader UI** — Clickable citations open the source chapter as rendered Markdown.
-- **Token hardening** — Rotate current admin token to a stronger secret once the RAG stack is stable.
+- **Practice Guide section** — Step-by-step breath instructions (Purification Breaths, Alternative Breath) in interactive format, not just page images.
+- **Token hardening** — Rotate admin token to a stronger secret.
 - **225 MB SufiMessage 14-vol PDF** — dedicated OCR session.
 - **Put `PDF_to_MD/` in git** too.
+
+---
+
+## Project Documentation
+
+- **Comprehensive Project Guide**: `/Users/heartmath/Documents/Suluk_Project/SULUK_PROJECT_GUIDE.md` — 700-line single source of truth covering architecture, folder structure, pipeline SOPs, scripts reference, feature inventory, and troubleshooting.
 
 ---
 
@@ -381,6 +427,7 @@ Cloudflare R2
 
 Phases A → H all shipped. Future initiatives in the broader Suluk Project ecosystem:
 
+- **Books 3 & 4**: Meditation, Realization (same pipeline as Contemplation).
 - **Initiative 2: Hazrat Inayat Khan Library** — separate portal (`hik-library`) on GitHub Pages with 50+ eBooks, mirroring the Crisp Pearl & True Bronze design language.
 - **Initiative 3: Universal Knowledge Vault** — separate portal (`kabir-vault`) for mixed-media (PDFs, YouTube, PPT, audio, video).
 - **Cross-portal AI Companion** — once HIK Library and Vault exist, extend `findRelevantKabirWritings` pattern to also search those corpora, so the Companion can pull from all four sources at once.
