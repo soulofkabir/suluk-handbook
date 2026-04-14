@@ -3777,7 +3777,7 @@ function showStudyCompanion(el) {
   h += '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">';
   h += '<div>';
   h += '<div style="font-family:var(--display);font-weight:700;font-size:18px;color:var(--primary)">Study Companion</div>';
-  h += '<div style="font-size:12px;color:var(--muted)">Gemini 2.5 Flash · ' + (chatNamespace === 'none' ? 'Handbook context' : 'RAG — 26k+ chunks across 8 sources') + '</div>';
+  h += '<div style="font-size:12px;color:var(--muted)">Gemini 2.5 Flash · ' + (chatNamespace === 'none' ? 'Handbook context' : chatNamespace === 'suluk-classes' ? 'RAG — 168 class chunks · Concentration P1+P2' : 'RAG — 22k+ chunks across 9 sources') + '</div>';
   h += '</div>';
   h += '<div style="display:flex;align-items:center;gap:8px">';
   h += '<label style="font-size:11px;color:var(--muted)">Source:</label>';
@@ -3786,6 +3786,9 @@ function showStudyCompanion(el) {
     { v: 'none', l: 'Handbook' },
     { v: 'all', l: 'Full Corpus' },
   ];
+  if (isAdmin) {
+    opts.push({ v: 'suluk-classes', l: 'Class Transcripts' });
+  }
   // Default to Full Corpus for admin, Handbook for non-admin
   if (!isAdmin && chatNamespace === 'all') {
     setChatNamespace('none');
