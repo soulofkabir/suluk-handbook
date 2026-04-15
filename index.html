@@ -2624,6 +2624,25 @@ function bindKeyboard() {
       }
     }
   });
+
+  // Mobile admin mode: tap "The Four Books" label 5 times within 3 seconds
+  const _booksLabel = document.querySelector('.books-label');
+  if (_booksLabel) {
+    let _tapTimes = [];
+    _booksLabel.addEventListener('click', () => {
+      const now = Date.now();
+      _tapTimes.push(now);
+      _tapTimes = _tapTimes.filter(t => now - t < 3000);
+      if (_tapTimes.length >= 5) {
+        _tapTimes = [];
+        adminMode = !adminMode;
+        if (adminMode) localStorage.setItem('suluk_admin', '1');
+        else localStorage.removeItem('suluk_admin');
+        buildSidebarNav();
+        showToast(adminMode ? 'Admin mode enabled' : 'Admin mode disabled');
+      }
+    });
+  }
 }
 
 window.addEventListener('scroll', () => {
