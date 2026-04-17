@@ -4,12 +4,12 @@
 **URL:** https://soulofkabir.github.io/suluk-handbook/
 **Architecture:** Single-file HTML + CSS + Vanilla JavaScript, GitHub Pages static hosting
 **Data:** `data/handbook_concentration.json`, `data/cross_reference_data.json`, `data/glossary.json`, `data/audio_manifest.json`
-**Audio:** Cloudflare R2 bucket `suluk-audio` (public), 224 clips across 21 classes (incl. P1 Prayers)
-**Contemplation Pipeline:** CT1 (Mar 27) complete — 13 snippets extracted, transcripts filed
+**Audio:** Cloudflare R2 bucket `suluk-audio` (public), 234 clips across 22 classes (incl. CT1 Contemplation + P1 Prayers)
+**Contemplation Pipeline:** CT1 (Mar 27) complete through Phase 4 — 13 snippets + 10 audio clips live on R2
 **Personal Files:** Cloudflare R2 bucket `suluk-personal` (private), via Worker at `suluk-worker.soulofkabir.workers.dev`
 **AI Chat:** Gemini 2.5 Flash via Cloudflare Worker `/chat` endpoint
 **Design System:** "Crisp Pearl & True Bronze" — Nunito + Source Sans 3
-**Last updated:** 2026-04-17
+**Last updated:** 2026-04-18
 
 ---
 
@@ -218,6 +218,9 @@ A four-piece personal contemplative library lives under the admin-only Workspace
 
 | Commit | Description |
 |---|---|
+| `9d5e8ed` | Update CT1 source filename to CT1 convention in audio_manifest.json |
+| `748176b` | Add CT1 Contemplation audio to Audio Library (10 clips, sort fix, Contemplation label) |
+| `d1b3a37` | Docs audit 2026-04-17: PROGRESS.md updated to current state |
 | `9f5b152` | CT1 snippets: restore full 13-snippet version (was trimmed to 10) |
 | `5cf85ba` | CT1 snippet-review tool + .wrangler to gitignore |
 | `809dd4f` | Review folder integration: Kabir's Writings, Homework Reader, Audio Prayers |
@@ -320,7 +323,7 @@ Cloudflare Vectorize
       └── sufi-message   — A Sufi Message website + Quarterly PDFs (66 chunks)
 
 Cloudflare R2
-  ├── suluk-audio (public)    — 221 audio clips
+  ├── suluk-audio (public)    — 234 audio clips (C1–C20 Concentration, CT1 Contemplation, P1 Prayers)
   └── suluk-personal (private) — files + backups
 ```
 
@@ -409,16 +412,19 @@ Cloudflare R2
 
 ---
 
-### Contemplation Book 2 — CT1 Pipeline (Phases 1–3 complete) 🟡
+### Contemplation Book 2 — CT1 Pipeline (Phases 1–4 complete) ✅
 
-First class of the Contemplation series (March 27, 2026 — Pir Zia Inayat Khan, 76 minutes) fully processed through Phase 3.
+First class of the Contemplation series (March 27, 2026 — Pir Zia Inayat Khan, 76 minutes) fully processed through Phase 4.
 
-**Phase 1 — Transcript:** `Contemplation_P1_C1_20260327_PirZia.mp3` (141 MB) transcribed by Gemini 2.5 Pro via the Automator Folder Action.
+**Naming convention:** `Contemplation_P1_CT{N}_{date}_{instructor}_{suffix}` — the `CT#` segment distinguishes Contemplation classes from Concentration's `C#` (e.g. CT1 vs C1). Renamed from the original `C1` pattern on 2026-04-18.
+
+**Phase 1 — Transcript:** `Contemplation_P1_CT1_20260327_PirZia.mp3` (141 MB) transcribed by Gemini 2.5 Pro via the Automator Folder Action.
 
 **Phase 2 — Full + Summary transcripts:**
-- `Contemplation_P1_C1_20260327_PirZia_Full.docx` — cleaned transcript (timestamps stripped, topic-break paragraphs)
-- `Contemplation_P1_C1_20260327_PirZia_Summary.docx` — thematic condensation
+- `Contemplation_P1_CT1_20260327_PirZia_Full.docx` — cleaned transcript (timestamps stripped, topic-break paragraphs)
+- `Contemplation_P1_CT1_20260327_PirZia_Summary.docx` — thematic condensation
 - Both filed in `Classes/Contemplation/Section_I/Transcripts/Full/` and `Summarized/`
+- Copies also in `Suluk_Auto_Transcribe/` (Automator output location)
 
 **Phase 3 — Snippet extraction (13 snippets):**
 
@@ -444,7 +450,30 @@ First class of the Contemplation series (March 27, 2026 — Pir Zia Inayat Khan,
 - **Merged into:** `Classes/Contemplation/contemplation_snippets.json` (13 entries, `total_snippets` updated)
 - **Validated:** `python3 Scripts/validate_snippets.py CT1_snippets.json --duration 76` → PASSED
 
-**Phases 4–9 (audio split, ingest, handbook integration) deferred** until after the Apr 18-19 weekend retreat — all Part I recordings will be batch-processed together after Apr 19.
+**Phase 4 — Audio split (10 clips):**
+
+| # | Title | Category | Duration |
+|---|---|---|---|
+| 01 | Opening Invocation | prayer | 0:29 |
+| 02 | Welcome & Aman — Realm of Sanctuary | teaching | 5:53 |
+| 03 | Mujahada to Muraqabah — Four Elements | teaching | 8:09 |
+| 04 | The Divine Names & Ummahat | teaching | 6:54 |
+| 05 | Wazifa — Murshid's Teaching | reading | 11:47 |
+| 06 | Al-Hayy — The Living | teaching | 8:39 |
+| 07 | Guided Zikr — Ya Hayyu | practice | 10:00 |
+| 08 | Chivalric Rule — Responsibility Sacred | teaching | 8:18 |
+| 09 | Story of Yudhisthira and the Dog | story | 13:12 |
+| 10 | Closing Contemplation — Holy of Holies | closing | 3:04 |
+
+- **Splitter:** `Scripts/contemplate_splitter.py --class CT1` (custom [MM:SS:FF] timestamp parser)
+- **Output:** `Classes/Contemplation/Audio_Library/CT1/` + `segments.json`
+- **Naming:** `Contemplation_Audio_CT1_{slug}.mp3` @ 128k CBR
+- **R2 upload:** all 10 clips live at `suluk-audio/CT1/Contemplation_Audio_CT1_*.mp3`
+- **Manifest:** CT1 added to `audio_manifest.json` (234 total clips, 22 classes)
+- **Audio Library sort:** updated to group C → CT → P correctly (CT1 appears after all C classes)
+- **Handbook label:** CT-prefixed classes display as "Contemplation Part I · date · ~N min"
+
+**Phases 5–9 (RAG ingest, handbook integration) pending** — CT2–CT5 recording this weekend (Apr 18-19), batch-process all after Apr 19.
 
 ---
 
@@ -472,6 +501,8 @@ To prevent the recurrence of condensed/truncated snippet extraction:
 - **`Scripts/` added to git** (project-docs repo) — all 8 scripts now version-controlled and protected from loss. Previously completely untracked.
 - **`SUFI_TERMS` expanded in `auto_transcriber.py`** — Contemplation vocabulary added before Apr 18-19 weekend:
   `Tajalli, Wiratha, Kibriya, Sahibat al-Anfas, Sama, Al-Hayy, Ya Hayyu, Jalali/Jamali/Kamali, Ummahat, Dar al-Aman, Hazrat Inayat Khan, Noor, Baraka, Ishq` and more.
+- **`Scripts/contemplate_splitter.py` created and committed** — dedicated audio splitter for Contemplation classes with custom `[MM:SS:FF]` / `[H:MM:SS:FF]` timestamp parser (different from Concentration's `[HH:MM:SS]`). Supports `--dry`, `--force`, `--gemini` flags. CT1 segment map hard-coded.
+- **Contemplation file naming convention finalised:** `Contemplation_P1_CT{N}_{date}_{instructor}_{suffix}` — `CT#` prefix (not `C#`) distinguishes from Concentration. All CT1 source files renamed on 2026-04-18; `CLASS_PREFIX` in `contemplate_splitter.py`, `Pipeline.md` naming examples, and both JSON manifests updated to match.
 
 ---
 
@@ -490,8 +521,9 @@ To prevent the recurrence of condensed/truncated snippet extraction:
 - **Scrape Sufi Tavern** — 5 free e-book PDFs + blog articles.
 
 **Medium-term — Book 2: Contemplation:**
-- CT1 (Mar 27) complete through Phase 3 (13 snippets). CT2+ recordings coming Apr 18-19 weekend — batch-process after Apr 19.
-- Create `handbook_contemplation.json`, segment audio, wire book selector buttons.
+- CT1 (Mar 27) complete through Phase 4 (13 snippets + 10 audio clips on R2).
+- CT2–CT5 recordings happening Apr 18-19 weekend — after Apr 19: run full pipeline (transcript → full → summary → snippets → validate → split → R2 → manifest) for each.
+- After all CT classes ingested: create `handbook_contemplation.json`, wire book selector buttons in the handbook.
 
 **Deferred / lower priority:**
 - **wahiduddin.net scrape** — Site is fully down (as of 2026-04-10). Scraper ready (`scrape_wahiduddin.py`), retry when site returns.
