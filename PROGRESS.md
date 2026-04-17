@@ -4,10 +4,12 @@
 **URL:** https://soulofkabir.github.io/suluk-handbook/
 **Architecture:** Single-file HTML + CSS + Vanilla JavaScript, GitHub Pages static hosting
 **Data:** `data/handbook_concentration.json`, `data/cross_reference_data.json`, `data/glossary.json`, `data/audio_manifest.json`
-**Audio:** Cloudflare R2 bucket `suluk-audio` (public), 221 clips across 20 classes
+**Audio:** Cloudflare R2 bucket `suluk-audio` (public), 224 clips across 21 classes (incl. P1 Prayers)
+**Contemplation Pipeline:** CT1 (Mar 27) complete — 13 snippets extracted, transcripts filed
 **Personal Files:** Cloudflare R2 bucket `suluk-personal` (private), via Worker at `suluk-worker.soulofkabir.workers.dev`
 **AI Chat:** Gemini 2.5 Flash via Cloudflare Worker `/chat` endpoint
 **Design System:** "Crisp Pearl & True Bronze" — Nunito + Source Sans 3
+**Last updated:** 2026-04-17
 
 ---
 
@@ -216,6 +218,13 @@ A four-piece personal contemplative library lives under the admin-only Workspace
 
 | Commit | Description |
 |---|---|
+| `9f5b152` | CT1 snippets: restore full 13-snippet version (was trimmed to 10) |
+| `5cf85ba` | CT1 snippet-review tool + .wrangler to gitignore |
+| `809dd4f` | Review folder integration: Kabir's Writings, Homework Reader, Audio Prayers |
+| `52bcd35` | Add mobile admin mode: tap "The Four Books" label 5 times to toggle |
+| `43da3ce` | Remove duplicate SULUK_PROJECT_GUIDE.md |
+| `b1585c6` | Add Class Transcripts option to Study Companion dropdown (admin-only) |
+| `571ebe1` | Add project guide, update service worker cache v4 |
 | `4cc0579` | Phase I: 6-namespace dropdown, 22k+ subtitle, admin-gated namespace UI |
 | `b99d5a2` | Worker: try/catch on AI.run + Vectorize ops, JSON 503 on quota exhaustion |
 | `bc87521` | Stage 2: Crimson Heart, Light Dreaming, Extended essay, Study Companion → admin, Kabir AI context |
@@ -262,7 +271,7 @@ A four-piece personal contemplative library lives under the admin-only Workspace
 - ○ Recently Viewed
 
 ### Workspace (admin only — type `suluk` to reveal)
-- ◈ Study Companion (AI chat, now Kabir-aware)
+- ◈ Study Companion (AI chat — Handbook / Full Corpus / Class Transcripts dropdown)
 - ✦ Kabir's Writings (4-tile landing → Reflections / Crimson Heart / Light Dreaming / Journey of Light)
 - ⚯ Links
 - ▣ Homework
@@ -279,7 +288,7 @@ Browser (GitHub Pages)
         ├── data/*.json (teachings, audio manifest, glossary, cross-references)
         ├── data/writings/ (admin-only)
         │     ├── kabir_writings.json   (71 reflections)
-        │     ├── kabir_other.json      (Crimson Heart pages, Light Dreaming pages, Journey extended)
+        │     ├── kabir_other.json      (6 collections: Crimson Heart, Light Dreaming, Journey extended, Suluk Ascent, Purification Breaths, Reflections PDF)
         │     ├── images/ kw_*.jpg ch_*.jpg ld_*.jpg
         │     ├── extract_kabir_writings.py   (PPTX → JSON pipeline)
         │     └── extract_other_writings.py   (PDF + DOCX → JSON pipeline)
@@ -389,6 +398,83 @@ Cloudflare R2
 - **Dynamic subtitle**: shows "Handbook context" or "RAG — 26k+ chunks across 8 sources".
 - **Default**: Full Corpus for admin users, Handbook for non-admin.
 
+---
+
+### Handbook Admin Enhancements (commits `b1585c6`, `52bcd35`, `571ebe1`) ✅
+
+- **Class Transcripts namespace** — Study Companion dropdown now has a third option: "Class Transcripts" (admin-only) that points to the `suluk-classes` RAG namespace covering 168 chunks from Concentration Part I + Part II. Gives targeted retrieval for course prep.
+- **Mobile admin mode** — Tap the "The Four Books" sidebar label 5 times to toggle admin mode on mobile (in addition to typing `suluk` on desktop keyboard).
+- **Service worker bumped to v4** — Cache list updated to include new data paths (`data/homework/`, `data/writings/images/`).
+- **Duplicate doc cleanup** — `suluk-handbook/SULUK_PROJECT_GUIDE.md` deleted; canonical copy lives at project root.
+
+---
+
+### Contemplation Book 2 — CT1 Pipeline (Phases 1–3 complete) 🟡
+
+First class of the Contemplation series (March 27, 2026 — Pir Zia Inayat Khan, 76 minutes) fully processed through Phase 3.
+
+**Phase 1 — Transcript:** `Contemplation_P1_C1_20260327_PirZia.mp3` (141 MB) transcribed by Gemini 2.5 Pro via the Automator Folder Action.
+
+**Phase 2 — Full + Summary transcripts:**
+- `Contemplation_P1_C1_20260327_PirZia_Full.docx` — cleaned transcript (timestamps stripped, topic-break paragraphs)
+- `Contemplation_P1_C1_20260327_PirZia_Summary.docx` — thematic condensation
+- Both filed in `Classes/Contemplation/Section_I/Transcripts/Full/` and `Summarized/`
+
+**Phase 3 — Snippet extraction (13 snippets):**
+
+| # | Title | Topic |
+|---|---|---|
+| 1 | The Invocation — Opening of Contemplation | Prayer |
+| 2 | Aman and Dar al-Aman — The Realm of Sanctuary | Teaching |
+| 3 | From Concentration to Contemplation — Mujahada to Muraqabah | Teaching |
+| 4 | What Contemplation Is — The Mind Moves Gracefully | Contemplation |
+| 5 | The Divine Names — Living Anatomy of God's Attributes | Teaching |
+| 6 | Wazifa — Murshid's Complete Teaching on the Practice | Wazifa |
+| 7 | Al-Hayy — The Living (First Mother Name) | Arabic Term |
+| 8 | Guided Zikr Practice — Ya Hayyu | Zikr/Practice |
+| 9 | Chivalric Rule — Consider Your Responsibility Sacred | Rule |
+| 10 | Story of Yudhisthira and the Dog — The Dharma Within | Story |
+| 11 | Closing Contemplation — Scattered Attention and the Holy of Holies | Contemplation |
+| 12 | Introduction of Nizam un Nisa — Contemplation Part II Instructor | Teaching |
+| 13 | Arabic and Sufi Terms — Contemplation Class 1 | Arabic Term |
+
+- **Canonical file:** `Classes/Contemplation/Section_I/Snippets/CT1_snippets.json`
+- **Handbook symlink:** `suluk-handbook/CT1_snippets.json` → symlinked to canonical (never a separate copy)
+- **Review tool:** `suluk-handbook/snippet-review.html` — local browser review UI with Approve/Flag/Notes per snippet
+- **Merged into:** `Classes/Contemplation/contemplation_snippets.json` (13 entries, `total_snippets` updated)
+- **Validated:** `python3 Scripts/validate_snippets.py CT1_snippets.json --duration 76` → PASSED
+
+**Phases 4–9 (audio split, ingest, handbook integration) deferred** until after the Apr 18-19 weekend retreat — all Part I recordings will be batch-processed together after Apr 19.
+
+---
+
+### Snippet Quality Guardrails (commit `d078053` in project-docs repo) ✅
+
+To prevent the recurrence of condensed/truncated snippet extraction:
+
+- **`Scripts/validate_snippets.py`** — quality gate that must pass (exit 0) before any snippet file is committed:
+  - Snippet count ≥ `session_minutes ÷ 6` (duration-based floor) AND ≥ 8 absolute minimum
+  - Every non-glossary snippet must contain ≥1 verbatim quote (20+ chars in `"…"`)
+  - Minimum body word count: 100 words (40 for prayers, exempt for glossary tables)
+  - All required schema fields present; `topic_id` in range 1–18
+- **6 Extraction Rules locked in `Pipeline.md` Phase 3:**
+  1. One topic = one snippet — never merge
+  2. Quote verbatim, don't paraphrase
+  3. Duration-based snippet floor
+  4. Prayers/practices/stories/closings always get their own snippet
+  5. Canonical file in `Snippets/`; handbook copy is a symlink
+  6. `validate_snippets.py` must pass before committing
+
+---
+
+### Pre-Kickoff Preparation (project-docs repo) ✅
+
+- **`Scripts/` added to git** (project-docs repo) — all 8 scripts now version-controlled and protected from loss. Previously completely untracked.
+- **`SUFI_TERMS` expanded in `auto_transcriber.py`** — Contemplation vocabulary added before Apr 18-19 weekend:
+  `Tajalli, Wiratha, Kibriya, Sahibat al-Anfas, Sama, Al-Hayy, Ya Hayyu, Jalali/Jamali/Kamali, Ummahat, Dar al-Aman, Hazrat Inayat Khan, Noor, Baraka, Ishq` and more.
+
+---
+
 ### Pending ⏳
 
 **Immediate (when neurons reset):**
@@ -404,7 +490,7 @@ Cloudflare R2
 - **Scrape Sufi Tavern** — 5 free e-book PDFs + blog articles.
 
 **Medium-term — Book 2: Contemplation:**
-- Contemplation scaffold exists (`contemplation_snippets.json`) with instructor roster (Pir Zia, Nizam un Nisa, Guide Mansur) but 0 snippets. Source materials in `Classes/Contemplation/Section_I/` and `Section_II/` need populating.
+- CT1 (Mar 27) complete through Phase 3 (13 snippets). CT2+ recordings coming Apr 18-19 weekend — batch-process after Apr 19.
 - Create `handbook_contemplation.json`, segment audio, wire book selector buttons.
 
 **Deferred / lower priority:**
