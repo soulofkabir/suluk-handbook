@@ -16,3 +16,6 @@ data/writings/*.png
 
 # Local scripts staging area
 scripts/
+
+# Wrangler (Cloudflare Workers local state)
+.wrangler/

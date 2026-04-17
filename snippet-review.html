@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CT1 Snippet Review — Contemplation P1 C1</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF8F5;
+    --card-bg: #FFFFFF;
+    --text: #302B27;
+    --muted: #7A756E;
+    --accent: #B8860B;
+    --rule: #D4CFC6;
+    --sidebar-bg: #F7F5F1;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 0;
+  }
+  .header {
+    background: var(--text);
+    color: var(--bg);
+    padding: 32px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .header p {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 4px;
+  }
+  .toc {
+    background: var(--sidebar-bg);
+    border-bottom: 1px solid var(--rule);
+    padding: 20px 40px;
+  }
+  .toc h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 8px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .toc-item:hover { background: var(--rule); }
+  .toc-item .num {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 24px;
+  }
+  .toc-item .badge {
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: white;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  .snippet-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .snippet-num {
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+  }
+  .snippet-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .snippet-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .snippet-meta span { white-space: nowrap; }
+  .snippet-meta .tag {
+    background: var(--sidebar-bg);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  /* Markdown body rendering */
+  .snippet-body h1 { display: none; } /* hide the # title since we show it above */
+  .snippet-body h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 24px 0 10px;
+  }
+  .snippet-body h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 18px 0 8px;
+  }
+  .snippet-body p { margin: 10px 0; }
+  .snippet-body ul, .snippet-body ol {
+    margin: 10px 0 10px 24px;
+  }
+  .snippet-body li { margin: 4px 0; }
+  .snippet-body blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 8px 16px;
+    margin: 14px 0;
+    background: var(--sidebar-bg);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: var(--muted);
+  }
+  .snippet-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .snippet-body th {
+    background: var(--sidebar-bg);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--rule);
+  }
+  .snippet-body td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .snippet-body strong { font-weight: 600; }
+  .snippet-body em { font-style: italic; color: var(--muted); }
+  .snippet-body hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 20px 0;
+  }
+  .snippet-body code {
+    background: var(--sidebar-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+
+  .verdict-bar {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .verdict-btn {
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    background: var(--bg);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .verdict-btn:hover { border-color: var(--accent); }
+  .verdict-btn.approve { background: #E8F5E9; border-color: #4CAF50; color: #2E7D32; }
+  .verdict-btn.flag { background: #FFF3E0; border-color: #FF9800; color: #E65100; }
+  .verdict-btn.selected { transform: scale(0.97); box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
+
+  .summary-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--text);
+    color: var(--bg);
+    padding: 12px 40px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+  }
+  .summary-bar button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Snippet Review — Contemplation P1 · Class 1</h1>
+  <p>Pir Zia Inayat Khan · March 27, 2026 · 10 snippets extracted from 76-minute session</p>
+</div>
+
+<div class="toc" id="toc"></div>
+
+<div class="container" id="cards"></div>
+
+<div class="summary-bar">
+  <span id="status-text">Review each snippet below</span>
+  <button onclick="exportVerdicts()">Export Review Notes</button>
+</div>
+
+<script>
+const TOPIC_LABELS = {
+  1: 'Prayer', 2: 'Chivalric Rule', 3: 'Breath', 4: 'Concentration',
+  5: 'Contemplation', 6: 'Teaching', 7: 'Zikr', 8: 'Story',
+  9: 'Poetry', 10: 'Arabic Term', 11: 'Practice', 12: 'Movement',
+  13: 'Wazifa', 14: 'Guide', 15: 'Personal', 16: 'Visualization',
+  17: 'Fikr', 18: 'Deep Study'
+};
+
+let snippets = [];
+let verdicts = {};
+
+async function init() {
+  const resp = await fetch('CT1_snippets.json');
+  snippets = await resp.json();
+  renderTOC();
+  renderCards();
+  updateStatus();
+}
+
+function renderTOC() {
+  const toc = document.getElementById('toc');
+  let html = '<h2>Table of Contents</h2><div class="toc-grid">';
+  snippets.forEach((s, i) => {
+    const label = TOPIC_LABELS[s.topic_id] || 'Other';
+    html += `<div class="toc-item" onclick="document.getElementById('s${i}').scrollIntoView({behavior:'smooth',block:'start'})">
+      <span class="num">${i+1}</span>
+      <span>${s.title.substring(0, 45)}${s.title.length > 45 ? '...' : ''}</span>
+      <span class="badge">${label}</span>
+    </div>`;
+  });
+  html += '</div>';
+  toc.innerHTML = html;
+}
+
+function renderMarkdown(md) {
+  let html = md
+    // Tables
+    .replace(/\n\|(.+)\|\n\|[-| :]+\|\n((?:\|.+\|\n?)*)/g, (match, header, body) => {
+      const ths = header.split('|').filter(c => c.trim()).map(c => `<th>${c.trim()}</th>`).join('');
+      const rows = body.trim().split('\n').map(row => {
+        const tds = row.split('|').filter(c => c.trim()).map(c => `<td>${c.trim()}</td>`).join('');
+        return `<tr>${tds}</tr>`;
+      }).join('');
+      return `<table><thead><tr>${ths}</tr></thead><tbody>${rows}</tbody></table>`;
+    })
+    // Headers
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    // Blockquotes
+    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+    // Bold and italic
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    // Lists
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/^(\d+)\. (.+)$/gm, '<li>$2</li>')
+    // Horizontal rules
+    .replace(/^---$/gm, '<hr>')
+    // Paragraphs (lines that aren't already wrapped)
+    .replace(/^(?!<[htlbo]|$)(.+)$/gm, '<p>$1</p>');
+
+  // Wrap consecutive <li> in <ul>
+  html = html.replace(/(<li>.*?<\/li>\n?)+/g, m => `<ul>${m}</ul>`);
+
+  return html;
+}
+
+function renderCards() {
+  const container = document.getElementById('cards');
+  let html = '';
+  snippets.forEach((s, i) => {
+    const label = TOPIC_LABELS[s.topic_id] || 'Other';
+    html += `
+    <div class="snippet-card" id="s${i}">
+      <div class="snippet-num">Snippet ${i+1} of ${snippets.length}</div>
+      <div class="snippet-title">${s.title}</div>
+      <div class="snippet-meta">
+        <span class="tag">${label}</span>
+        <span>${s.instructor}</span>
+        <span>${s.class_id} · ${s.date}</span>
+        <span>Source: ${s.source}</span>
+      </div>
+      <div class="snippet-body">${renderMarkdown(s.body)}</div>
+      <div class="verdict-bar">
+        <button class="verdict-btn approve" onclick="setVerdict(${i},'approve',this)">Approve</button>
+        <button class="verdict-btn flag" onclick="setVerdict(${i},'flag',this)">Needs Edit</button>
+        <input type="text" placeholder="Optional note..." id="note${i}"
+          style="flex:1;padding:8px 12px;border:1px solid var(--rule);border-radius:8px;font-size:14px;font-family:inherit;">
+      </div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function setVerdict(idx, verdict, btn) {
+  verdicts[idx] = verdict;
+  const card = btn.closest('.snippet-card');
+  card.querySelectorAll('.verdict-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  updateStatus();
+}
+
+function updateStatus() {
+  const approved = Object.values(verdicts).filter(v => v === 'approve').length;
+  const flagged = Object.values(verdicts).filter(v => v === 'flag').length;
+  const remaining = snippets.length - approved - flagged;
+  document.getElementById('status-text').textContent =
+    `${approved} approved · ${flagged} needs edit · ${remaining} remaining`;
+}
+
+function exportVerdicts() {
+  let text = 'CT1 Snippet Review Notes\\n' + '='.repeat(40) + '\\n\\n';
+  snippets.forEach((s, i) => {
+    const v = verdicts[i] || 'not reviewed';
+    const note = document.getElementById('note' + i).value;
+    text += `${i+1}. ${s.title}\\n   Status: ${v.toUpperCase()}${note ? '\\n   Note: ' + note : ''}\\n\\n`;
+  });
+
+  const blob = new Blob([text], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'CT1_review_notes.txt';
+  a.click();
+}
+
+init();
+</script>
+</body>
+</html>
