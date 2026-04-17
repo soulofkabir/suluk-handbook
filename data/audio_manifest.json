@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "total_clips": 224,
+  "total_clips": 234,
   "note": "Audio hosted on Cloudflare R2.",
   "classes": {
     "C1": {
@@ -2149,6 +2149,104 @@
           "start_time": "01:07:09",
           "end_time": "1:17:33",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/C9/Concentration_Audio_C9_10_blue_color_meditation.mp3"
+        }
+      ]
+    },
+    "CT1": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat Khan",
+      "date": "2026-03-27",
+      "source": "Contemplation_P1_C1_20260327_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "Opening Invocation",
+          "filename": "Contemplation_Audio_CT1_01_opening_invocation.mp3",
+          "category": "prayer",
+          "start_time": "00:00:05",
+          "end_time": "00:00:34",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_01_opening_invocation.mp3"
+        },
+        {
+          "segment": 2,
+          "title": "Welcome & Aman — Realm of Sanctuary",
+          "filename": "Contemplation_Audio_CT1_02_welcome_and_aman_sanctuary.mp3",
+          "category": "teaching",
+          "start_time": "00:00:34",
+          "end_time": "00:06:27",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_02_welcome_and_aman_sanctuary.mp3"
+        },
+        {
+          "segment": 3,
+          "title": "Mujahada to Muraqabah — Four Elements",
+          "filename": "Contemplation_Audio_CT1_03_mujahada_to_muraqabah_four_elements.mp3",
+          "category": "teaching",
+          "start_time": "00:06:27",
+          "end_time": "00:14:36",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_03_mujahada_to_muraqabah_four_elements.mp3"
+        },
+        {
+          "segment": 4,
+          "title": "The Divine Names & Ummahat",
+          "filename": "Contemplation_Audio_CT1_04_divine_names_and_ummahat.mp3",
+          "category": "teaching",
+          "start_time": "00:14:36",
+          "end_time": "00:21:30",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_04_divine_names_and_ummahat.mp3"
+        },
+        {
+          "segment": 5,
+          "title": "Wazifa — Murshid's Teaching",
+          "filename": "Contemplation_Audio_CT1_05_wazifa_murshid_teaching.mp3",
+          "category": "reading",
+          "start_time": "00:21:30",
+          "end_time": "00:33:17",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_05_wazifa_murshid_teaching.mp3"
+        },
+        {
+          "segment": 6,
+          "title": "Al-Hayy — The Living",
+          "filename": "Contemplation_Audio_CT1_06_al_hayy_the_living.mp3",
+          "category": "teaching",
+          "start_time": "00:33:17",
+          "end_time": "00:41:56",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_06_al_hayy_the_living.mp3"
+        },
+        {
+          "segment": 7,
+          "title": "Guided Zikr — Ya Hayyu",
+          "filename": "Contemplation_Audio_CT1_07_guided_zikr_ya_hayyu.mp3",
+          "category": "practice",
+          "start_time": "00:41:56",
+          "end_time": "00:51:56",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_07_guided_zikr_ya_hayyu.mp3"
+        },
+        {
+          "segment": 8,
+          "title": "Chivalric Rule — Responsibility Sacred",
+          "filename": "Contemplation_Audio_CT1_08_chivalric_rule_responsibility_sacred.mp3",
+          "category": "teaching",
+          "start_time": "00:51:56",
+          "end_time": "01:00:14",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_08_chivalric_rule_responsibility_sacred.mp3"
+        },
+        {
+          "segment": 9,
+          "title": "Story of Yudhisthira and the Dog",
+          "filename": "Contemplation_Audio_CT1_09_story_yudhisthira_and_the_dog.mp3",
+          "category": "story",
+          "start_time": "01:00:14",
+          "end_time": "01:13:26",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_09_story_yudhisthira_and_the_dog.mp3"
+        },
+        {
+          "segment": 10,
+          "title": "Closing Contemplation — Holy of Holies",
+          "filename": "Contemplation_Audio_CT1_10_closing_contemplation_holy_of_holies.mp3",
+          "category": "closing",
+          "start_time": "01:13:26",
+          "end_time": "01:16:30",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_10_closing_contemplation_holy_of_holies.mp3"
         }
       ]
     },

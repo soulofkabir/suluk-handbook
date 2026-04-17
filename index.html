@@ -3136,10 +3136,11 @@ async function showAudioLibrary(el) {
   const manifest = await loadAudioManifest();
   const classes = manifest.classes || {};
   const classIds = Object.keys(classes).sort((a, b) => {
-    const isPA = a.startsWith('P'), isPB = b.startsWith('P');
-    if (isPA && !isPB) return 1;
-    if (!isPA && isPB) return -1;
-    const numA = parseInt(a.replace(/\D/g, '')), numB = parseInt(b.replace(/\D/g, ''));
+    // Sort order: C (Concentration) → CT (Contemplation) → P (Prayers)
+    const groupOrder = id => id.startsWith('P') ? 3 : id.startsWith('CT') ? 2 : 1;
+    const ga = groupOrder(a), gb = groupOrder(b);
+    if (ga !== gb) return ga - gb;
+    const numA = parseInt(a.replace(/\D/g, ''), 10), numB = parseInt(b.replace(/\D/g, ''), 10);
     return numA - numB;
   });
 
@@ -3163,7 +3164,7 @@ async function showAudioLibrary(el) {
           <span class="audio-class-arrow" id="audio-arrow-${cid}">▸</span>
           <div class="audio-class-info">
             <div class="audio-class-title">${cid.startsWith('P') ? escHtml(cls.part || cid) : escHtml(cid)} — ${escHtml(cls.instructor || '')}</div>
-            <div class="audio-class-meta">${cls.date ? 'Part ' + (cls.part || '?') + ' · ' + cls.date + ' · ~' + durStr : (cls.part || 'Part ?') + ' · ' + clips.length + ' clips'}</div>
+            <div class="audio-class-meta">${cls.date ? (cid.startsWith('CT') ? 'Contemplation' : 'Concentration') + ' Part ' + (cls.part || '?') + ' · ' + cls.date + ' · ~' + durStr : (cls.part || 'Part ?') + ' · ' + clips.length + ' clips'}</div>
           </div>
           <span class="audio-class-count">${clips.length} clips</span>
         </div>
