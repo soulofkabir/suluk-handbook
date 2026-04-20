@@ -9,7 +9,7 @@
 **Personal Files:** Cloudflare R2 bucket `suluk-personal` (private), via Worker at `suluk-worker.soulofkabir.workers.dev`
 **AI Chat:** Gemini 2.5 Flash via Cloudflare Worker `/chat` endpoint
 **Design System:** "Crisp Pearl & True Bronze" — Nunito + Source Sans 3
-**Last updated:** 2026-04-18
+**Last updated:** 2026-04-21
 
 ---
 
@@ -218,6 +218,8 @@ A four-piece personal contemplative library lives under the admin-only Workspace
 
 | Commit | Description |
 |---|---|
+| `caf1434` | Update print PDF to V2 (6×9, 479pp) from resurrected Node OOXML → LibreOffice pipeline; sw v5 → v6 |
+| `2a9578a` | Concentration audit: +38 missing snippets (333 → 371 teachings); sw v4 → v5 |
 | `9d5e8ed` | Update CT1 source filename to CT1 convention in audio_manifest.json |
 | `748176b` | Add CT1 Contemplation audio to Audio Library (10 clips, sort fix, Contemplation label) |
 | `d1b3a37` | Docs audit 2026-04-17: PROGRESS.md updated to current state |
@@ -518,7 +520,16 @@ To prevent the recurrence of condensed/truncated snippet extraction:
   - **Curated handbook**: 333 → 371 teachings (`handbook_data_concentration.json` canonical + `suluk-handbook/data/handbook_concentration.json` deployed).
   - **Service worker bumped v4 → v5** to force clients to re-fetch the updated handbook JSON.
   - **Backups**: `.bak-2026-04-20` files saved at each location.
-  - **Print artifacts NOT updated**: `The_Book_of_Concentration_V2_Print.pdf` / `.docx` / `.html` are hand-curated standalone files — require a separate rebuild pass.
+
+- **Print Pipeline Resurrection — V2 print package regenerated from JSON** (2026-04-21):
+  - **Problem**: After the audit-added 38 snippets (371 total), the print PDF was stale (333 teachings) and any re-attempt to regenerate via HTML/Chrome produced a web-styled letter-size PDF, not the 6×9 book format of `Original.pdf`. Root cause: the original pipeline was Node.js OOXML (`docx` npm) → LibreOffice convert, not HTML/Chrome.
+  - **Pipeline resurrected**: `Scripts/build_handbook_v2.js` (intact on disk with `docx` v9.6.1) repointed to read canonical `suluk-handbook/data/handbook_concentration.json`. LibreOffice (`soffice --headless --convert-to pdf`) produces the 6×9″ interior (Creator: "Writer", 432×649 pts, matches Original.pdf signature).
+  - **Running header fix**: right-side text was overflowing past the right margin because `TabStopPosition.MAX` in the docx lib is US-Letter-sized (~9026 DXA). Explicit `CONTENT_WIDTH` (6120 DXA) used instead. Instructor label also shortened for narrow 6×9 column: "Pir Zia" / "Urs Qutbuddin" / "Guide Mansur".
+  - **Cover regenerated**: `book_cover.html` spine auto-scaled from 0.7″ → 0.77″ for the new 479-page thickness (rate: 0.001605″/page, calibrated from 0.7″ @ 436pp). Cover width 12.95″ → 13.02″. Back-cover stats updated 333 → 371.
+  - **Orchestrator**: `Scripts/regen_print_book.sh` runs the full 4-step pipeline (Node build → soffice convert → `Scripts/patch_cover_spine.js` auto-patches cover for new page count → Chrome headless renders wrap-around cover). One command after any JSON edit regenerates DOCX + interior PDF + cover PDF.
+  - **Portal deploy**: new 3.4 MB PDF copied to `suluk-handbook/assets/The_Book_of_Concentration.pdf`, service worker bumped v5 → v6. Commit `caf1434`, pushed to `main`.
+  - **Dead code removed**: earlier HTML/Chrome dead-end (`Scripts/render_book_print.py` + `The_Book_of_Concentration_Print.html`) deleted.
+  - **Output**: `The_Book_of_Concentration_V2_Print.pdf` — 479 pages, 6×9″ trim, running header "The Book of Concentration" / "Part N — Short Instructor", centered `— N —` page numbers, "Kabir's Sufi Knowledge Base · Inayatiyya Suluk Global 2025–2027" footer. Ready for PoD (Lulu/IngramSpark/KDP Print) and served as the in-app download for offline reading.
 
 ---
 
