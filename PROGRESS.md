@@ -418,7 +418,7 @@ First class of the Contemplation series (March 27, 2026 — Pir Zia Inayat Khan,
 
 **Naming convention:** `Contemplation_P1_CT{N}_{date}_{instructor}_{suffix}` — the `CT#` segment distinguishes Contemplation classes from Concentration's `C#` (e.g. CT1 vs C1). Renamed from the original `C1` pattern on 2026-04-18.
 
-**Phase 1 — Transcript:** `Contemplation_P1_CT1_20260327_PirZia.mp3` (141 MB) transcribed by Gemini 2.5 Pro via the Automator Folder Action.
+**Phase 1 — Transcript:** `Contemplation_P1_CT1_20260327_PirZia.mp3` (141 MB) transcribed by Gemini 2.5 Pro via the auto-transcription pipeline (see below).
 
 **Phase 2 — Full + Summary transcripts:**
 - `Contemplation_P1_CT1_20260327_PirZia_Full.docx` — cleaned transcript (timestamps stripped, topic-break paragraphs)
@@ -503,6 +503,22 @@ To prevent the recurrence of condensed/truncated snippet extraction:
   `Tajalli, Wiratha, Kibriya, Sahibat al-Anfas, Sama, Al-Hayy, Ya Hayyu, Jalali/Jamali/Kamali, Ummahat, Dar al-Aman, Hazrat Inayat Khan, Noor, Baraka, Ishq` and more.
 - **`Scripts/contemplate_splitter.py` created and committed** — dedicated audio splitter for Contemplation classes with custom `[MM:SS:FF]` / `[H:MM:SS:FF]` timestamp parser (different from Concentration's `[HH:MM:SS]`). Supports `--dry`, `--force`, `--gemini` flags. CT1 segment map hard-coded.
 - **Contemplation file naming convention finalised:** `Contemplation_P1_CT{N}_{date}_{instructor}_{suffix}` — `CT#` prefix (not `C#`) distinguishes from Concentration. All CT1 source files renamed on 2026-04-18; `CLASS_PREFIX` in `contemplate_splitter.py`, `Pipeline.md` naming examples, and both JSON manifests updated to match.
+- **Auto-transcription pipeline migrated from Automator Folder Actions → launchd WatchPaths** (2026-04-18):
+  - Root cause: macOS Folder Actions daemon had persistent state corruption (stale bookmark for old folder path; `folderActionsEnabled` repeatedly reverting to `false`). Replaced entirely.
+  - **New architecture**: `launchd` LaunchAgent (`~/Library/LaunchAgents/com.suluk.autotranscriber.plist`) watches `~/Suluk_Auto_Transcribe/` (home root — avoids TCC/Full Disk Access restrictions on Documents folder).
+  - **Trigger script**: `~/Library/Scripts/Suluk/suluk_watch_trigger.sh` — scans for new audio files not in `~/Library/Scripts/Suluk/.auto_transcribe_processed`, marks seen, calls `python3.14 auto_transcriber.py`. Logs to `~/Library/Scripts/Suluk/auto_transcribe.log`.
+  - **Watch folder**: `~/Suluk_Auto_Transcribe/` (not under Documents) — drop MP3/m4a/wav here; transcripts saved alongside.
+  - **ThrottleInterval 5s** — gives large files time to finish copying before trigger fires.
+  - **Tested end-to-end**: 2-second silent test MP3 detected → uploaded to Gemini → transcript produced → SUCCESS logged.
+- **Concentration audit integration — +38 missing snippets** (2026-04-20):
+  - Ran `Handbook-Audit/Master_Audit_Report.md` analysis against all 20 class transcripts vs. `concentration_snippets.json`.
+  - Audit flagged 38 missing snippet blocks across 12 classes (C1, C3×15, C4×4, C5, C6×3, C8×3, C13, C14, C15×2, C16×2, C17×4, C18, C20).
+  - Built `Scripts/integrate_audit_additions.py` — auto-assigns IDs per 3-letter prefix (TPZ/TGN/DAR/PPR/PBR/PVI/PRU/PTE/etc.), maps each to correct Part (I/II/III) and chapter topic_id (1–10), tags with `audit_2026_04_20`.
+  - **Raw snippets**: 403 → 441 (`Classes/Concentration/concentration_snippets.json` + audit folder copy).
+  - **Curated handbook**: 333 → 371 teachings (`handbook_data_concentration.json` canonical + `suluk-handbook/data/handbook_concentration.json` deployed).
+  - **Service worker bumped v4 → v5** to force clients to re-fetch the updated handbook JSON.
+  - **Backups**: `.bak-2026-04-20` files saved at each location.
+  - **Print artifacts NOT updated**: `The_Book_of_Concentration_V2_Print.pdf` / `.docx` / `.html` are hand-curated standalone files — require a separate rebuild pass.
 
 ---
 

@@ -4,8 +4,8 @@
  * Strategy: Cache-first for assets, network-first for data (with cache fallback).
  */
 
-const CACHE_NAME = 'suluk-v4';
-const DATA_CACHE = 'suluk-data-v4';
+const CACHE_NAME = 'suluk-v5';
+const DATA_CACHE = 'suluk-data-v5';
 
 // Core assets to pre-cache on install
 const CORE_ASSETS = [

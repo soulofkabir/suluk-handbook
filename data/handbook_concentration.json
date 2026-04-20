@@ -7,7 +7,7 @@
   "program_class": "concentration",
   "version": "2.0",
   "structure": "Option B — Instructor Sections with Topic Sub-chapters",
-  "total_snippets": 333,
+  "total_snippets": 371,
   "dedup_stats": {
     "before": 333,
     "after": 291,
@@ -32,7 +32,7 @@
           "title": "Prayers & Invocations",
           "subtitle": "The Sacred Words That Open the Way",
           "intro": "Prayer in the Sufi tradition is the soul's conversation with the Divine. Pir Zia taught the foundational prayers of the Inayatiyya — the Invocation, Aman, Saum, Salat, and Salawat — with their physical movements, inner orientations, and progressive layers of meaning across his 10 sessions.",
-          "snippet_count": 10,
+          "snippet_count": 13,
           "snippets": [
             {
               "title": "Saum and Salat — The Two Daily Prayers",
@@ -153,6 +153,42 @@
               "filename": "Quranic_Verse_33_56_C6.md",
               "rel_path": "Deep_Study/Scripture/Quranic_Verse_33_56_C6.md",
               "program_class": "concentration"
+            },
+            {
+              "title": "Amān Prayer — Warning Against Routine",
+              "body": "# Amān Prayer — Warning Against Routine\n\nWhile the Amān prayer is an ongoing commitment, there is a caution against it becoming a mere routine. The essential teaching is to 'bring our heart to it' in whatever we do regularly, ensuring that the practice remains a living, heartfelt engagement rather than a mechanical habit.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-TPZ-041.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-041.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Saum Prayer Movement 1 — Releasing Weight and Opening Channels",
+              "body": "# Saum Prayer Movement 1 — Releasing Weight and Opening Channels\n\nThe first movement of the Saum prayer, with palms facing forward, is designed to release unconscious burdens. It is a conscious act of bowing from a place of strength, rather than being crushed by the world's weight. This gesture allows the weight to come down off the shoulders, opening the chest and allowing air to move freely. This increased circulation of air and blood helps one to 'meet the moment' with renewed presence and vitality.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-PPR-042.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-PPR-042.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Salat Prayer Movements — Lifting Burden, Palms to Chest, Hands Up for Humanity",
+              "body": "# Salat Prayer Movements — Lifting Burden, Palms to Chest, Hands Up for Humanity\n\nFirst, again, the lifting up the hands and the lowering down of the burden that you carry on your back. And then second movement is the palms meet at your chest. And then finally, may the message of God Reach far and wide, the hands go up again, illuminating, making the whole of humanity one single family in the parenthood of God. As you say that the hands are coming together and then you lift them over your head and down as you say, Amen.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C4",
+              "date": "2025-09-13",
+              "source": "Full Transcript",
+              "session": "Concentration 1 – Day 2 – Session 2",
+              "filename": "CONC-PPR-043.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-PPR-043.md",
+              "program_class": "concentration"
             }
           ]
         },
@@ -256,7 +292,7 @@
           "title": "Breath Practices",
           "subtitle": "The Bridge Between Worlds",
           "intro": "Breath is the medium through which the soul touches the body and the body touches the soul. Pir Zia taught the soles-breathing practice, the Nazar Par Kadam principle, and the foundational breath teachings across his sessions.",
-          "snippet_count": 6,
+          "snippet_count": 8,
           "snippets": [
             {
               "title": "Rightful Breathing Practice",
@@ -329,6 +365,30 @@
               "filename": "CONC-PBR-GAP-07-001.md",
               "rel_path": "Gap_Extractions/CONC-PBR-GAP-07-001.md",
               "program_class": "concentration"
+            },
+            {
+              "title": "Nostril Qualities — Lunar and Solar for Sleep and Waking",
+              "body": "# Nostril Qualities — Lunar and Solar for Sleep and Waking\n\nEach nostril possesses distinct energetic qualities: the left nostril is considered 'lunar,' and the right nostril is 'solar.' To promote deep sleep, one can sleep on the right side, which activates the left nostril. Conversely, to prepare for outward daytime consciousness, it is advantageous to shift to sleeping on the left side closer to waking, which activates the right nostril. This conscious adjustment of sleeping posture aids in the natural transition between states of consciousness.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-PBR-020.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-PBR-020.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Invisible Rain Breath — Cellular Communion with Plants",
+              "body": "# Invisible Rain Breath — Cellular Communion with Plants\n\nThe 'Invisible Rain' breath practice deepens awareness of the body as a 'vast congregation of cells,' each 'thirsting for breath.' With each inhalation, this thirst is 'quenched deep down in your fibers,' bringing a 'deliciousness.' The exhalation is a profound act of communion: cells 'disgorge their excess,' which, though superfluous for the human body, is 'thirsted for by the green beings, by the trees of the forest and the algae of the pond.' This reveals an 'intuitive knowledge' that in breathing, we are 'breathing in concert with plant cells,' forming 'one whole movement of breath sweeping through the atmosphere of the earth,' fostering 'joy for the cells and peace and an inkling of the oneness of all being.'",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-PVI-030.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-PVI-030.md",
+              "program_class": "concentration"
             }
           ]
         },
@@ -338,7 +398,7 @@
           "title": "Concentration, Visualization & Meditation",
           "subtitle": "Training the Sovereign Attention",
           "intro": "Concentration — the first stage of the Suluk path — is the art of gathering scattered attention into a single point. Pir Zia's sessions covered color concentration, sensory practices, gemstone visualization, jalali and jamali objects, and the multi-dimensional vision teachings.",
-          "snippet_count": 32,
+          "snippet_count": 34,
           "snippets": [
             {
               "title": "Standing Posture for Prayer - The Alif Position",
@@ -723,6 +783,30 @@
               "filename": "Light_Breath_Orb_Practice_WKD_20251012.md",
               "rel_path": "Practices/Visualization_Techniques/Light_Breath_Orb_Practice_WKD_20251012.md",
               "program_class": "concentration"
+            },
+            {
+              "title": "Conscious Sensation of Smell: Magnolia and Rain-Soaked Soil",
+              "body": "# Conscious Sensation of Smell: Magnolia and Rain-Soaked Soil\n\nFor instance, you're in your home. You observe the quality of the air. It has a certain signature. And then you step out your front door. Now, if the only thought in your mind is, oh, I've got to hurry up and get to where I'm going, you won't notice the quality of the air outside. But if you're practicing conscious sensation, then you will immediately notice outside, ah, the leaves of the magnolia tree are exhaling. A fragrance that it's rained recently and the soil is exuding a rich out breathing and notices these things.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C6",
+              "date": "2025-09-14",
+              "source": "Full Transcript",
+              "session": "Concentration 1 – Day 3 – Session 2",
+              "filename": "CONC-PTE-011.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-PTE-011.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Physical Preparation: Loosening Sinews for Free Flow",
+              "body": "# Physical Preparation: Loosening Sinews for Free Flow\n\nPir Zia opens the session by acknowledging the physical preparation: \"loosening of our sinews, which helps the blood flow free and the breath to flow free.\" This highlights the importance of physical relaxation and unimpeded circulation as a foundational step for settling into deeper concentration.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C8",
+              "date": "2025-10-11",
+              "source": "Concentration_1_Day_4_Session_2_20251011_Transcript.docx",
+              "session": "Concentration 1 – Day 4 – Session 2",
+              "filename": "CONC-PTE-012.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-PTE-012.md",
+              "program_class": "concentration"
             }
           ]
         },
@@ -732,7 +816,7 @@
           "title": "Movements, Rituals & Techniques",
           "subtitle": "The Body as Sacred Instrument",
           "intro": "The Sufi path is embodied. Pir Zia taught the prayer movements, ablutions, daily awareness exercises (like avoiding the word 'I'), and other physical practices that ground the teachings in the body.",
-          "snippet_count": 17,
+          "snippet_count": 19,
           "snippets": [
             {
               "title": "Daily Task - Stepping Through Doors with Right Foot First",
@@ -937,6 +1021,30 @@
               "filename": "Wakeful_Sleep_Definition_C4.md",
               "rel_path": "Teaching/Pir_Zia/Wakeful_Sleep_Definition_C4.md",
               "program_class": "concentration"
+            },
+            {
+              "title": "Ablution — Detailed Nostril Purification",
+              "body": "# Ablution — Detailed Nostril Purification\n\nDuring the ablution practice, after rinsing the mouth, the nostrils are purified with a specific technique: 'breathe it in take it all the way into your lungs, but just sniff it into your nostrils and then blow it out three times.' This precise instruction emphasizes a deep cleansing action for the nasal passages, contributing to the overall stimulation and purification of the body's extremities.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-PRU-013.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-PRU-013.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Water Drinking — Source and Body's Essence",
+              "body": "# Water Drinking — Source and Body's Essence\n\nDrinking a glass of water first thing in the morning is a recommended practice, to be done with full awareness of its 'livingness.' This involves recognizing water as 'the purest drink flowing down from the icy peaks' and acknowledging that it is 'the substance of which our own bodies are most essentially made.' Drinking water with this deep awareness fosters a sense of thankfulness and connection to the fundamental elements of life.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-PRU-014.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-PRU-014.md",
+              "program_class": "concentration"
             }
           ]
         },
@@ -946,7 +1054,7 @@
           "title": "Teachings & Wisdom",
           "subtitle": "The Living Transmission",
           "intro": "The living transmission of the Inayati lineage. Pir Zia brought the teachings of his grandfather Hazrat Inayat Khan alive through personal commentary, deep scholarly knowledge, and luminous presence across all 10 sessions.",
-          "snippet_count": 48,
+          "snippet_count": 63,
           "snippets": [
             {
               "title": "Amān — The Opening Prayer of Each Suluk Day",
@@ -1523,6 +1631,186 @@
               "filename": "CONC-PEG-GAP-07-001.md",
               "rel_path": "Gap_Extractions/CONC-PEG-GAP-07-001.md",
               "program_class": "concentration"
+            },
+            {
+              "title": "Navigating the Internet — Meeting Unawakened Impulses",
+              "body": "# Navigating the Internet — Meeting Unawakened Impulses\n\nThe internet, as a 'mirror of the human condition,' is a 'welter of impressions' filled with 'troubled communications and thought forms.' While some may wish to abstain, it's impossible to avoid these 'unawakened impulses' entirely, as they exist in the human condition and will be encountered in various forms (online, in news, on the street). The teaching is not to flee or immerse oneself in these impulses, but to 'recognize it and navigate the world in a way that we respond meaningfully and transformatively.'",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-TPZ-042.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-042.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Device Origin — Spiritual Quality of Human Ingenuity",
+              "body": "# Device Origin — Spiritual Quality of Human Ingenuity\n\nOur electronic devices, such as computers, are not merely 'things' but possess a spiritual quality. They are composed of 'metallic ores, mined from veins in the earth,' and are the 'product of human ingenuity,' stemming from 'generations of study and discovery and collegiality.' This perspective invites us to recognize the profound interconnectedness and spiritual essence embedded within the material objects of our daily lives, treating them as extensions of ourselves and mirrors of our consciousness.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-TPZ-043.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-043.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Iron Rule 2 — Psychological Motivation for Speaking Against Others",
+              "body": "# Iron Rule 2 — Psychological Motivation for Speaking Against Others\n\nThe second Iron Rule, 'My conscientious self, speak not against others in their absence,' delves into the psychological motivations behind such behavior. It highlights that speaking against others often stems from a desire for 'a bit of fun,' humor, or a 'little boost that one's own ego gets.' When feeling 'insecure and unsure of oneself,' knocking someone down a notch can provide a 'temporary thrill.' This analysis reveals the subtle workings of the ego and its impact on interpersonal communication.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-TPZ-044.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-044.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Iron Rule 2 — Spiritual Presence as Criterion for Speech",
+              "body": "# Iron Rule 2 — Spiritual Presence as Criterion for Speech\n\nA profound criterion for upholding Iron Rule 2 ('Speak not against others in their absence') is to consider how one would speak if 'spiritually present' to that person. This means being 'present to their heart,' 'aware of the whole cycle of their life from birth to death,' and having 'some inkling of the sorrows they carry.' If one could 'see all of that and be present to them,' the manner of speech would naturally transform, moving beyond judgment or criticism.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-TPZ-045.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-045.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Iron Rule 2 — Naturalness in Considerate Attention",
+              "body": "# Iron Rule 2 — Naturalness in Considerate Attention\n\nThe contemplation of the Iron Rules, particularly 'Speak not against others in their absence,' is not meant to induce artificiality or rigidity. The challenge lies in finding 'naturalness in considerate attention,' recognizing that these two qualities are not opposites. The invitation is to 'speak with friends, be merry, speak of life and all of life's ups and downs and joys and sorrows and our fellow travelers,' but always 'with a wakeful heart and a recognition of the divinity in every human being.'",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-TPZ-046.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-046.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Sleep and Energy Flow to Transcendental Spheres",
+              "body": "# Sleep and Energy Flow to Transcendental Spheres\n\nSleep is a process of rejuvenation where our energy, which flows outward throughout the day, 'turns within' at night, returning to 'transcendental spheres.' This is a gradual process, and it is beneficial to encourage this gradualness and make it conscious, rather than waking suddenly from deep sleep. This conscious transition supports wholeness by bringing the inner and outer worlds into communication.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-TPZ-047.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-047.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Breath as Water — Flowing Characteristics",
+              "body": "# Breath as Water — Flowing Characteristics\n\nBreath shares many characteristics with water. It 'flows and moves in tides, in waves and ripples, surges, it churns.' This metaphor highlights the dynamic, fluid, and rhythmic nature of breath, inviting a deeper, more elemental awareness of its movement within and around us.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-TPZ-048.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-048.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Divine Immanence: All Is Made by God and of God",
+              "body": "# Divine Immanence: All Is Made by God and of God\n\nThis teaching emphasizes the fundamental Sufi principle of divine immanence and the unity of all creation.\n\n> \"The upright line is the first line, And all forms and figures are nothing but the change of direction of that line. **And as all is made by God and of God.**\"\n\nFollowing the explanation of the Alif (the upright line) as the origin of all forms, this statement asserts that everything in existence is not only created *by* God but is also *of* God's very substance. It highlights a radical non-duality where the divine is not separate from creation but is its inherent nature and origin.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C1",
+              "date": "2025-09-12",
+              "source": "Concentration_P1_C1_20250912_PirZia_Transcript.docx",
+              "session": "Suluk Academy 2025 Concentration P1 Class 1 / September 12, 2025 / Pir Zia Inayat-Khan",
+              "filename": "CONC-TPZ-049.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-049.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Concentration as Observation of Attention Itself — Beyond Duality",
+              "body": "# Concentration as Observation of Attention Itself — Beyond Duality\n\nConcentration is practiced by observation. Observation of what it is we choose to give our attention to, but also observation of the attention itself. Until the attention becomes so aligned, so translucent that There is no duality in it. We're just aware of what we've chosen to be aware of.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C4",
+              "date": "2025-09-13",
+              "source": "Full Transcript",
+              "session": "Concentration 1 – Day 2 – Session 2",
+              "filename": "CONC-TPZ-050.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-050.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Cultivating Interest and Indifference in Concentration",
+              "body": "# Cultivating Interest and Indifference in Concentration\n\nWhat we have to cultivate is a it's an interesting state of being. It's a combination of interest and indifference. We're calling in our interest, we're concentrating it, we're making it palpable. And in so doing, we're withdrawing our preoccupation from all else than the immediate. And it's not because Nothing else matters in this world. There are many things that we will need to confront. It's not any kind of escapism. What we're doing has everything to do, once again, with this very natural movement of contraction and expansion. Drawing the attention in, radiating it out. All too often our thought is dissipated in random expenditures. When we learn to draw it in by the very same means, we learn to. directed without strife.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C4",
+              "date": "2025-09-13",
+              "source": "Full Transcript",
+              "session": "Concentration 1 – Day 2 – Session 2",
+              "filename": "CONC-TPZ-051.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-051.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Learning from Mistakes: Redoubling Intention, Not Self-Recrimination",
+              "body": "# Learning from Mistakes: Redoubling Intention, Not Self-Recrimination\n\nWell, we're working on attention. And whatever mistakes we make along the way, it's not a cause for self-recrimination, but it is something to reflect on and an opportunity to redouble our intention. You might say, all right, well, I had to task and maybe it went really well or maybe it didn't go well, but this is the work I've undertaken and I'm going to keep going and to strengthen that muscle.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C4",
+              "date": "2025-09-13",
+              "source": "Full Transcript",
+              "session": "Concentration 1 – Day 2 – Session 2",
+              "filename": "CONC-TPZ-052.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-052.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Images in Malakut: Perfectly Real on Their Own Plane",
+              "body": "# Images in Malakut: Perfectly Real on Their Own Plane\n\nIn a memory, you might confront something that no longer physically exists. It did at that time, but now it exists only as an image. And still it exists because an image is something perfectly real on its own plane of being.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C6",
+              "date": "2025-09-14",
+              "source": "Full Transcript",
+              "session": "Concentration 1 – Day 3 – Session 2",
+              "filename": "CONC-TPZ-053.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-053.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Khatum: Detailed Gratitude to Visible and Invisible Support",
+              "body": "# Khatum: Detailed Gratitude to Visible and Invisible Support\n\nVery palpably, it's the staff of Suluk and it’s Isa Sophia and Leon that it’s translators, Sila and Nasima and its mentors, Zara and Danya and Nirtana and Akbar and Farzana and Sharifa. We're going to be, as we go along, we're more and more discovering the way in which all the parts work together, how important the mentor meetings are, how connected the pod conversations can be, how It's all a whole. And so many are pitching in and each one here, Marie, has led the movement and each one of you bringing your whole self, family members who help us to be together. All of these, we can't name, we can't name the trees that are breathing their oxygen into us or angels, guardians and guides. It's more than we can fathom, but we do feel this gratitude and ultimately it's gratitude to the one beyond all names and forms.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C6",
+              "date": "2025-09-14",
+              "source": "Full Transcript",
+              "session": "Concentration 1 – Day 3 – Session 2",
+              "filename": "CONC-TPZ-054.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-054.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Murshid: Inconsistent Concentration Fails in 1000 Years",
+              "body": "# Murshid: Inconsistent Concentration Fails in 1000 Years\n\nMurshid delivers a stark warning about the importance of consistent, single-minded concentration: \"A person may practice concentration for a certain time in the day. And then, if throughout the day, he keeps on changing his mind from one thing to another, he will not be able to accomplish concentration in 1000 years.\" This emphasizes that true mastery comes from sustained application, not merely intermittent practice.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C8",
+              "date": "2025-10-11",
+              "source": "Concentration_1_Day_4_Session_2_20251011_Transcript.docx",
+              "session": "Concentration 1 – Day 4 – Session 2",
+              "filename": "CONC-TPZ-055.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-055.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Murshid: Single-Mindedness Improves Manners",
+              "body": "# Murshid: Single-Mindedness Improves Manners\n\nMurshid connects the practice of concentration to ethical and social conduct: \"Single-mindedness is the secret of concentration. Thereby, one improves one's manners.\" This implies that a focused mind naturally leads to more considerate and refined interactions, beyond merely avoiding 'ill manners' (which is also mentioned).",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C8",
+              "date": "2025-10-11",
+              "source": "Concentration_1_Day_4_Session_2_20251011_Transcript.docx",
+              "session": "Concentration 1 – Day 4 – Session 2",
+              "filename": "CONC-TPZ-056.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TPZ-056.md",
+              "program_class": "concentration"
             }
           ]
         },
@@ -1744,7 +2032,7 @@
           "title": "Deep Study & Arabic Terms",
           "subtitle": "The Language of the Path",
           "intro": "The Sufi path uses a rich vocabulary drawn from Arabic, Persian, and other sacred languages. Arabic terms, glossary entries, and deeper learnings from Pir Zia's sessions.",
-          "snippet_count": 9,
+          "snippet_count": 11,
           "snippets": [
             {
               "title": "Arabic and Sufi Terms - Concentration Class 1",
@@ -1853,11 +2141,35 @@
               "filename": "CONC-DMU-GAP-07-001.md",
               "rel_path": "Gap_Extractions/CONC-DMU-GAP-07-001.md",
               "program_class": "concentration"
+            },
+            {
+              "title": "Fazal — Atmosphere of Benediction and Wholesome Vibrations",
+              "body": "# Fazal — Atmosphere of Benediction and Wholesome Vibrations\n\nThe word 'Fazal' is a beautiful and wonderful word that creates an atmosphere of benediction. It generates positive, generative, and wholesome vibrations. It is a universal practice of blessing, used more commonly than Amān for ordinary situations.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-DAR-028.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-DAR-028.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Subtle Anatomy — Qalb, Ruh, Khafi, Nafs in Saum Prayer",
+              "body": "# Subtle Anatomy — Qalb, Ruh, Khafi, Nafs in Saum Prayer\n\nDuring the Saum prayer, specific movements correspond to aspects of subtle anatomy. The phrase 'Open our hearts toward thy beauty' directly refers to the **Qalb** (heart center). The prayer also alludes to connections between the **Qalb** and the **Ruh** (spirit), and between the **Khafi** (hidden mystery) and the **Nafs** (self/ego). These references introduce the concept of subtle energetic centers and their interplay within the spiritual being, which will be explored further over time.",
+              "instructor": "Pir Zia Inayat Khan",
+              "class_id": "C3",
+              "date": "2025-09-13",
+              "source": "Concentration_1_Day_2_Session_1_Transcript",
+              "session": "Concentration 1 – Day 2 – Session 1",
+              "filename": "CONC-DAR-029.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-DAR-029.md",
+              "program_class": "concentration"
             }
           ]
         }
       },
-      "total_snippets": 134
+      "total_snippets": 171
     },
     "II": {
       "part_number": "II",
@@ -2100,7 +2412,7 @@
           "title": "Breath Practices",
           "subtitle": "The Bridge Between Worlds",
           "intro": "Urs taught the Five Elemental Purification Breaths — Earth, Water, Fire, Air, and Ether — each with specific directions, colors, and qualities. His approach to breath is deeply embodied and experiential.",
-          "snippet_count": 8,
+          "snippet_count": 10,
           "snippets": [
             {
               "title": "Five Element Breathing Practice - Foundation",
@@ -2196,6 +2508,30 @@
               "session": "C18",
               "filename": "Star_Crescent_Heart_Full_C18.md",
               "rel_path": "Practices/Visualization/Star_Crescent_Heart_Full_C18.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Elemental Breath Practice: Variations in Posture and Gaze",
+              "body": "# Elemental Breath Practice: Variations in Posture and Gaze\n\nUrs provides practical guidance on adapting the elemental breath practice for daily life, including variations in posture and gaze:\n\n\"And while for your daily practice, you can stand for the practice, we will do it seated. And on your daily practice, when you've done it for a while with your eyes closed, you can also gradually open your eyes for the practice, which makes you more aware of your surrounding. But for now we'll do the practice with our eyes closed.\"\n\nThis instruction allows for flexibility and deeper integration of the practice into different contexts, moving from inward focus (eyes closed, seated) to outward awareness (eyes open, standing) over time.",
+              "instructor": "Urs Qutbuddin Schellenberg",
+              "class_id": "C17",
+              "date": "2025-12-13",
+              "source": "Concentration_P2_C17_20251213_Urs_Transcript.docx",
+              "session": "December 13, 2025 / Urs Qutbuddin / Mount Qaf Class",
+              "filename": "CONC-PBR-021.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-PBR-021.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Earth Breath Nuances: Earth as Home and Constant Carrier",
+              "body": "# Earth Breath Nuances: Earth as Home and Constant Carrier\n\nUrs adds a layer of intimacy and gratitude to the Earth elemental breath practice:\n\n\"Always start with the body, the feet, the tailbone, the connection to the earth, one of our homes... And on your out and on your in-breath, with this feeling of gratitude for this element that's always there, it's always carrying us.\"\n\nThis emphasizes Earth not just as a physical element but as a nurturing presence, a fundamental 'home' that constantly supports and carries us, inviting a deep sense of thankfulness during the practice.",
+              "instructor": "Urs Qutbuddin Schellenberg",
+              "class_id": "C17",
+              "date": "2025-12-13",
+              "source": "Concentration_P2_C17_20251213_Urs_Transcript.docx",
+              "session": "December 13, 2025 / Urs Qutbuddin / Mount Qaf Class",
+              "filename": "CONC-PBR-022.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-PBR-022.md",
               "program_class": "concentration"
             }
           ]
@@ -2656,7 +2992,7 @@
           "title": "Teachings & Wisdom",
           "subtitle": "The Living Transmission",
           "intro": "Urs's teachings blend the wisdom of the Inayati lineage with his own 22 years of experience on the path. His stories of personal experience (like the fire element visiting him at breakfast) make the teachings immediately alive and relatable.",
-          "snippet_count": 54,
+          "snippet_count": 64,
           "snippets": [
             {
               "title": "Earth Element Teaching - Outer and Inner Dimensions",
@@ -3305,6 +3641,126 @@
               "filename": "CONC-TCO-GAP-18-029.md",
               "rel_path": "Gap_Extractions/CONC-TCO-GAP-18-029.md",
               "program_class": "concentration"
+            },
+            {
+              "title": "Collective Space Creation — Power of Shared Presence",
+              "body": "# Collective Space Creation — Power of Shared Presence\n\nIn his opening remarks, Urs acknowledges the co-creative nature of a spiritual gathering:\n\n\"A space like this is not created by a single being. It's created by all the beings in it. So thank you.\"\n\nThis teaching emphasizes that the atmosphere and efficacy of a spiritual space are not solely dependent on a host or teacher, but are a collective emanation, shaped by the presence and contribution of every individual present. It highlights the power and responsibility of shared presence in fostering a conducive environment for spiritual work.",
+              "instructor": "Urs Qutbuddin Schellenberg",
+              "class_id": "C15",
+              "date": "2025-11-23",
+              "source": "Concentration_P2_C15_20251123_Urs_Transcript",
+              "session": "Concentration 1 (Part 2), Day 3 Session 1, November 23 2025, Urs Qutbuddin",
+              "filename": "CONC-TGN-044.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TGN-044.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Elemental Subtlety Hierarchy — Fire as Most Subtle",
+              "body": "# Elemental Subtlety Hierarchy — Fire as Most Subtle\n\nIntroducing the Fire element, Urs highlights its position in the hierarchy of subtlety among the elements:\n\n\"So we have come to the element fire, most mysterious element. So much power and so many sides to it. And while water is more subtle than earth, fire is even more subtle than water.\"\n\nThis teaching establishes a progressive understanding of the elements, moving from the dense (earth) to the more fluid (water) and then to the even more ethereal and transformative (fire), setting the stage for further exploration of the subtle realms.",
+              "instructor": "Urs Qutbuddin Schellenberg",
+              "class_id": "C15",
+              "date": "2025-11-23",
+              "source": "Concentration_P2_C15_20251123_Urs_Transcript",
+              "session": "Concentration 1 (Part 2), Day 3 Session 1, November 23 2025, Urs Qutbuddin",
+              "filename": "CONC-TGN-045.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TGN-045.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Foundation of Practice: Holding Image, Feeling, Atmosphere",
+              "body": "# Foundation of Practice: Holding Image, Feeling, Atmosphere\n\nUrs introduces the progression from concentration to contemplation, emphasizing the foundational skills required for all spiritual practices:\n\n\"We're exploring some more aspects of concentration and we're slowly, as you will see, moving more and more towards contemplation already. But the constant practice of holding an image, holding a feeling, holding an atmosphere is the basis for all of these practices.\"\n\n## Teaching Point\nThis gem highlights that the ability to consistently hold an inner image, a specific feeling, or a particular atmosphere is not just a technique for concentration, but the fundamental skill that underpins all deeper spiritual practices, including contemplation and beyond. It points to the continuity of inner work across different stages of the path.",
+              "instructor": "Urs Qutbuddin Schellenberg",
+              "class_id": "C16",
+              "date": "2025-11-23",
+              "source": "Concentration_P2_C16_20251123_Urs_Transcript",
+              "session": "Concentration 1 Part 2, Day 3 Session 2, November 23 2025, Urs Qutbuddin, Mount Qaf Class",
+              "filename": "CONC-TGN-046.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TGN-046.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Concentration Dynamic: From Willful Focus to Becoming the Image",
+              "body": "# Concentration Dynamic: From Willful Focus to Becoming the Image\n\nUrs describes the evolving nature of concentration, moving from initial effort to profound immersion:\n\n\"There's a part of a willful focus when you first create the image, and more and more we let go and become this image.\"\n\n## Teaching Point\nThis teaching articulates a core dynamic of concentration practice: it begins with a conscious, 'willful focus' to establish an image or object of attention. However, the practice deepens as one learns to 'let go' of that initial effort, allowing for a more complete immersion where the practitioner 'becomes' the object of concentration. This progression signifies a shift from active mental control to a state of receptive identification and transformation, as exemplified by the story of Baba Farid and the cow.",
+              "instructor": "Urs Qutbuddin Schellenberg",
+              "class_id": "C16",
+              "date": "2025-11-23",
+              "source": "Concentration_P2_C16_20251123_Urs_Transcript",
+              "session": "Concentration 1 Part 2, Day 3 Session 2, November 23 2025, Urs Qutbuddin, Mount Qaf Class",
+              "filename": "CONC-TGN-047.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TGN-047.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Water Element — The Blessing of Daily Contact",
+              "body": "# Water Element — The Blessing of Daily Contact\n\nUrs opened the session by drawing attention to the most common daily interactions with water, highlighting a frequent lack of awareness regarding its inherent blessing:\n\n\"Maybe one of the first things you did this morning was drink a glass of water. Maybe you've already taken a bath or a shower or you did your ablutions. And you've been in contact with this marvelous body of water that is so often around us and so seldomly are we aware of the blessing it gives us when we are washed by it in the morning.\"\n\nThis serves as a foundational teaching to rekindle conscious connection with the ubiquitous and life-giving water element.",
+              "instructor": "Urs Qutbuddin Schellenberg",
+              "class_id": "C13",
+              "date": "2025-11-22",
+              "source": "Concentration_P2_C13_20251122_Urs_Transcript.docx",
+              "session": "Concentration 1 Part 2, Day 2 Session 1, November 22 2025, Urs Qutbuddin, Mount Qaf Class",
+              "filename": "CONC-TGN-048.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TGN-048.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Reciprocal Support: Lending Support to Others",
+              "body": "# Reciprocal Support: Lending Support to Others\n\nThis teaching emphasizes the reciprocal nature of support within the Suluk community:\n\n\"And on the other hand, lend your support when it feels appropriate and when you feel you can show support to others.\"\n\nThis complements the teaching on receiving support (CONC-TGN-042) by highlighting the active role of individuals in contributing to the well-being of their fellow travelers.",
+              "instructor": "Urs Qutbuddin Schellenberg",
+              "class_id": "C17",
+              "date": "2025-12-13",
+              "source": "Concentration_P2_C17_20251213_Urs_Transcript.docx",
+              "session": "December 13, 2025 / Urs Qutbuddin / Mount Qaf Class",
+              "filename": "CONC-TGN-049.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TGN-049.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Core Purpose of Elemental Practice: Reconnection, Purification, Kindling Awareness",
+              "body": "# Core Purpose of Elemental Practice: Reconnection, Purification, Kindling Awareness\n\nUrs provides a comprehensive summary of the purpose and benefits of engaging with the elemental practices:\n\n\"The reconnection, the revivifying with and of the elements. The purification through the elements. The kindling of the awareness of these elements within your body, your spirit, and your soul.\"\n\nThis gem encapsulates the multi-layered aims of the elemental work, extending beyond mere cleansing to include revivification and the kindling of inner awareness across all dimensions of being.",
+              "instructor": "Urs Qutbuddin Schellenberg",
+              "class_id": "C17",
+              "date": "2025-12-13",
+              "source": "Concentration_P2_C17_20251213_Urs_Transcript.docx",
+              "session": "December 13, 2025 / Urs Qutbuddin / Mount Qaf Class",
+              "filename": "CONC-TGN-050.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TGN-050.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Elemental Practice: Nothing to Achieve, No Need to Do All Layers at Once",
+              "body": "# Elemental Practice: Nothing to Achieve, No Need to Do All Layers at Once\n\nUrs offers guidance on approaching the multi-layered elemental practices, emphasizing ease and individual pace:\n\n> \"The work with the elements has so many layers. And I pointed out before that sometimes these many layers could also be disorienting. So just explore these layers. There's nothing you need to achieve. It's not better if you do every aspect at the same time.\"\n\nThis teaching encourages students not to feel overwhelmed by the complexity of the elemental work, but to explore them playfully and at their own rhythm, without pressure to master everything simultaneously. The focus is on deep engagement with what resonates, rather than exhaustive coverage or a sense of obligation to 'achieve' all aspects.",
+              "instructor": "Urs Qutbuddin Schellenberg",
+              "class_id": "C12",
+              "date": "2025-11-21",
+              "source": "Concentration_P2_C12_20251121_Urs_Transcript.docx",
+              "session": "November 21, 2025 · Urs Qutbuddin · Mount Qaf Class · Section II, Session 2 of 10",
+              "filename": "CONC-TGN-051.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TGN-051.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "The Body as the Beginning of Subtle Experiences",
+              "body": "# The Body as the Beginning of Subtle Experiences\n\nEven though during these sessions we might touch on very subtle experiences, it all begins with the body.",
+              "instructor": "Urs Qutbuddin Schellenberg",
+              "class_id": "C18",
+              "date": "2025-12-13",
+              "source": "Concentration_P2_C18_20251213_Urs_Transcript.docx",
+              "session": "December Weekend 2025 · Day 1, Session 2 · Urs Qutbuddin · Mount Qaf Class",
+              "filename": "CONC-TGN-052.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TGN-052.md",
+              "program_class": "concentration"
+            },
+            {
+              "title": "Urs's Farewell — Closing Remarks for Concentration 1",
+              "body": "# Urs's Farewell — Closing Remarks for Concentration 1\n\nDear friends, we are slowly coming to an end of these sessions, the contemplation tool. And I'm most blessed to have spent this time with you. And it saddens me that my presence will be less, or I'd rather say your presence will be less. But I'm very happy for every time that I visit you on the path. I'll be with you in spirit. And I just makes me very happy to be with all of you in this. And God willing, our path will meet in the physical world, and that will be most joyous for me.",
+              "instructor": "Urs Qutbuddin Schellenberg",
+              "class_id": "C20",
+              "date": "2025-12-14",
+              "source": "Concentration_P2_C20_20251214_Urs_Transcript.docx",
+              "session": "Weekend C20/December 14, 2025/Urs Qutbuddin",
+              "filename": "CONC-TGN-053.md",
+              "rel_path": "Audit_Additions_2026-04-20/CONC-TGN-053.md",
+              "program_class": "concentration"
             }
           ]
         },
@@ -3807,7 +4263,7 @@
           ]
         }
       },
-      "total_snippets": 122
+      "total_snippets": 165
     },
     "III": {
       "part_number": "III",
