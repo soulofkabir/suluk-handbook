@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "total_clips": 234,
+  "total_clips": 365,
   "note": "Audio hosted on Cloudflare R2.",
   "classes": {
     "C1": {
@@ -2154,99 +2154,126 @@
     },
     "CT1": {
       "part": "I",
-      "instructor": "Pir Zia Inayat Khan",
+      "instructor": "Pir Zia Inayat-Khan",
       "date": "2026-03-27",
       "source": "Contemplation_P1_CT1_20260327_PirZia.mp3",
       "clips": [
         {
           "segment": 1,
-          "title": "Opening Invocation",
-          "filename": "Contemplation_Audio_CT1_01_opening_invocation.mp3",
+          "title": "Creating the Realm of Sanctuary (Dar al-Aman)",
+          "filename": "Contemplation_Audio_CT1_01_sanctuary.mp3",
           "category": "prayer",
-          "start_time": "00:00:05",
-          "end_time": "00:00:34",
-          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_01_opening_invocation.mp3"
+          "start_time": "00:05",
+          "end_time": "00:34",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_01_sanctuary.mp3"
         },
         {
           "segment": 2,
-          "title": "Welcome & Aman — Realm of Sanctuary",
-          "filename": "Contemplation_Audio_CT1_02_welcome_and_aman_sanctuary.mp3",
-          "category": "teaching",
-          "start_time": "00:00:34",
-          "end_time": "00:06:27",
-          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_02_welcome_and_aman_sanctuary.mp3"
+          "title": "From Earth to Water: Concentration to Contemplation",
+          "filename": "Contemplation_Audio_CT1_02_earth_to_water.mp3",
+          "category": "breath",
+          "start_time": "00:34",
+          "end_time": "06:27",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_02_earth_to_water.mp3"
         },
         {
           "segment": 3,
-          "title": "Mujahada to Muraqabah — Four Elements",
-          "filename": "Contemplation_Audio_CT1_03_mujahada_to_muraqabah_four_elements.mp3",
-          "category": "teaching",
-          "start_time": "00:06:27",
-          "end_time": "00:14:36",
-          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_03_mujahada_to_muraqabah_four_elements.mp3"
+          "title": "The Architecture of Meaning in Contemplation",
+          "filename": "Contemplation_Audio_CT1_03_architecture_of_meaning.mp3",
+          "category": "breath",
+          "start_time": "06:27",
+          "end_time": "14:36",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_03_architecture_of_meaning.mp3"
         },
         {
           "segment": 4,
-          "title": "The Divine Names & Ummahat",
-          "filename": "Contemplation_Audio_CT1_04_divine_names_and_ummahat.mp3",
-          "category": "teaching",
-          "start_time": "00:14:36",
-          "end_time": "00:21:30",
-          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_04_divine_names_and_ummahat.mp3"
+          "title": "The Living Anatomy of Divine Names",
+          "filename": "Contemplation_Audio_CT1_04_divine_names.mp3",
+          "category": "concentration",
+          "start_time": "14:36",
+          "end_time": "21:30",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_04_divine_names.mp3"
         },
         {
           "segment": 5,
-          "title": "Wazifa — Murshid's Teaching",
-          "filename": "Contemplation_Audio_CT1_05_wazifa_murshid_teaching.mp3",
-          "category": "reading",
-          "start_time": "00:21:30",
-          "end_time": "00:33:17",
-          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_05_wazifa_murshid_teaching.mp3"
+          "title": "The Seven Mother Names (Ummahat)",
+          "filename": "Contemplation_Audio_CT1_05_mother_names.mp3",
+          "category": "concentration",
+          "start_time": "21:30",
+          "end_time": "33:17",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_05_mother_names.mp3"
         },
         {
           "segment": 6,
-          "title": "Al-Hayy — The Living",
-          "filename": "Contemplation_Audio_CT1_06_al_hayy_the_living.mp3",
-          "category": "teaching",
-          "start_time": "00:33:17",
-          "end_time": "00:41:56",
-          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_06_al_hayy_the_living.mp3"
+          "title": "Entering the Field of a Name: The Practice of Wazifa",
+          "filename": "Contemplation_Audio_CT1_06_wazifa.mp3",
+          "category": "contemplation",
+          "start_time": "33:17",
+          "end_time": "41:56",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_06_wazifa.mp3"
         },
         {
           "segment": 7,
-          "title": "Guided Zikr — Ya Hayyu",
-          "filename": "Contemplation_Audio_CT1_07_guided_zikr_ya_hayyu.mp3",
-          "category": "practice",
-          "start_time": "00:41:56",
-          "end_time": "00:51:56",
-          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_07_guided_zikr_ya_hayyu.mp3"
+          "title": "The Sacred Conditions for Wazifa",
+          "filename": "Contemplation_Audio_CT1_07_wazifa_conditions.mp3",
+          "category": "contemplation",
+          "start_time": "41:56",
+          "end_time": "51:56",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_07_wazifa_conditions.mp3"
         },
         {
           "segment": 8,
-          "title": "Chivalric Rule — Responsibility Sacred",
-          "filename": "Contemplation_Audio_CT1_08_chivalric_rule_responsibility_sacred.mp3",
-          "category": "teaching",
-          "start_time": "00:51:56",
-          "end_time": "01:00:14",
-          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_08_chivalric_rule_responsibility_sacred.mp3"
+          "title": "Al-Hayy: Contemplating The Living",
+          "filename": "Contemplation_Audio_CT1_08_al_hayy.mp3",
+          "category": "fikr",
+          "start_time": "51:56",
+          "end_time": "60:14",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_08_al_hayy.mp3"
         },
         {
           "segment": 9,
-          "title": "Story of Yudhisthira and the Dog",
-          "filename": "Contemplation_Audio_CT1_09_story_yudhisthira_and_the_dog.mp3",
-          "category": "story",
-          "start_time": "01:00:14",
-          "end_time": "01:13:26",
-          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_09_story_yudhisthira_and_the_dog.mp3"
+          "title": "Considering Your Responsibility Sacred",
+          "filename": "Contemplation_Audio_CT1_09_sacred_responsibility.mp3",
+          "category": "zikr",
+          "start_time": "60:14",
+          "end_time": "73:26",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_09_sacred_responsibility.mp3"
         },
         {
           "segment": 10,
-          "title": "Closing Contemplation — Holy of Holies",
-          "filename": "Contemplation_Audio_CT1_10_closing_contemplation_holy_of_holies.mp3",
-          "category": "closing",
-          "start_time": "01:13:26",
-          "end_time": "01:16:30",
-          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_10_closing_contemplation_holy_of_holies.mp3"
+          "title": "The Test of Dharma: The Story of Yudhisthira and the Dog",
+          "filename": "Contemplation_Audio_CT1_10_yudhisthira_dharma.mp3",
+          "category": "zikr",
+          "start_time": "59:39",
+          "end_time": "65:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_10_yudhisthira_dharma.mp3"
+        },
+        {
+          "segment": 11,
+          "title": "Meditating on a Stone: The Example of Pir Dahan",
+          "filename": "Contemplation_Audio_CT1_11_pir_dahan_stone.mp3",
+          "category": "wazifa",
+          "start_time": "10:22",
+          "end_time": "10:54",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_11_pir_dahan_stone.mp3"
+        },
+        {
+          "segment": 12,
+          "title": "The Magnetism of Wazifa: Angels and Jinn",
+          "filename": "Contemplation_Audio_CT1_12_wazifa_angels_jinn.mp3",
+          "category": "movement",
+          "start_time": "30:44",
+          "end_time": "31:37",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_12_wazifa_angels_jinn.mp3"
+        },
+        {
+          "segment": 13,
+          "title": "The Zikr of Ya Hayyu",
+          "filename": "Contemplation_Audio_CT1_13_ya_hayyu_zikr.mp3",
+          "category": "visualization",
+          "start_time": "42:13",
+          "end_time": "50:24",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT1/Contemplation_Audio_CT1_13_ya_hayyu_zikr.mp3"
         }
       ]
     },
@@ -2276,6 +2303,1230 @@
           "filename": "ya_sabur_ya_wahhab.m4a",
           "category": "prayer",
           "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/prayers/ya_sabur_ya_wahhab.m4a"
+        }
+      ]
+    },
+    "CT2": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat-Khan",
+      "date": "2026-03-27",
+      "source": "Contemplation_P1_CT2_20260327_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "The Practice of Ittisal: Conjunction with Universal Being",
+          "filename": "Contemplation_Audio_CT2_01_ittisal_conjunction.mp3",
+          "category": "prayer",
+          "start_time": "00:00",
+          "end_time": "05:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_01_ittisal_conjunction.mp3"
+        },
+        {
+          "segment": 2,
+          "title": "Energizing Ittisal with the Intonation of 'Ha'",
+          "filename": "Contemplation_Audio_CT2_02_intonation_of_ha.mp3",
+          "category": "prayer",
+          "start_time": "05:00",
+          "end_time": "10:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_02_intonation_of_ha.mp3"
+        },
+        {
+          "segment": 3,
+          "title": "Contemplation: When the Object Holds the Mind",
+          "filename": "Contemplation_Audio_CT2_03_object_holds_mind.mp3",
+          "category": "breath",
+          "start_time": "10:00",
+          "end_time": "15:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_03_object_holds_mind.mp3"
+        },
+        {
+          "segment": 4,
+          "title": "The Shift from Objects to Living Ideas in Contemplation",
+          "filename": "Contemplation_Audio_CT2_04_contemplating_ideas.mp3",
+          "category": "breath",
+          "start_time": "15:00",
+          "end_time": "20:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_04_contemplating_ideas.mp3"
+        },
+        {
+          "segment": 5,
+          "title": "Elevating Consciousness from the Dense World",
+          "filename": "Contemplation_Audio_CT2_05_elevating_consciousness.mp3",
+          "category": "breath",
+          "start_time": "20:00",
+          "end_time": "25:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_05_elevating_consciousness.mp3"
+        },
+        {
+          "segment": 6,
+          "title": "The Seven Lata'if: A Spectrum from the Ephemeral to the Eternal",
+          "filename": "Contemplation_Audio_CT2_06_seven_lataif.mp3",
+          "category": "concentration",
+          "start_time": "25:00",
+          "end_time": "30:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_06_seven_lataif.mp3"
+        },
+        {
+          "segment": 7,
+          "title": "The Nafs: The Providential Role of the Personal Self",
+          "filename": "Contemplation_Audio_CT2_07_role_of_the_nafs.mp3",
+          "category": "contemplation",
+          "start_time": "30:00",
+          "end_time": "35:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_07_role_of_the_nafs.mp3"
+        },
+        {
+          "segment": 8,
+          "title": "The Evolution of the Self: From Ammara to Mutma'inna",
+          "filename": "Contemplation_Audio_CT2_08_stages_of_the_nafs.mp3",
+          "category": "contemplation",
+          "start_time": "35:00",
+          "end_time": "40:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_08_stages_of_the_nafs.mp3"
+        },
+        {
+          "segment": 9,
+          "title": "Entering Malakut: Guided Contemplation as Invitation",
+          "filename": "Contemplation_Audio_CT2_09_entering_malakut.mp3",
+          "category": "fikr",
+          "start_time": "40:00",
+          "end_time": "45:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_09_entering_malakut.mp3"
+        },
+        {
+          "segment": 10,
+          "title": "Winter's Renewal: Touching the Root of Being",
+          "filename": "Contemplation_Audio_CT2_10_winter_renewal.mp3",
+          "category": "fikr",
+          "start_time": "02:05",
+          "end_time": "04:30",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_10_winter_renewal.mp3"
+        },
+        {
+          "segment": 11,
+          "title": "Al-Abd al-Kulli: The Universal Servant",
+          "filename": "Contemplation_Audio_CT2_11_al_abd_al_kulli.mp3",
+          "category": "prayer",
+          "start_time": "05:40",
+          "end_time": "06:57",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_11_al_abd_al_kulli.mp3"
+        },
+        {
+          "segment": 12,
+          "title": "The 'Ha' Intonation as a Bija Mantra",
+          "filename": "Contemplation_Audio_CT2_12_bija_mantras.mp3",
+          "category": "prayer",
+          "start_time": "07:42",
+          "end_time": "08:47",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_12_bija_mantras.mp3"
+        },
+        {
+          "segment": 13,
+          "title": "Navigating Malakut: The Lattices of Thought-Beings (Muwakkals)",
+          "filename": "Contemplation_Audio_CT2_13_muwakkals_and_malakut.mp3",
+          "category": "breath",
+          "start_time": "32:53",
+          "end_time": "34:20",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_13_muwakkals_and_malakut.mp3"
+        },
+        {
+          "segment": 14,
+          "title": "The Lata'if as a Journey to the One Essence (Ayn)",
+          "filename": "Contemplation_Audio_CT2_14_ayn_essence_of_lataif.mp3",
+          "category": "concentration",
+          "start_time": "38:28",
+          "end_time": "42:17",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_14_ayn_essence_of_lataif.mp3"
+        },
+        {
+          "segment": 15,
+          "title": "The 'Me, Me' of the Nafs: An Illustrative Story",
+          "filename": "Contemplation_Audio_CT2_15_nafs_goat_story.mp3",
+          "category": "contemplation",
+          "start_time": "42:30",
+          "end_time": "44:11",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_15_nafs_goat_story.mp3"
+        },
+        {
+          "segment": 16,
+          "title": "The Closing Prayer (Salat): Recognizing the One in All Holy Names",
+          "filename": "Contemplation_Audio_CT2_16_closing_prayer_salat.mp3",
+          "category": "zikr",
+          "start_time": "71:52",
+          "end_time": "74:18",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT2/Contemplation_Audio_CT2_16_closing_prayer_salat.mp3"
+        }
+      ]
+    },
+    "CT3": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat-Khan",
+      "date": "2026-03-28",
+      "source": "Contemplation_P1_CT3_20260328_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "The Vigilant Practice of Muraqaba",
+          "filename": "Contemplation_Audio_CT3_01_vigilant_practice_of_muraqaba.mp3",
+          "category": "prayer",
+          "start_time": "00:00",
+          "end_time": "05:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_01_vigilant_practice_of_muraqaba.mp3"
+        },
+        {
+          "segment": 2,
+          "title": "I'tibar: Contemplation as an Act of Respect",
+          "filename": "Contemplation_Audio_CT3_02_itibar_act_of_respect.mp3",
+          "category": "prayer",
+          "start_time": "05:00",
+          "end_time": "10:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_02_itibar_act_of_respect.mp3"
+        },
+        {
+          "segment": 3,
+          "title": "The Divine Longing of the Hidden Treasure",
+          "filename": "Contemplation_Audio_CT3_03_divine_longing_hidden_treasure.mp3",
+          "category": "concentration",
+          "start_time": "10:00",
+          "end_time": "15:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_03_divine_longing_hidden_treasure.mp3"
+        },
+        {
+          "segment": 4,
+          "title": "Creation as a Perpetual Unfurling",
+          "filename": "Contemplation_Audio_CT3_04_perpetual_unfurling.mp3",
+          "category": "concentration",
+          "start_time": "15:00",
+          "end_time": "20:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_04_perpetual_unfurling.mp3"
+        },
+        {
+          "segment": 5,
+          "title": "The Soul's Descent and the River of Forgetfulness",
+          "filename": "Contemplation_Audio_CT3_05_souls_descent_forgetfulness.mp3",
+          "category": "contemplation",
+          "start_time": "20:00",
+          "end_time": "25:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_05_souls_descent_forgetfulness.mp3"
+        },
+        {
+          "segment": 6,
+          "title": "Untangling Our Desires to Find the Divine Impulse",
+          "filename": "Contemplation_Audio_CT3_06_untangling_divine_impulse.mp3",
+          "category": "fikr",
+          "start_time": "25:00",
+          "end_time": "30:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_06_untangling_divine_impulse.mp3"
+        },
+        {
+          "segment": 7,
+          "title": "We Are Fractions of the Cosmic Person",
+          "filename": "Contemplation_Audio_CT3_07_fractions_of_cosmic_person.mp3",
+          "category": "contemplation",
+          "start_time": "30:00",
+          "end_time": "35:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_07_fractions_of_cosmic_person.mp3"
+        },
+        {
+          "segment": 8,
+          "title": "Cosmic Recapitulation in the Womb",
+          "filename": "Contemplation_Audio_CT3_08_cosmic_recapitulation_in_womb.mp3",
+          "category": "zikr",
+          "start_time": "35:00",
+          "end_time": "40:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_08_cosmic_recapitulation_in_womb.mp3"
+        },
+        {
+          "segment": 9,
+          "title": "The Primal Intelligence Before Consciousness",
+          "filename": "Contemplation_Audio_CT3_09_primal_intelligence_before_consciousness.mp3",
+          "category": "wazifa",
+          "start_time": "40:00",
+          "end_time": "45:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_09_primal_intelligence_before_consciousness.mp3"
+        },
+        {
+          "segment": 10,
+          "title": "Weaving an Exquisite Tapestry of Divine Qualities",
+          "filename": "Contemplation_Audio_CT3_10_exquisite_tapestry_divine_qualities.mp3",
+          "category": "fikr",
+          "start_time": "30:00",
+          "end_time": "33:30",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_10_exquisite_tapestry_divine_qualities.mp3"
+        },
+        {
+          "segment": 11,
+          "title": "Ta'bir: The Interpretation of Dreams",
+          "filename": "Contemplation_Audio_CT3_11_tabir_interpretation_of_dreams.mp3",
+          "category": "prayer",
+          "start_time": "04:50",
+          "end_time": "06:19",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_11_tabir_interpretation_of_dreams.mp3"
+        },
+        {
+          "segment": 12,
+          "title": "The Personal Nature of Dream Interpretation",
+          "filename": "Contemplation_Audio_CT3_12_personal_dream_interpretation.mp3",
+          "category": "prayer",
+          "start_time": "06:19",
+          "end_time": "07:07",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_12_personal_dream_interpretation.mp3"
+        },
+        {
+          "segment": 13,
+          "title": "The Double Prayer: Divine Names and the A'yan",
+          "filename": "Contemplation_Audio_CT3_13_double_prayer_ayan.mp3",
+          "category": "concentration",
+          "start_time": "14:32",
+          "end_time": "15:41",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_13_double_prayer_ayan.mp3"
+        },
+        {
+          "segment": 14,
+          "title": "The Burning Bush and Divine Self-Awareness",
+          "filename": "Contemplation_Audio_CT3_14_burning_bush_self_awareness.mp3",
+          "category": "concentration",
+          "start_time": "17:09",
+          "end_time": "17:47",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_14_burning_bush_self_awareness.mp3"
+        },
+        {
+          "segment": 15,
+          "title": "Ontogeny Recapitulates Phylogeny: The Cosmos in the Womb",
+          "filename": "Contemplation_Audio_CT3_15_ontogeny_recapitulates_phylogeny.mp3",
+          "category": "zikr",
+          "start_time": "36:43",
+          "end_time": "37:34",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_15_ontogeny_recapitulates_phylogeny.mp3"
+        },
+        {
+          "segment": 16,
+          "title": "Zikr Practice: Invoking Ya 'Alimu, The All-Knowing",
+          "filename": "Contemplation_Audio_CT3_16_zikr_practice_ya_alimu.mp3",
+          "category": "wazifa",
+          "start_time": "53:55",
+          "end_time": "80:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT3/Contemplation_Audio_CT3_16_zikr_practice_ya_alimu.mp3"
+        }
+      ]
+    },
+    "CT4": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat-Khan",
+      "date": "2026-03-28",
+      "source": "Contemplation_P1_CT4_20260328_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "The Spiritual Rhythm of Opening, Bestowal, and Patience",
+          "filename": "Contemplation_Audio_CT4_01_spiritual_rhythm.mp3",
+          "category": "prayer",
+          "start_time": "00:00",
+          "end_time": "05:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT4/Contemplation_Audio_CT4_01_spiritual_rhythm.mp3"
+        },
+        {
+          "segment": 2,
+          "title": "Ya Fattah: The Divine Opener Beyond Our Will",
+          "filename": "Contemplation_Audio_CT4_02_divine_opener.mp3",
+          "category": "breath",
+          "start_time": "05:00",
+          "end_time": "10:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT4/Contemplation_Audio_CT4_02_divine_opener.mp3"
+        },
+        {
+          "segment": 3,
+          "title": "A Heart-Centered Meditation on the Rosebud",
+          "filename": "Contemplation_Audio_CT4_03_rosebud_meditation.mp3",
+          "category": "concentration",
+          "start_time": "10:00",
+          "end_time": "15:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT4/Contemplation_Audio_CT4_03_rosebud_meditation.mp3"
+        },
+        {
+          "segment": 4,
+          "title": "Power, Beauty, and Perfection: Jalal, Jamal, and Kamal",
+          "filename": "Contemplation_Audio_CT4_04_jalal_jamal_kamal.mp3",
+          "category": "contemplation",
+          "start_time": "15:00",
+          "end_time": "20:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT4/Contemplation_Audio_CT4_04_jalal_jamal_kamal.mp3"
+        },
+        {
+          "segment": 5,
+          "title": "The Ultimate Gift of Ya Wahhab: Nearness to the Giver",
+          "filename": "Contemplation_Audio_CT4_05_gift_of_nearness.mp3",
+          "category": "fikr",
+          "start_time": "20:00",
+          "end_time": "25:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT4/Contemplation_Audio_CT4_05_gift_of_nearness.mp3"
+        },
+        {
+          "segment": 6,
+          "title": "Ya Sabur: The Patient Endurance of Spiritual Struggle",
+          "filename": "Contemplation_Audio_CT4_06_patient_endurance.mp3",
+          "category": "zikr",
+          "start_time": "25:00",
+          "end_time": "30:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT4/Contemplation_Audio_CT4_06_patient_endurance.mp3"
+        },
+        {
+          "segment": 7,
+          "title": "The Power of Consistent Practice and Community",
+          "filename": "Contemplation_Audio_CT4_07_consistency_and_community.mp3",
+          "category": "wazifa",
+          "start_time": "30:00",
+          "end_time": "35:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT4/Contemplation_Audio_CT4_07_consistency_and_community.mp3"
+        },
+        {
+          "segment": 8,
+          "title": "The Ultimate Opening: Realizing Oneness through Fana and Baqa",
+          "filename": "Contemplation_Audio_CT4_08_fana_and_baqa.mp3",
+          "category": "movement",
+          "start_time": "35:00",
+          "end_time": "40:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT4/Contemplation_Audio_CT4_08_fana_and_baqa.mp3"
+        },
+        {
+          "segment": 9,
+          "title": "Gratitude for Constriction: Deepening Spiritual Roots",
+          "filename": "Contemplation_Audio_CT4_09_gratitude_for_constriction.mp3",
+          "category": "prayer",
+          "start_time": "40:00",
+          "end_time": "45:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT4/Contemplation_Audio_CT4_09_gratitude_for_constriction.mp3"
+        },
+        {
+          "segment": 10,
+          "title": "The Silsila: A Living Practice Imbued with Baraka",
+          "filename": "Contemplation_Audio_CT4_10_silsila_and_baraka.mp3",
+          "category": "wazifa",
+          "start_time": "45:00",
+          "end_time": "80:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT4/Contemplation_Audio_CT4_10_silsila_and_baraka.mp3"
+        },
+        {
+          "segment": 11,
+          "title": "The Story of the Wali Who Waited Forty Years",
+          "filename": "Contemplation_Audio_CT4_11_wali_forty_years.mp3",
+          "category": "zikr",
+          "start_time": "16:10",
+          "end_time": "17:10",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT4/Contemplation_Audio_CT4_11_wali_forty_years.mp3"
+        },
+        {
+          "segment": 12,
+          "title": "Nizam un Nisa — The Saint of Sabur and Ishq",
+          "filename": "Contemplation_Audio_CT4_12_nizam_un_nisa.mp3",
+          "category": "zikr",
+          "start_time": "51:30",
+          "end_time": "52:40",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT4/Contemplation_Audio_CT4_12_nizam_un_nisa.mp3"
+        }
+      ]
+    },
+    "CT5": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat-Khan",
+      "date": "2026-03-29",
+      "source": "Contemplation_P1_CT5_20260329_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "The Swing of Breath: Rising Above Birth and Death",
+          "filename": "Contemplation_Audio_CT5_01_swing_of_breath.mp3",
+          "category": "prayer",
+          "start_time": "00:00",
+          "end_time": "05:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_01_swing_of_breath.mp3"
+        },
+        {
+          "segment": 2,
+          "title": "Meditation: Entering Dreamless Sleep Consciously",
+          "filename": "Contemplation_Audio_CT5_02_dreamless_sleep.mp3",
+          "category": "prayer",
+          "start_time": "05:00",
+          "end_time": "10:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_02_dreamless_sleep.mp3"
+        },
+        {
+          "segment": 3,
+          "title": "The Complete Planes of Being: From Unmanifest to Human Form",
+          "filename": "Contemplation_Audio_CT5_03_planes_of_being.mp3",
+          "category": "breath",
+          "start_time": "14:14",
+          "end_time": "21:58",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_03_planes_of_being.mp3"
+        },
+        {
+          "segment": 4,
+          "title": "Al-Qadir: The Divine Power in Cosmos and Self",
+          "filename": "Contemplation_Audio_CT5_04_al_qadir.mp3",
+          "category": "concentration",
+          "start_time": "15:00",
+          "end_time": "20:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_04_al_qadir.mp3"
+        },
+        {
+          "segment": 5,
+          "title": "Al-Murid: The Divine Will and Desire",
+          "filename": "Contemplation_Audio_CT5_05_al_murid.mp3",
+          "category": "concentration",
+          "start_time": "20:00",
+          "end_time": "25:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_05_al_murid.mp3"
+        },
+        {
+          "segment": 6,
+          "title": "The Murid: The Seeker is God",
+          "filename": "Contemplation_Audio_CT5_06_the_murid.mp3",
+          "category": "contemplation",
+          "start_time": "25:00",
+          "end_time": "30:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_06_the_murid.mp3"
+        },
+        {
+          "segment": 7,
+          "title": "The Murshid's Lesson on Experiential Knowledge",
+          "filename": "Contemplation_Audio_CT5_07_names_as_keys.mp3",
+          "category": "fikr",
+          "start_time": "11:53",
+          "end_time": "13:55",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_07_names_as_keys.mp3"
+        },
+        {
+          "segment": 8,
+          "title": "The Unfolding of the Self and the Universe",
+          "filename": "Contemplation_Audio_CT5_08_self_and_universe.mp3",
+          "category": "breath",
+          "start_time": "35:00",
+          "end_time": "40:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_08_self_and_universe.mp3"
+        },
+        {
+          "segment": 9,
+          "title": "The Essence and Practice of Wazifa: Chanting Ya Hayyu",
+          "filename": "Contemplation_Audio_CT5_09_wazifa_practice.mp3",
+          "category": "prayer",
+          "start_time": "39:01",
+          "end_time": "45:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_09_wazifa_practice.mp3"
+        },
+        {
+          "segment": 10,
+          "title": "The Continuous Unfolding of Creation",
+          "filename": "Contemplation_Audio_CT5_10_perpetual_creation.mp3",
+          "category": "breath",
+          "start_time": "17:30",
+          "end_time": "21:30",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_10_perpetual_creation.mp3"
+        },
+        {
+          "segment": 11,
+          "title": "Divine Nostalgia: The Creative Impulse",
+          "filename": "Contemplation_Audio_CT5_11_divine_nostalgia.mp3",
+          "category": "breath",
+          "start_time": "16:21",
+          "end_time": "17:55",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_11_divine_nostalgia.mp3"
+        },
+        {
+          "segment": 12,
+          "title": "The Subjectivity of Naming the Divine Planes",
+          "filename": "Contemplation_Audio_CT5_12_naming_the_unnamable.mp3",
+          "category": "breath",
+          "start_time": "10:46",
+          "end_time": "11:53",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_12_naming_the_unnamable.mp3"
+        },
+        {
+          "segment": 13,
+          "title": "From Power to Will: The Emergence of Desire",
+          "filename": "Contemplation_Audio_CT5_13_power_to_will.mp3",
+          "category": "concentration",
+          "start_time": "30:00",
+          "end_time": "33:38",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT5/Contemplation_Audio_CT5_13_power_to_will.mp3"
+        }
+      ]
+    },
+    "CT6": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat-Khan",
+      "date": "2026-03-29",
+      "source": "Contemplation_P1_CT6_20260329_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "The Spiritual Marriage of Opposites",
+          "filename": "Contemplation_Audio_CT6_01_spiritual_marriage_of_opposites.mp3",
+          "category": "prayer",
+          "start_time": "00:00",
+          "end_time": "05:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_01_spiritual_marriage_of_opposites.mp3"
+        },
+        {
+          "segment": 2,
+          "title": "The Practice of Gazing into Darkness",
+          "filename": "Contemplation_Audio_CT6_02_gazing_into_darkness.mp3",
+          "category": "breath",
+          "start_time": "05:00",
+          "end_time": "10:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_02_gazing_into_darkness.mp3"
+        },
+        {
+          "segment": 3,
+          "title": "Integrating Contemplation into a Busy Life",
+          "filename": "Contemplation_Audio_CT6_03_integrating_contemplation.mp3",
+          "category": "concentration",
+          "start_time": "10:00",
+          "end_time": "15:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_03_integrating_contemplation.mp3"
+        },
+        {
+          "segment": 4,
+          "title": "The Enduring Nourishment of Spiritual Practice",
+          "filename": "Contemplation_Audio_CT6_04_enduring_nourishment.mp3",
+          "category": "concentration",
+          "start_time": "15:00",
+          "end_time": "20:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_04_enduring_nourishment.mp3"
+        },
+        {
+          "segment": 5,
+          "title": "The Ittisal Practice: Shifting from Body to Mind",
+          "filename": "Contemplation_Audio_CT6_05_ittisal_practice_ha_hu.mp3",
+          "category": "contemplation",
+          "start_time": "20:00",
+          "end_time": "25:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_05_ittisal_practice_ha_hu.mp3"
+        },
+        {
+          "segment": 6,
+          "title": "The Fiery Heart: Born of Sympathy and a Life Deeply Lived",
+          "filename": "Contemplation_Audio_CT6_06_latifa_of_the_heart.mp3",
+          "category": "fikr",
+          "start_time": "25:00",
+          "end_time": "30:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_06_latifa_of_the_heart.mp3"
+        },
+        {
+          "segment": 7,
+          "title": "The Luminous Soul: The Flowing Freshness of Ruh",
+          "filename": "Contemplation_Audio_CT6_07_latifa_of_the_soul.mp3",
+          "category": "fikr",
+          "start_time": "30:00",
+          "end_time": "35:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_07_latifa_of_the_soul.mp3"
+        },
+        {
+          "segment": 8,
+          "title": "The Subtle Centers as Portals to States of Being",
+          "filename": "Contemplation_Audio_CT6_08_latifas_as_portals.mp3",
+          "category": "fikr",
+          "start_time": "35:00",
+          "end_time": "40:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_08_latifas_as_portals.mp3"
+        },
+        {
+          "segment": 9,
+          "title": "A Contemplative Journey into a Fiery Landscape",
+          "filename": "Contemplation_Audio_CT6_09_fiery_landscape_contemplation.mp3",
+          "category": "zikr",
+          "start_time": "40:00",
+          "end_time": "45:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_09_fiery_landscape_contemplation.mp3"
+        },
+        {
+          "segment": 10,
+          "title": "Why the West Needs Contemplation More Than Ever",
+          "filename": "Contemplation_Audio_CT6_10_why_the_west_needs_contemplation.mp3",
+          "category": "concentration",
+          "start_time": "17:00",
+          "end_time": "21:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_10_why_the_west_needs_contemplation.mp3"
+        },
+        {
+          "segment": 11,
+          "title": "The Practice of Shughli Mahtabi and Light in Darkness",
+          "filename": "Contemplation_Audio_CT6_11_shughli_mahtabi.mp3",
+          "category": "prayer",
+          "start_time": "00:04",
+          "end_time": "04:05",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_11_shughli_mahtabi.mp3"
+        },
+        {
+          "segment": 12,
+          "title": "The Upcoming Wazifa of the Seven Leading Names",
+          "filename": "Contemplation_Audio_CT6_12_wazifa_seven_names.mp3",
+          "category": "concentration",
+          "start_time": "24:04",
+          "end_time": "26:28",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_12_wazifa_seven_names.mp3"
+        },
+        {
+          "segment": 13,
+          "title": "The Watery Soul (Ruh) and its Cognates",
+          "filename": "Contemplation_Audio_CT6_13_ruh_atman_atem.mp3",
+          "category": "fikr",
+          "start_time": "45:46",
+          "end_time": "47:50",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_13_ruh_atman_atem.mp3"
+        },
+        {
+          "segment": 14,
+          "title": "Embracing Pain to Open the Heart",
+          "filename": "Contemplation_Audio_CT6_14_opening_heart_through_pain.mp3",
+          "category": "fikr",
+          "start_time": "47:50",
+          "end_time": "50:25",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_14_opening_heart_through_pain.mp3"
+        },
+        {
+          "segment": 15,
+          "title": "The Closing Prayers: Salat and Khatum",
+          "filename": "Contemplation_Audio_CT6_15_closing_prayers.mp3",
+          "category": "wazifa",
+          "start_time": "65:29",
+          "end_time": "72:45",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT6/Contemplation_Audio_CT6_15_closing_prayers.mp3"
+        }
+      ]
+    },
+    "CT7": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat-Khan",
+      "date": "2026-04-18",
+      "source": "Contemplation_P1_CT7_20260418_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "The Journey is in Each Step",
+          "filename": "Contemplation_Audio_CT7_01_journey_in_each_step.mp3",
+          "category": "prayer",
+          "start_time": "00:00",
+          "end_time": "05:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_01_journey_in_each_step.mp3"
+        },
+        {
+          "segment": 2,
+          "title": "The Lataif as Divine Inheritance",
+          "filename": "Contemplation_Audio_CT7_02_lataif_divine_inheritance.mp3",
+          "category": "breath",
+          "start_time": "05:00",
+          "end_time": "10:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_02_lataif_divine_inheritance.mp3"
+        },
+        {
+          "segment": 3,
+          "title": "Contemplating the Ruh: The Light of Vision",
+          "filename": "Contemplation_Audio_CT7_03_contemplating_the_ruh.mp3",
+          "category": "breath",
+          "start_time": "10:00",
+          "end_time": "15:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_03_contemplating_the_ruh.mp3"
+        },
+        {
+          "segment": 4,
+          "title": "The Fiery Sun of the Heart",
+          "filename": "Contemplation_Audio_CT7_04_fiery_sun_of_the_heart.mp3",
+          "category": "breath",
+          "start_time": "15:00",
+          "end_time": "20:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_04_fiery_sun_of_the_heart.mp3"
+        },
+        {
+          "segment": 5,
+          "title": "The Divine Senses: As-Sami' and Al-Basir",
+          "filename": "Contemplation_Audio_CT7_05_divine_senses.mp3",
+          "category": "concentration",
+          "start_time": "20:00",
+          "end_time": "25:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_05_divine_senses.mp3"
+        },
+        {
+          "segment": 6,
+          "title": "The Art of Deep Listening",
+          "filename": "Contemplation_Audio_CT7_06_art_of_deep_listening.mp3",
+          "category": "concentration",
+          "start_time": "25:00",
+          "end_time": "30:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_06_art_of_deep_listening.mp3"
+        },
+        {
+          "segment": 7,
+          "title": "God is the Listener",
+          "filename": "Contemplation_Audio_CT7_07_god_is_the_listener.mp3",
+          "category": "concentration",
+          "start_time": "30:00",
+          "end_time": "35:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_07_god_is_the_listener.mp3"
+        },
+        {
+          "segment": 8,
+          "title": "The Deeper Seeing of Al-Basir",
+          "filename": "Contemplation_Audio_CT7_08_deeper_seeing_of_albasir.mp3",
+          "category": "concentration",
+          "start_time": "35:00",
+          "end_time": "40:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_08_deeper_seeing_of_albasir.mp3"
+        },
+        {
+          "segment": 9,
+          "title": "Love's Quest for Responsiveness",
+          "filename": "Contemplation_Audio_CT7_09_loves_quest_for_responsiveness.mp3",
+          "category": "contemplation",
+          "start_time": "40:00",
+          "end_time": "45:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_09_loves_quest_for_responsiveness.mp3"
+        },
+        {
+          "segment": 10,
+          "title": "Intoning the Names of Hearing and Seeing",
+          "filename": "Contemplation_Audio_CT7_10_intoning_the_names.mp3",
+          "category": "concentration",
+          "start_time": "63:00",
+          "end_time": "66:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_10_intoning_the_names.mp3"
+        },
+        {
+          "segment": 11,
+          "title": "Progression of the Lataif: From Belly to Chest",
+          "filename": "Contemplation_Audio_CT7_11_lataif_progression.mp3",
+          "category": "breath",
+          "start_time": "11:05",
+          "end_time": "12:03",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_11_lataif_progression.mp3"
+        },
+        {
+          "segment": 12,
+          "title": "Lost and Found: The Timely Appearance of Sacred Knowledge",
+          "filename": "Contemplation_Audio_CT7_12_lost_and_found_knowledge.mp3",
+          "category": "breath",
+          "start_time": "08:14",
+          "end_time": "09:20",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_12_lost_and_found_knowledge.mp3"
+        },
+        {
+          "segment": 13,
+          "title": "The Seven Mother Names: A Review of the Divine Attributes",
+          "filename": "Contemplation_Audio_CT7_13_seven_mother_names.mp3",
+          "category": "concentration",
+          "start_time": "29:33",
+          "end_time": "32:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_13_seven_mother_names.mp3"
+        },
+        {
+          "segment": 14,
+          "title": "The Gaze of the Heart and Limbic Resonance",
+          "filename": "Contemplation_Audio_CT7_14_limbic_resonance.mp3",
+          "category": "concentration",
+          "start_time": "58:28",
+          "end_time": "1:00:06",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT7/Contemplation_Audio_CT7_14_limbic_resonance.mp3"
+        }
+      ]
+    },
+    "CT8": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat-Khan",
+      "date": "2026-04-18",
+      "source": "Contemplation_P1_CT8_20260418_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "The Copper Rule of Willing Help",
+          "filename": "Contemplation_Audio_CT8_01_willing_help.mp3",
+          "category": "prayer",
+          "start_time": "00:00",
+          "end_time": "05:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_01_willing_help.mp3"
+        },
+        {
+          "segment": 2,
+          "title": "The Jataka Tale of the Four Friends",
+          "filename": "Contemplation_Audio_CT8_02_jataka_tale.mp3",
+          "category": "breath",
+          "start_time": "05:00",
+          "end_time": "10:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_02_jataka_tale.mp3"
+        },
+        {
+          "segment": 3,
+          "title": "The Hare's Ultimate Sacrifice",
+          "filename": "Contemplation_Audio_CT8_03_hares_sacrifice.mp3",
+          "category": "breath",
+          "start_time": "10:00",
+          "end_time": "15:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_03_hares_sacrifice.mp3"
+        },
+        {
+          "segment": 4,
+          "title": "The Mind as an Accommodation of the World",
+          "filename": "Contemplation_Audio_CT8_04_mind_accommodates.mp3",
+          "category": "concentration",
+          "start_time": "15:00",
+          "end_time": "20:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_04_mind_accommodates.mp3"
+        },
+        {
+          "segment": 5,
+          "title": "Reorienting Perception Beyond Subject and Object",
+          "filename": "Contemplation_Audio_CT8_05_reorienting_perception.mp3",
+          "category": "concentration",
+          "start_time": "20:00",
+          "end_time": "25:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_05_reorienting_perception.mp3"
+        },
+        {
+          "segment": 6,
+          "title": "Musical Contemplation with Clair de Lune",
+          "filename": "Contemplation_Audio_CT8_06_clair_de_lune.mp3",
+          "category": "contemplation",
+          "start_time": "25:00",
+          "end_time": "30:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_06_clair_de_lune.mp3"
+        },
+        {
+          "segment": 7,
+          "title": "Shaping Your Hereafter in the Now",
+          "filename": "Contemplation_Audio_CT8_07_hereafter_now.mp3",
+          "category": "fikr",
+          "start_time": "30:00",
+          "end_time": "35:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_07_hereafter_now.mp3"
+        },
+        {
+          "segment": 8,
+          "title": "The Lataif Polarity of Innocence and Experience",
+          "filename": "Contemplation_Audio_CT8_08_innocence_and_experience.mp3",
+          "category": "zikr",
+          "start_time": "35:00",
+          "end_time": "40:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_08_innocence_and_experience.mp3"
+        },
+        {
+          "segment": 9,
+          "title": "The Root of Creaturehood: Latifa Qalabiyya",
+          "filename": "Contemplation_Audio_CT8_09_root_of_creaturehood.mp3",
+          "category": "wazifa",
+          "start_time": "40:00",
+          "end_time": "45:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_09_root_of_creaturehood.mp3"
+        },
+        {
+          "segment": 10,
+          "title": "The Bridge Between Earth and Eternity",
+          "filename": "Contemplation_Audio_CT8_10_earth_and_eternity.mp3",
+          "category": "movement",
+          "start_time": "48:30",
+          "end_time": "52:30",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_10_earth_and_eternity.mp3"
+        },
+        {
+          "segment": 11,
+          "title": "The Forest Fairy Saka and the Unsuria",
+          "filename": "Contemplation_Audio_CT8_11_fairy_saka.mp3",
+          "category": "breath",
+          "start_time": "07:12",
+          "end_time": "08:30",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_11_fairy_saka.mp3"
+        },
+        {
+          "segment": 12,
+          "title": "Telluric Magnetism and Shughl-i-Mahtabi",
+          "filename": "Contemplation_Audio_CT8_12_telluric_magnetism.mp3",
+          "category": "breath",
+          "start_time": "12:10",
+          "end_time": "15:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_12_telluric_magnetism.mp3"
+        },
+        {
+          "segment": 13,
+          "title": "Noor Inayat Khan's Sacrifice and the Jataka Tale",
+          "filename": "Contemplation_Audio_CT8_13_noor_sacrifice.mp3",
+          "category": "breath",
+          "start_time": "15:00",
+          "end_time": "16:21",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_13_noor_sacrifice.mp3"
+        },
+        {
+          "segment": 14,
+          "title": "Review of the Nafs and Sage Polarity",
+          "filename": "Contemplation_Audio_CT8_14_nafs_sage_review.mp3",
+          "category": "zikr",
+          "start_time": "41:07",
+          "end_time": "44:52",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_14_nafs_sage_review.mp3"
+        },
+        {
+          "segment": 15,
+          "title": "The Nasama, the Ethereal Body, and the Ghost Limb",
+          "filename": "Contemplation_Audio_CT8_15_nasama_ghost_limb.mp3",
+          "category": "wazifa",
+          "start_time": "50:20",
+          "end_time": "52:31",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_15_nasama_ghost_limb.mp3"
+        },
+        {
+          "segment": 16,
+          "title": "The Hidden and Most Hidden: Khafi and Akhfa",
+          "filename": "Contemplation_Audio_CT8_16_khafi_akhfa.mp3",
+          "category": "movement",
+          "start_time": "54:45",
+          "end_time": "57:22",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_16_khafi_akhfa.mp3"
+        },
+        {
+          "segment": 17,
+          "title": "The Tasawwul Zikr Practice on Jacob's Ladder",
+          "filename": "Contemplation_Audio_CT8_17_tasawwul_zikr.mp3",
+          "category": "movement",
+          "start_time": "01:02:33",
+          "end_time": "01:05:37",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT8/Contemplation_Audio_CT8_17_tasawwul_zikr.mp3"
+        }
+      ]
+    },
+    "CT9": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat-Khan",
+      "date": "2026-04-19",
+      "source": "Contemplation_P1_CT9_20260419_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "The Interplay of Inner and Outer Worlds",
+          "filename": "Contemplation_Audio_CT9_01_inner_outer_worlds.mp3",
+          "category": "prayer",
+          "start_time": "00:00",
+          "end_time": "05:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT9/Contemplation_Audio_CT9_01_inner_outer_worlds.mp3"
+        },
+        {
+          "segment": 2,
+          "title": "A Fikr Practice for Divine Presence",
+          "filename": "Contemplation_Audio_CT9_02_fikr_practice.mp3",
+          "category": "prayer",
+          "start_time": "05:00",
+          "end_time": "10:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT9/Contemplation_Audio_CT9_02_fikr_practice.mp3"
+        },
+        {
+          "segment": 3,
+          "title": "The Highest Form of Prayer",
+          "filename": "Contemplation_Audio_CT9_03_highest_prayer.mp3",
+          "category": "breath",
+          "start_time": "10:00",
+          "end_time": "15:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT9/Contemplation_Audio_CT9_03_highest_prayer.mp3"
+        },
+        {
+          "segment": 4,
+          "title": "Walking in a Living Tricosm",
+          "filename": "Contemplation_Audio_CT9_04_living_tricosm.mp3",
+          "category": "concentration",
+          "start_time": "15:00",
+          "end_time": "20:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT9/Contemplation_Audio_CT9_04_living_tricosm.mp3"
+        },
+        {
+          "segment": 5,
+          "title": "Becoming the Servant of a Divine Name",
+          "filename": "Contemplation_Audio_CT9_05_divine_name.mp3",
+          "category": "contemplation",
+          "start_time": "20:00",
+          "end_time": "25:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT9/Contemplation_Audio_CT9_05_divine_name.mp3"
+        },
+        {
+          "segment": 6,
+          "title": "Using the Contemplative Walk for Guidance",
+          "filename": "Contemplation_Audio_CT9_06_walk_for_guidance.mp3",
+          "category": "concentration",
+          "start_time": "25:00",
+          "end_time": "30:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT9/Contemplation_Audio_CT9_06_walk_for_guidance.mp3"
+        },
+        {
+          "segment": 7,
+          "title": "The Couplet Rule: Guarding Against Arrogance",
+          "filename": "Contemplation_Audio_CT9_07_danger_of_arrogance.mp3",
+          "category": "fikr",
+          "start_time": "30:00",
+          "end_time": "35:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT9/Contemplation_Audio_CT9_07_danger_of_arrogance.mp3"
+        },
+        {
+          "segment": 8,
+          "title": "The Faithful is a Mirror of the Faithful",
+          "filename": "Contemplation_Audio_CT9_08_faithful_mirror.mp3",
+          "category": "fikr",
+          "start_time": "35:00",
+          "end_time": "40:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT9/Contemplation_Audio_CT9_08_faithful_mirror.mp3"
+        },
+        {
+          "segment": 9,
+          "title": "The Tale of the Hermit and the Sinner",
+          "filename": "Contemplation_Audio_CT9_09_hermit_and_sinner.mp3",
+          "category": "zikr",
+          "start_time": "40:00",
+          "end_time": "45:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT9/Contemplation_Audio_CT9_09_hermit_and_sinner.mp3"
+        },
+        {
+          "segment": 10,
+          "title": "Al-Kalim: Divine Speech Through Imperfection",
+          "filename": "Contemplation_Audio_CT9_10_al_kalim_imperfection.mp3",
+          "category": "wazifa",
+          "start_time": "44:00",
+          "end_time": "48:30",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT9/Contemplation_Audio_CT9_10_al_kalim_imperfection.mp3"
+        },
+        {
+          "segment": 11,
+          "title": "The Hermit and the Sinner: The Jalali Version",
+          "filename": "Contemplation_Audio_CT9_11_hermit_jalali_version.mp3",
+          "category": "zikr",
+          "start_time": "38:18",
+          "end_time": "39:17",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT9/Contemplation_Audio_CT9_11_hermit_jalali_version.mp3"
+        },
+        {
+          "segment": 12,
+          "title": "Zikr Practice of the Seven Leading Names",
+          "filename": "Contemplation_Audio_CT9_12_zikr_seven_names.mp3",
+          "category": "wazifa",
+          "start_time": "44:15",
+          "end_time": "77:25",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT9/Contemplation_Audio_CT9_12_zikr_seven_names.mp3"
+        }
+      ]
+    },
+    "CT10": {
+      "part": "I",
+      "instructor": "Pir Zia Inayat-Khan",
+      "date": "2026-04-19",
+      "source": "Contemplation_P1_CT10_20260419_PirZia.mp3",
+      "clips": [
+        {
+          "segment": 1,
+          "title": "The Song of Your Life",
+          "filename": "Contemplation_Audio_CT10_01_song_of_life.mp3",
+          "category": "prayer",
+          "start_time": "00:00",
+          "end_time": "05:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_01_song_of_life.mp3"
+        },
+        {
+          "segment": 2,
+          "title": "Contemplating the Borderland of Hirkalya",
+          "filename": "Contemplation_Audio_CT10_02_hirkalya_borderland.mp3",
+          "category": "breath",
+          "start_time": "05:00",
+          "end_time": "10:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_02_hirkalya_borderland.mp3"
+        },
+        {
+          "segment": 3,
+          "title": "Discovering Your Celestial Counterpart",
+          "filename": "Contemplation_Audio_CT10_03_celestial_counterpart.mp3",
+          "category": "breath",
+          "start_time": "10:00",
+          "end_time": "15:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_03_celestial_counterpart.mp3"
+        },
+        {
+          "segment": 4,
+          "title": "The Polarity of Belly and Forehead",
+          "filename": "Contemplation_Audio_CT10_04_belly_forehead.mp3",
+          "category": "concentration",
+          "start_time": "15:00",
+          "end_time": "20:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_04_belly_forehead.mp3"
+        },
+        {
+          "segment": 5,
+          "title": "The Heart's Polarity: Serenity and Yearning",
+          "filename": "Contemplation_Audio_CT10_05_heart_polarity.mp3",
+          "category": "concentration",
+          "start_time": "20:00",
+          "end_time": "25:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_05_heart_polarity.mp3"
+        },
+        {
+          "segment": 6,
+          "title": "Earthly Roots and the Transcendent Abyss",
+          "filename": "Contemplation_Audio_CT10_06_tailbone_crown.mp3",
+          "category": "concentration",
+          "start_time": "25:00",
+          "end_time": "30:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_06_tailbone_crown.mp3"
+        },
+        {
+          "segment": 7,
+          "title": "The Sirr: The Secret Where Opposites Meet",
+          "filename": "Contemplation_Audio_CT10_07_sirr_opposites_meet.mp3",
+          "category": "contemplation",
+          "start_time": "30:00",
+          "end_time": "35:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_07_sirr_opposites_meet.mp3"
+        },
+        {
+          "segment": 8,
+          "title": "The Human Being as God's Secret",
+          "filename": "Contemplation_Audio_CT10_08_human_as_secret.mp3",
+          "category": "contemplation",
+          "start_time": "35:00",
+          "end_time": "40:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_08_human_as_secret.mp3"
+        },
+        {
+          "segment": 9,
+          "title": "A Breath for Heaven and Earth",
+          "filename": "Contemplation_Audio_CT10_09_breath_for_heaven.mp3",
+          "category": "fikr",
+          "start_time": "40:00",
+          "end_time": "45:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_09_breath_for_heaven.mp3"
+        },
+        {
+          "segment": 10,
+          "title": "The Path of Grace and Gentleness",
+          "filename": "Contemplation_Audio_CT10_10_path_of_grace.mp3",
+          "category": "zikr",
+          "start_time": "43:00",
+          "end_time": "46:30",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_10_path_of_grace.mp3"
+        },
+        {
+          "segment": 11,
+          "title": "Before You Play Your Music, Let Me Sing My Song",
+          "filename": "Contemplation_Audio_CT10_11_sing_my_song.mp3",
+          "category": "prayer",
+          "start_time": "05:40",
+          "end_time": "08:11",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_11_sing_my_song.mp3"
+        },
+        {
+          "segment": 12,
+          "title": "Entering Malakut with the Music of Victoria",
+          "filename": "Contemplation_Audio_CT10_12_victoria_music.mp3",
+          "category": "breath",
+          "start_time": "08:11",
+          "end_time": "10:46",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_12_victoria_music.mp3"
+        },
+        {
+          "segment": 13,
+          "title": "The Borderland of Hirkalya: Where Arwah meet Ajsam",
+          "filename": "Contemplation_Audio_CT10_13_arwah_ajsam.mp3",
+          "category": "breath",
+          "start_time": "12:47",
+          "end_time": "15:00",
+          "url": "https://pub-655e0e7533694c53a63276368afd5e43.r2.dev/CT10/Contemplation_Audio_CT10_13_arwah_ajsam.mp3"
         }
       ]
     }
