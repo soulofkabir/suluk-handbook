@@ -4,12 +4,12 @@
 **URL:** https://soulofkabir.github.io/suluk-handbook/
 **Architecture:** Single-file HTML + CSS + Vanilla JavaScript, GitHub Pages static hosting
 **Data:** `data/handbook_concentration.json`, `data/cross_reference_data.json`, `data/glossary.json`, `data/audio_manifest.json`
-**Audio:** Cloudflare R2 bucket `suluk-audio` (public), 234 clips across 22 classes (incl. CT1 Contemplation + P1 Prayers)
-**Contemplation Pipeline:** CT1 (Mar 27) complete through Phase 4 — 13 snippets + 10 audio clips live on R2
+**Audio:** Cloudflare R2 bucket `suluk-audio` (public), 365 clips across 31 classes (C1–C20 Concentration + CT1–CT10 Contemplation + P1 Prayers)
+**Contemplation Pipeline:** CT1–CT10 complete through Phase 5 — 141 audio clips + 154 canonical snippets + 40 new glossary terms
 **Personal Files:** Cloudflare R2 bucket `suluk-personal` (private), via Worker at `suluk-worker.soulofkabir.workers.dev`
 **AI Chat:** Gemini 2.5 Flash via Cloudflare Worker `/chat` endpoint
 **Design System:** "Crisp Pearl & True Bronze" — Nunito + Source Sans 3
-**Last updated:** 2026-04-21
+**Last updated:** 2026-04-22
 
 ---
 
@@ -214,10 +214,36 @@ A four-piece personal contemplative library lives under the admin-only Workspace
 
 ---
 
+## Contemplation Phase 5 — CT1–CT10 Data Consolidation ✅ (2026-04-22)
+
+First full-program snippet + audio consolidation for the Contemplation stage.
+
+**Data produced:**
+- `data/contemplation_snippets.json` (new canonical, 154 snippets) merging per-class CT1–CT10 snippet files with the existing 13 handbook-curated CT1 entries. Every audio-linked snippet carries an `audio_ref` object `{url, start, end, duration_s}`.
+- `data/audio_manifest.json` — CT1–CT10 sections rebuilt from per-class JSON as the authoritative source. Stub 10-clip entries replaced with real 12–17 clip lists (141 CT clips total; `total_clips` 234 → 365).
+- `data/glossary.json` — +40 Arabic/Sufi terms (seven leading names, cosmological planes, Lataif system, etc.); 40 → 80 entries.
+
+**Upstream fixes folded in:**
+- **15 missing audio clips rendered** via ffmpeg + uploaded to R2 `suluk-audio/CT{N}/` using `npx wrangler r2 object put --remote`. All verified 200 OK via curl.
+- **9 stub timestamps** (`45:00–80:00` placeholders in per-class JSONs) patched to real keyword-matched ranges before ffmpeg rendering.
+- **CT3 / CT9 transcripts:** normalized 114 paragraphs where `[MM:SS:cc]` and `[HH:MM:SS:cc]` centisecond formats were silently breaking timestamp parsers — now standard `[MM:SS]` / `[HH:MM:SS]`.
+- **CT4 snippets:** +2 story entries (Wali Forty Years, Nizam un Nisa) to meet the Phase-3 duration floor (12 ≥ ⌈73 min / 6⌉).
+- **CT5 snippets:** 6 single-quoted verbatim passages converted to straight double quotes so the validator regex `r'"([^"]{20,})"'` matches. All 13 now PASS.
+
+**Quality gate:** all 10 `CT*_snippets.json` files pass `validate_snippets.py`.
+
+**Backup files written:** `data/audio_manifest.json.bak-2026-04-22`, `data/glossary.json.bak-2026-04-22`, and a sibling `.bak-2026-04-22` next to the canonical snippets file.
+
+**One caveat to revisit:** CT1 has 26 canonical snippets — 13 handbook-curated (`audio_ref: null`) + 13 audio-clip entries (`audio_ref: {...}`). Distinguishable, but worth deduping at a future touchpoint.
+
+---
+
 ## Git Commits (Recent)
 
 | Commit | Description |
 |---|---|
+| `f9e152b` | Contemplation Phase 5 data consolidation: 154-snippet canonical, 141 CT audio clips in manifest (234→365), +40 glossary terms, CT3/CT9 timestamp cleanup |
+| `6a5d656` | Docs: PROGRESS.md — print pipeline resurrection + 371-teaching audit |
 | `caf1434` | Update print PDF to V2 (6×9, 479pp) from resurrected Node OOXML → LibreOffice pipeline; sw v5 → v6 |
 | `2a9578a` | Concentration audit: +38 missing snippets (333 → 371 teachings); sw v4 → v5 |
 | `9d5e8ed` | Update CT1 source filename to CT1 convention in audio_manifest.json |
