@@ -4,8 +4,8 @@
 **URL:** https://soulofkabir.github.io/suluk-handbook/
 **Architecture:** Single-file HTML + CSS + Vanilla JavaScript, GitHub Pages static hosting
 **Data:** `data/handbook_concentration.json`, `data/cross_reference_data.json`, `data/glossary.json`, `data/audio_manifest.json`
-**Audio:** Cloudflare R2 bucket `suluk-audio` (public), 365 clips across 31 classes (C1–C20 Concentration + CT1–CT10 Contemplation + P1 Prayers)
-**Contemplation Pipeline:** CT1–CT10 complete through Phase 5 — 141 audio clips + 154 canonical snippets + 40 new glossary terms
+**Audio:** Cloudflare R2 bucket `suluk-audio` (public), 438 clips across 31 classes (C1–C20 Concentration + CT1–CT10 Contemplation + P1 Prayers)
+**Contemplation Pipeline:** CT1–CT10 complete through Phase 6 (Axis-1 Coverage Audit) — 214 CT audio clips + 227 canonical snippets + 40 new glossary terms
 **Personal Files:** Cloudflare R2 bucket `suluk-personal` (private), via Worker at `suluk-worker.soulofkabir.workers.dev`
 **AI Chat:** Gemini 2.5 Flash via Cloudflare Worker `/chat` endpoint
 **Design System:** "Crisp Pearl & True Bronze" — Nunito + Source Sans 3
@@ -235,6 +235,47 @@ First full-program snippet + audio consolidation for the Contemplation stage.
 **Backup files written:** `data/audio_manifest.json.bak-2026-04-22`, `data/glossary.json.bak-2026-04-22`, and a sibling `.bak-2026-04-22` next to the canonical snippets file.
 
 **One caveat to revisit:** CT1 has 26 canonical snippets — 13 handbook-curated (`audio_ref: null`) + 13 audio-clip entries (`audio_ref: {...}`). Distinguishable, but worth deduping at a future touchpoint.
+
+---
+
+## Contemplation Phase 6 — Axis-1 Coverage Audit ✅ (2026-04-22)
+
+Systematic Gemini-2.5-Pro audit of all CT1–CT10 transcripts against the existing snippet set. Every "missing gem" identified was integrated into both per-class and canonical data.
+
+**Pipeline:**
+1. `Scripts/audit_contemplation_snippets.py` — per-class audit prompt to Gemini 2.5 Pro asking: "what teachings/stories/practices/prayers in this transcript are NOT covered by the existing snippets?". Verbatim quote + timestamp + suggested JSON required per gem.
+2. `Scripts/integrate_audit_gems.py` — parse the 115 KB report, append the 73 suggested JSON blocks to per-class `CT*_snippets.json`.
+3. `Scripts/expand_audit_gems.py` — Gemini 2.5 Flash pass to expand every new body to 120–160 words in Pir Zia's voice with the verbatim quote in straight double quotes (validator compliance).
+4. `Scripts/merge_gems_to_canonical.py` — append 73 new entries to canonical `contemplation_snippets.json` and `audio_manifest.json`; `audio_ref` populated once clips rendered.
+5. `Scripts/render_audit_clips.py` — ffmpeg `-c copy` segment + `npx wrangler r2 object put --remote` upload. **73/73 clips uploaded, 0 failed.**
+
+**Gems by class:**
+
+| Class | Pre-audit | Added | New total |
+|---|---|---|---|
+| CT1 | 13 | 5 | 18 |
+| CT2 | 16 | 7 | 23 |
+| CT3 | 16 | 6 | 22 |
+| CT4 | 12 | **17** | 29 |
+| CT5 | 13 | 6 | 19 |
+| CT6 | 15 | 10 | 25 |
+| CT7 | 14 | 8 | 22 |
+| CT8 | 17 | 5 | 22 |
+| CT9 | 12 | 6 | 18 |
+| CT10 | 13 | 3 | 16 |
+| **Total** | **141** | **+73** | **214** |
+
+CT4 was the biggest gap — foundational concepts (three planes Nasut/Malakut/Jabrut, lata'if journey, zikr+fikr marriage, qutb, khatam) all missing. CT6 added a full-text fiery-landscape guided meditation.
+
+**Stats after Phase 6:**
+- Canonical snippets: 154 → 227
+- CT audio clips in R2: 141 → 214
+- Total audio_manifest clips: 365 → 438
+- Service worker: v7 → v8 (data cache v6 → v7)
+
+**Quality gate:** all 10 `CT*_snippets.json` PASS `validate_snippets.py` (body ≥100 words, verbatim quote in `"…"`, schema complete).
+
+**Backup:** `.bak-audit-2026-04-22` written next to every per-class file before integration.
 
 ---
 
