@@ -1606,6 +1606,31 @@ const state = { fontSize: 'normal', focusMode: false, sidebarOpen: false };
 let adminMode = !!localStorage.getItem('suluk_admin');
 let _adminBuffer = '';
 
+/* ─── Books ─── */
+const BOOKS = {
+  concentration: {
+    key: 'concentration',
+    short: 'Concentration',
+    title: 'The Book of Concentration',
+    json: 'data/handbook_concentration.json',
+    pdf:  'assets/The_Book_of_Concentration.pdf',
+    fullBookInline: true,   // use built-in showFullBook()
+  },
+  contemplation: {
+    key: 'contemplation',
+    short: 'Contemplation',
+    title: 'The Book of Contemplation',
+    json: 'data/handbook_contemplation.json',
+    pdf:  'assets/The_Book_of_Contemplation.pdf',
+    fullBookInline: false,  // open standalone HTML viewer in new tab
+    fullBookHref: 'assets/The_Book_of_Contemplation.html',
+  },
+};
+let activeBook = (() => {
+  const saved = localStorage.getItem('suluk_active_book');
+  return (saved && BOOKS[saved]) ? saved : 'concentration';
+})();
+
 let handbook     = null;
 let allTeachings = [];
 let kabirWritings = null;  // { entries: [...] }
@@ -1904,7 +1929,7 @@ function toggleBookmark(idx) {
     showToast('Bookmark removed');
   } else {
     const t = allTeachings[idx];
-    userData.bookmarks.push({ idx, folder: 'All', added: today(), title: t.snippet.title, partKey: t.partKey, chapterTitle: t.chapter.title });
+    userData.bookmarks.push({ idx, book: activeBook, folder: 'All', added: today(), title: t.snippet.title, partKey: t.partKey, chapterTitle: t.chapter.title });
     showToast('Bookmarked ★');
   }
   saveUserData();
@@ -1912,13 +1937,19 @@ function toggleBookmark(idx) {
   const btn = document.getElementById('bm-btn-' + idx);
   if (btn) { const marked = isBookmarked(idx); btn.textContent = marked ? '★' : '☆'; btn.classList.toggle('bookmarked', marked); }
 }
-function isBookmarked(idx) { return userData.bookmarks.some(b => b.idx === idx); }
+function isBookmarked(idx) { return userData.bookmarks.some(b => b.idx === idx && matchesActiveBook(b)); }
+
+/* Entries saved before the book-toggle existed have no `book` field;
+   treat them as Concentration. */
+function matchesActiveBook(entry) {
+  return (entry.book || 'concentration') === activeBook;
+}
 
 function viewBookmarks(el) {
   if (el) setActiveNav(el);
   setBreadcrumb('Bookmarks');
-  const bms = userData.bookmarks;
-  let h = listPageHeader('Bookmarks', bms.length + ' teaching' + (bms.length !== 1 ? 's' : ''));
+  const bms = userData.bookmarks.filter(matchesActiveBook);
+  let h = listPageHeader('Bookmarks', bms.length + ' teaching' + (bms.length !== 1 ? 's' : '') + ` · ${BOOKS[activeBook].short}`);
   if (!bms.length) {
     h += emptyState('☆', 'No bookmarks yet. Tap ☆ on any teaching to save it.');
   } else {
@@ -1961,7 +1992,7 @@ function addNote(idx) {
   if (!content) return;
   const t = allTeachings[idx];
   userData.notes.push({
-    id: 'n' + Date.now(), idx,
+    id: 'n' + Date.now(), idx, book: activeBook,
     type: typeEl.value, content,
     created: new Date().toISOString(),
     partKey: t.partKey,
@@ -2020,8 +2051,9 @@ function buildNotesSectionHTML(idx) {
 function viewNotes(el) {
   if (el) setActiveNav(el);
   setBreadcrumb('Notes');
-  const notes = [...userData.notes].sort((a,b) => b.created.localeCompare(a.created));
-  let h = listPageHeader('Notes', notes.length + ' note' + (notes.length !== 1 ? 's' : ''));
+  const notes = userData.notes.filter(matchesActiveBook)
+    .slice().sort((a,b) => b.created.localeCompare(a.created));
+  let h = listPageHeader('Notes', notes.length + ' note' + (notes.length !== 1 ? 's' : '') + ` · ${BOOKS[activeBook].short}`);
   if (!notes.length) {
     h += emptyState('✎', 'No notes yet. Use "Add Note" while reading a teaching.');
   } else {
@@ -2082,7 +2114,7 @@ function hideHighlightToolbar() {
 function addHighlight(color) {
   if (!pendingSel) return;
   const { text, idx } = pendingSel;
-  userData.highlights.push({ id: 'hl' + Date.now(), idx, text, color, created: today() });
+  userData.highlights.push({ id: 'hl' + Date.now(), idx, book: activeBook, text, color, created: today() });
   saveUserData();
   hideHighlightToolbar();
   window.getSelection().removeAllRanges();
@@ -2115,8 +2147,9 @@ function applyHighlights(idx) {
 function viewHighlights(el) {
   if (el) setActiveNav(el);
   setBreadcrumb('Highlights');
-  const hls = [...userData.highlights].sort((a,b) => b.created.localeCompare(a.created));
-  let h = listPageHeader('Highlights', hls.length + ' passage' + (hls.length !== 1 ? 's' : ''));
+  const hls = userData.highlights.filter(matchesActiveBook)
+    .slice().sort((a,b) => b.created.localeCompare(a.created));
+  let h = listPageHeader('Highlights', hls.length + ' passage' + (hls.length !== 1 ? 's' : '') + ` · ${BOOKS[activeBook].short}`);
   if (!hls.length) {
     h += emptyState('◈', 'No highlights yet. Select any text while reading to highlight it.');
   } else {
@@ -2179,17 +2212,27 @@ function buildJournalHistory() {
 
 
 /* ─── Recently Viewed ─── */
+/* recentlyViewed was historically an array of idx integers (Concentration only).
+   Now it is an array of {idx, book}. Legacy integers are treated as Concentration. */
+function rvEntry(e) {
+  return (typeof e === 'number') ? { idx: e, book: 'concentration' } : e;
+}
+
 function trackView(idx) {
-  userData.recentlyViewed = [idx, ...userData.recentlyViewed.filter(i => i !== idx)].slice(0, 15);
+  const prior = (userData.recentlyViewed || []).map(rvEntry);
+  userData.recentlyViewed = [
+    { idx, book: activeBook },
+    ...prior.filter(e => !(e.idx === idx && e.book === activeBook))
+  ].slice(0, 15);
   // Track reading stats
   if (!userData.readingLog) userData.readingLog = [];
   const todayStr = today();
   const last = userData.readingLog[0];
   // Avoid duplicate entries for same teaching on same day
-  if (!last || last.idx !== idx || last.date !== todayStr) {
+  if (!last || last.idx !== idx || last.date !== todayStr || last.book !== activeBook) {
     const t = allTeachings[idx];
     const words = t ? (t.snippet.body || '').split(/\s+/).length : 0;
-    userData.readingLog.unshift({ idx, date: todayStr, words, ts: Date.now() });
+    userData.readingLog.unshift({ idx, book: activeBook, date: todayStr, words, ts: Date.now() });
     // Keep last 500 entries
     if (userData.readingLog.length > 500) userData.readingLog.length = 500;
   }
@@ -2199,12 +2242,12 @@ function trackView(idx) {
 function viewRecent(el) {
   if (el) setActiveNav(el);
   setBreadcrumb('Recently Viewed');
-  const rv = userData.recentlyViewed;
-  let h = listPageHeader('Recently Viewed', rv.length + ' teaching' + (rv.length!==1?'s':''));
+  const rv = (userData.recentlyViewed || []).map(rvEntry).filter(matchesActiveBook);
+  let h = listPageHeader('Recently Viewed', rv.length + ' teaching' + (rv.length!==1?'s':'') + ` · ${BOOKS[activeBook].short}`);
   if (!rv.length) {
     h += emptyState('○', 'No history yet. Start reading to track your journey.');
   } else {
-    rv.forEach(idx => {
+    rv.forEach(({idx}) => {
       const t = allTeachings[idx];
       if (!t) return;
       h += `<div class="list-item" onclick="showTeaching(${idx},true)">
@@ -2235,7 +2278,8 @@ function exportUserData() {
 
 async function loadHandbookData() {
   try {
-    const res = await fetch('data/handbook_concentration.json');
+    const book = BOOKS[activeBook];
+    const res = await fetch(book.json);
     handbook = await res.json();
     buildFlatIndex();
     // Load Kabir's Writings (admin content) — silent fail if missing
@@ -2256,7 +2300,8 @@ async function loadHandbookData() {
     document.getElementById('welcome-actions').classList.remove('hidden');
     // Resume link
     try {
-      const last = localStorage.getItem('suluk_last_pos');
+      const last = localStorage.getItem('suluk_last_pos_' + activeBook)
+                ?? (activeBook === 'concentration' ? localStorage.getItem('suluk_last_pos') : null);
       if (last !== null) {
         const idx = parseInt(last);
         if (!isNaN(idx) && idx >= 0 && idx < allTeachings.length) {
@@ -2284,7 +2329,8 @@ async function loadHandbookData() {
 
 function buildFlatIndex() {
   allTeachings = [];
-  for (const pk of ['I','II','III']) {
+  const partKeys = handbookPartKeys();
+  for (const pk of partKeys) {
     const part   = handbook.parts[pk];
     const chKeys = Object.keys(part.chapters).map(Number).sort((a,b)=>a-b).map(String);
     for (const ck of chKeys) {
@@ -2296,21 +2342,74 @@ function buildFlatIndex() {
   }
 }
 
+/* Roman-numeral-aware part-key sort — I < II < III < IV … */
+function handbookPartKeys() {
+  const roman = { I:1, II:2, III:3, IV:4, V:5, VI:6, VII:7, VIII:8, IX:9, X:10 };
+  return Object.keys(handbook.parts).sort((a,b) => (roman[a]||99) - (roman[b]||99));
+}
+
+/* Switch between Concentration and Contemplation */
+async function switchBook(key) {
+  if (!BOOKS[key] || key === activeBook) return;
+  activeBook = key;
+  localStorage.setItem('suluk_active_book', key);
+  // Clear deep-link hash so we don't try to resume a teaching index from the
+  // other book's index space.
+  try { history.replaceState(null, '', location.pathname + location.search); } catch(e) {}
+  // Reset ephemeral state
+  currentIdx = -1;
+  handbook = null;
+  allTeachings = [];
+  // Show welcome while we reload
+  const mainEl = document.getElementById('welcome-actions');
+  if (mainEl) mainEl.classList.add('hidden');
+  await loadHandbookData();
+  showToast(`Switched to ${BOOKS[key].short}`);
+  // Jump user back to welcome
+  const welcome = document.getElementById('welcome');
+  if (welcome) welcome.scrollIntoView({behavior:'smooth'});
+}
+
 function buildSidebarNav() {
   const nav = document.getElementById('sidebar-nav');
+  const book = BOOKS[activeBook];
   let h = '';
+
+  // Book switcher
+  h += '<div class="nav-section-label">Book</div>';
+  h += '<div class="nav-book-switcher" style="display:flex;gap:6px;padding:6px 12px 10px;margin-bottom:4px">';
+  for (const k of ['concentration','contemplation']) {
+    const b = BOOKS[k];
+    const on = (k === activeBook);
+    h += `<button onclick="switchBook('${k}')" class="nav-book-btn" aria-pressed="${on}" `
+      + `style="flex:1;padding:6px 8px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;`
+      + `border:1px solid ${on?'#C4A35A':'rgba(196,163,90,.25)'};background:${on?'rgba(196,163,90,.14)':'transparent'};`
+      + `color:${on?'#C4A35A':'var(--muted)'};cursor:pointer;border-radius:3px;">${b.short}</button>`;
+  }
+  h += '</div>';
+
   h += '<div class="nav-section-label">Daily</div>';
   h += '<a class="nav-item" onclick="showTodaysTeaching(this)" role="button" tabindex="0">◈ &thinsp;Today\'s Teaching</a>';
   h += '<a class="nav-item" onclick="showRandomTeaching(this)" role="button" tabindex="0">◇ &thinsp;Open a Teaching</a>';
-  h += '<a class="nav-item" onclick="showFullBook(this)" role="button" tabindex="0">☰ &thinsp;Read Full Book</a>';
-  h += '<a class="nav-item" href="assets/The_Book_of_Concentration.pdf" download style="text-decoration:none">⤓ &thinsp;Download PDF</a>';
+  if (book.fullBookInline) {
+    h += '<a class="nav-item" onclick="showFullBook(this)" role="button" tabindex="0">☰ &thinsp;Read Full Book</a>';
+  } else {
+    h += `<a class="nav-item" href="${book.fullBookHref}" target="_blank" rel="noopener" style="text-decoration:none">☰ &thinsp;Read Full Book ↗</a>`;
+  }
+  h += `<a class="nav-item" href="${book.pdf}" download style="text-decoration:none">⤓ &thinsp;Download PDF</a>`;
 
-  for (const pk of ['I','II','III']) {
+  for (const pk of handbookPartKeys()) {
     const part  = handbook.parts[pk];
-    const short = part.instructor.replace('Guide ','').split(' ').slice(-2).join(' ');
+    // For books where the instructor differs per part, use the instructor name.
+    // For single-instructor books (e.g. Contemplation), use the retreat/part title.
+    const instructors = new Set(handbookPartKeys().map(k => handbook.parts[k].instructor));
+    const sameInstructor = instructors.size === 1;
+    const label = sameInstructor
+      ? (part.title || `Part ${pk}`)
+      : (part.instructor || '').replace('Guide ','').split(' ').slice(-2).join(' ');
     const chKeys = Object.keys(part.chapters).map(Number).sort((a,b)=>a-b).map(String);
     h += '<div class="nav-divider"></div>';
-    h += `<div class="nav-part-toggle" onclick="togglePart('${pk}')"><span class="nav-part-arrow" id="arrow-${pk}">▸</span><span>Part ${pk} &hairsp;·&hairsp; ${short}</span></div>`;
+    h += `<div class="nav-part-toggle" onclick="togglePart('${pk}')"><span class="nav-part-arrow" id="arrow-${pk}">▸</span><span>Part ${pk} &hairsp;·&hairsp; ${escHtml(label)}</span></div>`;
     h += `<div class="nav-part-chapters" id="part-chapters-${pk}" style="display:none">`;
     chKeys.forEach(ck => {
       const ch = part.chapters[ck];
@@ -2361,7 +2460,11 @@ function showTeaching(idx, scroll) {
   currentIdx = idx;
   const t    = allTeachings[idx];
   trackView(idx);
-  try { history.replaceState(null,'','#t'+idx); localStorage.setItem('suluk_last_pos', idx); } catch(e) {}
+  try {
+    history.replaceState(null,'','#t'+idx);
+    localStorage.setItem('suluk_last_pos_' + activeBook, idx);
+    if (activeBook === 'concentration') localStorage.setItem('suluk_last_pos', idx); // legacy
+  } catch(e) {}
   setBreadcrumb(t.chapter.title);
   document.getElementById('welcome-screen').classList.add('hidden');
   const tv = document.getElementById('teaching-view');
