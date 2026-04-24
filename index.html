@@ -3858,18 +3858,14 @@ function hideGlossaryTooltip() {
 /* ─── AI Study Companion ─── */
 
 let chatMessages = [];
-let chatTeachingContext = null;
-let chatNamespace = localStorage.getItem('suluk_chat_namespace') || 'all';
+// chatTeachingContext + chatNamespace removed — companion now always searches
+// the full RAG corpus and never reads from Handbook / Kabir's Writings / Homework.
+const CHAT_NAMESPACE = 'all';
 
 const CHAT_WORKER_URL = 'https://suluk-worker.soulofkabir.workers.dev';
 
 function chatIsAdmin() {
   return !!(localStorage.getItem('suluk_worker_token') || '').trim();
-}
-
-function setChatNamespace(ns) {
-  chatNamespace = ns;
-  localStorage.setItem('suluk_chat_namespace', ns);
 }
 
 function showStudyCompanion(el) {
@@ -3881,57 +3877,17 @@ function showStudyCompanion(el) {
     try { chatMessages = JSON.parse(saved); } catch(e) {}
   }
 
-  // Check if user is reading a teaching — offer context
-  if (currentIdx >= 0 && allTeachings[currentIdx]) {
-    const t = allTeachings[currentIdx];
-    chatTeachingContext = {
-      title: t.snippet.title,
-      chapter: t.chapter.title,
-      instructor: t.snippet.instructor || '',
-      body: t.snippet.body || '',
-    };
-  }
-
   let h = '<div class="chat-container">';
 
-  // Header
-  const isAdmin = chatIsAdmin();
+  // Header — no dropdown, no scope; always the full knowledge corpus
   h += '<div style="padding:12px 0;border-bottom:1px solid var(--rule);margin-bottom:4px">';
   h += '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">';
   h += '<div>';
   h += '<div style="font-family:var(--display);font-weight:700;font-size:18px;color:var(--primary)">Study Companion</div>';
-  h += '<div style="font-size:12px;color:var(--muted)">Gemini 2.5 Flash · ' + (chatNamespace === 'none' ? 'Handbook context' : chatNamespace === 'suluk-classes' ? 'RAG — 168 class chunks · Concentration P1+P2' : chatNamespace === 'hik-all' ? 'RAG — HIK Corpus only (~20k chunks)' : 'RAG — 22k+ chunks across 9 sources') + '</div>';
+  h += '<div style="font-size:12px;color:var(--muted)">Gemini 2.5 Flash · Hazrat Inayat Khan Corpus</div>';
   h += '</div>';
-  h += '<div style="display:flex;align-items:center;gap:8px">';
-  h += '<label style="font-size:11px;color:var(--muted)">Source:</label>';
-  h += '<select id="chat-namespace" onchange="setChatNamespace(this.value)" style="font-size:12px;padding:4px 6px;border:1px solid var(--rule);border-radius:4px;background:var(--bg)">';
-  const opts = [
-    { v: 'none', l: 'Handbook' },
-    { v: 'all', l: 'Full Corpus' },
-  ];
-  if (isAdmin) {
-    opts.push({ v: 'hik-all', l: 'Hazrat Inayat Khan' });
-    opts.push({ v: 'suluk-classes', l: 'Class Transcripts' });
-  }
-  // Default to Full Corpus for admin, Handbook for non-admin
-  if (!isAdmin && chatNamespace === 'all') {
-    setChatNamespace('none');
-  }
-  opts.forEach(o => {
-    h += '<option value="' + o.v + '"' + (chatNamespace === o.v ? ' selected' : '') + '>' + o.l + '</option>';
-  });
-  h += '</select>';
   h += '<button class="action-btn" onclick="clearChat()" style="font-size:12px">Clear</button>';
-  h += '</div>';
   h += '</div></div>';
-
-  // Context bar
-  if (chatTeachingContext) {
-    h += '<div class="chat-context-bar">';
-    h += '<span>◈ Reading: <strong>' + escHtml(chatTeachingContext.title) + '</strong></span>';
-    h += '<button onclick="chatTeachingContext=null;showStudyCompanion()" title="Remove context">✕</button>';
-    h += '</div>';
-  }
 
   // Messages area
   h += '<div class="chat-messages" id="chat-messages">';
@@ -3939,17 +3895,14 @@ function showStudyCompanion(el) {
     h += '<div style="text-align:center;padding:40px 20px;color:var(--muted)">';
     h += '<div style="font-size:40px;margin-bottom:12px">◈</div>';
     h += '<div style="font-family:var(--display);font-weight:600;margin-bottom:8px">Bismillah</div>';
-    h += '<div style="font-size:14px;line-height:1.6">Ask me about the Suluk teachings, practices, Arabic terms, or the wisdom of Hazrat Inayat Khan.</div>';
-    if (chatTeachingContext) {
-      h += '<div style="margin-top:12px;font-size:13px">Try: "Explain this teaching in simpler terms" or "What practices relate to this?"</div>';
-    }
+    h += '<div style="font-size:14px;line-height:1.6">Ask me about Sufi teachings, practices, Arabic/Persian terms, or the wisdom of Hazrat Inayat Khan.</div>';
     h += '</div>';
   } else {
     chatMessages.forEach(m => {
       if (m.role === 'user') {
         h += '<div class="chat-msg user">' + escHtml(m.content) + '</div>';
       } else {
-        h += renderAssistantMessage(m.content, m.corpusMatches || [], [], []);
+        h += renderAssistantMessage(m.content);
       }
     });
   }
@@ -3992,29 +3945,8 @@ async function sendChat() {
   msgArea.scrollTop = msgArea.scrollHeight;
 
   try {
-    // In HIK-only mode, skip all local handbook/kabir/glossary context —
-    // answers should come strictly from the HIK vector corpus.
-    const hikOnly = chatNamespace === 'hik-all';
-
-    let relevantTeachings = [];
-    let glossaryContext = [];
-    let kabirContext = [];
-    if (!hikOnly) {
-      // Search handbook for relevant teachings to provide as context
-      buildSearchIndex();
-      relevantTeachings = findRelevantTeachings(msg, 10);
-      console.log('[Chat] Found', relevantTeachings.length, 'relevant teachings:', relevantTeachings.map(t => t.title));
-
-      // Include matching glossary terms
-      glossaryContext = findRelevantGlossary(msg);
-
-      // Include Kabir's Writings (admin content) if loaded
-      kabirContext = findRelevantKabirWritings(msg, 8);
-      if (kabirContext.length) console.log('[Chat] Found', kabirContext.length, 'Kabir reflections:', kabirContext.map(k => k.title));
-    } else {
-      console.log('[Chat] HIK-only scope — skipping local handbook/kabir/glossary context');
-    }
-
+    // Companion searches the full RAG corpus only. It never reads from the
+    // Handbook, Kabir's Writings, Glossary, or Homework — those stay private.
     const c = getWorkerConfig();
     const chatUrl = (c.url || CHAT_WORKER_URL) + '/rag-chat';
     const chatHeaders = { 'Content-Type': 'application/json' };
@@ -4024,11 +3956,7 @@ async function sendChat() {
       headers: chatHeaders,
       body: JSON.stringify({
         messages: chatMessages,
-        namespace: chatNamespace,
-        teachingContext: hikOnly ? null : chatTeachingContext,
-        handbookContext: relevantTeachings,
-        glossaryContext: glossaryContext,
-        kabirContext: kabirContext,
+        namespace: CHAT_NAMESPACE,
       }),
     });
     if (!resp.ok) {
@@ -4044,7 +3972,7 @@ async function sendChat() {
 
     // Remove typing indicator and add response with citation chips
     document.getElementById('chat-typing')?.remove();
-    msgArea.innerHTML += renderAssistantMessage(reply, corpusMatches, relevantTeachings, kabirContext);
+    msgArea.innerHTML += renderAssistantMessage(reply);
     msgArea.scrollTop = msgArea.scrollHeight;
   } catch(e) {
     document.getElementById('chat-typing')?.remove();
@@ -4057,70 +3985,13 @@ async function sendChat() {
   }
 }
 
-/* Render an assistant message: parse markdown, turn [L1]/[H1]/[K1] tags into
-   inline clickable chips, and append a "Sources" footer listing each citation. */
-function renderAssistantMessage(reply, corpusMatches, handbookCtx, kabirCtx) {
-  let body = parseMarkdown(reply || '');
-
-  // Inline clickable tag spans for [L#], [H#], [K#]
-  body = body.replace(/\[([LHK])(\d+)\]/g, function(_, kind, num) {
-    return '<span class="cite-tag cite-' + kind + '" data-cite="' + kind + num + '" onclick="scrollToCite(\'' + kind + num + '\')">[' + kind + num + ']</span>';
-  });
-
-  let h = '<div class="chat-msg assistant"><div class="md-content">' + body + '</div>';
-
-  // Build a unified sources list
-  const sources = [];
-  (corpusMatches || []).forEach((m, i) => {
-    sources.push({
-      key: 'L' + (i + 1),
-      kind: 'L',
-      title: m.book || 'Library passage',
-      sub: [m.chapter_title, m.page_start ? 'p. ' + m.page_start : '', m.author].filter(Boolean).join(' · '),
-      score: m.score,
-    });
-  });
-  (handbookCtx || []).forEach((t, i) => {
-    sources.push({
-      key: 'H' + (i + 1),
-      kind: 'H',
-      title: t.title || 'Handbook teaching',
-      sub: [t.chapter, t.instructor].filter(Boolean).join(' · '),
-    });
-  });
-  (kabirCtx || []).forEach((k, i) => {
-    sources.push({
-      key: 'K' + (i + 1),
-      kind: 'K',
-      title: k.title || "Kabir's reflection",
-      sub: k.source || "Kabir's Writings",
-    });
-  });
-
-  if (sources.length) {
-    h += '<div class="cite-sources"><div class="cite-sources-label">Sources</div>';
-    sources.forEach(s => {
-      const scoreTxt = s.score ? ' <span class="cite-score">' + s.score.toFixed(2) + '</span>' : '';
-      h += '<div class="cite-source-row" id="cite-' + s.key + '">';
-      h += '<span class="cite-tag cite-' + s.kind + '">[' + s.key + ']</span>';
-      h += '<div class="cite-source-meta"><div class="cite-source-title">' + escHtml(s.title) + scoreTxt + '</div>';
-      if (s.sub) h += '<div class="cite-source-sub">' + escHtml(s.sub) + '</div>';
-      h += '</div></div>';
-    });
-    h += '</div>';
-  }
-
-  h += '</div>';
-  return h;
-}
-
-function scrollToCite(key) {
-  const el = document.getElementById('cite-' + key);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    el.classList.add('cite-flash');
-    setTimeout(() => el.classList.remove('cite-flash'), 1200);
-  }
+/* Render an assistant message: parse markdown only. Sources panel and inline
+   [L#]/[H#]/[K#] citations are intentionally removed — attribution is handled
+   by the system prompt (letting answers read as flowing prose). */
+function renderAssistantMessage(reply) {
+  // Scrub any stray inline bracket tags the model might still emit
+  let body = parseMarkdown((reply || '').replace(/\[([LHK])\d+\]\s*/g, ''));
+  return '<div class="chat-msg assistant"><div class="md-content">' + body + '</div></div>';
 }
 
 function findRelevantTeachings(query, maxResults) {
@@ -4222,7 +4093,6 @@ function findRelevantGlossary(query) {
 
 function clearChat() {
   chatMessages = [];
-  chatTeachingContext = null;
   sessionStorage.removeItem('suluk_chat');
   showStudyCompanion();
 }
